@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">saamdagen</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Saamdagen</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_info">Info</string>
+    <string name="news_title">Nieuws</string>
+    <string name="practical_title">Praktisch</string>
+    <string name="about_title">Over</string>
+    <string name="settings_title">Instellingen</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

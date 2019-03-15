@@ -12,9 +12,5 @@ class SaamdagenApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        AppCenter.start(
-            this, getString(R.string.app_center_key),
-            Analytics::class.java, Crashes::class.java
-        )
     }
 }

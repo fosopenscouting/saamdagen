@@ -37,6 +37,7 @@ class InfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.run {
+            //Setup the viewpager
             viewpager.offscreenPageLimit = INFO_PAGES.size
             viewpager.adapter = InfoAdapter(childFragmentManager)
             tabs.setupWithViewPager(binding.viewpager)
@@ -45,6 +46,7 @@ class InfoFragment : Fragment() {
     }
 
 
+    // Adapter for adding fragments to the viewpager
     inner class InfoAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getCount() = INFO_PAGES.size
         override fun getItem(position: Int) = INFO_PAGES[position]()
@@ -56,9 +58,10 @@ class InfoFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = InfoFragment()
 
         private val TAG: String = InfoFragment::class.java.simpleName
+
+        //Titles displayed in the tabLayout, titles are passed to the tablayout trough the InfoAdapter
         private val INFO_TITLES = arrayOf(
             R.string.news_title,
             R.string.practical_title,
@@ -66,6 +69,7 @@ class InfoFragment : Fragment() {
             R.string.settings_title
 
         )
+        //Array of all the fragments displayed in the viewpager
         private val INFO_PAGES = arrayOf(
             { NewsFragment() },
             { PracticalFragment() },

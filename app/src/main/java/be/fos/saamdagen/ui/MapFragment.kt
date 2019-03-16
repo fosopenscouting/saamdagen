@@ -1,10 +1,11 @@
-package be.fos.saamdagen
+package be.fos.saamdagen.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import be.fos.saamdagen.R
 
 
 class MapFragment : Fragment() {

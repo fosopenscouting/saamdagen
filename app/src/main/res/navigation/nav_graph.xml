@@ -6,8 +6,8 @@
 
     <fragment android:id="@+id/navigation_info" android:name="be.fos.saamdagen.ui.info.InfoFragment" android:label="fragment_info"
               tools:layout="@layout/fragment_info"/>
-    <fragment android:id="@+id/navigation_schedule" android:name="be.fos.saamdagen.ScheduleFragment"
+    <fragment android:id="@+id/navigation_schedule" android:name="be.fos.saamdagen.ui.ScheduleFragment"
               android:label="fragment_schedule" tools:layout="@layout/fragment_schedule"/>
-    <fragment android:id="@+id/navigation_map" android:name="be.fos.saamdagen.MapFragment" android:label="fragment_map"
+    <fragment android:id="@+id/navigation_map" android:name="be.fos.saamdagen.ui.MapFragment" android:label="fragment_map"
               tools:layout="@layout/fragment_map"/>
 </navigation>

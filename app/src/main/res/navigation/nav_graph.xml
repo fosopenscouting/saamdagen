@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/navigation_info">
+            app:startDestination="@id/navigation_news">
 
     <fragment android:id="@+id/navigation_info" android:name="be.fos.saamdagen.ui.info.InfoFragment" android:label="fragment_info"
               tools:layout="@layout/fragment_info"/>
@@ -14,5 +14,5 @@
             android:id="@+id/navigation_news"
             android:name="be.fos.saamdagen.ui.info.news.NewsFragment"
             android:label="news_fragment"
-            tools:layout="@layout/news_fragment"/>
+            tools:layout="@layout/fragment_news"/>
 </navigation>

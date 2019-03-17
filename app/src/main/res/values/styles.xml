@@ -24,6 +24,15 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="TextAppearance.Widget.Toolbar" parent="">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="TextAppearance.Saamdagen.ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+
+    </style>
+
+
     <style name="TextAppearance.Saamdagen.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
 
         <item name="android:textStyle">bold</item>

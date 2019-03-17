@@ -21,7 +21,7 @@ class NewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.news_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

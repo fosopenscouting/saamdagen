@@ -1,4 +1,3 @@
 package be.fos.saamdagen.model
 
-class Info {
-}
+data class Info(val title: String,val content: String)

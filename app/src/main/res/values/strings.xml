@@ -9,6 +9,8 @@
     <string name="practical_title">Praktisch</string>
     <string name="about_title">Over</string>
     <string name="settings_title">Instellingen</string>
+    <string name="title_schedule">Agenda</string>
+    <string name="title_map">Grondplan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -48,6 +48,7 @@
         <item name="itemIconTint">@color/secondaryColor</item>
         <item name="itemTextColor">@color/secondaryColor</item>
         <item name="itemBackground">@color/primaryColor</item>
+        <item name="android:background">@color/primaryColor</item>
         <item name="itemTextAppearanceActive">@style/BottomNavigationView.Active</item>
         <item name="itemTextAppearanceInactive">@style/BottomNavigationView</item>
         <item name="labelVisibilityMode">selected</item>

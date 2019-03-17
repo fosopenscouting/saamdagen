@@ -10,4 +10,9 @@
               android:label="fragment_schedule" tools:layout="@layout/fragment_schedule"/>
     <fragment android:id="@+id/navigation_map" android:name="be.fos.saamdagen.ui.MapFragment" android:label="fragment_map"
               tools:layout="@layout/fragment_map"/>
+    <fragment
+            android:id="@+id/navigation_news"
+            android:name="be.fos.saamdagen.ui.info.news.NewsFragment"
+            android:label="news_fragment"
+            tools:layout="@layout/news_fragment"/>
 </navigation>

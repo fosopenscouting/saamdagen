@@ -36,12 +36,35 @@
                     android:gravity="center"
                     android:text="@string/title_info"
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed" />
+                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"/>
 
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp">
 
+            <be.fos.saamdagen.widget.CollapsibleCard
+                    android:id="@+id/topCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardTitle="TITEL"
+                    app:cardDescription="Dit is een iets langere tekst"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="8dp"/>
+
+            <be.fos.saamdagen.widget.CollapsibleCard
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardTitle="TITEL"
+                    app:cardDescription="Dit is een iets langere tekst"
+                    app:layout_constraintTop_toBottomOf="@id/topCard"
+                    android:layout_marginTop="8dp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

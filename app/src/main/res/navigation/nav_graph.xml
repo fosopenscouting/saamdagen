@@ -12,7 +12,7 @@
               tools:layout="@layout/fragment_map"/>
     <fragment
             android:id="@+id/navigation_news"
-            android:name="be.fos.saamdagen.ui.info.news.NewsFragment"
+            android:name="be.fos.saamdagen.ui.news.NewsFragment"
             android:label="news_fragment"
             tools:layout="@layout/fragment_news"/>
 </navigation>

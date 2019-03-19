@@ -6,14 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.databinding.DataBindingUtil
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentInfoBinding
-import be.fos.saamdagen.ui.info.about.AboutFragment
-import be.fos.saamdagen.ui.info.news.NewsFragment
-import be.fos.saamdagen.ui.info.settings.SettingsFragment
-import kotlinx.android.synthetic.main.fragment_info.*
+import be.fos.saamdagen.model.Info
 
 
 class InfoFragment : Fragment() {
@@ -25,9 +21,18 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         binding = FragmentInfoBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@InfoFragment
         }
+
+        val adapter = InfoAdapter()
+
+        adapter.submitList(listOf(
+            Info("Saamregels","Hier komen de Saamregels"),
+            Info("In en uitcheck", "Hier ook content")))
+
+        binding.infoList.adapter = adapter
         // Inflate the layout for this fragment
         return binding.root
     }

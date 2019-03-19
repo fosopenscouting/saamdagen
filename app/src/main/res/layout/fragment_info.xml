@@ -17,7 +17,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -41,30 +41,13 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/info_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp">
-
-            <be.fos.saamdagen.widget.CollapsibleCard
-                    android:id="@+id/topCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardTitle="TITEL"
-                    app:cardDescription="Dit is een iets langere tekst"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="8dp"/>
-
-            <be.fos.saamdagen.widget.CollapsibleCard
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardTitle="TITEL"
-                    app:cardDescription="Dit is een iets langere tekst"
-                    app:layout_constraintTop_toBottomOf="@id/topCard"
-                    android:layout_marginTop="8dp"/>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_info"></androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

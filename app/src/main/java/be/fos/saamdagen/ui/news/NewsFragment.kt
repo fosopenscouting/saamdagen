@@ -1,4 +1,4 @@
-package be.fos.saamdagen.ui.info.news
+package be.fos.saamdagen.ui.news
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

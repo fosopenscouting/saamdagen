@@ -1,4 +1,4 @@
-package be.fos.saamdagen.ui.info.about
+package be.fos.saamdagen.ui.about
 
 import androidx.lifecycle.ViewModel;
 

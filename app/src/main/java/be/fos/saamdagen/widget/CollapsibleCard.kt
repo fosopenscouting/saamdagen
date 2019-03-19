@@ -30,7 +30,8 @@ class CollapsibleCard @JvmOverloads constructor(
     private val titleContainer: View
     private val toggle: Transition
     private val root: View
-    private val cardTitle: String
+    val cardTitle: String
+
 
     init {
         val arr = context.obtainStyledAttributes(attributes, R.styleable.CollapsibleCard, 0, 0)

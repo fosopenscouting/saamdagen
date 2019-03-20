@@ -16,12 +16,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import be.fos.saamdagen.R
+import org.w3c.dom.Text
 
 class CollapsibleCard @JvmOverloads constructor(
     context: Context,
     attributes: AttributeSet? = null,
     defStyleAttribute: Int = 0
-): FrameLayout(context, attributes, defStyleAttribute) {
+) : FrameLayout(context, attributes, defStyleAttribute) {
 
     private var expanded = false
     private val cardTitleView: TextView
@@ -30,25 +31,38 @@ class CollapsibleCard @JvmOverloads constructor(
     private val titleContainer: View
     private val toggle: Transition
     private val root: View
-    val cardTitle: String
+     var cardTitle: String = ""
+        set(value) {
+            field = value
+            cardTitleView.apply {
+                text = field
+            }
+        }
+     var cardDescription: String = ""
+        set(value) {
+            field = value
+            cardDescriptionView.apply {
+                text = field
+            }
+        }
 
 
     init {
-        val arr = context.obtainStyledAttributes(attributes, R.styleable.CollapsibleCard, 0, 0)
-        cardTitle = arr.getString(R.styleable.CollapsibleCard_cardTitle)
-        val cardDescription = arr.getString(R.styleable.CollapsibleCard_cardDescription)
-        arr.recycle()
         root = LayoutInflater.from(context)
             .inflate(R.layout.collapsible_card_content, this, true)
 
-        titleContainer = root.findViewById(R.id.title_container)
-        cardTitleView = root.findViewById<TextView>(R.id.card_title).apply {
-            text = cardTitle
-        }
+        val arr = context.obtainStyledAttributes(attributes, R.styleable.CollapsibleCard, 0, 0)
 
-        cardDescriptionView = root.findViewById<TextView>(R.id.card_description).apply {
-            text = cardDescription
-        }
+        cardTitleView = root.findViewById(R.id.card_title)
+        cardDescriptionView = root.findViewById(R.id.card_description)
+
+        cardTitle = arr.getString(R.styleable.CollapsibleCard_cardTitle)
+        cardDescription = arr.getString(R.styleable.CollapsibleCard_cardDescription)
+
+
+
+        titleContainer = root.findViewById(R.id.title_container)
+
         expandIcon = root.findViewById(R.id.expand_icon)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             expandIcon.imageTintList =
@@ -59,6 +73,7 @@ class CollapsibleCard @JvmOverloads constructor(
         titleContainer.setOnClickListener {
             toggleExpanded()
         }
+        arr.recycle()
     }
 
     private fun toggleExpanded() {

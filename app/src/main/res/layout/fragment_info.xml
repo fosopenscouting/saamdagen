@@ -36,17 +36,16 @@
                     android:gravity="center"
                     android:text="@string/title_info"
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"/>
+                    app:layout_scrollFlags="snap|exitUntilCollapsed"/>
 
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="?actionBarSize"
                 android:id="@+id/info_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_info"></androidx.recyclerview.widget.RecyclerView>
 
 

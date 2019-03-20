@@ -1,17 +1,24 @@
 package be.fos.saamdagen.ui.info
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import be.fos.saamdagen.databinding.ItemInfoBinding
+import be.fos.saamdagen.R
 import be.fos.saamdagen.model.Info
+import kotlinx.android.synthetic.main.collapsible_card_content.view.*
+import kotlinx.android.synthetic.main.item_info.view.*
 
 
 class InfoAdapter: ListAdapter<Info,InfoAdapter.ViewHolder>(InfoDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemInfoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+       // return ViewHolder(ItemInfoBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_info,parent,false)
+
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -19,12 +26,14 @@ class InfoAdapter: ListAdapter<Info,InfoAdapter.ViewHolder>(InfoDiff) {
     }
 
 
-    class ViewHolder(private val binding: ItemInfoBinding): RecyclerView.ViewHolder(binding.root) {
+
+
+    class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
       fun bind(item: Info) {
-          binding.apply {
-              infoItem = item
-              executePendingBindings()
-          }
+         view.apply {
+            card.cardTitle = item.title
+             card.cardDescription = item.content
+         }
       }
     }
 }

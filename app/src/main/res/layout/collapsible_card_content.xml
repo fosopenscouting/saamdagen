@@ -15,18 +15,13 @@
   limitations under the License.
   -->
 
-<merge
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:parentTag="android.widget.FrameLayout">
 
-    <!-- Note: putting everything in a RelativeLayout confuses Talkback, which does not always
-    focus on the HtmlTextView. -->
-    <LinearLayout
-            android:id="@+id/collapsible_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+<LinearLayout
+        android:id="@+id/collapsible_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
         <RelativeLayout
                 android:id="@+id/title_container"
@@ -76,4 +71,3 @@
 
     </LinearLayout>
 
-</merge>

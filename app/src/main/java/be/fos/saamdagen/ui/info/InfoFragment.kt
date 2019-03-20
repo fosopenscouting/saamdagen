@@ -40,7 +40,46 @@ class InfoFragment : Fragment() {
 
         adapter.submitList(listOf(
             Info("Saamregels","Hier komen de Saamregels"),
-            Info("In en uitcheck", "Hier ook content")))
+            Info("Infopunt", "Op Saamdagen staat het infopunt altijd voor je klaar.\n" +
+                    "Je koopt er bekers en bonnen, je vindt er condooms en " +
+                    "oordopjes, een gsm-oplaadstation, verloren voorwerpen, wcpapier " +
+                    "en gezellige mensen erbovenop! Zit je met een vraag " +
+                    "of wil je gewoon eens babbelen? Dan is het infopunt the place " +
+                    "to be! Is het infopunt gesloten, maar heb je toch een heel " +
+                    "dringende vraag/probleem?\n" +
+                    "Bel dan even de " +
+                    "Saamdagenfoon: 0475 83 33 96!"),
+            Info("Groot spel","Iedereen speelt wel eens met buisjes en balletjes, maar " +
+                    "wat er deze zaterdagochtend zal gebeuren is ongezien.\n" +
+                    "700 FOSsers gaan de strijd aan met elkaar in een " +
+                    "mega episch blaaspijpenspel.. MET DANK AAN 200e " +
+                    "FOS DE VLEERMUIS!!"),
+            Info("Uitcheck","Op zondag popel je natuurlijk om terug te keren naar " +
+                    "de mammie en de pappie. Je kan niet wachten tot " +
+                    "je al je Saam-avonturen kan toevertrouwen aan je " +
+                    "liefste dagboek. Toch gaat de uitcheck pas open als " +
+                    "alles voldoende is afgebroken en opgeruimd.\nRichtuur " +
+                    "14u30!"),
+            Info("Infopunt", "Op Saamdagen staat het infopunt altijd voor je klaar.\n" +
+                    "Je koopt er bekers en bonnen, je vindt er condooms en " +
+                    "oordopjes, een gsm-oplaadstation, verloren voorwerpen, wcpapier " +
+                    "en gezellige mensen erbovenop! Zit je met een vraag " +
+                    "of wil je gewoon eens babbelen? Dan is het infopunt the place " +
+                    "to be! Is het infopunt gesloten, maar heb je toch een heel " +
+                    "dringende vraag/probleem?\n" +
+                    "Bel dan even de " +
+                    "Saamdagenfoon: 0475 83 33 96!"),
+            Info("Groot spel","Iedereen speelt wel eens met buisjes en balletjes, maar " +
+                    "wat er deze zaterdagochtend zal gebeuren is ongezien.\n" +
+                    "700 FOSsers gaan de strijd aan met elkaar in een " +
+                    "mega episch blaaspijpenspel.. MET DANK AAN 200e " +
+                    "FOS DE VLEERMUIS!!"),
+            Info("Uitcheck","Op zondag popel je natuurlijk om terug te keren naar " +
+                    "de mammie en de pappie. Je kan niet wachten tot " +
+                    "je al je Saam-avonturen kan toevertrouwen aan je " +
+                    "liefste dagboek. Toch gaat de uitcheck pas open als " +
+                    "alles voldoende is afgebroken en opgeruimd.\nRichtuur " +
+                    "14u30!")))
 
         binding.infoList.adapter = adapter
         // Inflate the layout for this fragment

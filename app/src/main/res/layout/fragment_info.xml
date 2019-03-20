@@ -36,7 +36,8 @@
                     android:gravity="center"
                     android:text="@string/title_info"
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="snap|exitUntilCollapsed"/>
+                    app:layout_scrollFlags="snap|exitUntilCollapsed"
+            />
 
 
         </com.google.android.material.appbar.AppBarLayout>

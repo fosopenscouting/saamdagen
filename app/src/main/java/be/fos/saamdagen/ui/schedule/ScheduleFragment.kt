@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentScheduleBinding
+import be.fos.saamdagen.util.TimeUtils.EventDays
 import kotlinx.android.synthetic.main.fragment_schedule.*
 
 
@@ -31,15 +32,17 @@ class ScheduleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tabs.setupWithViewPager(viewpager)
+
+        viewpager.adapter = ScheduleAdapter(childFragmentManager)
     }
 
     inner class ScheduleAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
-        override fun getItem(position: Int): Fragment {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
+        override fun getItem(position: Int): Fragment = ScheduleDayFragment()
 
-        override fun getCount(): Int {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        override fun getCount() = EventDays.size
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return EventDays[position].formatMonthDay()
         }
 
     }

@@ -32,6 +32,10 @@
 
     </style>
 
+    <style name="TextAppearance.Saamdagen.SessionTitle" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
     <style name="TextAppearance.Saamdagen.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
 

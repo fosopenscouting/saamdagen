@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/keyline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="64dp"/>
+    <!--android:text="@{userSession.session.title}"-->
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Saamdagen.SessionTitle"
+            app:layout_constraintEnd_toStartOf="@+id/bookmark_session"
+            app:layout_constraintStart_toEndOf="@id/keyline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="What's new in Android" />
+
+    <com.google.android.material.internal.CheckableImageButton
+            android:id="@+id/bookmark_session"
+            android:layout_width="@dimen/a11y_min_touch_target"
+            android:layout_height="@dimen/a11y_min_touch_target"
+            android:background="?selectableItemBackgroundBorderless"
+            android:checked="@{userSession.userEvent.isStarred}"
+            android:onClick="@{() -> eventListener.onStarClicked(userSession)}"
+            android:src="@drawable/asld_star_event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,6 @@
         <attr name="cardTitle" format="string" />
         <attr name="cardDescription" format="string" />
     </declare-styleable>
+
+    <attr name="sessionListKeyline" format="dimension" />
 </resources>

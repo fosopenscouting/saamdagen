@@ -37,7 +37,7 @@ class ScheduleFragment : Fragment() {
     }
 
     inner class ScheduleAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
-        override fun getItem(position: Int): Fragment = ScheduleDayFragment()
+        override fun getItem(position: Int): Fragment = ScheduleDayFragment.newInstance()
 
         override fun getCount() = EventDays.size
 

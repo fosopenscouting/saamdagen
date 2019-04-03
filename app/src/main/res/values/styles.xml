@@ -36,6 +36,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextAppearance.Saamdagen.ListSecondary" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+
 
     <style name="TextAppearance.Saamdagen.Tab" parent="@style/TextAppearance.MaterialComponents.Tab">
 

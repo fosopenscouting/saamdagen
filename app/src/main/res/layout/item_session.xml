@@ -17,12 +17,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Saamdagen.SessionTitle"
-            app:layout_constraintEnd_toStartOf="@+id/bookmark_session"
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="What's new in Android" />
 
-    <com.google.android.material.internal.CheckableImageButton
+    <TextView
+            android:id="@+id/length_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Saamdagen.ListSecondary"
+            app:layout_constraintBottom_toTopOf="@id/tags_barrier"
+            app:layout_constraintTop_toBottomOf="@id/title"
+
+            tools:text="1 hour / Amphitheatre" app:layout_constraintStart_toStartOf="@+id/keyline"
+    />
+<!-- app:alwaysShowDate="@{alwaysShowDate}"
+            app:sessionEnd="@{userSession.session.endTime}"
+            app:sessionRoom="@{userSession.session.room}"
+            app:sessionStart="@{userSession.session.startTime}"
+            app:timeZoneId="@{timeZoneId}"-->
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/tags_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+             />
+
+    <!--<com.google.android.material.internal.CheckableImageButton
             android:id="@+id/bookmark_session"
             android:layout_width="@dimen/a11y_min_touch_target"
             android:layout_height="@dimen/a11y_min_touch_target"
@@ -31,6 +52,6 @@
             android:onClick="@{() -> eventListener.onStarClicked(userSession)}"
             android:src="@drawable/asld_star_event"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

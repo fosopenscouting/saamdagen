@@ -6,4 +6,14 @@
     </declare-styleable>
 
     <attr name="sessionListKeyline" format="dimension" />
+
+    <declare-styleable name="TimeHeader">
+        <attr name="android:width" />
+        <attr name="android:paddingTop" />
+        <attr name="android:textColor" />
+        <attr name="android:fontFamily" />
+        <attr name="hourTextSize" format="dimension" />
+        <attr name="hourMinTextSize" format="dimension" />
+        <attr name="meridiemTextSize" format="dimension" />
+    </declare-styleable>
 </resources>

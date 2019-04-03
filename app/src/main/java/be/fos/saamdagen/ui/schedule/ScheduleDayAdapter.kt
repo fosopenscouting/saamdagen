@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import be.fos.saamdagen.R
 import be.fos.saamdagen.model.Info
 import be.fos.saamdagen.model.Session
+import kotlinx.android.synthetic.main.item_session.view.*
 import java.time.ZoneId
 
 class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff) {
@@ -29,7 +30,10 @@ class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff
 class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(session: Session) {
+        view.apply {
+            view.title.text = session.title
 
+        }
     }
 }
 

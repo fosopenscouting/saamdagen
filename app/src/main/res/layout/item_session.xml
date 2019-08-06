@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   xmlns:tools="http://schemas.android.com/tools">
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   android:paddingBottom="@dimen/margin_normal"
+                                                   android:paddingEnd="@dimen/margin_normal"
+                                                   android:paddingVertical="@dimen/spacing_micro"
+                                                   android:background="?selectableItemBackground">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/keyline"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="64dp"/>
-    <!--android:text="@{userSession.session.title}"-->
-    <TextView
-            android:id="@+id/title"
+            app:layout_constraintGuide_begin="64dp" app:layout_constraintStart_toStartOf="parent"/>
+    <View
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Saamdagen.SessionTitle"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="What's new in Android" />
+            android:background="@color/primaryColor"
+             />
+    <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/agenda_icon_width"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/keyline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star_border"/>
 
     <TextView
-            android:id="@+id/length_location"
-            android:layout_width="wrap_content"
+            android:id="@+id/agenda_title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Saamdagen.ListSecondary"
-            app:layout_constraintBottom_toTopOf="@id/tags_barrier"
-            app:layout_constraintTop_toBottomOf="@id/title"
-
-            tools:text="1 hour / Amphitheatre" app:layout_constraintStart_toStartOf="@+id/keyline"
-    />
-<!-- app:alwaysShowDate="@{alwaysShowDate}"
-            app:sessionEnd="@{userSession.session.endTime}"
-            app:sessionRoom="@{userSession.session.room}"
-            app:sessionStart="@{userSession.session.startTime}"
-            app:timeZoneId="@{timeZoneId}"-->
-    <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/tags_barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-             />
-
-    <!--<com.google.android.material.internal.CheckableImageButton
-            android:id="@+id/bookmark_session"
-            android:layout_width="@dimen/a11y_min_touch_target"
-            android:layout_height="@dimen/a11y_min_touch_target"
-            android:background="?selectableItemBackgroundBorderless"
-            android:checked="@{userSession.userEvent.isStarred}"
-            android:onClick="@{() -> eventListener.onStarClicked(userSession)}"
-            android:src="@drawable/asld_star_event"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/agenda_block_padding_vert"
+            android:text="@{agenda.title}"
+            android:textAppearance="@style/TextAppearance.Saamdagen.AgendaTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/agenda_block_padding_vert"
+            android:textAppearance="@style/TextAppearance.Saamdagen.ListSecondary"
+            app:layout_constraintEnd_toEndOf="@id/agenda_title"
+            app:layout_constraintStart_toStartOf="@id/agenda_title"
+            app:layout_constraintTop_toBottomOf="@id/agenda_title"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

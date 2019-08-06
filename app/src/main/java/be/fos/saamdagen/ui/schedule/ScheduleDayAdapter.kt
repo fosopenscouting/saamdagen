@@ -31,7 +31,8 @@ class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
 
     fun bind(session: Session) {
         view.apply {
-            view.title.text = session.title
+            view.agenda_title.text = session.title
+            view.duration.text = "1 hour // Amphittheater"
 
         }
     }

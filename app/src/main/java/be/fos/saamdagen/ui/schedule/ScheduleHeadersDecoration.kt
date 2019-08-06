@@ -31,8 +31,9 @@ class ScheduleHeadersDecoration(context: Context, sessions: List<Session>): Item
     private val paddingTop: Int
     private val hourMinTextSize: Int
     private val meridiemTextSize: Int
-    private val hourFormatter = SimpleDateFormat("HH:MM")
+    private val hourFormatter = SimpleDateFormat("HH")
     private val hourMinFormatter = SimpleDateFormat("HH:mm ")
+    private val minFormatter = SimpleDateFormat("mm")
 
     init {
         val attrs = context.obtainStyledAttributes(
@@ -138,7 +139,9 @@ class ScheduleHeadersDecoration(context: Context, sessions: List<Session>): Item
             // Use a smaller text size and different pattern if event does not start on the hour
             SpannableStringBuilder().apply {
                 inSpans(AbsoluteSizeSpan(hourMinTextSize)) {
-                    append(hourMinFormatter.format(startTime))
+                    append(hourFormatter.format(startTime))
+                    append(System.lineSeparator())
+                    append(minFormatter.format(startTime))
                 }
             }
 

@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/primaryColor"
+            android:background="@color/secondaryColor"
              />
     <ImageView
             android:id="@+id/icon"

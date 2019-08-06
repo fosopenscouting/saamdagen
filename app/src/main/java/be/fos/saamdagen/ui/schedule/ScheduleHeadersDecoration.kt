@@ -32,7 +32,6 @@ class ScheduleHeadersDecoration(context: Context, sessions: List<Session>): Item
     private val hourMinTextSize: Int
     private val meridiemTextSize: Int
     private val hourFormatter = SimpleDateFormat("HH")
-    private val hourMinFormatter = SimpleDateFormat("HH:mm ")
     private val minFormatter = SimpleDateFormat("mm")
 
     init {

@@ -11,7 +11,7 @@
     <string name="settings_title">Instellingen</string>
     <string name="title_schedule">Agenda</string>
     <string name="title_map">Grondplan</string>
-
+    <string name="google_maps_key">AIzaSyAuZFY7D6us8svwlTAmwduUBie2LiQIlfA</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_map.view.*
 import android.content.DialogInterface
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.MapStyleOptions
 
 
 class MapFragment : Fragment() {
@@ -50,6 +52,9 @@ class MapFragment : Fragment() {
                     == PackageManager.PERMISSION_GRANTED) {
 
                     googleMap.isMyLocationEnabled = true
+                    googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.map_style))
+                    googleMap.uiSettings.isMyLocationButtonEnabled = false
+
                 }
             }
         }
@@ -61,6 +66,12 @@ class MapFragment : Fragment() {
 
     private fun setMapLocation(map: GoogleMap) {
         with(map) {
+val bounds = LatLngBounds(
+    LatLng(51.148220,3.875542),
+    LatLng(51.153382,3.886110)
+)
+            setMinZoomPreference(16f)
+            setLatLngBoundsForCameraTarget(bounds)
             moveCamera(CameraUpdateFactory.newLatLngZoom(position,17f))
         }
     }

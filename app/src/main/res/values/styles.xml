@@ -92,4 +92,26 @@
         <item name="android:textColor">@color/collapsing_section</item>
     </style>
 
+    <!-- Section headers -->
+    <style name="TextAppearance.Saamdagen.Overline" parent="@style/TextAppearance.AppCompat.Body2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- For titles, e.g. Event Detail, Speaker Detail -->
+    <style name="TextAppearance.Saamdagen.H1" parent="@style/TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">@dimen/text_size_h1</item>
+
+    </style>
+
+    <!-- For smaller titles, e.g. Schedule day decorations -->
+    <style name="TextAppearance.IOSched.H2" parent="@style/TextAppearance.Saamdagen.H1">
+        <item name="android:textSize">@dimen/text_size_h2</item>
+    </style>
+
+    <style name="TextAppearance.Saamdagen.H3" parent="@style/TextAppearance.Saamdagen.H1">
+        <item name="android:textSize">@dimen/text_size_h3</item>
+    </style>
+
 </resources>

@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import be.fos.saamdagen.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
 import android.content.DialogInterface
 import android.util.Log

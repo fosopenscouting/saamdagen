@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 
 import be.fos.saamdagen.R
+import kotlinx.android.synthetic.main.fragment_news.view.*
 
 class NewsFragment : Fragment() {
 
@@ -21,7 +23,13 @@ class NewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+        var view = inflater.inflate(R.layout.fragment_news, container, false)
+
+        view.actionButton.setOnClickListener {
+            view.findNavController().navigate(R.id.action_news_schedule)
+        }
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

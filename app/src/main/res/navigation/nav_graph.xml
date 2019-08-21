@@ -14,5 +14,10 @@
             android:id="@+id/navigation_news"
             android:name="be.fos.saamdagen.ui.news.NewsFragment"
             android:label="news_fragment"
-            tools:layout="@layout/fragment_news"/>
+            tools:layout="@layout/fragment_news">
+        <action android:id="@+id/action_news_schedule"
+                app:destination="@id/navigation_schedule" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
 </navigation>

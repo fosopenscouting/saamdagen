@@ -18,4 +18,5 @@
     <string name="text_my_saamdagen">Mijn Saamdagen</string>
     <string name="news_saved_events">Opgeslagen gebeurtenissen</string>
     <string name="news_show_all_events">Alles weergeven</string>
+    <string name="news_no_saved_events">Je hebt nog geen gebeurtenissen opgeslaan</string>
 </resources>

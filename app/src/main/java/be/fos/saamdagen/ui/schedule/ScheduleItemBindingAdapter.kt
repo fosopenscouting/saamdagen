@@ -1,5 +1,6 @@
 package be.fos.saamdagen.ui.schedule
 
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
@@ -17,10 +18,10 @@ private val agendaTimePattern = SimpleDateFormat("HH:mm")
 @BindingAdapter(
     value = ["sessionColor", "sessionStrokeColor", "sessionStrokeWidth"], requireAll = true
 )
-fun sessionColor(view: View, fillColor: Int, strokeColor: Int, strokeWidth: Float) {
+fun sessionColor(view: View, fillColor: String, strokeColor: String, strokeWidth: Float) {
     view.background = (view.background as? GradientDrawable ?: GradientDrawable()).apply {
-        setColor(fillColor)
-        setStroke(strokeWidth.toInt(), strokeColor)
+        setColor(Color.parseColor(fillColor))
+        setStroke(strokeWidth.toInt(), Color.parseColor(strokeColor))
     }
 }
 

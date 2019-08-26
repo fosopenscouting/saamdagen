@@ -20,14 +20,14 @@ data class Session(
     val endTime: Date,
 
     /**
-     * Background color of the session
+     * Background color of the session. Should be provided as the HEX value of the color.
      */
-    val color: Int,
+    val color: String,
 
     /**
      * Stroke of the session. Defaults to [color]
      */
-    val strokeColor: Int? = color,
+    val strokeColor: String? = color,
 
     /**
      * If [color] is dark, text should be white. Defaults to false

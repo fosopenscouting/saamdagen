@@ -22,16 +22,21 @@ data class Session(
     /**
      * Background color of the session
      */
-    val color: Int?,
+    val color: Int,
 
     /**
      * Stroke of the session. Defaults to [color]
      */
-   // val strokeColor: Int? = color,
+    val strokeColor: Int? = color,
 
     /**
      * If [color] is dark, text should be white. Defaults to false
      */
-    val isDark: Boolean = false
+    val isDark: Boolean = false,
+
+    /**
+     * Type of the item. Exaple: food, activity, workshop,..
+     */
+    val type: String
 
 )

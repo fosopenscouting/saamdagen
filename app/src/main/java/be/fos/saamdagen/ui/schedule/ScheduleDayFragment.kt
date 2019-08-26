@@ -47,7 +47,9 @@ class ScheduleDayFragment : Fragment() {
         binding.recyclerview.adapter = adapter
         initializeList(
             listOf(
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59), R.color.primaryColor)
+                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59), R.color.primaryColor, R.color.primaryColor,false,"evening"),
+                Session("Check-in", Date(2019, 9, 27, 20, 0), Date(2019, 9, 27, 23, 59), R.color.primaryColor, R.color.primaryColor,false,"food"),
+                Session("Check-in", Date(2019, 9, 27, 21, 0), Date(2019, 9, 27, 23, 59), R.color.primaryColor, R.color.primaryColor,false,"party")
 
 
             )

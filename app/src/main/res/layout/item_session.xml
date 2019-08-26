@@ -39,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_star_border"/>
+            app:agendaIcon="@{session.type}"/>
 
     <TextView
             android:id="@+id/agenda_title"

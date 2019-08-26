@@ -76,19 +76,17 @@ class ScheduleDayFragment : Fragment() {
 
     private fun initializeList(sessionTimeData: List<Session>) {
         // Require the list and timeZoneId to be loaded.
-        val list = sessionTimeData ?: return
-
-        adapter.submitList(list)
+        adapter.submitList(sessionTimeData)
 
         binding.recyclerview.run {
             // we want this to run after diffing
             doOnNextLayout {
                 // Recreate the decoration used for the sticky time headers
                 clearDecorations()
-                if (list.isNotEmpty()) {
+                if (sessionTimeData.isNotEmpty()) {
                     addItemDecoration(
                         ScheduleHeadersDecoration(
-                            it.context, list.map { it }
+                            it.context, sessionTimeData.map { it }
                         )
                     )
                 }

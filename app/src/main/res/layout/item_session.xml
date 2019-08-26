@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View" />
+        <variable name="session" type="be.fos.saamdagen.model.Session"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
@@ -22,7 +27,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/secondaryColor"
+            app:sessionColor="@{session.color}"
+            app:sessionStrokeColor="@{session.color}"
+            app:sessionStrokeWidth="@{@dimen/agenda_item_stroke_width}"
+            tools:background="#eee"
              />
     <ImageView
             android:id="@+id/icon"
@@ -39,11 +47,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginTop="@dimen/agenda_block_padding_vert"
-            android:text="@{agenda.title}"
+            android:text="@{session.title}"
             android:textAppearance="@style/TextAppearance.Saamdagen.AgendaTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Hello there"
+            />
 
     <TextView
             android:id="@+id/duration"
@@ -54,6 +64,10 @@
             app:layout_constraintEnd_toEndOf="@id/agenda_title"
             app:layout_constraintStart_toStartOf="@id/agenda_title"
             app:layout_constraintTop_toBottomOf="@id/agenda_title"
+            app:startTime="@{session.startTime}"
+            app:endTime="@{session.endTime}"
+            tools:text="Duration // Locatie"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

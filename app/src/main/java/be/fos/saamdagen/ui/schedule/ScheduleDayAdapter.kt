@@ -1,23 +1,25 @@
 package be.fos.saamdagen.ui.schedule
 
 import android.view.LayoutInflater
-import android.view.View
+
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import be.fos.saamdagen.BR
 import be.fos.saamdagen.R
-import be.fos.saamdagen.model.Info
+import be.fos.saamdagen.databinding.ItemSessionBinding
 import be.fos.saamdagen.model.Session
-import kotlinx.android.synthetic.main.item_session.view.*
-import java.time.ZoneId
 
 class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_session, parent, false)
+        //
+        //
+        // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_session, parent, false)
 
+        val view = DataBindingUtil.inflate<ItemSessionBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
         return SessionViewHolder(view)
     }
 
@@ -25,16 +27,17 @@ class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff
         holder.bind(getItem(position))
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return R.layout.item_session
+    }
+
 }
 
-class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class SessionViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(session: Session) {
-        view.apply {
-            view.agenda_title.text = session.title
-            view.duration.text = "1 hour // Amphittheater"
-
-        }
+        binding.setVariable(BR.session,session)
+        binding.executePendingBindings()
     }
 }
 

@@ -19,4 +19,5 @@
     <string name="news_saved_events">Opgeslagen gebeurtenissen</string>
     <string name="news_show_all_events">Alles weergeven</string>
     <string name="news_no_saved_events">Je hebt nog geen gebeurtenissen opgeslaan</string>
+    <string name="agenda_duration" translatable="false">%1$s – %2$s</string>
 </resources>

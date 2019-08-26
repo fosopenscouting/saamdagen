@@ -47,26 +47,8 @@ class ScheduleDayFragment : Fragment() {
         binding.recyclerview.adapter = adapter
         initializeList(
             listOf(
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Avondshow", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Avondshow", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Avondshow", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Avondshow", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59)),
-                Session("Silent Disco", Date(2019, 9, 27, 21, 0), Date(2019, 9, 28, 1, 0)),
-                Session("Late-night snack", Date(2019, 9, 27, 22, 0), Date(2019, 9, 27, 23, 0)),
-                Session("Helemaal naar de ballen", Date(2019, 9, 28, 0, 0), Date(2019, 9, 28, 4, 0)),
-                Session("Silent Disco", Date(2019, 9, 27, 21, 0), Date(2019, 9, 28, 1, 0)),
-                Session("Late-night snack", Date(2019, 9, 27, 22, 0), Date(2019, 9, 27, 23, 0)),
-                Session("Helemaal naar de ballen", Date(2019, 9, 28, 0, 0), Date(2019, 9, 28, 4, 0)),
-                Session("Silent Disco", Date(2019, 9, 27, 21, 0), Date(2019, 9, 28, 1, 0)),
-                Session("Late-night snack", Date(2019, 9, 27, 22, 0), Date(2019, 9, 27, 23, 0)),
-                Session("Helemaal naar de ballen", Date(2019, 9, 28, 0, 0), Date(2019, 9, 28, 4, 0)),
-                Session("Silent Disco", Date(2019, 9, 27, 21, 0), Date(2019, 9, 28, 1, 0)),
-                Session("Late-night snack", Date(2019, 9, 27, 22, 0), Date(2019, 9, 27, 23, 0)),
-                Session("Helemaal naar de ballen", Date(2019, 9, 28, 0, 0), Date(2019, 9, 28, 4, 0))
+                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59), R.color.primaryColor)
+
 
             )
         )

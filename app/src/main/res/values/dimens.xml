@@ -34,7 +34,7 @@
     <dimen name="time_header_meridiem_text_size">12sp</dimen>
     <dimen name="time_header_padding_top">4dp</dimen>
 
-    <dimen name="agenda_item_stroke">2dp</dimen>
+    <dimen name="agenda_item_stroke_width">2dp</dimen>
     <dimen name="agenda_block_padding_vert">12dp</dimen>
     <dimen name="agenda_icon_width">56dp</dimen>
 

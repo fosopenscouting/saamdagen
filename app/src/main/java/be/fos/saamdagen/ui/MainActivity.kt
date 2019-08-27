@@ -1,12 +1,15 @@
 package be.fos.saamdagen.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import be.fos.saamdagen.R
+import be.fos.saamdagen.data.JsonSaamdagenDataSource
+import be.fos.saamdagen.data.SaamdagenDataRepository
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupNavigation()
+
     }
 
     private fun setupNavigation() {

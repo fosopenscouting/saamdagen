@@ -1,4 +1,4 @@
-package be.fos.saamdagen.ui
+package be.fos.saamdagen.ui.map
 
 import android.Manifest
 import android.app.Activity
@@ -14,7 +14,6 @@ import be.fos.saamdagen.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_map.view.*
-import android.content.DialogInterface
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.maps.model.LatLngBounds
@@ -26,7 +25,7 @@ class MapFragment : Fragment() {
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
 
-    private val position = LatLng(51.151006,3.881024)
+    private val position = LatLng(51.151006, 3.881024)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +33,8 @@ class MapFragment : Fragment() {
     ): View? {
 
         var view =
-        // Inflate the layout for this fragment
-         inflater.inflate(R.layout.fragment_map, container, false)
+            // Inflate the layout for this fragment
+            inflater.inflate(R.layout.fragment_map, container, false)
 
         this.mapView = view.map
         checkLocationPermission()
@@ -46,12 +45,15 @@ class MapFragment : Fragment() {
                 MapsInitializer.initialize(context)
                 setMapLocation(it)
 
-                if (ContextCompat.checkSelfPermission(requireContext(),
-                        Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    )
+                    == PackageManager.PERMISSION_GRANTED
+                ) {
 
                     googleMap.isMyLocationEnabled = true
-                    googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.map_style))
+                    googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
                     googleMap.uiSettings.isMyLocationButtonEnabled = false
 
                 }
@@ -65,13 +67,13 @@ class MapFragment : Fragment() {
 
     private fun setMapLocation(map: GoogleMap) {
         with(map) {
-val bounds = LatLngBounds(
-    LatLng(51.148220,3.875542),
-    LatLng(51.153382,3.886110)
-)
+            val bounds = LatLngBounds(
+                LatLng(51.148220, 3.875542),
+                LatLng(51.153382, 3.886110)
+            )
             setMinZoomPreference(16f)
             setLatLngBoundsForCameraTarget(bounds)
-            moveCamera(CameraUpdateFactory.newLatLngZoom(position,17f))
+            moveCamera(CameraUpdateFactory.newLatLngZoom(position, 17f))
         }
     }
 
@@ -98,14 +100,14 @@ val bounds = LatLngBounds(
                 AlertDialog.Builder(requireContext())
                     .setTitle("Locatie")
                     .setMessage("Message")
-                    .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface, i ->
+                    .setPositiveButton("OK") { _, _ ->
                         //Prompt the user once explanation has been shown
                         ActivityCompat.requestPermissions(
                             activity as Activity,
                             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                             MY_PERMISSIONS_REQUEST_LOCATION
                         )
-                    })
+                    }
                     .create()
                     .show()
 
@@ -131,7 +133,7 @@ val bounds = LatLngBounds(
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_LOCATION -> {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     // permission was granted, yay! Do the
                     // location-related task you need to do.
@@ -141,10 +143,10 @@ val bounds = LatLngBounds(
                         ) == PackageManager.PERMISSION_GRANTED
                     ) {
 
-                        Log.d("FRAGMENT_MAP","PERMISSION")
-                    googleMap.isMyLocationEnabled = true
+                        Log.d("FRAGMENT_MAP", "PERMISSION")
+                        googleMap.isMyLocationEnabled = true
                         //Request location updates:
-                       // locationManager.requestLocationUpdates(provider, 400, 1, this)
+                        // locationManager.requestLocationUpdates(provider, 400, 1, this)
                     }
 
                 } else {
@@ -157,6 +159,7 @@ val bounds = LatLngBounds(
             }
         }
     }
+
     override fun onResume() {
         super.onResume()
         mapView.onResume()

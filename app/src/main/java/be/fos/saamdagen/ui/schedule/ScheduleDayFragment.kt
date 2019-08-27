@@ -2,6 +2,7 @@ package be.fos.saamdagen.ui.schedule
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentScheduleBinding
 import be.fos.saamdagen.databinding.ScheduleDayFragmentBinding
+import be.fos.saamdagen.model.EventDay
 import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.util.TimeUtils
 import be.fos.saamdagen.util.clearDecorations
 import be.fos.saamdagen.util.executeAfter
 import java.util.*
@@ -20,19 +23,35 @@ import java.util.*
 class ScheduleDayFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ScheduleDayFragment()
-    }
+        private const val TAG = "ScheduleDayFragment"
+        private const val ARG_EVENT_DAY = "arg.EVENT_DAY"
+        fun newInstance(day:Int) :ScheduleDayFragment {
+            //Passes the current event day to the fragment
+            val args = Bundle().apply {
+                putInt(ARG_EVENT_DAY,day)
+            }
 
-    private lateinit var viewModel: ScheduleDayViewModel
+            return ScheduleDayFragment().apply { arguments = args }
+        }
+}
+
+    private lateinit var viewModel: ScheduleViewModel
 
     private lateinit var adapter: ScheduleDayAdapter
     private lateinit var binding: ScheduleDayFragmentBinding
+
+    private val conferenceDay: Int by lazy {
+        val args = arguments ?: throw IllegalStateException("Missing arguments!")
+        args.getInt(ARG_EVENT_DAY)
+    }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
+
         binding = ScheduleDayFragmentBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@ScheduleDayFragment
         }
@@ -43,18 +62,7 @@ class ScheduleDayFragment : Fragment() {
 
         adapter = ScheduleDayAdapter()
 
-
         binding.recyclerview.adapter = adapter
-        initializeList(
-            listOf(
-                Session("Check-in", Date(2019, 9, 27, 19, 0), Date(2019, 9, 27, 23, 59), "#99CCCC", "#99CCCC",false,"evening"),
-                Session("Check-in", Date(2019, 9, 27, 20, 0), Date(2019, 9, 27, 23, 59), "#79C7E1", "#79C7E1",false,"food"),
-                Session("Check-in", Date(2019, 9, 27, 21, 0), Date(2019, 9, 27, 23, 59), "#99CCCC", "#99CCCC",false,"party")
-
-
-            )
-        )
-
 
         return binding.root
     }
@@ -66,14 +74,16 @@ class ScheduleDayFragment : Fragment() {
             (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
 
         }
+
+        initializeList(
+            viewModel.getSessionsForDay(TimeUtils.EventDays[conferenceDay])
+        )
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ScheduleDayViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
+    /**
+     * Pass data to the list and setup the header decorations
+     */
     private fun initializeList(sessionTimeData: List<Session>) {
         // Require the list and timeZoneId to be loaded.
         adapter.submitList(sessionTimeData)

@@ -72,13 +72,11 @@ class ScheduleDayFragment : Fragment() {
 
         binding.recyclerview.apply {
             (layoutManager as LinearLayoutManager).recycleChildrenOnDetach = true
-
         }
 
         initializeList(
             viewModel.getSessionsForDay(TimeUtils.EventDays[conferenceDay])
         )
-
     }
 
     /**

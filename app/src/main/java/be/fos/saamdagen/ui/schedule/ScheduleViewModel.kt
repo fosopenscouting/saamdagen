@@ -11,14 +11,12 @@ import java.lang.Exception
 
 class ScheduleViewModel : ViewModel() {
 
-    var sessions: List<Session>
-
+    private var sessions: List<Session>
 
     init {
         val repo = SaamdagenDataRepository(JsonSaamdagenDataSource)
 
         this.sessions = repo.getSessions()
-
     }
 
     /**
@@ -29,7 +27,5 @@ class ScheduleViewModel : ViewModel() {
         return sessions.filter {
             eventDay.contains(it)
         }
-
-
     }
 }

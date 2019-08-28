@@ -3,13 +3,11 @@ package be.fos.saamdagen.ui.schedule
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint.ANTI_ALIAS_FLAG
-import android.graphics.Typeface
 import android.text.Layout
 import android.text.SpannableStringBuilder
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.text.style.AbsoluteSizeSpan
-import android.text.style.StyleSpan
 import androidx.core.content.res.*
 import androidx.core.graphics.withTranslation
 import androidx.core.text.inSpans
@@ -18,13 +16,12 @@ import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import be.fos.saamdagen.R
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.Block
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
-class ScheduleHeadersDecoration(context: Context, sessions: List<Session>): ItemDecoration() {
+class ScheduleHeadersDecoration(context: Context, blocks: List<Block>): ItemDecoration() {
 
     private val paint: TextPaint
     private val width: Int
@@ -60,10 +57,10 @@ class ScheduleHeadersDecoration(context: Context, sessions: List<Session>): Item
         }
     }
 
-    // Get the sessions index:start time and create header layouts for each
+    // Get the blocks index:start time and create header layouts for each
     // TODO: let user pick between local or conference time zone (b/77606102). Show local for now.
     private val timeSlots: Map<Int, StaticLayout> =
-        indexSessionHeaders(sessions).map {
+        indexSessionHeaders(blocks).map {
             it.first to createHeader(it.second)
         }.toMap()
 

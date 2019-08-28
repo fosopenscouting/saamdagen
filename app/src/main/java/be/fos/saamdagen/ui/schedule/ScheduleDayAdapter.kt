@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import be.fos.saamdagen.BR
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.ItemSessionBinding
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.Block
 
-class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff) {
+class ScheduleDayAdapter() : ListAdapter<Block, SessionViewHolder>(SessionDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
         //
         //
-        // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_session, parent, false)
+        // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_block, parent, false)
 
         val view = DataBindingUtil.inflate<ItemSessionBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
         return SessionViewHolder(view)
@@ -28,30 +28,30 @@ class ScheduleDayAdapter() : ListAdapter<Session, SessionViewHolder>(SessionDiff
     }
 
     override fun getItemViewType(position: Int): Int {
-        return R.layout.item_session
+        return R.layout.item_block
     }
 
 }
 
 class SessionViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(session: Session) {
-        binding.setVariable(BR.session,session)
+    fun bind(block: Block) {
+        binding.setVariable(BR.block,block)
         binding.executePendingBindings()
     }
 }
 
-object SessionDiff : DiffUtil.ItemCallback<Session>() {
+object SessionDiff : DiffUtil.ItemCallback<Block>() {
     override fun areItemsTheSame(
-        oldItem: Session,
-        newItem: Session
+        oldItem: Block,
+        newItem: Block
     ): Boolean {
         // We don't have to compare the #userEvent because the id of #session and #userEvent
         // should match
         return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: Session, newItem: Session): Boolean {
+    override fun areContentsTheSame(oldItem: Block, newItem: Block): Boolean {
         return oldItem == newItem
     }
 }

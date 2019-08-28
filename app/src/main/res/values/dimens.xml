@@ -76,4 +76,6 @@
     <dimen name="text_size_h2">20sp</dimen>
     <dimen name="text_size_h3">18sp</dimen>
 
+    <dimen name="session_item_padding_vertical">8dp</dimen>
+
 </resources>

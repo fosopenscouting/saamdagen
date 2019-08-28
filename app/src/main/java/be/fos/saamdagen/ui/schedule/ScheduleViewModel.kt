@@ -4,24 +4,24 @@ import androidx.lifecycle.ViewModel;
 import be.fos.saamdagen.data.JsonSaamdagenDataSource
 import be.fos.saamdagen.data.SaamdagenDataRepository
 import be.fos.saamdagen.model.EventDay
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.Block
 
 class ScheduleViewModel : ViewModel() {
 
-    private var sessions: List<Session>
+    private var blocks: List<Block>
 
     init {
         val repo = SaamdagenDataRepository(JsonSaamdagenDataSource)
 
-        this.sessions = repo.getSessions()
+        this.blocks = repo.getSessions()
     }
 
     /**
      * Called by all the fragments inside the viewpager to get the correct events for the day
      */
-    fun getSessionsForDay(eventDay: EventDay): List<Session>  {
+    fun getSessionsForDay(eventDay: EventDay): List<Block>  {
 
-        return sessions.filter {
+        return blocks.filter {
             eventDay.contains(it)
         }
     }

@@ -1,7 +1,7 @@
 package be.fos.saamdagen.data
 
 import be.fos.saamdagen.model.SaamdagenData
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.Block
 
  class SaamdagenDataRepository {
 
@@ -9,7 +9,7 @@ import be.fos.saamdagen.model.Session
      constructor(jsonSaamdagenDataSource: JsonSaamdagenDataSource) {
          this.saamdagenData = jsonSaamdagenDataSource.getOfflineSaamdagenData()!!
      }
-    fun getSessions(): List<Session> {
-        return this.saamdagenData.sessions
+    fun getSessions(): List<Block> {
+        return this.saamdagenData.blocks
     }
 }

@@ -2,10 +2,10 @@ package be.fos.saamdagen.model
 
 import java.util.*
 
-data class Session(
+data class Block(
 
     /**
-     * Title of the Session. Example, 'Groot spel'
+     * Title of the Block. Example, 'Groot spel'
      */
     val title: String,
 

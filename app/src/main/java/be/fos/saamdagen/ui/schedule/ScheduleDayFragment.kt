@@ -2,7 +2,6 @@ package be.fos.saamdagen.ui.schedule
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +9,10 @@ import android.view.ViewGroup
 import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import be.fos.saamdagen.R
-import be.fos.saamdagen.databinding.FragmentScheduleBinding
 import be.fos.saamdagen.databinding.ScheduleDayFragmentBinding
-import be.fos.saamdagen.model.EventDay
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.Block
 import be.fos.saamdagen.util.TimeUtils
 import be.fos.saamdagen.util.clearDecorations
-import be.fos.saamdagen.util.executeAfter
-import java.util.*
 
 class ScheduleDayFragment : Fragment() {
 
@@ -82,19 +76,19 @@ class ScheduleDayFragment : Fragment() {
     /**
      * Pass data to the list and setup the header decorations
      */
-    private fun initializeList(sessionTimeData: List<Session>) {
+    private fun initializeList(blockTimeData: List<Block>) {
         // Require the list and timeZoneId to be loaded.
-        adapter.submitList(sessionTimeData)
+        adapter.submitList(blockTimeData)
 
         binding.recyclerview.run {
             // we want this to run after diffing
             doOnNextLayout {
                 // Recreate the decoration used for the sticky time headers
                 clearDecorations()
-                if (sessionTimeData.isNotEmpty()) {
+                if (blockTimeData.isNotEmpty()) {
                     addItemDecoration(
                         ScheduleHeadersDecoration(
-                            it.context, sessionTimeData.map { it }
+                            it.context, blockTimeData.map { it }
                         )
                     )
                 }

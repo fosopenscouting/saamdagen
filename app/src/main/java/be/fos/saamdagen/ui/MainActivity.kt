@@ -7,10 +7,15 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import be.fos.saamdagen.BuildConfig
 import be.fos.saamdagen.R
 import be.fos.saamdagen.data.JsonSaamdagenDataSource
 import be.fos.saamdagen.data.SaamdagenDataRepository
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +25,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupNavigation()
+        setupAppCenter()
+    }
 
+    private fun setupAppCenter() {
+        val appCenterKey = BuildConfig.APP_CENTER_KEY
+
+        AppCenter.start(application,appCenterKey, Analytics::class.java, Crashes::class.java)
     }
 
     private fun setupNavigation() {

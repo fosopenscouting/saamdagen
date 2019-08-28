@@ -3,3 +3,19 @@
 Android app voor de komende editie van Saamdagen.
 
 Sterk gebaseerd op de open-source I/O 2018 app van Google.
+
+## Setup
+
+### Environment variables
+
+Om de app te runnen moet een environment variable ingesteld worden met de API key van Microsoft app center.
+
+Gebruik je eigen Google Fu om de variabelen te persisteren over reboots en sessies ;)
+
+#### Windows
+
+´setx APP_CENTER_KEY "<APP_CENTER_KEY>"´
+
+#### Unix
+
+´export APP_CENTER_KEY=<APP_CENTER_KEY>´

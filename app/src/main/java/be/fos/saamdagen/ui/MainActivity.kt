@@ -1,21 +1,15 @@
 package be.fos.saamdagen.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import be.fos.saamdagen.BuildConfig
 import be.fos.saamdagen.R
-import be.fos.saamdagen.data.JsonSaamdagenDataSource
-import be.fos.saamdagen.data.SaamdagenDataRepository
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 

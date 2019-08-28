@@ -9,6 +9,8 @@ import be.fos.saamdagen.databinding.FragmentInfoBinding
 import be.fos.saamdagen.model.Info
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
 import kotlinx.android.synthetic.main.fragment_info.*
 
 
@@ -21,6 +23,7 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        Analytics.trackEvent("InfoFragment")
 
         binding = FragmentInfoBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@InfoFragment

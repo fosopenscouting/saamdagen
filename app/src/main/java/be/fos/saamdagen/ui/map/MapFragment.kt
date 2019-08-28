@@ -18,6 +18,7 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.microsoft.appcenter.analytics.Analytics
 
 
 class MapFragment : Fragment() {
@@ -31,6 +32,8 @@ class MapFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        Analytics.trackEvent("MapFragment")
 
         var view =
             // Inflate the layout for this fragment
@@ -132,11 +135,15 @@ class MapFragment : Fragment() {
     ) {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_LOCATION -> {
+
+                val permissionGranted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (permissionGranted) {
+
 
                     // permission was granted, yay! Do the
                     // location-related task you need to do.
+
                     if (ContextCompat.checkSelfPermission(
                             requireContext(),
                             Manifest.permission.ACCESS_FINE_LOCATION
@@ -155,6 +162,11 @@ class MapFragment : Fragment() {
                     // functionality that depends on this permission.
 
                 }
+
+                val properties = HashMap<String,String>()
+                properties["Granted"] = permissionGranted.toString()
+
+                Analytics.trackEvent("Location permission", properties)
                 return
             }
         }

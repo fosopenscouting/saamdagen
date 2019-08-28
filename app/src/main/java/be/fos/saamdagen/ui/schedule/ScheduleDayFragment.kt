@@ -19,15 +19,15 @@ class ScheduleDayFragment : Fragment() {
     companion object {
         private const val TAG = "ScheduleDayFragment"
         private const val ARG_EVENT_DAY = "arg.EVENT_DAY"
-        fun newInstance(day:Int) :ScheduleDayFragment {
+        fun newInstance(day: Int): ScheduleDayFragment {
             //Passes the current event day to the fragment
             val args = Bundle().apply {
-                putInt(ARG_EVENT_DAY,day)
+                putInt(ARG_EVENT_DAY, day)
             }
 
             return ScheduleDayFragment().apply { arguments = args }
         }
-}
+    }
 
     private lateinit var viewModel: ScheduleViewModel
 
@@ -50,13 +50,7 @@ class ScheduleDayFragment : Fragment() {
             lifecycleOwner = this@ScheduleDayFragment
         }
 
-        val layoutManager = LinearLayoutManager(context)
-
-        binding.recyclerview.layoutManager = layoutManager
-
-        adapter = ScheduleDayAdapter()
-
-        binding.recyclerview.adapter = adapter
+        initializeRecyclerview()
 
         return binding.root
     }
@@ -71,6 +65,16 @@ class ScheduleDayFragment : Fragment() {
         initializeList(
             viewModel.getSessionsForDay(TimeUtils.EventDays[conferenceDay])
         )
+    }
+
+    private fun initializeRecyclerview() {
+        val layoutManager = LinearLayoutManager(context)
+
+        binding.recyclerview.layoutManager = layoutManager
+
+        adapter = ScheduleDayAdapter()
+
+        binding.recyclerview.adapter = adapter
     }
 
     /**

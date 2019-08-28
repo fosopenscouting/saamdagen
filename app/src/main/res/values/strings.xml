@@ -5,7 +5,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_info">Info</string>
-    <string name="title_news">Nieuws</string>
     <string name="practical_title">Praktisch</string>
     <string name="about_title">Over</string>
     <string name="settings_title">Instellingen</string>
@@ -20,4 +19,5 @@
     <string name="news_show_all_events">Alles weergeven</string>
     <string name="news_no_saved_events">Je hebt nog geen gebeurtenissen opgeslaan</string>
     <string name="agenda_duration" translatable="false">%1$s – %2$s</string>
+    <string name="title_activities">Activiteiten</string>
 </resources>

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import be.fos.saamdagen.BR
 import be.fos.saamdagen.R
-import be.fos.saamdagen.databinding.ItemSessionBinding
+import be.fos.saamdagen.databinding.ItemBlockBinding
 import be.fos.saamdagen.model.Block
 
 class ScheduleDayAdapter() : ListAdapter<Block, SessionViewHolder>(SessionDiff) {
@@ -19,7 +19,7 @@ class ScheduleDayAdapter() : ListAdapter<Block, SessionViewHolder>(SessionDiff) 
         //
         // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_block, parent, false)
 
-        val view = DataBindingUtil.inflate<ItemSessionBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
+        val view = DataBindingUtil.inflate<ItemBlockBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
         return SessionViewHolder(view)
     }
 

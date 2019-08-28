@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:gravity="center"
-                    android:text="@string/title_news"
+                    android:text="@string/title_home"
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"/>
 

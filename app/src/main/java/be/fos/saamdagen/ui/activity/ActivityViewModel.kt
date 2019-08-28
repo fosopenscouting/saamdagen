@@ -1,7 +1,7 @@
-package be.fos.saamdagen.ui.news
+package be.fos.saamdagen.ui.activity
 
 import androidx.lifecycle.ViewModel;
 
-class NewsViewModel : ViewModel() {
+class ActivityViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

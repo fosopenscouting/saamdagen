@@ -1,4 +1,4 @@
-package be.fos.saamdagen.ui.session
+package be.fos.saamdagen.ui.activity
 
 import be.fos.saamdagen.model.EventDay
 

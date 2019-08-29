@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentActivityBinding
 
-class ActivityFragment : Fragment() {
+class  ActivityFragment : Fragment() {
 
     companion object {
         fun newInstance() = ActivityFragment()

@@ -16,7 +16,7 @@ android {
         versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "APP_CENTER_KEY", "\"${System.env.APP_CENTER_KEY}\""
-        buildConfigField "String","DATA_FILENAME", "\"saamdagen_data.json\""
+        buildConfigField "String", "DATA_FILENAME", "\"saamdagen_data.json\""
     }
     buildTypes {
         release {

@@ -7,5 +7,6 @@ package be.fos.saamdagen.model
 data class SaamdagenData (
     val blocks: List<Block>,
     val info: List<Info>,
+    val sessions: List<Session>,
     val version: Int
 )

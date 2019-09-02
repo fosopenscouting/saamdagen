@@ -4,7 +4,7 @@ import be.fos.saamdagen.model.Block
 import java.util.*
 
 //TODO: find beter way to get hours and minutes
-fun indexSessionHeaders(blocks: List<Block>): List<Pair<Int, Date>> {
+fun indexBlockHeaders(blocks: List<Block>): List<Pair<Int, Date>> {
     return blocks
         .mapIndexed { index, session ->
             index to session.startTime

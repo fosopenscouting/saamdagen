@@ -16,4 +16,13 @@
         <attr name="hourMinTextSize" format="dimension" />
         <attr name="meridiemTextSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="SessionHeader">
+        <attr name="android:width" />
+        <attr name="android:paddingTop" />
+        <attr name="android:textColor" />
+        <attr name="android:fontFamily" />
+        <attr name="sessionTextSize"/>
+        <attr name="sessionMinTextSize"/>
+    </declare-styleable>
 </resources>

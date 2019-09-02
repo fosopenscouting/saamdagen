@@ -13,7 +13,7 @@ class ScheduleViewModel : ViewModel() {
     init {
         val repo = SaamdagenDataRepository(JsonSaamdagenDataSource)
 
-        this.blocks = repo.getSessions()
+        this.blocks = repo.getBlocks()
     }
 
     /**

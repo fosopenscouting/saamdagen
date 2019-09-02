@@ -13,17 +13,17 @@ import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.ItemBlockBinding
 import be.fos.saamdagen.model.Block
 
-class ScheduleDayAdapter() : ListAdapter<Block, SessionViewHolder>(SessionDiff) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
+class ScheduleDayAdapter() : ListAdapter<Block,BlockViewHolder >(BlockDiff) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlockViewHolder {
         //
         //
         // val view = LayoutInflater.from(parent.context).inflate(R.layout.item_block, parent, false)
 
         val view = DataBindingUtil.inflate<ItemBlockBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
-        return SessionViewHolder(view)
+        return BlockViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SessionViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BlockViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -33,7 +33,7 @@ class ScheduleDayAdapter() : ListAdapter<Block, SessionViewHolder>(SessionDiff) 
 
 }
 
-class SessionViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+class BlockViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(block: Block) {
         binding.setVariable(BR.block,block)
@@ -41,7 +41,7 @@ class SessionViewHolder(private val binding: ViewDataBinding) : RecyclerView.Vie
     }
 }
 
-object SessionDiff : DiffUtil.ItemCallback<Block>() {
+object BlockDiff : DiffUtil.ItemCallback<Block>() {
     override fun areItemsTheSame(
         oldItem: Block,
         newItem: Block

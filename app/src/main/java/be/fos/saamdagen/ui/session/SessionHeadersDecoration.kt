@@ -1,4 +1,4 @@
-package be.fos.saamdagen.ui.schedule
+package be.fos.saamdagen.ui.session
 
 import android.content.Context
 import android.graphics.Canvas
@@ -14,62 +14,49 @@ import androidx.core.text.inSpans
 import androidx.core.view.get
 import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import be.fos.saamdagen.R
-import be.fos.saamdagen.model.Block
+import be.fos.saamdagen.model.Session
 import java.lang.Exception
-import java.text.SimpleDateFormat
-import java.util.*
 
-class ScheduleHeadersDecoration(context: Context, blocks: List<Block>): ItemDecoration() {
+class  SessionHeadersDecoration(context: Context, sessions: List<Session>): RecyclerView.ItemDecoration() {
 
     private val paint: TextPaint
     private val width: Int
     private val paddingTop: Int
-    private val hourMinTextSize: Int
-    private val meridiemTextSize: Int
-    private val hourFormatter = SimpleDateFormat("HH")
-    private val minFormatter = SimpleDateFormat("mm")
+    private val sessionMinTextSize: Int
 
     init {
         val attrs = context.obtainStyledAttributes(
-            R.style.Widget_Saamdagen_TimeHeaders,
-            R.styleable.TimeHeader
+            R.style.Widget_Saamdagen_SessionHeaders,
+            R.styleable.SessionHeader
         )
 
         paint = TextPaint(ANTI_ALIAS_FLAG).apply {
-            color = attrs.getColorOrThrow(R.styleable.TimeHeader_android_textColor)
-            textSize = attrs.getDimensionOrThrow(R.styleable.TimeHeader_hourTextSize)
+            color = attrs.getColorOrThrow(R.styleable.SessionHeader_android_textColor)
+            textSize = attrs.getDimensionOrThrow(R.styleable.SessionHeader_sessionTextSize)
 
             try {
-                typeface = ResourcesCompat.getFont(context, attrs.getResourceIdOrThrow(R.styleable.TimeHeader_android_fontFamily))
+                typeface = ResourcesCompat.getFont(context, attrs.getResourceIdOrThrow(R.styleable.SessionHeader_android_fontFamily))
             }
             catch (_: Exception) {
-                // Ignore
+                //Ignore
             }
 
-            width = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_android_width)
-            paddingTop = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_android_paddingTop)
-            hourMinTextSize = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_hourMinTextSize)
-            meridiemTextSize =
-                attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_meridiemTextSize)
+            width = attrs.getDimensionPixelSizeOrThrow(R.styleable.SessionHeader_android_width)
+            paddingTop = attrs.getDimensionPixelSizeOrThrow(R.styleable.SessionHeader_android_paddingTop)
+            sessionMinTextSize = attrs.getDimensionPixelSizeOrThrow(R.styleable.SessionHeader_sessionMinTextSize)
+
             attrs.recycle()
         }
     }
 
-    // Get the blocks index:start time and create header layouts for each
-    private val timeSlots: Map<Int, StaticLayout> =
-        indexBlockHeaders(blocks).map {
-            it.first to createHeader(it.second)
-        }.toMap()
+    private val letters: Map<Int, StaticLayout> = indexSessionHeaders(sessions).map {
+        it.first to createHeader(it.second)
+    }.toMap()
 
-    /**
-     * Loop over each child and draw any corresponding headers i.e. items who's position is a key in
-     * [timeSlots]. We also look back to see if there are any headers _before_ the first header we
-     * found i.e. which needs to be sticky.
-     */
+
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        if (timeSlots.isEmpty() || parent.isEmpty()) return
+        if (letters.isEmpty() || parent.isEmpty()) return
 
         var earliestFoundHeaderPos = -1
         var prevHeaderTop = Int.MAX_VALUE
@@ -82,16 +69,16 @@ class ScheduleHeadersDecoration(context: Context, blocks: List<Block>): ItemDeco
                 // This should not be null, but observed null at times.
                 // Guard against it to avoid crash and log the state.
                 //TODO: Timber toevoegen
-              /*  Timber.w(
-                    """View is null. Index: $i, childCount: ${parent.childCount},
-                        |RecyclerView.State: $state""".trimMargin()
-                )*/
+                /*  Timber.w(
+                      """View is null. Index: $i, childCount: ${parent.childCount},
+                          |RecyclerView.State: $state""".trimMargin()
+                  )*/
                 continue
             }
             val viewTop = view.top + view.translationY.toInt()
             if (view.bottom > 0 && viewTop < parent.height) {
                 val position = parent.getChildAdapterPosition(view)
-                timeSlots[position]?.let { layout ->
+                letters[position]?.let { layout ->
                     paint.alpha = (view.alpha * 255).toInt()
                     val top = (viewTop + paddingTop)
                         .coerceAtLeast(paddingTop)
@@ -111,9 +98,9 @@ class ScheduleHeadersDecoration(context: Context, blocks: List<Block>): ItemDeco
         }
 
         // Look back over headers to see if a prior item should be drawn sticky.
-        for (headerPos in timeSlots.keys.reversed()) {
+        for (headerPos in letters.keys.reversed()) {
             if (headerPos < earliestFoundHeaderPos) {
-                timeSlots[headerPos]?.let {
+                letters[headerPos]?.let {
                     val top = (prevHeaderTop - it.height).coerceAtMost(paddingTop)
                     c.withTranslation(y = top.toFloat()) {
                         it.draw(c)
@@ -129,14 +116,13 @@ class ScheduleHeadersDecoration(context: Context, blocks: List<Block>): ItemDeco
     /**
      * Create a header layout for the given [startTime].
      */
-    private fun createHeader(startTime: Date): StaticLayout {
+    private fun createHeader(letter: Char): StaticLayout {
         val text =
             // Use a smaller text size and different pattern if event does not start on the hour
             SpannableStringBuilder().apply {
-                inSpans(AbsoluteSizeSpan(hourMinTextSize)) {
-                    append(hourFormatter.format(startTime))
-                    append(System.lineSeparator())
-                    append(minFormatter.format(startTime))
+                inSpans(AbsoluteSizeSpan(sessionMinTextSize)) {
+                    append(letter)
+
                 }
             }
 

@@ -20,16 +20,20 @@
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
                     app:layout_scrollFlags="snap|exitUntilCollapsed"
             />
-
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    style="@style/Widget.Saamdagen.Tabs"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="?actionBarSize"
-                android:id="@+id/info_list"
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/item_info"></androidx.recyclerview.widget.RecyclerView>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

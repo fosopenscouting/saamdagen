@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content">
-   <!--     <androidx.constraintlayout.widget.Guideline
+   <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -36,28 +36,11 @@
                 android:layout_height="@dimen/a11y_min_touch_target"
                 android:background="?selectableItemBackgroundBorderless"
                 android:checked="@{userSession.userEvent.isStarred}"
-                android:contentDescription="@string/a11y_star"
+                android:contentDescription="@string/star"
                 android:onClick="@{() -> eventListener.onStarClicked(userSession)}"
                 android:src="@drawable/asld_star_event"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.samples.apps.iosched.ui.reservation.ReservationTextView
-                android:id="@+id/reservation_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_micro"
-                android:drawablePadding="@dimen/spacing_normal"
-                android:gravity="center_vertical"
-                android:textAppearance="@style/TextAppearance.IOSched.ReservationStatus"
-                app:layout_constraintStart_toEndOf="@id/guideline_start"
-                app:layout_constraintTop_toBottomOf="@id/title"
-                app:isReservable="@{userSession.session.isReservable}"
-                app:reservationStatus="@{userSession.userEvent}"
-                app:showReservations="@{showReservations}"
-                tools:drawableStart="@drawable/ic_reserved"
-                tools:text="Reserved"
-                tools:visibility="visible" />
 
 
         <TextView
@@ -65,22 +48,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewStart"
-                app:layout_constraintBottom_toTopOf="@id/tags_barrier"
-                app:layout_constraintEnd_toStartOf="@id/guideline_end"
-                app:layout_constraintStart_toEndOf="@id/livestream_icon"
-                app:layout_constraintTop_toBottomOf="@id/reservation_status"
                 app:showTime="@{showTime}"
                 app:sessionRoom="@{userSession.session.room}"
                 app:sessionStart="@{userSession.session.startTime}"
                 app:timeZoneId="@{timeZoneId}"
-                tools:text="May 7 / Amphitheatre" />
-
-        <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/tags_barrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="livestream_icon,length_location" />-->
+                tools:text="May 7 / Amphitheatre" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintStart_toStartOf="@+id/guideline_start"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

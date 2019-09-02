@@ -20,4 +20,5 @@
     <string name="news_no_saved_events">Je hebt nog geen gebeurtenissen opgeslaan</string>
     <string name="agenda_duration" translatable="false">%1$s – %2$s</string>
     <string name="title_activities">Activiteiten</string>
+    <string name="star">Ster</string>
 </resources>

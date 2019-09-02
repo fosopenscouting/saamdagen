@@ -1,5 +1,6 @@
 package be.fos.saamdagen.data
 
+import be.fos.saamdagen.BuildConfig
 import be.fos.saamdagen.model.SaamdagenData
 
 object JsonSaamdagenDataSource: SaamdagenDataSource {
@@ -11,7 +12,7 @@ object JsonSaamdagenDataSource: SaamdagenDataSource {
      * Gets the json file with all data from the resources folder, parses it and returns the parsed [SaamdagenData] object
      */
     private fun loadAndParseSaamdagenData(): SaamdagenData {
-        val saamdagenDataStream = this.javaClass.classLoader!!.getResource("saamdagen_data.json").openStream() //TODO: Get json file from the build config
+        val saamdagenDataStream = this.javaClass.classLoader!!.getResource(BuildConfig.DATA_FILENAME).openStream()
 
 
         return SaamdagenDataJsonParser.parseSaamdagenData(saamdagenDataStream)

@@ -4,7 +4,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content">
-        <androidx.constraintlayout.widget.Guideline
+   <!--     <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="livestream_icon,length_location" />
+                app:constraint_referenced_ids="livestream_icon,length_location" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

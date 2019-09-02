@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import be.fos.saamdagen.R
@@ -22,7 +23,7 @@ class SessionPageFragment : Fragment() {
     private lateinit var viewModel: SessionViewModel
 
     private lateinit var adapter: SessionPageAdapter
-    private lateinit var  binding: FragmentSessionPageBinding
+    private lateinit var binding: FragmentSessionPageBinding
 
     private val sessionType: String? by lazy {
         val args = arguments ?: throw IllegalStateException("Missing arguments!")
@@ -37,7 +38,7 @@ class SessionPageFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(SessionViewModel::class.java)
 
-        binding = FragmentSessionPageBinding.inflate(inflater,container,false).apply {
+        binding = FragmentSessionPageBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@SessionPageFragment
         }
 
@@ -53,28 +54,40 @@ class SessionPageFragment : Fragment() {
 
     }
 
-private fun initializeRecyclerview() {
-    val layoutManager = LinearLayoutManager(context)
+    private fun initializeRecyclerview() {
+        val layoutManager = LinearLayoutManager(context)
 
-    binding.recyclerview.layoutManager = layoutManager
+        binding.recyclerview.layoutManager = layoutManager
 
-    adapter = SessionPageAdapter()
+        adapter = SessionPageAdapter()
 
-    binding.recyclerview.adapter = adapter
-}
+        binding.recyclerview.adapter = adapter
+
+
+    }
 
     private fun initializeList(sessions: List<Session>) {
+
         adapter.submitList(sessions)
 
         binding.recyclerview.run {
             doOnNextLayout {
                 clearDecorations()
 
-                if(sessions.isNotEmpty()){
+                if (sessions.isNotEmpty()) {
                     addItemDecoration(SessionHeadersDecoration(it.context, sessions))
+
                 }
             }
         }
+
+        val decoration = ScheduleDividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL,sessions)
+        decoration.setDrawable(requireContext().getDrawable(R.drawable.divider)!!)
+        binding.recyclerview.addItemDecoration(
+            decoration
+            )
+
+
     }
 
     companion object {

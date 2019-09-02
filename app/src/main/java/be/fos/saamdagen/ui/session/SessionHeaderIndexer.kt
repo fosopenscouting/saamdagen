@@ -9,3 +9,4 @@ fun indexSessionHeaders(sessions: List<Session>): List<Pair<Int,Char>> {
         }
         .distinctBy { it.second to it.second }
 }
+

@@ -67,8 +67,6 @@ class MapFragment : Fragment() {
             }
         }
 
-
-
         return view
     }
 
@@ -87,7 +85,7 @@ class MapFragment : Fragment() {
 
     val MY_PERMISSIONS_REQUEST_LOCATION = 99
 
-    fun checkLocationPermission(): Boolean {
+    private fun checkLocationPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION

@@ -18,6 +18,7 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.microsoft.appcenter.analytics.Analytics
 
 
@@ -59,13 +60,16 @@ class MapFragment : Fragment() {
                     googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
                     googleMap.uiSettings.isMyLocationButtonEnabled = false
 
+                    val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
+                    geoJsonLayer.addLayerToMap()
+
                 }
             }
         }
 
 
 
-        return view;
+        return view
     }
 
     private fun setMapLocation(map: GoogleMap) {

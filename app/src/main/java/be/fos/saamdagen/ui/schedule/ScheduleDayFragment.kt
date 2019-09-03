@@ -8,8 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnNextLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import be.fos.saamdagen.databinding.ScheduleDayFragmentBinding
+import be.fos.saamdagen.databinding.FragmentScheduleDayBinding
 import be.fos.saamdagen.model.Block
 import be.fos.saamdagen.util.TimeUtils
 import be.fos.saamdagen.util.clearDecorations
@@ -32,7 +31,7 @@ class ScheduleDayFragment : Fragment() {
     private lateinit var viewModel: ScheduleViewModel
 
     private lateinit var adapter: ScheduleDayAdapter
-    private lateinit var binding: ScheduleDayFragmentBinding
+    private lateinit var binding: FragmentScheduleDayBinding
 
     private val conferenceDay: Int by lazy {
         val args = arguments ?: throw IllegalStateException("Missing arguments!")
@@ -46,7 +45,7 @@ class ScheduleDayFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
 
-        binding = ScheduleDayFragmentBinding.inflate(inflater, container, false).apply {
+        binding = FragmentScheduleDayBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@ScheduleDayFragment
         }
 

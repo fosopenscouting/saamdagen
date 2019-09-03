@@ -20,6 +20,12 @@
                 app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
                 app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
-    <fragment android:id="@+id/navigation_activity" android:name="be.fos.saamdagen.ui.session.SessionFragment"
-              android:label="ActivityFragment"/>
+    <fragment android:id="@+id/navigation_session" android:name="be.fos.saamdagen.ui.session.SessionFragment"
+              android:label="ActivityFragment">
+        <action android:id="@+id/action_sessionList_to_sessionDetail"
+                app:destination="@id/sessionDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/sessionDetailFragment"
+              android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"
+              android:label="fragment_session_detail" tools:layout="@layout/fragment_session_detail"/>
 </navigation>

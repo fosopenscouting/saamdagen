@@ -17,7 +17,7 @@
             android:title="@string/title_schedule"/>
 
     <item
-    android:id="@+id/navigation_activity"
+    android:id="@+id/navigation_session"
     android:icon="@drawable/ic_nav_schedule"
     android:title="@string/title_activities"/>
 

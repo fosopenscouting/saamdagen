@@ -2,11 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layout">
 
-    <data>
-        <variable
-                name="session"
-                type="be.fos.saamdagen.model.Session" />
-    </data>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -24,7 +20,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:gravity="center"
-                    android:text="@{session.title}"
+                    android:text="Sessie naam"
                     android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
                     app:layout_scrollFlags="snap|exitUntilCollapsed"
                     />
@@ -38,7 +34,7 @@
                 android:layout_marginTop="?actionBarSize">
             <TextView
                     android:textAppearance="@style/TextAppearance.Saamdagen.H1"
-                    android:text="@{session.title}"
+                    android:text="Sessie naam"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/session_title"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -47,7 +43,7 @@
 
             <TextView
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                    android:text="@{session.description}"
+                    android:text="Sessie beschrijving"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/description"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"

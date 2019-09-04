@@ -11,11 +11,11 @@ import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.ItemSessionBinding
 import be.fos.saamdagen.model.Session
 
-class SessionPageAdapter: ListAdapter<Session, SessionViewHolder>(SessionDiff) {
+class SessionPageAdapter(private val eventListener: SessionActions): ListAdapter<Session, SessionViewHolder>(SessionDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
       val view = DataBindingUtil.inflate<ItemSessionBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
 
-        return SessionViewHolder(view)
+        return SessionViewHolder(view, eventListener)
         }
 
     override fun onBindViewHolder(holder: SessionViewHolder, position: Int) {
@@ -28,10 +28,11 @@ class SessionPageAdapter: ListAdapter<Session, SessionViewHolder>(SessionDiff) {
 
 }
 
-class SessionViewHolder(private val binding: ItemSessionBinding): RecyclerView.ViewHolder(binding.root) {
+class SessionViewHolder(private val binding: ItemSessionBinding, private val eventListener: SessionActions): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(session: Session) {
         binding.setVariable(BR.session,session)
+        binding.eventListener = eventListener
         binding.executePendingBindings()
     }
 }

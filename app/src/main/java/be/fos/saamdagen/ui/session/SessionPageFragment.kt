@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -16,6 +18,8 @@ import be.fos.saamdagen.databinding.FragmentSessionPageBinding
 import be.fos.saamdagen.model.Session
 import be.fos.saamdagen.model.SessionType
 import be.fos.saamdagen.util.clearDecorations
+import be.fos.saamdagen.ui.session.SessionActions
+import be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment
 
 
 class SessionPageFragment : Fragment() {
@@ -59,7 +63,7 @@ class SessionPageFragment : Fragment() {
 
         binding.recyclerview.layoutManager = layoutManager
 
-        adapter = SessionPageAdapter()
+        adapter = SessionPageAdapter(EventListener(findNavController()))
 
         binding.recyclerview.adapter = adapter
 
@@ -80,14 +84,6 @@ class SessionPageFragment : Fragment() {
                 }
             }
         }
-
-        val decoration = ScheduleDividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL,sessions)
-        decoration.setDrawable(requireContext().getDrawable(R.drawable.divider)!!)
-        binding.recyclerview.addItemDecoration(
-            decoration
-            )
-
-
     }
 
     companion object {
@@ -102,4 +98,17 @@ class SessionPageFragment : Fragment() {
                 }
             }
     }
+}
+
+class EventListener(private val navController: NavController): SessionActions {
+    override fun openSessionDetail(title: String, description: String) {
+
+        val action = SessionFragmentDirections.actionSessionListToSessionDetail(title,description)
+         navController.navigate(action)
+    }
+
+    override fun onStarClicked(session: Session) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

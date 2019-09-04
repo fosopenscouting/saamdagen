@@ -27,5 +27,12 @@
     </fragment>
     <fragment android:id="@+id/sessionDetailFragment"
               android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"
-              android:label="fragment_session_detail" tools:layout="@layout/fragment_session_detail"/>
+              android:label="fragment_session_detail" tools:layout="@layout/fragment_session_detail">
+        <argument
+                android:name="sessionTitle"
+                app:argType="string" />
+        <argument
+                android:name="sessionDescription"
+                app:argType="string" />
+    </fragment>
 </navigation>

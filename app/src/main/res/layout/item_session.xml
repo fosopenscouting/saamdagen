@@ -5,10 +5,14 @@
     <data>
         <import type="android.view.View" />
         <variable name="session" type="be.fos.saamdagen.model.Session"/>
+        <variable
+                name="eventListener"
+                type="be.fos.saamdagen.ui.session.SessionActions" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content"
-                                                       android:background="@color/white">
+                                                       android:background="@color/white"
+            android:onClick="@{() -> eventListener.openSessionDetail(session.title, session.description)}">
 
 
         <androidx.constraintlayout.widget.Guideline

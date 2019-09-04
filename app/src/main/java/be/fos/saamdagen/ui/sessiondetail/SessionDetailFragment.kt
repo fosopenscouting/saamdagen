@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 
 import be.fos.saamdagen.R
+import be.fos.saamdagen.databinding.FragmentSessionDetailBinding
 
 class SessionDetailFragment : Fragment() {
+
+    private lateinit var binding: FragmentSessionDetailBinding
+
 
     companion object {
         fun newInstance() = SessionDetailFragment()
@@ -21,7 +26,19 @@ class SessionDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_session_detail, container, false)
+
+        binding = FragmentSessionDetailBinding.inflate(inflater,container,false).apply {
+            lifecycleOwner = this@SessionDetailFragment
+        }
+
+        binding.description.text = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionDescription
+
+        val title = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionTitle
+
+        binding.sessionTitle.text = title
+        binding.title.text = title
+        return binding.root
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

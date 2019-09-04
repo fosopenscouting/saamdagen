@@ -4,9 +4,6 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "name": "EHBO",
         "icon": "first_aid"
       },
@@ -21,10 +18,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Infopunt",
+        "label": "Infopunt",
         "icon": "info"
       },
       "geometry": {
@@ -38,10 +32,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Toiletten",
+        "label": "Toiletten",
         "icon": "toilet"
       },
       "geometry": {
@@ -55,10 +46,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Fietsenstalling",
+        "label": "Fietsenstalling",
         "icon": "bikes"
       },
       "geometry": {
@@ -72,10 +60,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Toiletten",
+        "label": "Toiletten",
         "icon": "toilet"
       },
       "geometry": {
@@ -89,10 +74,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Drinkbaar water",
+        "label": "Drinkbaar water",
         "icon": "water"
       },
       "geometry": {
@@ -106,9 +88,6 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "label": "Camping"
       },
       "geometry": {
@@ -122,11 +101,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Camping",
-        "icon": "camping"
+        "label": "Camping"
       },
       "geometry": {
         "type": "Point",
@@ -139,10 +114,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Fuiftent",
+        "label": "Fuiftent",
         "icon": "party_tent"
       },
       "geometry": {
@@ -156,10 +128,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Kampvuur",
+        "label": "Kampvuur",
         "icon": "bonfire"
       },
       "geometry": {
@@ -173,10 +142,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Stille bar",
+        "label": "Stille bar",
         "icon": "silent_bar"
       },
       "geometry": {
@@ -190,10 +156,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "In- en uitgang",
+        "label": "In- en uitgang",
         "icon": "entrance"
       },
       "geometry": {
@@ -207,10 +170,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Podiumgrond"
+        "label": "Podiumgrond"
       },
       "geometry": {
         "type": "Point",
@@ -223,10 +183,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Geen doorgang",
+        "label": "Geen doorgang",
         "icon": "no_access"
       },
       "geometry": {
@@ -240,10 +197,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Geen doorgang",
+        "label": "Geen doorgang",
         "icon": "no_access"
       },
       "geometry": {
@@ -257,10 +211,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Geen doorgang",
+        "label": "Geen doorgang",
         "icon": "no_access"
       },
       "geometry": {
@@ -274,10 +225,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Drinkbaar water",
+        "label": "Drinkbaar water",
         "icon": "water"
       },
       "geometry": {
@@ -291,10 +239,7 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "Markt"
+        "label": "Markt"
       },
       "geometry": {
         "type": "Point",
@@ -307,9 +252,6 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "icon": "boat",
         "label": "Vaarzone"
       },
@@ -324,9 +266,6 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "icon": "boat",
         "label": "Vaarzone"
       },
@@ -341,9 +280,6 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
         "label": "Medewerkerszone"
       },
       "geometry": {

@@ -14,17 +14,17 @@ Gebruik je eigen Google Fu om de variabelen te persisteren over reboots en sessi
 
 #### Windows
 
-´setx APP_CENTER_KEY "<APP_CENTER_KEY>"´
+`setx APP_CENTER_KEY "<APP_CENTER_KEY>"`
 
 #### Unix
 
-´export APP_CENTER_KEY=<APP_CENTER_KEY>´
+`export APP_CENTER_KEY=<APP_CENTER_KEY>`
 
 ## Data
 
 ### Info, agenda en activiteiten
 
-Alle data voor info, agenda en activiteiten bevindt zich in ´resources/saamdagen_data.json´.
+Alle data voor info, agenda en activiteiten bevindt zich in `resources/saamdagen_data.json`.
 
 1. blocks
 
@@ -45,7 +45,7 @@ Voorbeeld:
     }
 ```
 
-Icoontjes voor agenda items worden gemapt in ´ScheduleItemBindingAdapter´
+Icoontjes voor agenda items worden gemapt in `ScheduleItemBindingAdapter`
 
 2. sessions
 
@@ -54,7 +54,8 @@ Alle data voor de activiteiten en workshops.
 Voorbeeld:
 
 ```json
- { "title": "Survival cooking",
+ {
+ "title": "Survival cooking",
       "description": "Dingen op het vuur smijten",
       "type": "activiteit", //Kan activiteit of workshop zijn.
       "location": "TBD"
@@ -73,3 +74,14 @@ Voorbeeld:
       "content": "Welkom vanaf 19u in Puyenbroeck"
     }
 ```
+
+### Grondplan
+
+Alle data voor het grondplan bevindt zich in `res/raw/map_markers.json`
+
+Gebruik geojson.io om dit bestand makkelijk te wijzigen/visualiseren.
+
+Er zijn 2 custom properties voorzien om de icoontjes/labels correct te renderen:
+
+1. 'label': Label getoond aan de gebruikers.
+2. 'icon': Icoon dat getoond wordt op de kaart. Dit dient hetzelfde te zijn als de bestandsnaam van het corresponderende icoon in `res/drawable`. Indien er geen icoontje wordt opgegeven (of het wordt niet gevonden), dan wordt enkel het label getoond.

@@ -33,6 +33,8 @@ class InfoAdapter: ListAdapter<Info,InfoAdapter.ViewHolder>(InfoDiff) {
          view.apply {
             card.cardTitle = item.title
              card.cardDescription = item.content
+             if(item.imageName != null)
+             card.cardImage = context.resources.getIdentifier(item.imageName,"drawable",context.packageName)
          }
       }
     }

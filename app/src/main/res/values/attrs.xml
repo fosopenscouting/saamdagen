@@ -3,6 +3,7 @@
     <declare-styleable name="CollapsibleCard">
         <attr name="cardTitle" format="string" />
         <attr name="cardDescription" format="string" />
+        <attr name="cardImage" format="integer"/>
     </declare-styleable>
 
     <attr name="sessionListKeyline" format="dimension" />

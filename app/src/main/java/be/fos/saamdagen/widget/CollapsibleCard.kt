@@ -27,6 +27,7 @@ class CollapsibleCard @JvmOverloads constructor(
     private var expanded = false
     private val cardTitleView: TextView
     private val cardDescriptionView: TextView
+    private val cardImageView: ImageView
     private val expandIcon: ImageView
     private val titleContainer: View
     private val toggle: Transition
@@ -46,6 +47,20 @@ class CollapsibleCard @JvmOverloads constructor(
             }
         }
 
+    var cardImage: Int? = null
+    set(value) {
+        field = if(value == 0) {
+            null
+        } else {
+            value
+        }
+
+        cardImageView.apply {
+            if(field != null)
+            setImageDrawable( context.getDrawable(field!!))
+        }
+    }
+
 
     init {
         root = LayoutInflater.from(context)
@@ -55,9 +70,11 @@ class CollapsibleCard @JvmOverloads constructor(
 
         cardTitleView = root.findViewById(R.id.card_title)
         cardDescriptionView = root.findViewById(R.id.card_description)
+        cardImageView = root.findViewById(R.id.card_image)
 
-        cardTitle = arr.getString(R.styleable.CollapsibleCard_cardTitle)
-        cardDescription = arr.getString(R.styleable.CollapsibleCard_cardDescription)
+        cardTitle = arr.getString(R.styleable.CollapsibleCard_cardTitle)!!
+        cardDescription = arr.getString(R.styleable.CollapsibleCard_cardDescription)!!
+        cardImage = arr.getInt(R.styleable.CollapsibleCard_cardImage,0)
 
 
 
@@ -81,6 +98,7 @@ class CollapsibleCard @JvmOverloads constructor(
         toggle.duration = if (expanded) 300L else 200L
         TransitionManager.beginDelayedTransition(root.parent as ViewGroup, toggle)
         cardDescriptionView.visibility = if (expanded) View.VISIBLE else View.GONE
+        cardImageView.visibility = if(expanded) View.VISIBLE else View.GONE
         expandIcon.rotation = if (expanded) 180f else 0f
         // activated used to tint controls when expanded
         expandIcon.isActivated = expanded

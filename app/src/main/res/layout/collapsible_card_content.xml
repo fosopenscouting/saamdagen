@@ -61,13 +61,23 @@
                 android:id="@+id/card_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/margin_normal"
+
                 android:paddingEnd="@dimen/margin_normal"
                 android:paddingStart="@dimen/margin_normal"
                 android:paddingTop="@dimen/spacing_normal"
+                android:paddingBottom="@dimen/margin_normal"
                 android:textColor="?android:textColorPrimary"
                 android:visibility="gone"
                 tools:text="This is a card description" />
+
+    <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/card_content_image_contentDescription"
+            android:paddingBottom="@dimen/margin_normal"/>
 
     </LinearLayout>
 

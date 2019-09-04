@@ -47,7 +47,8 @@
                 android:id="@+id/info_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-        tools:listitem="@layout/item_info"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/item_info"
+                android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

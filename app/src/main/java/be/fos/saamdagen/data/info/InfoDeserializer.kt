@@ -12,7 +12,9 @@ class InfoDeserializer: JsonDeserializer<Info> {
 
         return Info(
             title = obj["title"].asString,
-            content = obj["content"].asString
+            content = obj["content"].asString,
+            imageName = obj["imageName"]?.asString
+
         )
     }
 

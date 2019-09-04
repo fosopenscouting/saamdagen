@@ -9,5 +9,5 @@ fun indexBlockHeaders(blocks: List<Block>): List<Pair<Int, Date>> {
         .mapIndexed { index, session ->
             index to session.startTime
         }
-        .distinctBy { it.second.hours to it.second.minutes }
+        .distinctBy { it.second.hours  }
 }

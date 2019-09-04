@@ -6,6 +6,7 @@ import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import java.lang.reflect.Type
 import java.text.SimpleDateFormat
+import java.util.*
 
 class BlockDeserializer: JsonDeserializer<Block> {
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): Block {
@@ -13,7 +14,12 @@ class BlockDeserializer: JsonDeserializer<Block> {
 
         val dateFormatter = SimpleDateFormat("yyy-MM-dd HH:mm")
         val startTime = dateFormatter.parse(obj["startTime"].asString)
-        val endTime = dateFormatter.parse(obj["endTime"].asString)
+        val endObject = obj["endTime"]
+        var endTime: Date? = null
+        if(endObject != null)
+        {
+            endTime = dateFormatter.parse(endObject.asString)
+        }
 
         return Block(
             title = obj.get("title").asString,

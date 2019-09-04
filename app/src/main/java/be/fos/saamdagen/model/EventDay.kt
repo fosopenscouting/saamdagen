@@ -9,7 +9,7 @@ val FORMATTER_MONTH_DAY: SimpleDateFormat = SimpleDateFormat(formatPattern,Local
 
 data class EventDay(val start: Date, val end: Date) {
 
-    fun contains(block: Block) = start <= block.startTime && end >= block.endTime
+    fun contains(block: Block) = block.startTime.after(start) && block.startTime.before(end)
 
     fun formatMonthDay(): String = FORMATTER_MONTH_DAY.format(start)
 }

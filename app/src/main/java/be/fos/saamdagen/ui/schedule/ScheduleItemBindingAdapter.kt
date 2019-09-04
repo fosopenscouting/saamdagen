@@ -27,11 +27,14 @@ fun sessionColor(view: View, fillColor: String, strokeColor: String, strokeWidth
 
 
 @BindingAdapter(value = ["startTime", "endTime"], requireAll = true)
-fun agendaDuration(textView: TextView, startTime: Date, endTime: Date) {
+fun agendaDuration(textView: TextView, startTime: Date, endTime: Date?) {
+
+    val endTimeString = if(endTime == null) "" else "- " + agendaTimePattern.format(endTime)
+
     textView.text = textView.context.getString(
         R.string.agenda_duration,
         agendaTimePattern.format(startTime),
-        agendaTimePattern.format(endTime)
+        endTimeString
     )
 }
 

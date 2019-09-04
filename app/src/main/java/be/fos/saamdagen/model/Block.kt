@@ -17,7 +17,7 @@ data class Block(
     /**
      * End time of the session. Date, hour and minutes
      */
-    val endTime: Date,
+    val endTime: Date?,
 
     /**
      * Background color of the session. Should be provided as the HEX value of the color.

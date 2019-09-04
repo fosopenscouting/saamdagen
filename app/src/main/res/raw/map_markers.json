@@ -303,6 +303,40 @@
           51.15145129449553
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "icon": "boat",
+        "label": "Vaarzone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.884611129760742,
+          51.152432154177184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "icon": "boat",
+        "label": "Vaarzone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.878152370452881,
+          51.15157074850479
+        ]
+      }
     }
   ]
 }

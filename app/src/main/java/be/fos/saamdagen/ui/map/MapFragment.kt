@@ -61,6 +61,7 @@ class MapFragment : Fragment() {
                     googleMap.uiSettings.isMyLocationButtonEnabled = false
 
                     val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
+                    processGeoJsonLayer(geoJsonLayer,context)
                     geoJsonLayer.addLayerToMap()
 
                 }

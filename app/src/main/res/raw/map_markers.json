@@ -7,7 +7,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "first-aid"
+        "name": "EHBO",
+        "icon": "first_aid"
       },
       "geometry": {
         "type": "Point",
@@ -23,7 +24,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "info-point"
+        "name": "Infopunt",
+        "icon": "info"
       },
       "geometry": {
         "type": "Point",
@@ -39,39 +41,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "stage"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          3.8817062973976135,
-          51.151320062974015
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "bar"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          3.8823875784873962,
-          51.15114845195968
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "toilet"
+        "name": "Toiletten",
+        "icon": "toilet"
       },
       "geometry": {
         "type": "Point",
@@ -87,23 +58,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "food"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          3.8820898532867427,
-          51.15163468150946
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "name": "bikes"
+        "name": "Fietsenstalling",
+        "icon": "bikes"
       },
       "geometry": {
         "type": "Point",
@@ -119,7 +75,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "toilet"
+        "name": "Toiletten",
+        "icon": "toilet"
       },
       "geometry": {
         "type": "Point",
@@ -135,7 +92,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "toilet"
+        "name": "Toiletten",
+        "icon": "toilet"
       },
       "geometry": {
         "type": "Point",
@@ -151,7 +109,7 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "camping"
+        "label": "Camping"
       },
       "geometry": {
         "type": "Point",
@@ -167,7 +125,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "camping"
+        "name": "Camping",
+        "icon": "camping"
       },
       "geometry": {
         "type": "Point",
@@ -183,7 +142,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "party-tent"
+        "name": "Fuiftent",
+        "icon": "party_tent"
       },
       "geometry": {
         "type": "Point",
@@ -199,7 +159,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "bonfire"
+        "name": "Kampvuur",
+        "icon": "bonfire"
       },
       "geometry": {
         "type": "Point",
@@ -215,7 +176,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "silent-bar"
+        "name": "Stille bar",
+        "icon": "silent_bar"
       },
       "geometry": {
         "type": "Point",
@@ -231,13 +193,81 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "entrance"
+        "name": "In- en uitgang",
+        "icon": "entrance"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           3.8782167434692383,
           51.15058145809059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "label": "Podiumgrond"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8823004066944122,
+          51.15145802430711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Geen doorgang",
+        "icon": "no_access"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8799709081649776,
+          51.15040984432957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Geen doorgang",
+        "icon": "no_access"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8802123069763184,
+          51.15166160064282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Geen doorgang",
+        "icon": "no_access"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.884460926055908,
+          51.15129482610018
         ]
       }
     }

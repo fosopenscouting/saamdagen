@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 
 import be.fos.saamdagen.R
@@ -35,8 +36,12 @@ class SessionDetailFragment : Fragment() {
 
         val title = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionTitle
 
+        binding.toolbar.title = title
+        binding.toolbar.setNavigationOnClickListener {
+            it.findNavController().navigateUp()
+        }
         binding.sessionTitle.text = title
-        binding.title.text = title
+
         return binding.root
 
     }

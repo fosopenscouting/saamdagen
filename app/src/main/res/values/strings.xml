@@ -22,4 +22,5 @@
     <string name="title_activities">Activiteiten</string>
     <string name="star">Ster</string>
     <string name="card_content_image_contentDescription">Info afbeelding</string>
+    <string name="navigate_up">Terug navigeren</string>
 </resources>

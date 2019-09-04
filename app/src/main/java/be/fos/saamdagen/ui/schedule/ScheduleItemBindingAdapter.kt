@@ -42,7 +42,7 @@ fun agendaDuration(textView: TextView, startTime: Date, endTime: Date?) {
 fun agendaIcon(imageView: ImageView, type: String) {
     val iconId = when (type) {
         "evening" -> R.drawable.ic_agenda_evening
-        "workshop" -> R.drawable.ic_nav_map
+        "info" -> R.drawable.ic_nav_info
         "activity" -> R.drawable.ic_nav_map
         "food" -> R.drawable.ic_agenda_food
         else -> R.drawable.ic_nav_map

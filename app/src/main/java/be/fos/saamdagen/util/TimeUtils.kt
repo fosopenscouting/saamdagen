@@ -10,6 +10,6 @@ object TimeUtils {
 val EventDays = listOf(
     EventDay(dateParser.parse("2019-09-27 19:00"), dateParser.parse("2019-09-28 05:00")),
     EventDay(dateParser.parse("2019-09-28 07:00"), dateParser.parse("2019-09-29 05:00")),
-    EventDay(dateParser.parse("2019-09-29 7:00"), dateParser.parse("2019-09-29 14:30"))
+    EventDay(dateParser.parse("2019-09-29 7:00"), dateParser.parse("2019-09-29 15:30"))
 )
 }

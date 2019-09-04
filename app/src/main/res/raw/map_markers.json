@@ -92,8 +92,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "Toiletten",
-        "icon": "toilet"
+        "name": "Drinkbaar water",
+        "icon": "water"
       },
       "geometry": {
         "type": "Point",
@@ -210,13 +210,13 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "label": "Podiumgrond"
+        "name": "Podiumgrond"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.8823004066944122,
-          51.15145802430711
+          3.882256150245667,
+          51.15139913842271
         ]
       }
     },
@@ -268,6 +268,39 @@
         "coordinates": [
           3.884460926055908,
           51.15129482610018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Drinkbaar water",
+        "icon": "water"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8824760913848873,
+          51.15113835717425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Markt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882771134376526,
+          51.15145129449553
         ]
       }
     }

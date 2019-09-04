@@ -337,6 +337,22 @@
           51.15157074850479
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "label": "Medewerkerszone"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8812945783138275,
+          51.15130071470529
+        ]
+      }
     }
   ]
 }

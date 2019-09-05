@@ -25,4 +25,5 @@
     <string name="navigate_up">Terug navigeren</string>
     <string name="home_title_welcome" >Welkom op Saamdagen!</string>
     <string name="instellingen">Instellingen</string>
+    <string name="open_source_licences" >Open source licenties</string>
 </resources>

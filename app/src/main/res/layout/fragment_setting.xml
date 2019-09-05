@@ -21,6 +21,9 @@
     <data>
 
         <import type="be.fos.saamdagen.BuildConfig" />
+        <variable
+                name="viewModel"
+                type="be.fos.saamdagen.ui.settings.SettingsViewModel" />
     </data>
 
 
@@ -45,27 +48,23 @@
                 <!-- AppCompat/MaterialComponents layout inflators don't automatically handle
                      Switch widgets. See https://material.io/develop/android/components/switch/ -->
                 <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/settings_time_zone"
+                        android:id="@+id/settings_notifications"
                         style="@style/Widget.Saamdagen.Settings.Switch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:checked="@{viewModel.notificationsEnabled}"
+                        android:onCheckedChanged="@{(view, checked) -> viewModel.toggleNotifications(checked)}"
+                        android:text="Notificaties ontvangen" />
 
-                        android:text="Anonieme gebruiksstatistieken verzamelen" />
-
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/settings_enable_notifications"
-                        style="@style/Widget.Saamdagen.Settings.Switch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:text="Locatie inschakelen" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/settings_send_anonymous_usage_statistics"
                         style="@style/Widget.Saamdagen.Settings.Switch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Notificaties ontvangen" />
+                        android:checked="@{viewModel.statisticsEnabled}"
+                        android:onCheckedChanged="@{(view, checked) -> viewModel.toggleStatistics(checked)}"
+                        android:text="Anonieme gebruiksgegevens verzenden" />
 
                 <View
                         android:layout_width="match_parent"
@@ -75,7 +74,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:layout_marginBottom="@dimen/margin_small"
                         android:layout_marginLeft="@dimen/margin_normal"
                         android:layout_marginRight="@dimen/margin_normal"
                         android:layout_marginTop="@dimen/margin_large"
@@ -88,7 +87,7 @@
                         style="@style/Widget.Saamdagen.Settings.Button.About"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Open source licenties"/>
+                        android:text="@string/open_source_licences" />
 
 
                 <TextView
@@ -96,10 +95,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="start|center_vertical"
-                        android:minHeight="48dp"
                         android:padding="@dimen/margin_normal"
+                        android:text="@{viewModel.versionString}"
                         android:textAppearance="?textAppearanceBody2"
-                        />
+                        tools:text="Versie: 0.1" />
 
 
 

@@ -11,6 +11,7 @@ import be.fos.saamdagen.R
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import com.microsoft.appcenter.push.Push
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupAppCenter() {
         val appCenterKey = BuildConfig.APP_CENTER_KEY
 
-        AppCenter.start(application,appCenterKey, Analytics::class.java, Crashes::class.java)
+        AppCenter.start(application,appCenterKey, Analytics::class.java, Crashes::class.java, Push::class.java)
     }
 
     private fun setupNavigation() {

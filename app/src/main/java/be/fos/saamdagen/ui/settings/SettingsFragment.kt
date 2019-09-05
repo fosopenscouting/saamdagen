@@ -12,6 +12,7 @@ import androidx.databinding.BindingAdapter
 
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentSettingBinding
+import com.microsoft.appcenter.analytics.Analytics
 
 class SettingsFragment : Fragment() {
 
@@ -29,6 +30,7 @@ class SettingsFragment : Fragment() {
         val binding = FragmentSettingBinding.inflate(inflater,container,false)
 
         binding.viewModel = viewModel
+        Analytics.trackEvent("Settings geopend")
         return binding.root
     }
 

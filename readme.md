@@ -8,7 +8,9 @@ Sterk gebaseerd op de open-source I/O 2018 app van Google.
 
 ### Environment variables
 
-Om de app te runnen moet een environment variable ingesteld worden met de API key van Microsoft app center.
+Optioneel kan de key voor Microsoft App Center ingesteld worden. Deze is enkel nodig voor het tracken van Events binnen de app. De app zal perfect starten zonder dat de app key ingesteld is.
+
+De key dient ingesteld door te worden adhv een environment variable. Zie hieronder.
 
 Gebruik je eigen Google Fu om de variabelen te persisteren over reboots en sessies ;)
 

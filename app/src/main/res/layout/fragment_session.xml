@@ -12,15 +12,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:gravity="center"
-                    android:text="@string/title_activities"
-                    android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="snap|exitUntilCollapsed"
-            />
             <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"

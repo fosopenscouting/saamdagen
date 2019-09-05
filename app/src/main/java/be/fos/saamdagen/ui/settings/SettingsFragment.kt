@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import be.fos.saamdagen.R
+import be.fos.saamdagen.databinding.FragmentSettingBinding
 
 class SettingsFragment : Fragment() {
 
@@ -21,7 +22,9 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        val binding = FragmentSettingBinding.inflate(inflater,container,false)
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

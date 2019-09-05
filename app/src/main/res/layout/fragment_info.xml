@@ -19,38 +19,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar"
-                style="@style/Widget.AppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:gravity="center"
-                    android:text="@string/title_info"
-                    android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="snap|exitUntilCollapsed"
-            />
-
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginTop="?actionBarSize"
                 android:id="@+id/info_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
         tools:listitem="@layout/item_info"
                 android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
 
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

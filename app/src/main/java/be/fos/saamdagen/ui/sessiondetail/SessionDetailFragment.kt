@@ -37,10 +37,6 @@ class SessionDetailFragment : Fragment() {
 
         val title = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionTitle
 
-        binding.toolbar.title = title
-        binding.toolbar.setNavigationOnClickListener {
-            it.findNavController().navigateUp()
-        }
         binding.sessionTitle.text = title
 
         val properties = HashMap<String,String>()
@@ -51,6 +47,8 @@ class SessionDetailFragment : Fragment() {
         return binding.root
 
     }
+
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

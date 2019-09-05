@@ -4,27 +4,43 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/navigation_home">
 
-    <fragment android:id="@+id/navigation_info" android:name="be.fos.saamdagen.ui.info.InfoFragment" android:label="fragment_info"
-              tools:layout="@layout/fragment_info"/>
-    <fragment android:id="@+id/navigation_schedule" android:name="be.fos.saamdagen.ui.schedule.ScheduleFragment"
-              android:label="fragment_schedule" tools:layout="@layout/fragment_schedule"/>
-    <fragment android:id="@+id/navigation_map" android:name="be.fos.saamdagen.ui.map.MapFragment" android:label="fragment_map"
-              tools:layout="@layout/fragment_map"/>
+    <fragment
+            android:id="@+id/navigation_info"
+            android:name="be.fos.saamdagen.ui.info.InfoFragment"
+            android:label="Info"
+            tools:layout="@layout/fragment_info" />
+    <fragment
+            android:id="@+id/navigation_schedule"
+            android:name="be.fos.saamdagen.ui.schedule.ScheduleFragment"
+            android:label="Agenda"
+            tools:layout="@layout/fragment_schedule" />
+    <fragment
+            android:id="@+id/navigation_map"
+            android:name="be.fos.saamdagen.ui.map.MapFragment"
+            android:label="Grondplan"
+            tools:layout="@layout/fragment_map" />
     <fragment
             android:id="@+id/navigation_home"
             android:name="be.fos.saamdagen.ui.home.HomeFragment"
-            android:label="home_fragment"
+            android:label="Home"
             tools:layout="@layout/fragment_home">
-        <action android:id="@+id/action_news_schedule"
-                app:destination="@id/navigation_schedule" app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim" app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+                android:id="@+id/action_news_schedule"
+                app:destination="@id/navigation_schedule"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
-    <fragment android:id="@+id/navigation_session" android:name="be.fos.saamdagen.ui.session.SessionFragment"
-              android:label="ActivityFragment">
-        <action android:id="@+id/action_sessionList_to_sessionDetail"
+    <fragment
+            android:id="@+id/navigation_session"
+            android:name="be.fos.saamdagen.ui.session.SessionFragment"
+            android:label="Activiteiten">
+        <action
+                android:id="@+id/action_sessionList_to_sessionDetail"
                 app:destination="@id/sessionDetailFragment"
-                app:enterAnim="@android:anim/slide_in_left"/>
+                app:enterAnim="@android:anim/slide_in_left"
+                app:popUpTo="@+id/navigation_session" />
     </fragment>
     <fragment android:id="@+id/sessionDetailFragment"
               android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"
@@ -36,4 +52,8 @@
                 android:name="sessionDescription"
                 app:argType="string" />
     </fragment>
+    <fragment
+            android:id="@+id/navigation_settings"
+            android:name="be.fos.saamdagen.ui.settings.SettingsFragment"
+            android:label="SettingsFragment" />
 </navigation>

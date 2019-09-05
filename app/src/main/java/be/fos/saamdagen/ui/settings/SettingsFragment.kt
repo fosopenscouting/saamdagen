@@ -16,10 +16,6 @@ import com.microsoft.appcenter.analytics.Analytics
 
 class SettingsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SettingsFragment()
-    }
-
     private lateinit var viewModel: SettingsViewModel
 
     override fun onCreateView(

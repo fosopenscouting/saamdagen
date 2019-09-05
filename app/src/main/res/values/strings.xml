@@ -26,4 +26,6 @@
     <string name="home_title_welcome" >Welkom op Saamdagen!</string>
     <string name="instellingen">Instellingen</string>
     <string name="open_source_licences" >Open source licenties</string>
+
+    <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
 </resources>

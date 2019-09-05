@@ -23,4 +23,5 @@
     <string name="star">Ster</string>
     <string name="card_content_image_contentDescription">Info afbeelding</string>
     <string name="navigate_up">Terug navigeren</string>
+    <string name="home_title_welcome" >Welkom op Saamdagen!</string>
 </resources>

@@ -34,7 +34,7 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Analytics.trackEvent("MapFragment")
+        Analytics.trackEvent("Grondplan geopend")
 
         var view =
             // Inflate the layout for this fragment

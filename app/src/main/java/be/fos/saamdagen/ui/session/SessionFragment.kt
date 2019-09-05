@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import be.fos.saamdagen.databinding.FragmentSessionBinding
 import be.fos.saamdagen.model.SessionType
+import com.microsoft.appcenter.analytics.Analytics
 import kotlinx.android.synthetic.main.fragment_session.*
 
 class  SessionFragment : Fragment() {
@@ -26,6 +27,8 @@ class  SessionFragment : Fragment() {
         binding = FragmentSessionBinding.inflate(inflater,container,false).apply {
             lifecycleOwner = this@SessionFragment
         }
+
+        Analytics.trackEvent("Activiteiten geopend")
 
 
         return binding.root

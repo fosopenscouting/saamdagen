@@ -27,14 +27,13 @@
                 android:layout_height="wrap_content"
                 android:text="@{session.title}"
                 android:textAlignment="viewStart"
-                app:layout_constraintEnd_toStartOf="@+id/bookmark_session"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="What's new in Android"
                 android:textAppearance="@style/TextAppearance.Saamdagen.AgendaTitle"
                 android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline"
                 android:textSize="18sp"/>
 
-        <com.google.android.material.internal.CheckableImageButton
+       <!-- <com.google.android.material.internal.CheckableImageButton
                 android:id="@+id/bookmark_session"
                 android:layout_width="@dimen/a11y_min_touch_target"
                 android:layout_height="@dimen/a11y_min_touch_target"
@@ -45,7 +44,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"/>-->
 
 
         <TextView

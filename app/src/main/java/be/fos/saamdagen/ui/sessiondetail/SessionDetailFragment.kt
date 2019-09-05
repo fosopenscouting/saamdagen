@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentSessionDetailBinding
+import com.microsoft.appcenter.analytics.Analytics
 
 class SessionDetailFragment : Fragment() {
 
@@ -41,6 +42,11 @@ class SessionDetailFragment : Fragment() {
             it.findNavController().navigateUp()
         }
         binding.sessionTitle.text = title
+
+        val properties = HashMap<String,String>()
+        properties["Sessie titel"] = title
+
+        Analytics.trackEvent("Session detail opened", properties)
 
         return binding.root
 

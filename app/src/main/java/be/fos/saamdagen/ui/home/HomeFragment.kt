@@ -35,9 +35,9 @@ class HomeFragment : Fragment() {
             lifecycleOwner = this@HomeFragment
         }
 
-        binding.actionButton.setOnClickListener {
+       /* binding.actionButton.setOnClickListener {
             it.findNavController().navigate(R.id.action_news_schedule)
-        }
+        }*/
 
         initializeNewsRecyclerview()
 

@@ -26,7 +26,7 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Analytics.trackEvent("InfoFragment")
+        Analytics.trackEvent("Info geopend")
 
         viewModel = ViewModelProviders.of(this).get(InfoViewModel::class.java)
         binding = FragmentInfoBinding.inflate(inflater, container, false).apply {

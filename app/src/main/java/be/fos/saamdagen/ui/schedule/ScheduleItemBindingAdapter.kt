@@ -49,7 +49,7 @@ fun agendaIcon(imageView: ImageView, type: String) {
         "music" -> R.drawable.ic_music_note
         "speak" -> R.drawable.ic_star
         "sunny" -> R.drawable.ic_sunny
-        else -> R.drawable.ic_nav_map
+        else -> R.drawable.ic_check
 
 
     }

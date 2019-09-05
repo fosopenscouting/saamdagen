@@ -23,29 +23,6 @@
         <import type="be.fos.saamdagen.BuildConfig" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
-
-        <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar"
-                style="@style/Widget.AppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="true">
-
-            <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:gravity="center"
-                    android:text="@string/title_info"
-                    android:textAppearance="@style/TextAppearance.Saamdagen.ToolbarTitle"
-                    app:layout_scrollFlags="snap|exitUntilCollapsed"
-                    />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
                 android:id="@+id/settings_scroll"
@@ -130,5 +107,4 @@
 
         </androidx.core.widget.NestedScrollView>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

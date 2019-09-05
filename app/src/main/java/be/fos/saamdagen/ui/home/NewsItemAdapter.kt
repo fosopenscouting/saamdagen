@@ -1,5 +1,6 @@
 package be.fos.saamdagen.ui.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -14,7 +15,7 @@ class NewsItemAdapter: ListAdapter<NewsItem, NewsItemViewHolder>(NewsItemDiff) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsItemViewHolder {
        val view = DataBindingUtil.inflate<ItemHomeBinding>(LayoutInflater.from(parent.context),viewType,parent,false)
 
-        return NewsItemViewHolder(view)
+        return NewsItemViewHolder(view,parent.context)
            }
 
     override fun onBindViewHolder(holder: NewsItemViewHolder, position: Int) {
@@ -27,9 +28,13 @@ class NewsItemAdapter: ListAdapter<NewsItem, NewsItemViewHolder>(NewsItemDiff) {
 
 }
 
-class NewsItemViewHolder(private val binding: ItemHomeBinding): RecyclerView.ViewHolder(binding.root) {
+class NewsItemViewHolder(private val binding: ItemHomeBinding, private val context: Context): RecyclerView.ViewHolder(binding.root) {
     fun bind(item: NewsItem) {
         binding.item = item
+
+        if(item.imageName != null) {
+            binding.cardImage.setImageResource(context.resources.getIdentifier(item.imageName,"drawable",context.packageName))
+        }
         binding.executePendingBindings()
     }
 }

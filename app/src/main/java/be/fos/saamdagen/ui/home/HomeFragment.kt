@@ -23,11 +23,14 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: NewsItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding = FragmentHomeBinding.inflate(inflater,container,false).apply {
             lifecycleOwner = this@HomeFragment
         }
@@ -38,13 +41,9 @@ class HomeFragment : Fragment() {
 
         initializeNewsRecyclerview()
 
-        return binding.root
-    }
+        adapter.submitList(viewModel.newsItems)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+        return binding.root
     }
 
     private fun initializeNewsRecyclerview() {
@@ -52,14 +51,9 @@ class HomeFragment : Fragment() {
 
         binding.newsitems.layoutManager = layoutManager
 
-        val adapter = NewsItemAdapter()
+         adapter = NewsItemAdapter()
 
         binding.newsitems.adapter = adapter
-
-        adapter.submitList(listOf(
-            NewsItem("Test", "Content",null),
-            NewsItem("Test 2", "Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.",null)
-        ))
     }
 
 }

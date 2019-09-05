@@ -2,11 +2,9 @@ package be.fos.saamdagen.data
 
 import be.fos.saamdagen.data.info.InfoDeserializer
 import be.fos.saamdagen.data.block.BlockDeserializer
+import be.fos.saamdagen.data.news.NewsItemDeserializer
 import be.fos.saamdagen.data.session.SessionDeserializer
-import be.fos.saamdagen.model.Info
-import be.fos.saamdagen.model.SaamdagenData
-import be.fos.saamdagen.model.Block
-import be.fos.saamdagen.model.Session
+import be.fos.saamdagen.model.*
 import com.google.gson.GsonBuilder
 import com.google.gson.stream.JsonReader
 import java.io.InputStream
@@ -19,6 +17,7 @@ object SaamdagenDataJsonParser {
             .registerTypeAdapter(Block::class.java, BlockDeserializer())
             .registerTypeAdapter(Info::class.java,InfoDeserializer())
             .registerTypeAdapter(Session::class.java,SessionDeserializer())
+            .registerTypeAdapter(NewsItem::class.java, NewsItemDeserializer())
             .create()
 
         return gson.fromJson(jsonReader, SaamdagenData::class.java)

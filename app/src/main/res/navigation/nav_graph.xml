@@ -23,7 +23,8 @@
     <fragment android:id="@+id/navigation_session" android:name="be.fos.saamdagen.ui.session.SessionFragment"
               android:label="ActivityFragment">
         <action android:id="@+id/action_sessionList_to_sessionDetail"
-                app:destination="@id/sessionDetailFragment"/>
+                app:destination="@id/sessionDetailFragment"
+                app:enterAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment android:id="@+id/sessionDetailFragment"
               android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"

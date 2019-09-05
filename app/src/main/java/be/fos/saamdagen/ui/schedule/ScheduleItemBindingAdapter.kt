@@ -43,8 +43,12 @@ fun agendaIcon(imageView: ImageView, type: String) {
     val iconId = when (type) {
         "evening" -> R.drawable.ic_agenda_evening
         "info" -> R.drawable.ic_nav_info
-        "activity" -> R.drawable.ic_nav_map
+        "activity" -> R.drawable.ic_people
         "food" -> R.drawable.ic_agenda_food
+        "admin" -> R.drawable.ic_badge
+        "music" -> R.drawable.ic_music_note
+        "speak" -> R.drawable.ic_star
+        "sunny" -> R.drawable.ic_sunny
         else -> R.drawable.ic_nav_map
 
 

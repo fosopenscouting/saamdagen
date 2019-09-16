@@ -48,7 +48,12 @@ class MapFragment : Fragment() {
                 googleMap = it
                 MapsInitializer.initialize(context)
                 setMapLocation(it)
+                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
+                googleMap.uiSettings.isMyLocationButtonEnabled = false
 
+                val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
+                processGeoJsonLayer(geoJsonLayer,requireContext())
+                geoJsonLayer.addLayerToMap()
                 if (ContextCompat.checkSelfPermission(
                         requireContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION
@@ -57,19 +62,18 @@ class MapFragment : Fragment() {
                 ) {
 
                     googleMap.isMyLocationEnabled = true
-                    googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
-                    googleMap.uiSettings.isMyLocationButtonEnabled = false
 
-                    val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
-                    processGeoJsonLayer(geoJsonLayer,context)
-                    geoJsonLayer.addLayerToMap()
 
                 }
             }
         }
 
+
+
         return view
     }
+
+
 
     private fun setMapLocation(map: GoogleMap) {
         with(map) {

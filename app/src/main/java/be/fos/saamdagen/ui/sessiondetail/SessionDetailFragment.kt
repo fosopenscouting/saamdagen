@@ -37,6 +37,8 @@ class SessionDetailFragment : Fragment() {
 
         val title = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionTitle
 
+        activity!!.title = title
+
         binding.sessionTitle.text = title
 
         val properties = HashMap<String,String>()

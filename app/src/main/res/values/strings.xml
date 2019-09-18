@@ -28,4 +28,6 @@
     <string name="open_source_licences" >Open source licenties</string>
 
     <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
+    <string name="map_layer_normal">Normaal</string>
+    <string name="map_layer_activities">Activiteiten</string>
 </resources>

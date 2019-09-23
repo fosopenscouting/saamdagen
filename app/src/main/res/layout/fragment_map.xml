@@ -40,7 +40,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/map">
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/map_mode_fab"
                     android:layout_width="wrap_content"
@@ -51,7 +50,33 @@
                     app:backgroundTint="@color/primaryColor"
                     app:background="@color/primaryColor"
                     app:tint="@color/secondaryColor"
-                    app:srcCompat="@drawable/ic_layers" />
+                    app:srcCompat="@drawable/ic_layers"
+                    app:layout_dodgeInsetEdges="bottom"
+                    android:elevation="8dp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bottom_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    app:behavior_hideable="true"
+                    app:behavior_peekHeight="56dp"
+                    android:elevation="8dp"
+                    app:layout_insetEdge="bottom"
+                    app:bottomSheetState=""
+                    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:text="TEST"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

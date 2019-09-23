@@ -11,6 +11,7 @@ import be.fos.saamdagen.data.SaamdagenDataRepository
 import be.fos.saamdagen.model.Session
 import com.google.android.gms.common.util.MapUtils
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.maps.android.data.geojson.GeoJsonPointStyle
 
@@ -22,6 +23,14 @@ class MapViewModel : ViewModel() {
 
     private val saamdagenDataRepository = SaamdagenDataRepository(JsonSaamdagenDataSource)
 
+    private val _bottomSheetState = MutableLiveData<Int>()
+
+    val bottomSheetState: LiveData<Int>
+        get() = _bottomSheetState
+
+init {
+    _bottomSheetState.value = BottomSheetBehavior.STATE_HIDDEN
+}
 
 
     fun setMapVariant(mapVariant: MapVariant) {
@@ -31,6 +40,7 @@ class MapViewModel : ViewModel() {
 
     fun processGeoJsonLayer(layer: GeoJsonLayer, context: Context) {
 
+        BottomSheetBehavior.
         val iconGenerator = getLabelIconGenerator(context)
 
         layer.features.forEach { feature ->

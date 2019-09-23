@@ -16,10 +16,15 @@ import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_map.view.*
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import be.fos.saamdagen.databinding.FragmentMapBinding
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.microsoft.appcenter.analytics.Analytics
+import kotlinx.android.synthetic.main.fragment_map.*
 
 
 class MapFragment : Fragment() {
@@ -29,6 +34,9 @@ class MapFragment : Fragment() {
 
     private val position = LatLng(51.151006, 3.881024)
 
+    private lateinit var binding: FragmentMapBinding
+    private lateinit var viewModel: MapViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,11 +44,11 @@ class MapFragment : Fragment() {
 
         Analytics.trackEvent("Grondplan geopend")
 
-        var view =
-            // Inflate the layout for this fragment
-            inflater.inflate(R.layout.fragment_map, container, false)
+        viewModel = activity.run { ViewModelProviders.of(this!!).get(MapViewModel::class.java)}
 
-        this.mapView = view.map
+       binding = FragmentMapBinding.inflate(inflater, container,false)
+
+        this.mapView = binding.map
         checkLocationPermission()
         with(this.mapView) {
             onCreate(null)
@@ -68,9 +76,36 @@ class MapFragment : Fragment() {
             }
         }
 
+        viewModel.mapVariant.observe(this, Observer {
+            Log.d("MAP_FRAGMENT",it.toString())
+            mapView.getMapAsync {googleMap ->
+                googleMap.clear()
+                val geoJsonLayer = GeoJsonLayer(googleMap, it.markersResId,context)
+                processGeoJsonLayer(geoJsonLayer,requireContext())
+                geoJsonLayer.addLayerToMap()
+            }
+        })
 
 
-        return view
+    MapFragmentArgs.fromBundle(arguments?: Bundle.EMPTY).run {
+        val variant = when {
+            mapVariant != null -> MapVariant.valueOf(mapVariant)
+            else -> MapVariant.NORMAL
+        }
+        viewModel.setMapVariant(variant)
+    }
+
+
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.mapModeFab.setOnClickListener {
+            MapVariantSelectionDialogFragment().show(childFragmentManager, "MAP_MODE_DIALOG")
+        }
     }
 
 
@@ -157,7 +192,6 @@ class MapFragment : Fragment() {
                         ) == PackageManager.PERMISSION_GRANTED
                     ) {
 
-                        Log.d("FRAGMENT_MAP", "PERMISSION")
                         googleMap.isMyLocationEnabled = true
                         //Request location updates:
                         // locationManager.requestLocationUpdates(provider, 400, 1, this)

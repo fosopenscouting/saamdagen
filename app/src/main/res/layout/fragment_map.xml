@@ -33,6 +33,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
 
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/map">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/map_mode_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/margin_normal"
+                    android:contentDescription="@string/map_select_mode"
+                    app:backgroundTint="@color/primaryColor"
+                    app:background="@color/primaryColor"
+                    app:tint="@color/secondaryColor"
+                    app:srcCompat="@drawable/ic_layers" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

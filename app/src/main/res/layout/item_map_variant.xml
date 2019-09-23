@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <data>
+        <variable
+                name="variant"
+                type="be.fos.saamdagen.ui.map.MapVariant" />
+
+        <variable
+                name="isChecked"
+                type="Boolean" />
+    </data>
+    <CheckedTextView
+            android:id="@+id/map_variant_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:checked="@{isChecked}"
+            android:drawablePadding="@dimen/margin_normal"
+            android:paddingEnd="@dimen/dialogPreferredPaddingLarge"
+            android:drawableTint="@color/primaryColor"
+            android:gravity="center_vertical"
+            android:minHeight="?listPreferredItemHeight"
+            android:paddingStart="?dialogPreferredPadding"
+            android:text="@{variant.labelresId}"
+            android:textAppearance="?textAppearanceListItem"
+            app:variantIcon="@{variant.iconResId}"
+            tools:text="Activiteiten">
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </CheckedTextView>
 </layout>

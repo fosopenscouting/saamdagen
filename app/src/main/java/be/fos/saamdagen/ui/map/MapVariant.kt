@@ -8,7 +8,7 @@ import be.fos.saamdagen.R
 enum class MapVariant(
 @StringRes val labelresId: Int,
 @DrawableRes val iconResId: Int,
-@RawRes markersResId: Int
+@RawRes val markersResId: Int
 ) {
 
     NORMAL(
@@ -19,6 +19,6 @@ R.string.map_layer_normal,
     ACTIVITIES(
         R.string.map_layer_activities,
         R.drawable.ic_people,
-        R.raw.map_markers
+        R.raw.map_markers_sessions
     )
 }

@@ -79,4 +79,6 @@
 
     <dimen name="session_item_padding_vertical">8dp</dimen>
     <dimen name="news_card_corner_radius">8dp</dimen>
+    <dimen name="dialog_corner_radius">8dp</dimen>
+    <dimen name="dialogPreferredPaddingLarge">36dp</dimen>
 </resources>

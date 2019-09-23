@@ -57,6 +57,7 @@ Voorbeeld:
 
 ```json
  {
+ "id": 1,
  "title": "Survival cooking",
       "description": "Dingen op het vuur smijten",
       "type": "activiteit", //Kan activiteit of workshop zijn.

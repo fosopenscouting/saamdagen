@@ -10,6 +10,7 @@ import be.fos.saamdagen.data.JsonSaamdagenDataSource
 import be.fos.saamdagen.data.SaamdagenDataRepository
 import be.fos.saamdagen.model.Session
 import com.google.android.gms.common.util.MapUtils
+import com.google.android.gms.maps.GoogleMap
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.maps.android.data.geojson.GeoJsonPointStyle
 
@@ -55,5 +56,6 @@ class MapViewModel : ViewModel() {
 
 
     }
+
 
 }

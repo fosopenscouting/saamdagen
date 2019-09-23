@@ -44,57 +44,30 @@ class MapFragment : Fragment() {
 
         Analytics.trackEvent("Grondplan geopend")
 
-        viewModel = activity.run { ViewModelProviders.of(this!!).get(MapViewModel::class.java)}
+        viewModel = activity.run { ViewModelProviders.of(this!!).get(MapViewModel::class.java) }
 
-       binding = FragmentMapBinding.inflate(inflater, container,false)
+        binding = FragmentMapBinding.inflate(inflater, container, false)
 
-        this.mapView = binding.map
-        checkLocationPermission()
-        with(this.mapView) {
+        mapView = binding.map.apply {
             onCreate(null)
-            getMapAsync {
-                googleMap = it
-                MapsInitializer.initialize(context)
-                setMapLocation(it)
-                googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
-                googleMap.uiSettings.isMyLocationButtonEnabled = false
-                googleMap.uiSettings.isMapToolbarEnabled = false
-
-               /* val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
-                processGeoJsonLayer(geoJsonLayer,requireContext())
-                geoJsonLayer.addLayerToMap()*/
-                if (ContextCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                    )
-                    == PackageManager.PERMISSION_GRANTED
-                ) {
-
-                    googleMap.isMyLocationEnabled = true
-
-
-                }
-            }
         }
 
+
         viewModel.mapVariant.observe(this, Observer {
-            Log.d("MAP_FRAGMENT",it.toString())
-            mapView.getMapAsync {googleMap ->
-                googleMap.clear()
-                val geoJsonLayer = GeoJsonLayer(googleMap, it.markersResId,context)
-                viewModel.processGeoJsonLayer(geoJsonLayer,requireContext())
-                geoJsonLayer.addLayerToMap()
+            mapView.getMapAsync { googleMap ->
+                changeMapLayer(it)
             }
         })
 
-
-    MapFragmentArgs.fromBundle(arguments?: Bundle.EMPTY).run {
+if(savedInstanceState == null) {
+    MapFragmentArgs.fromBundle(arguments ?: Bundle.EMPTY).run {
         val variant = when {
             mapVariant != null -> MapVariant.valueOf(mapVariant)
             else -> MapVariant.NORMAL
         }
         viewModel.setMapVariant(variant)
     }
+}
 
 
 
@@ -104,12 +77,53 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        checkLocationPermission()
+
+        initializeMap()
         binding.mapModeFab.setOnClickListener {
             MapVariantSelectionDialogFragment().show(childFragmentManager, "MAP_MODE_DIALOG")
         }
     }
 
+    private fun changeMapLayer(mapVariant: MapVariant) {
+        googleMap.clear()
+        val geoJsonLayer = GeoJsonLayer(googleMap, mapVariant.markersResId, context)
+        viewModel.processGeoJsonLayer(geoJsonLayer, requireContext())
+        geoJsonLayer.addLayerToMap()
+    }
 
+
+    private fun initializeMap() {
+        mapView.getMapAsync {
+            googleMap = it
+            MapsInitializer.initialize(context)
+            setMapLocation(it)
+            googleMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                    requireContext(),
+                    R.raw.map_style
+                )
+            )
+            googleMap.uiSettings.isMyLocationButtonEnabled = false
+            googleMap.uiSettings.isMapToolbarEnabled = false
+
+            /* val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
+             processGeoJsonLayer(geoJsonLayer,requireContext())
+             geoJsonLayer.addLayerToMap()*/
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+                == PackageManager.PERMISSION_GRANTED
+            ) {
+
+                googleMap.isMyLocationEnabled = true
+
+
+            }
+        }
+
+    }
 
     private fun setMapLocation(map: GoogleMap) {
         with(map) {
@@ -179,7 +193,8 @@ class MapFragment : Fragment() {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_LOCATION -> {
 
-                val permissionGranted = grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val permissionGranted =
+                    grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 // If request is cancelled, the result arrays are empty.
                 if (permissionGranted) {
 
@@ -205,7 +220,7 @@ class MapFragment : Fragment() {
 
                 }
 
-                val properties = HashMap<String,String>()
+                val properties = HashMap<String, String>()
                 properties["Granted"] = permissionGranted.toString()
 
                 Analytics.trackEvent("Location permission", properties)
@@ -213,6 +228,7 @@ class MapFragment : Fragment() {
             }
         }
     }
+
 
     override fun onResume() {
         super.onResume()

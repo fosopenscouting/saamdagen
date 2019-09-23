@@ -1,0 +1,579 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 1,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8853245973587036,
+          51.150884304347336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 2,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.880067467689514,
+          51.15108283581497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 3,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8830608129501343,
+          51.1517659121363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 4,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8821542263031006,
+          51.147660572177244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 5,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8855445384979252,
+          51.15027860984643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 6,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8830125331878658,
+          51.15068577202564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 7,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8757598400115962,
+          51.15174572283337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 8,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8808989524841313,
+          51.15067567713899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 9,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8811886310577393,
+          51.15279219006437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 10,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882706761360168,
+          51.15062183770631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 11,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.881542682647705,
+          51.15092468369808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 12,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8820764422416687,
+          51.15146138921249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 13,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8835543394088745,
+          51.15166160064282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 14,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.88266921043396,
+          51.15104245660259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 15,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.880303502082825,
+          51.14790622984051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 16,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8835462927818294,
+          51.1508876692946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 17,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8842597603797913,
+          51.15131333314234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 18,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8830929994583125,
+          51.151072741015184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 19,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.885713517665863,
+          51.14937510077569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 20,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882604837417603,
+          51.1517642296947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "activity_id": 21,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.884589672088623,
+          51.152432154177184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 1,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8814944028854375,
+          51.14941379891971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 2,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8824841380119324,
+          51.15161449214915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 3,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8825002312660213,
+          51.15127631905058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 4,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.876969516277313,
+          51.14995388702115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 5,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8797670602798457,
+          51.149514750447004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 6,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.879246711730957,
+          51.14910084778174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 7,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.876966834068298,
+          51.15062856763885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 8,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8775032758712764,
+          51.150268514870724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 9,
+        "type": "activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8810974359512325,
+          51.14622025162555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 10,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8841444253921504,
+          51.15111816759678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 11,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882580697536468,
+          51.15137221913623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 12,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882567286491394,
+          51.15155224156585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 13,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8847962021827693,
+          51.15118883107928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 14,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8799789547920227,
+          51.15070932675253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 15,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.876583278179169,
+          51.150793450679004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 16,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882084488868713,
+          51.14905037159301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 17,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.885960280895233,
+          51.15119556092913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 18,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.882352709770202,
+          51.15283929735578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 19,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.8829481601715083,
+          51.15127463659115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "workshop_id": 20,
+        "type": "workshop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.879793882369995,
+          51.15222353396649
+        ]
+      }
+    }
+  ]
+}

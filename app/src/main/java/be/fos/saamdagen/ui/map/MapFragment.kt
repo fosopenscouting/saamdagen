@@ -44,6 +44,8 @@ class MapFragment : Fragment() {
 
         Analytics.trackEvent("Grondplan geopend")
 
+        /**ViewModel vragen via de activity zodat het gedeeld wordt tussen dit fragment
+         * en het [MapVariantSelectionDialogFragment]**/
         viewModel = activity.run { ViewModelProviders.of(this!!).get(MapViewModel::class.java) }
 
         binding = FragmentMapBinding.inflate(inflater, container, false)
@@ -59,15 +61,17 @@ class MapFragment : Fragment() {
             }
         })
 
-if(savedInstanceState == null) {
-    MapFragmentArgs.fromBundle(arguments ?: Bundle.EMPTY).run {
-        val variant = when {
-            mapVariant != null -> MapVariant.valueOf(mapVariant)
-            else -> MapVariant.NORMAL
+        /**Enkel de mapvariant instellen wanneer (a) het fragment voor de eerste keer geopend wordt of (b) er een specifieke variant gevraagd wordt vanuit de navigatie.
+         * Op andere momenten is er reeds een variant ingesteld in het viewmodel.**/
+        if (savedInstanceState == null) {
+            MapFragmentArgs.fromBundle(arguments ?: Bundle.EMPTY).run {
+                val variant = when {
+                    mapVariant != null -> MapVariant.valueOf(mapVariant)
+                    else -> MapVariant.NORMAL
+                }
+                viewModel.setMapVariant(variant)
+            }
         }
-        viewModel.setMapVariant(variant)
-    }
-}
 
 
 
@@ -107,9 +111,7 @@ if(savedInstanceState == null) {
             googleMap.uiSettings.isMyLocationButtonEnabled = false
             googleMap.uiSettings.isMapToolbarEnabled = false
 
-            /* val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
-             processGeoJsonLayer(geoJsonLayer,requireContext())
-             geoJsonLayer.addLayerToMap()*/
+
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.ACCESS_FINE_LOCATION

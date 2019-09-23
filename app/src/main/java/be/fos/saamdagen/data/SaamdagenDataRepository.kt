@@ -23,4 +23,16 @@ class SaamdagenDataRepository {
     fun getNewsItems(): List<NewsItem> {
         return this.saamdagenData.news
     }
+
+    fun getActivityById(id: Int): Session {
+        return this.saamdagenData.sessions.filter { session ->
+            session.type == "activiteit"
+        }.first { session -> session.id == id }
+    }
+
+    fun getWorkshopById(id: Int): Session {
+        return this.saamdagenData.sessions.filter { session ->
+            session.type == "workshop"
+        }.first { session -> session.id == id }
+    }
 }

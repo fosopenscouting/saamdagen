@@ -58,10 +58,11 @@ class MapFragment : Fragment() {
                 setMapLocation(it)
                 googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
                 googleMap.uiSettings.isMyLocationButtonEnabled = false
+                googleMap.uiSettings.isMapToolbarEnabled = false
 
-                val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
+               /* val geoJsonLayer = GeoJsonLayer(googleMap, R.raw.map_markers,context)
                 processGeoJsonLayer(geoJsonLayer,requireContext())
-                geoJsonLayer.addLayerToMap()
+                geoJsonLayer.addLayerToMap()*/
                 if (ContextCompat.checkSelfPermission(
                         requireContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION
@@ -81,7 +82,7 @@ class MapFragment : Fragment() {
             mapView.getMapAsync {googleMap ->
                 googleMap.clear()
                 val geoJsonLayer = GeoJsonLayer(googleMap, it.markersResId,context)
-                processGeoJsonLayer(geoJsonLayer,requireContext())
+                viewModel.processGeoJsonLayer(geoJsonLayer,requireContext())
                 geoJsonLayer.addLayerToMap()
             }
         })

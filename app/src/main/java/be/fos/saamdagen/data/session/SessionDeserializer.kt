@@ -11,6 +11,7 @@ class SessionDeserializer: JsonDeserializer<Session> {
         val obj = json?.asJsonObject!!
 
         return Session(
+            id = obj["id"].asInt,
             title = obj["title"].asString,
             type = obj["type"].asString,
             description = obj["description"].asString,

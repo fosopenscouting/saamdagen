@@ -18,7 +18,7 @@ fun processGeoJsonLayer(layer: GeoJsonLayer, context: Context) {
 
     layer.features.forEach { feature ->
         val icon = feature.getProperty("icon")
-        val label = feature.getProperty("label") ?: feature.getProperty("name")
+        val label = feature.getProperty("label") ?: feature.getProperty("name") ?: feature.getProperty("activity_id") ?: feature.getProperty("workshop_id")
 
         val drawableRes = getDrawableResourceForIcon(context, icon)
 
@@ -34,7 +34,7 @@ fun processGeoJsonLayer(layer: GeoJsonLayer, context: Context) {
 
 
 /** Creates a new IconGenerator for labels on the map. */
-private fun getLabelIconGenerator(context: Context): IconGenerator {
+ fun getLabelIconGenerator(context: Context): IconGenerator {
     val labelBg = context.getDrawable(R.drawable.map_marker_label_background)
     return IconGenerator(context).apply {
         setTextAppearance(context, R.style.TextAppearance_Saamdagen_Map_MarkerLabel)
@@ -58,7 +58,7 @@ fun getDrawableResourceForIcon(context: Context, iconType: String?): Int {
 }
 
 /** Creates a GeoJsonPointStyle for a label. */
-private fun createLabelMarker(
+ fun createLabelMarker(
     iconGenerator: IconGenerator,
     title: String
 ): GeoJsonPointStyle {
@@ -76,7 +76,7 @@ private fun createLabelMarker(
  * Creates a GeoJsonPointStyle for a map icon. The icon is chosen based on the marker type and is
  * anchored at the bottom center of the marker's location.
  */
-private fun createIconMarker(
+ fun createIconMarker(
     context: Context,
     drawableRes: Int,
     title: String

@@ -18,7 +18,7 @@
 
     <item
     android:id="@+id/navigation_session"
-    android:icon="@drawable/ic_nav_schedule"
+    android:icon="@drawable/ic_activity"
     android:title="@string/title_activities"/>
 
     <item

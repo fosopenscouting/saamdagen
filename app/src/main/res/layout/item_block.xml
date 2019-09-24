@@ -28,7 +28,7 @@
             app:layout_constraintStart_toEndOf="@id/keyline"
             app:layout_constraintTop_toTopOf="parent"
             app:sessionColor="@{block.color}"
-            app:sessionStrokeColor="@{block.color}"
+            app:sessionStrokeColor="@{block.strokeColor}"
             app:sessionStrokeWidth="@{@dimen/agenda_item_stroke_width}"
             tools:background="#eee"
              />

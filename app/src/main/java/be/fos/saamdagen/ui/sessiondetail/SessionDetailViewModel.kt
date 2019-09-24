@@ -12,4 +12,6 @@ class SessionDetailViewModel : ViewModel() {
 
         return saamdagenDataRepository.getSessionById(id)
     }
+
+
 }

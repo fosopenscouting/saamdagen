@@ -49,7 +49,7 @@
                         app:srcCompat="@drawable/ic_nav_map"
                         app:layout_dodgeInsetEdges="bottom"
                         android:elevation="8dp"
-                        android:onClick="@{}"/>
+                        />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -45,7 +45,6 @@ class SessionDetailFragment : Fragment() {
 
         binding.toMapFab.setOnClickListener {
             val action = SessionDetailFragmentDirections.actionSessionDetailFragmentToNavigationMap(MapVariant.ACTIVITIES.name, sessionId)
-
             findNavController().navigate(action)
         }
 

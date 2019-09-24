@@ -4,7 +4,7 @@ import be.fos.saamdagen.model.*
 
 class SaamdagenDataRepository {
 
-     private lateinit var saamdagenData: SaamdagenData
+     private var saamdagenData: SaamdagenData
      constructor(jsonSaamdagenDataSource: JsonSaamdagenDataSource) {
          this.saamdagenData = jsonSaamdagenDataSource.getOfflineSaamdagenData()!!
      }

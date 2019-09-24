@@ -24,6 +24,11 @@
                 app:argType="string"
                 app:nullable="true"
                 android:defaultValue="@null" />
+        <argument
+                android:name="featureId"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null" />
     </fragment>
     <fragment
             android:id="@+id/navigation_home"

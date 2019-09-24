@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.text.Html"/>
         <variable
                 name="item"
                 type="be.fos.saamdagen.model.NewsItem" />
@@ -43,7 +44,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@{item.content}"
+                    android:text="@{Html.fromHtml(item.content)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3"

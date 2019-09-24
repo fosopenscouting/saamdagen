@@ -9,10 +9,10 @@ data class Session (
     ) {
 
     fun mapTitle(): String {
-        if(title.length > 15){
-            return title.take(6) + ".." + title.takeLast(6)
+        return if(title.length > 15){
+            title.take(6) + ".." + title.takeLast(6)
         }else {
-            return title
+            title
         }
     }
 }

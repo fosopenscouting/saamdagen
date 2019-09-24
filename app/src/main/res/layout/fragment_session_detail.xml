@@ -2,12 +2,18 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layout">
 
+    <data>
+        <variable
+                name="session"
+                type="be.fos.saamdagen.model.Session" />
+    </data>
+
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <TextView
                     android:textAppearance="@style/TextAppearance.Saamdagen.H1"
-                    android:text="Sessie naam"
+                    android:text="@{session.title}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/session_title"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -16,7 +22,7 @@
 
             <TextView
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                    android:text="Sessie beschrijving"
+                    android:text="@{session.description}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/description"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -31,7 +37,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/map_mode_fab"
+                        android:id="@+id/to_map_fab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
@@ -42,7 +48,8 @@
                         app:tint="@color/secondaryColor"
                         app:srcCompat="@drawable/ic_nav_map"
                         app:layout_dodgeInsetEdges="bottom"
-                        android:elevation="8dp"/>
+                        android:elevation="8dp"
+                        android:onClick="@{}"/>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

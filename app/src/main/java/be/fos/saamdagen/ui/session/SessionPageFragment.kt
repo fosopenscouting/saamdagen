@@ -101,9 +101,9 @@ class SessionPageFragment : Fragment() {
 }
 
 class EventListener(private val navController: NavController): SessionActions {
-    override fun openSessionDetail(title: String, description: String) {
+    override fun openSessionDetail(id: String) {
 
-        val action = SessionFragmentDirections.actionSessionListToSessionDetail(title,description)
+        val action = SessionFragmentDirections.actionSessionListToSessionDetail(id)
          navController.navigate(action)
     }
 

@@ -59,15 +59,12 @@
     <fragment android:id="@+id/sessionDetailFragment"
               android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"
               android:label="fragment_session_detail" tools:layout="@layout/fragment_session_detail">
-        <argument
-                android:name="sessionTitle"
-                app:argType="string" />
-        <argument
-                android:name="sessionDescription"
-                app:argType="string" />
         <action
                 android:id="@+id/action_sessionDetailFragment_to_navigation_map"
                 app:destination="@id/navigation_map" />
+        <argument
+                android:name="sessionId"
+                app:argType="string" />
     </fragment>
     <fragment
             android:id="@+id/navigation_settings"

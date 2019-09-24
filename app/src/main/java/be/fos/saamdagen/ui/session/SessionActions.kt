@@ -4,7 +4,7 @@ import be.fos.saamdagen.model.Session
 
 interface SessionActions {
 
-    fun openSessionDetail(title: String, description: String)
+    fun openSessionDetail(id: String)
 
     fun onStarClicked(session: Session)
 }

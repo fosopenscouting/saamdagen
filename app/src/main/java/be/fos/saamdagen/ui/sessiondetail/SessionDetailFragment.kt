@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
 import be.fos.saamdagen.R
 import be.fos.saamdagen.databinding.FragmentSessionDetailBinding
+import be.fos.saamdagen.ui.map.MapVariant
 import com.microsoft.appcenter.analytics.Analytics
 
 class SessionDetailFragment : Fragment() {
@@ -28,21 +30,27 @@ class SessionDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        viewModel = ViewModelProviders.of(this).get(SessionDetailViewModel::class.java)
         binding = FragmentSessionDetailBinding.inflate(inflater,container,false).apply {
             lifecycleOwner = this@SessionDetailFragment
         }
 
-        binding.description.text = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionDescription
+        val sessionId = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionId
 
-        val title = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionTitle
+        val session = viewModel.getSession(sessionId)
 
-        activity!!.title = title
+        activity!!.title = session.title
 
-        binding.sessionTitle.text = title
+        binding.session = session
+
+        binding.toMapFab.setOnClickListener {
+            val action = SessionDetailFragmentDirections.actionSessionDetailFragmentToNavigationMap(MapVariant.ACTIVITIES.name, sessionId)
+
+            findNavController().navigate(action)
+        }
 
         val properties = HashMap<String,String>()
-        properties["Sessie titel"] = title
+        properties["Sessie titel"] = session.title
 
         Analytics.trackEvent("Session detail opened", properties)
 
@@ -50,12 +58,5 @@ class SessionDetailFragment : Fragment() {
 
     }
 
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SessionDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

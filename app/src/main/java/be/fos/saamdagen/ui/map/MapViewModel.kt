@@ -1,16 +1,11 @@
 package be.fos.saamdagen.ui.map
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import be.fos.saamdagen.data.JsonSaamdagenDataSource
 import be.fos.saamdagen.data.SaamdagenDataRepository
-import be.fos.saamdagen.model.Session
-import com.google.android.gms.common.util.MapUtils
-import com.google.android.gms.maps.GoogleMap
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.maps.android.data.geojson.GeoJsonPointStyle
@@ -40,15 +35,13 @@ init {
 
     fun processGeoJsonLayer(layer: GeoJsonLayer, context: Context) {
 
-        BottomSheetBehavior.
         val iconGenerator = getLabelIconGenerator(context)
 
         layer.features.forEach { feature ->
             val icon = feature.getProperty("icon")
 
             val label = when {
-                feature.getProperty("activity_id") != null -> saamdagenDataRepository.getActivityById(feature.getProperty(("activity_id")).toInt()).mapTitle()
-                feature.getProperty("workshop_id") != null -> saamdagenDataRepository.getWorkshopById(feature.getProperty(("workshop_id")).toInt()).mapTitle()
+                feature.getProperty("id") != null -> saamdagenDataRepository.getSessionById(feature.getProperty(("id"))).mapTitle()
                 else -> feature.getProperty("label") ?: feature.getProperty("name")
 
             }

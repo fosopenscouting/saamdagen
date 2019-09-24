@@ -1,7 +1,7 @@
 package be.fos.saamdagen.model
 
 data class Session (
-    val id: Int,
+    val id: String,
     val title: String,
     val description: String,
     val type: String, //TODO: Enumiseren?

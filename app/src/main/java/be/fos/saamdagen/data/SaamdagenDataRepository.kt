@@ -24,15 +24,8 @@ class SaamdagenDataRepository {
         return this.saamdagenData.news
     }
 
-    fun getActivityById(id: Int): Session {
-        return this.saamdagenData.sessions.filter { session ->
-            session.type == "activiteit"
-        }.first { session -> session.id == id }
+    fun getSessionById(id: String): Session {
+        return this.saamdagenData.sessions.first { session -> session.id == id }
     }
 
-    fun getWorkshopById(id: Int): Session {
-        return this.saamdagenData.sessions.filter { session ->
-            session.type == "workshop"
-        }.first { session -> session.id == id }
-    }
 }

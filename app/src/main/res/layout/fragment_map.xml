@@ -63,7 +63,7 @@
                     app:behavior_peekHeight="56dp"
                     android:elevation="8dp"
                     app:layout_insetEdge="bottom"
-                    app:bottomSheetState=""
+
                     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
                 <TextView

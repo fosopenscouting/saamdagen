@@ -144,7 +144,7 @@ class MapFragment : Fragment() {
     private fun setMapLocation(map: GoogleMap) {
         with(map) {
             val bounds = LatLngBounds(
-                LatLng(51.148220, 3.875542),
+                LatLng(51.144557, 3.878036),
                 LatLng(51.153382, 3.886110)
             )
             setMinZoomPreference(16f)

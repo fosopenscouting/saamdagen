@@ -37,7 +37,6 @@ class MapFragment : Fragment() {
 
     private lateinit var binding: FragmentMapBinding
     private lateinit var viewModel: MapViewModel
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +49,10 @@ class MapFragment : Fragment() {
          * en het [MapVariantSelectionDialogFragment]**/
         viewModel = activity.run { ViewModelProviders.of(this!!).get(MapViewModel::class.java) }
 
-        binding = FragmentMapBinding.inflate(inflater, container, false)
+        binding = FragmentMapBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = this@MapFragment
+            viewModel = this@MapFragment.viewModel
+        }
 
         mapView = binding.map.apply {
             onCreate(null)
@@ -63,6 +65,7 @@ class MapFragment : Fragment() {
             }
         })
 
+
         /**Enkel de mapvariant instellen wanneer (a) het fragment voor de eerste keer geopend wordt
          * of (b) er een specifieke variant gevraagd wordt vanuit de navigatie.
          * Op andere momenten (bijv. na rotatie) is er reeds een variant ingesteld in het viewmodel.**/
@@ -73,9 +76,12 @@ class MapFragment : Fragment() {
                     else -> MapVariant.NORMAL
                 }
                 viewModel.setMapVariant(variant)
+
+                if(this.featureId != null) {
+                    viewModel.requestHighlightFeature(featureId)
+                }
             }
         }
-
 
 
         return binding.root
@@ -92,18 +98,15 @@ class MapFragment : Fragment() {
             MapVariantSelectionDialogFragment().show(childFragmentManager, "MAP_MODE_DIALOG")
         }
 
-        bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
 
     }
 
     private fun changeMapLayer(mapVariant: MapVariant) {
         googleMap.clear()
         val geoJsonLayer = GeoJsonLayer(googleMap, mapVariant.markersResId, context)
-
+        viewModel.setMapFeatures(geoJsonLayer)
         viewModel.processGeoJsonLayer(geoJsonLayer, requireContext())
-        geoJsonLayer.setOnFeatureClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-        }
+
         geoJsonLayer.addLayerToMap()
     }
 

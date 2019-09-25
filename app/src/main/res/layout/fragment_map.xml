@@ -19,6 +19,12 @@
 <layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+                name="viewModel"
+                type="be.fos.saamdagen.ui.map.MapViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -31,7 +37,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="parent"
+                app:mapCenter="@{viewModel.cameraUpdate}"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="0dp"
@@ -53,30 +60,6 @@
                     app:srcCompat="@drawable/ic_layers"
                     app:layout_dodgeInsetEdges="bottom"
                     android:elevation="8dp"/>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/bottom_sheet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white"
-                    app:behavior_hideable="true"
-                    app:behavior_peekHeight="56dp"
-                    android:elevation="8dp"
-                    app:layout_insetEdge="bottom"
-
-                    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="500dp"
-                        android:text="TEST"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -4,7 +4,7 @@ data class Session (
     val id: String,
     val title: String,
     val description: String,
-    val type: String, //TODO: Enumiseren?
+    val type: String,
     val location: String
     ) {
 

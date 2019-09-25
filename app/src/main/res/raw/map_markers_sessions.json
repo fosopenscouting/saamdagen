@@ -46,14 +46,17 @@
     {
       "type": "Feature",
       "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
         "id": "A4",
         "type": "activity"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.8821542263031006,
-          51.147660572177244
+          3.8818055391311646,
+          51.148643194985
         ]
       }
     },
@@ -200,14 +203,17 @@
     {
       "type": "Feature",
       "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
         "id": "A15",
         "type": "activity"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.880303502082825,
-          51.14790622984051
+          3.87992262840271,
+          51.14885183138166
         ]
       }
     },
@@ -304,8 +310,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.8814944028854375,
-          51.14941379891971
+          3.8811296224594116,
+          51.149568591171274
         ]
       }
     },
@@ -416,8 +422,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.8810974359512325,
-          51.14622025162555
+          3.8802874088287354,
+          51.14845811352105
         ]
       }
     },
@@ -514,8 +520,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          3.882084488868713,
-          51.14905037159301
+          3.882014751434326,
+          51.149147958841425
         ]
       }
     },

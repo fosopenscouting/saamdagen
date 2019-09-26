@@ -28,5 +28,21 @@
         />
 
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/to_map_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/margin_normal"
+                    android:contentDescription="@string/map_select_mode"
+                    app:backgroundTint="@color/primaryColor"
+                    app:background="@color/primaryColor"
+                    app:tint="@color/secondaryColor"
+                    app:srcCompat="@drawable/ic_search"
+                    app:layout_dodgeInsetEdges="bottom"
+                    android:elevation="8dp"
+                    />
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

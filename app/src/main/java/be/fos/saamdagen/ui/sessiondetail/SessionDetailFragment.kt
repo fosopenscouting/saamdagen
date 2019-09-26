@@ -2,6 +2,7 @@ package be.fos.saamdagen.ui.sessiondetail
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,8 @@ class SessionDetailFragment : Fragment() {
         val sessionId = SessionDetailFragmentArgs.fromBundle(arguments!!).sessionId
 
         val session = viewModel.getSession(sessionId)
+
+        Log.d("SESSION_DETAIL", session.participants.toString())
 
         activity!!.title = session.title
 

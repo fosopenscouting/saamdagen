@@ -10,6 +10,6 @@ class InfoViewModel: ViewModel() {
     val info: List<Info>
 
     init {
-        this.info = SaamdagenDataRepository(JsonSaamdagenDataSource).getInfo()
+        this.info = SaamdagenDataRepository.getInfo()
     }
 }

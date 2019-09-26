@@ -27,7 +27,7 @@ class MapViewModel : ViewModel() {
     val mapVariant: LiveData<MapVariant>
         get() = _mapVariant
 
-    private val saamdagenDataRepository = SaamdagenDataRepository(JsonSaamdagenDataSource)
+    private val saamdagenDataRepository = SaamdagenDataRepository
 
 
 

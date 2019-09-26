@@ -10,7 +10,7 @@ class HomeViewModel : ViewModel() {
     val newsItems: List<NewsItem>
 
     init {
-        this.newsItems = SaamdagenDataRepository(JsonSaamdagenDataSource).getNewsItems()
+        this.newsItems = SaamdagenDataRepository.getNewsItems()
     }
 
 }

@@ -6,7 +6,7 @@ import be.fos.saamdagen.data.SaamdagenDataRepository
 import be.fos.saamdagen.model.Session
 
 class SessionDetailViewModel : ViewModel() {
-    private val saamdagenDataRepository = SaamdagenDataRepository(JsonSaamdagenDataSource)
+    private val saamdagenDataRepository = SaamdagenDataRepository
 
     fun getSession(id: String): Session {
 

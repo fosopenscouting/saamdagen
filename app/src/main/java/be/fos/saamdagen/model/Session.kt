@@ -5,7 +5,8 @@ data class Session (
     val title: String,
     val description: String,
     val type: String,
-    val location: String
+    val location: String,
+    val participants: List<Participant>
     ) {
 
     fun mapTitle(): String {

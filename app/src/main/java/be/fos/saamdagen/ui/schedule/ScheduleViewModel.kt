@@ -11,7 +11,7 @@ class ScheduleViewModel : ViewModel() {
     private var blocks: List<Block>
 
     init {
-        val repo = SaamdagenDataRepository(JsonSaamdagenDataSource)
+        val repo = SaamdagenDataRepository
 
         this.blocks = repo.getBlocks()
     }

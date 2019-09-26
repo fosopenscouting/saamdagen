@@ -10,7 +10,7 @@ class SessionViewModel : ViewModel() {
     private var sessions: List<Session>
 
     init {
-        val repo = SaamdagenDataRepository(JsonSaamdagenDataSource)
+        val repo = SaamdagenDataRepository
         this.sessions = repo.getSessions()
     }
 

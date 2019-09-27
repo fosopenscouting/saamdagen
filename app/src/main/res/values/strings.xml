@@ -23,12 +23,15 @@
     <string name="star">Ster</string>
     <string name="card_content_image_contentDescription">Info afbeelding</string>
     <string name="navigate_up">Terug navigeren</string>
-    <string name="home_title_welcome" >Welkom op Saamdagen!</string>
+    <string name="home_title_welcome">Welkom op Saamdagen!</string>
     <string name="instellingen">Instellingen</string>
-    <string name="open_source_licences" >Open source licenties</string>
+    <string name="open_source_licences">Open source licenties</string>
 
     <string name="oss_file" translatable="false">file:///android_asset/licenses.html</string>
     <string name="map_layer_normal">Normaal</string>
     <string name="map_layer_activities">Activiteiten</string>
     <string name="map_select_mode">Kaart modus selecteren</string>
+    <string name="search_session">Sessie zoeken</string>
+    <string name="input_search_session">Voornaam Familienaam</string>
+    <string name="session_your_sessions">Je sessies</string>
 </resources>

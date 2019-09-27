@@ -14,8 +14,10 @@ import be.fos.saamdagen.databinding.FragmentSessionBinding
 import be.fos.saamdagen.model.SessionType
 import com.microsoft.appcenter.analytics.Analytics
 import kotlinx.android.synthetic.main.fragment_session.*
-import androidx.lifecycle.Observer
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+
+import androidx.navigation.fragment.findNavController
+
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dialog_search.view.*
 
 
@@ -28,13 +30,11 @@ class SessionFragment : Fragment() {
 
     private lateinit var adapter: SessionParticipantAdapter
 
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(SessionViewModel::class.java)
+        viewModel = activity.run { ViewModelProviders.of(this!!).get(SessionViewModel::class.java) }
         binding = FragmentSessionBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = this@SessionFragment
         }
@@ -49,14 +49,6 @@ class SessionFragment : Fragment() {
 
         }
 
-
-
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-
-        viewModel.participantSessions.observe(this, Observer {
-
-
-        })
 
 
         return binding.root
@@ -93,7 +85,7 @@ class SessionFragment : Fragment() {
     private fun showSearchDialog() {
         val builder = AlertDialog.Builder(context!!)
 
-        builder.setTitle("Activiteiten zoeken")
+        builder.setTitle("Jouw sessies zoeken")
 
         val inflatedView = LayoutInflater.from(context!!)
             .inflate(R.layout.dialog_search, view as ViewGroup, false)
@@ -106,7 +98,14 @@ class SessionFragment : Fragment() {
             android.R.string.ok
         ) { dialog, which ->
             dialog.dismiss()
-           viewModel.findSessionsFor(inflatedView.input.text.toString())
+         val success =  viewModel.findSessionsFor(inflatedView.input.text.toString())
+
+            if (success) {
+                findNavController().navigate(R.id.action_navigation_session_to_sessionParticipantFragment)
+
+            } else {
+                Snackbar.make(binding.searchFab,"Er werd geen deelnemer met deze naam gevonden.", Snackbar.LENGTH_LONG).show()
+            }
         }
         builder.setNegativeButton(
             android.R.string.cancel

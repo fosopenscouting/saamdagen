@@ -27,7 +27,7 @@ class SessionViewModel : ViewModel() {
         return sessions.filter { it.type == type }
     }
 
-    fun findSessionsFor(name: String) {
+    fun findSessionsFor(name: String): Boolean {
 
         Analytics.trackEvent("Gezocht naar sessie")
         val cleanedString = name.toLowerCase().replace(" ","")
@@ -40,6 +40,10 @@ class SessionViewModel : ViewModel() {
 
         }
 
+        if(filteredSessions.isEmpty()) {
+            return false
+        }
+
       val mapped =  filteredSessions.map {
              SessionParticipant(it, it.participants.first {
                  val nameString = "${it.firstName}${it.lastName}".toLowerCase().replace(" ", "")
@@ -47,8 +51,12 @@ class SessionViewModel : ViewModel() {
              }.time)
         }
 
-        _participantSessions.value = mapped
 
+        Log.d("SESSION_VIE","Mapped the items")
+
+        _participantSessions.value = mapped.sortedBy { it.time }
+
+        return true
 
     }
 }

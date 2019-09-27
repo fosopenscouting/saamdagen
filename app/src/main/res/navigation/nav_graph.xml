@@ -55,6 +55,9 @@
                 app:destination="@id/sessionDetailFragment"
                 app:enterAnim="@android:anim/slide_in_left"
                 app:popUpTo="@+id/navigation_session" />
+        <action
+                android:id="@+id/action_navigation_session_to_sessionParticipantFragment"
+                app:destination="@id/sessionParticipantFragment" />
     </fragment>
     <fragment android:id="@+id/sessionDetailFragment"
               android:name="be.fos.saamdagen.ui.sessiondetail.SessionDetailFragment"
@@ -70,4 +73,8 @@
             android:id="@+id/navigation_settings"
             android:name="be.fos.saamdagen.ui.settings.SettingsFragment"
             android:label="Instellingen" />
+    <fragment
+            android:id="@+id/sessionParticipantFragment"
+            android:name="be.fos.saamdagen.ui.SessionParticipantFragment"
+            android:label="SessionParticipantFragment" />
 </navigation>

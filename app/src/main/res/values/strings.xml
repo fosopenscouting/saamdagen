@@ -32,6 +32,6 @@
     <string name="map_layer_activities">Activiteiten</string>
     <string name="map_select_mode">Kaart modus selecteren</string>
     <string name="search_session">Sessie zoeken</string>
-    <string name="input_search_session">Voornaam Familienaam</string>
+    <string name="input_search_session">Geef hier je voornaam en familienaam (in die volgorde)</string>
     <string name="session_your_sessions">Je sessies</string>
 </resources>

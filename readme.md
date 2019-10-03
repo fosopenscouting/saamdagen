@@ -80,11 +80,21 @@ Voorbeeld:
 
 ### Grondplan
 
-Alle data voor het grondplan bevindt zich in `res/raw/map_markers.json`
+Alle data voor het grondplan bevindt zich in `res/raw/map_markers.json`.
 
-Gebruik geojson.io om dit bestand makkelijk te wijzigen/visualiseren.
+Alle data voor de sessies weer te geven op het grondplan bevindt zich in `res/raw/map_markers_sessions.json`.
+
+Gebruik geojson.io om deze bestande, makkelijk te wijzigen/visualiseren.
 
 Er zijn 2 custom properties voorzien om de icoontjes/labels correct te renderen:
 
 1. 'label': Label getoond aan de gebruikers.
 2. 'icon': Icoon dat getoond wordt op de kaart. Dit dient hetzelfde te zijn als de bestandsnaam van het corresponderende icoon in `res/drawable`. Indien er geen icoontje wordt opgegeven (of het wordt niet gevonden), dan wordt enkel het label getoond.
+
+Stijl en uitzicht van het grondplan kan worden aangepast in `res/raw/map_style_json`
+
+In AndroidManifest.xml dient een geldige Google Maps API Key opgegeven te worden. Momenteel is er een voorbeeldsleutel aanwezig. Deze is na saamdagen invalid gemaakt om (1) ongeoorloofd gebruik tegen te gaan en (2) kosten te besparen.
+
+
+
+

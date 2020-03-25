@@ -9,11 +9,79 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$fos-blue: (
+    50 : #e2ebf3,
+    100 : #b6cce2,
+    200 : #85aace,
+    300 : #5488ba,
+    400 : #2f6fac,
+    500 : #0a559d,
+    600 : #094e95,
+    700 : #07448b,
+    800 : #053b81,
+    900 : #032a6f,
+    A100 : #9ebaff,
+    A200 : #6b96ff,
+    A400 : #3872ff,
+    A700 : #1f60ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$fos-green: (
+    50 : #f9fbe6,
+    100 : #eff4c0,
+    200 : #e4ed97,
+    300 : #d9e66d,
+    400 : #d1e04d,
+    500 : #c9db2e,
+    600 : #c3d729,
+    700 : #bcd223,
+    800 : #b5cd1d,
+    900 : #a9c412,
+    A100 : #fdfff3,
+    A200 : #f5ffc0,
+    A400 : #ecff8d,
+    A700 : #e8ff74,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$saamdagen-primary: mat-palette($mat-indigo);
-$saamdagen-accent: mat-palette($mat-pink, A200, A100, A400);
+$saamdagen-primary: mat-palette($fos-blue);
+$saamdagen-accent: mat-palette($fos-green, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $saamdagen-warn: mat-palette($mat-red);

@@ -11,10 +11,18 @@ Sterk gebaseerd op de open-source I/O 2018 app van Google.
 - Node.js
 - Angular CLI (`$ npm install -g @angular/cli`)
 
-### Lokaal uitvoeren
+### Lokaal uitvoeren (development)
 
 - `$ npm install`
 - `$ npm start`
+
+### PWA functionaliteit testen
+
+Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. Daarvoor moet er een productie build gemaakt worden. Die moet vervolgens geserved worden door een http server.
+
+- `$ npm install -g http-server` (eenmalig)
+- `$ ng build --prod`
+- `$ http-server -c-1 dist/saamdagen`
 
 ### Environment variables
 

@@ -1,5 +1,5 @@
 
-<app-navigation class="dark-theme">
+<app-navigation [class.dark-theme]="isDarkTheme$ | async">
   <router-outlet></router-outlet>
 </app-navigation>
 

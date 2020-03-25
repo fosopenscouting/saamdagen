@@ -4,7 +4,17 @@ Android app voor de komende editie van Saamdagen.
 
 Sterk gebaseerd op de open-source I/O 2018 app van Google.
 
-## Setup
+## Setup/Running
+
+### Installatie
+
+- Node.js
+- Angular CLI (`$ npm install -g @angular/cli`)
+
+### Lokaal uitvoeren
+
+- `$ npm install`
+- `$ npm start`
 
 ### Environment variables
 

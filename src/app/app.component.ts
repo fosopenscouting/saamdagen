@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/theme/theme.service';
 import { Observable } from 'rxjs';
+import { SwUpdate } from '@angular/service-worker';
+import { UpdateService } from './core/update/update.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +14,26 @@ export class AppComponent implements OnInit {
   title = 'saamdagen';
   isDarkTheme$: Observable<boolean>;
 
-  constructor(private themeService: ThemeService) { }
+  constructor(
+    private themeService: ThemeService,
+    private updates: SwUpdate,
+    private updateService: UpdateService,
+    private snackbar: MatSnackBar) {
+
+    this.updates.available.subscribe(res => {
+      const snackRef = this.snackbar.open('Er is een nieuwe versie beschikbaar!', 'Bijwerken');
+
+      snackRef.onAction().subscribe(() => {
+        this.activateUpdate();
+      });
+    });
+   }
 
   ngOnInit() {
     this.isDarkTheme$ = this.themeService.isDarkTheme$;
+  }
+
+  activateUpdate() {
+    this.updates.activateUpdate().then(() => document.location.reload());
   }
 }

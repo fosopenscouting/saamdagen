@@ -23,3 +23,11 @@ Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. D
 - `$ npm install -g http-server` (eenmalig)
 - `$ ng build --prod`
 - `$ http-server -c-1 dist/saamdagen`
+
+### Branching
+
+**develop:** Hoofdbranch om nieuwe features naar te pushen
+
+**master:** Code zoals ze in productie is. Changes op deze branch triggeren een build en deploy
+
+**saamdagen-2019:** App voor de editie van 2019. Deze versie wordt bewaard in een aparte branch omdat er tussen '19 en '20 volledig opnieuw werd begonnen.

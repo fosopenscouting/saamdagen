@@ -22,6 +22,14 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm ci
+        npm run lint
         npm run build
       env:
         CI: true
+    - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+        with:
+          ftp-server: ftp://saamdagen.be/app.saamdagen.be
+          ftp-username: saamdagen
+          ftp-password: ${{secrets.FTP_PASSWORD}}
+          local-dir: dist/saamdagen/

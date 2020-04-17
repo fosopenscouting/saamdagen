@@ -23,7 +23,7 @@ jobs:
       run: |
         npm ci
         npm run lint
-        npm run build
+        npm run build-prod
       env:
         CI: true
     - name: Deploy via FTP

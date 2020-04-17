@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" (swipeleft)="onSwipeLeft($event)">
+<mat-sidenav-container class="sidenav-container" (swipe)="onSwipeLeft($event)">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"

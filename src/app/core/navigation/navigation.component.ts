@@ -22,7 +22,7 @@ export class NavigationComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   onSwipeLeft(event) {
-    this.sidenav.close();
+    console.log(event);
   }
 
 }

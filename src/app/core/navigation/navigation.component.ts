@@ -11,7 +11,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class NavigationComponent {
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('drawer') sidenav: MatSidenav;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -23,6 +23,15 @@ export class NavigationComponent {
 
   onSwipeLeft(event) {
     console.log(event);
+  }
+
+  closeDrawer() {
+
+    this.isHandset$.subscribe(res => {
+      if (res) {
+        this.sidenav.close();
+      }
+    });
   }
 
 }

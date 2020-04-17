@@ -5,7 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Saamdagen</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/settings" (click)="drawer.close()">Instellingen</a>
+      <a mat-list-item routerLink="/settings" (click)="closeDrawer()">Instellingen</a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/profile"
+      (click)="closeDrawer()">Profiel</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

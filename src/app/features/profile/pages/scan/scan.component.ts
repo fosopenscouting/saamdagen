@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ScanComponent implements OnInit {
 
   currentDevice: MediaDeviceInfo = null;
+  hasPermission: boolean;
 
 
   constructor() { }
@@ -20,7 +21,7 @@ export class ScanComponent implements OnInit {
   }
 
   onHasPermission(event) {
-    console.log(event);
+    this.hasPermission = event;
   }
 
 }

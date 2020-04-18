@@ -1,17 +1,29 @@
-.sidenav-container {
-  height: 100%;
+body {
+  box-sizing: border-box;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+ position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 
 .sidenav {
-  width: 200px;
+  width:256px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+
+
+
+

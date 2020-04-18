@@ -1,30 +1,39 @@
-<mat-sidenav-container class="sidenav-container" (swipe)="onSwipeLeft($event)">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+<div class="container" [class.is-mobile]="isHandset$ | async">
+  <mat-toolbar class="toolbar" color="primary">
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span>Saamdagen</span>
+ 
+   
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #drawer
+      class="sidenav mat-elevation-z2"
+      [fixedInViewport]="isHandset$ | async"
+      mode="over"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Saamdagen</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/settings" (click)="closeDrawer()">Instellingen</a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/profile"
-      (click)="closeDrawer()">Profiel</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      [fixedTopGap]="(isHandset$ | async) ? '56' : '64'"
+      [opened]="false"
+    >
+      <!--<mat-toolbar>Menu</mat-toolbar>-->
+      <mat-nav-list>
+        <a mat-list-item routerLink="/settings" routerLinkActive="active" (click)="drawer.close()">Instellingen</a>
+        <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="drawer.close()"
+          >Profiel</a
         >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Saamdagen</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-    <ng-content></ng-content>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-container">
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ThemeService {
-  private storageKey = "IS_DARK";
+  private storageKey = 'IS_DARK';
 
   private isDarkThemeSource = new BehaviorSubject<boolean>(false);
 
@@ -37,3 +37,4 @@ export class ThemeService {
     }
   }
 }
+

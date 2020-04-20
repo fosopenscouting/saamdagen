@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-navigation',
@@ -19,7 +20,7 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private update: SwUpdate) {}
 
   onSwipeLeft(event) {
     console.log(event);
@@ -32,6 +33,10 @@ export class NavigationComponent {
         this.sidenav.close();
       }
     });
+  }
+
+  checkUpdate() {
+    this.update.checkForUpdate();
   }
 
 }

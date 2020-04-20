@@ -18,7 +18,7 @@
       
       class="sidenav mat-elevation-z2"
       [fixedInViewport]="isHandset$ | async"
-      mode="over"
+      [mode]="(isHandset$ | async) ? 'over': 'side'"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [fixedTopGap]="(isHandset$ | async) ? '56' : '64'"
       [opened]="(isHandset$ | async) === false"

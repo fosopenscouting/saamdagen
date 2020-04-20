@@ -21,7 +21,7 @@
       mode="over"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [fixedTopGap]="(isHandset$ | async) ? '56' : '64'"
-      [opened]="!(isHandset$ | async)"
+      [opened]="(isHandset$ | async) === false"
     >
       <!--<mat-toolbar>Menu</mat-toolbar>-->
       <mat-nav-list>

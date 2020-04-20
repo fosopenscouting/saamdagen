@@ -1,8 +1,8 @@
 {
-  "name": "saamdagen",
-  "short_name": "saamdagen",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Saamdagen",
+  "short_name": "Saamdagen",
+  "theme_color": "#09559D",
+  "background_color": "#09559D",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

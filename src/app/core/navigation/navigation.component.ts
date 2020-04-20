@@ -22,19 +22,6 @@ export class NavigationComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private update: SwUpdate) {}
 
-  onSwipeLeft(event) {
-    console.log(event);
-  }
-
-  closeDrawer() {
-
-    this.isHandset$.subscribe(res => {
-      if (res) {
-        this.sidenav.close();
-      }
-    });
-  }
-
   checkUpdate() {
     this.update.checkForUpdate();
   }

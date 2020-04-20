@@ -1,17 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ThemeService {
+  private storageKey = "IS_DARK";
 
-  private darkTheme = new Subject<boolean>();
+  private isDarkThemeSource = new BehaviorSubject<boolean>(false);
 
-  isDarkTheme$ = this.darkTheme.asObservable();
+  isDarkTheme$ = this.isDarkThemeSource.asObservable();
+
+  constructor() { }
 
   setDarkTheme(isDarkTheme: boolean) {
-    this.darkTheme.next(isDarkTheme);
+    this.isDarkThemeSource.next(isDarkTheme);
+    localStorage.setItem(this.storageKey, JSON.stringify(isDarkTheme));
   }
-  constructor() { }
+
+  initTheme() {
+    const itemInStorage = localStorage.getItem(this.storageKey);
+
+    if (!itemInStorage) {
+      this.checkBrowserTheme();
+    } else {
+      const storageValue = JSON.parse(itemInStorage);
+      this.isDarkThemeSource.next(storageValue);
+    }
+  }
+  checkBrowserTheme() {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      this.isDarkThemeSource.next(true);
+    }
+  }
 }

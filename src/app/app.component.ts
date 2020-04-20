@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.themeService.initTheme();
     this.isDarkTheme$ = this.themeService.isDarkTheme$;
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 
 @Component({
   selector: 'app-scan',
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScanComponent implements OnInit {
 
+@ViewChild('scanner')
+scanner: ZXingScannerComponent;
+
   currentDevice: MediaDeviceInfo = null;
   hasPermission: boolean;
-
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   onScanSuccess(result: string) {
@@ -23,5 +27,4 @@ export class ScanComponent implements OnInit {
   onHasPermission(event) {
     this.hasPermission = event;
   }
-
 }

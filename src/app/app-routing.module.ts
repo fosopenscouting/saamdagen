@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/profile/profile.module').then(
       mod => mod.ProfileModule
     )
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./features/map/map.module').then(mod => mod.MapModule)
   }
 ];
 

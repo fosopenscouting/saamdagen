@@ -4,6 +4,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ScanComponent } from './pages/scan/scan.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { MaterialModule } from 'src/app/core/material/material.module';
 
 const routes: Routes = [
 {
@@ -22,7 +23,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ZXingScannerModule
+    ZXingScannerModule,
+    MaterialModule
   ]
 })
 export class ProfileModule { }

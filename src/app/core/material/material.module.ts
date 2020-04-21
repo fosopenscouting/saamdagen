@@ -13,7 +13,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatRippleModule,
     MatBottomSheetModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatToolbarModule,
@@ -43,7 +44,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatRippleModule,
     MatBottomSheetModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {}

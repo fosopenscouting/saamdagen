@@ -35,3 +35,9 @@ Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. D
 ### CI/CD
 
 Elke push/merge naar de **master** branch triggert een build en deploy via FTP naar app.saamdagen.be. Aanvullend bij de build, wordt ook **ng lint** uitgevoerd.
+
+### Google Maps
+
+`@angular/google-maps` wordt gebruikt voor het weergeven van een kaart/grondplan. In `index.html` wordt de API sleutel opgegeven. Deze sleutel kan niet geheim zijn aangezien het hier gaat over een frontend applicatie. Daarom is het belangrijk dat er restricties worden ingesteld in de API Console van Google.
+
+De sleutel kan ook niet ingeladen worden via de environment.ts file omdat het script in index.html wordt ingeladen. Op het moment van inladen, is onze Angular applicatie nog niet gestart.

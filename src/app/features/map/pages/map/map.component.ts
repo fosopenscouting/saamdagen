@@ -16,5 +16,5 @@ export class MapComponent implements OnInit {
   onswipe(event) {
     return null;
   }
-  
+
 }

@@ -8,7 +8,7 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG, HammerModule } from '@angul
 class MapHammerConfig extends HammerGestureConfig {
   overrides = {
     swipe: {enable: false}
-  }
+  };
 }
 
 const routes: Routes = [

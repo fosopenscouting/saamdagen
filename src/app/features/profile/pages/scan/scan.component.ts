@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
+import { ApiService } from 'src/app/core/api/api.service';
+import { Ticket } from '../../shared/ticket.model';
 
 @Component({
   selector: 'app-scan',
@@ -13,15 +15,18 @@ scanner: ZXingScannerComponent;
 
   currentDevice: MediaDeviceInfo = null;
   hasPermission: boolean;
+  ticket: Ticket;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
 
   }
 
   onScanSuccess(result: string) {
-    console.log(result);
+    this.apiService.getTicket(result).subscribe(res => {
+     this.ticket = res;
+    });
   }
 
   onHasPermission(event) {

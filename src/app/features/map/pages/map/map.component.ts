@@ -12,4 +12,9 @@ export class MapComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onswipe(event) {
+    return null;
+  }
+  
 }

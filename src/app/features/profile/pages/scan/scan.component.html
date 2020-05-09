@@ -1,8 +1,12 @@
-
 <zxing-scanner
-#scanner
-[(device)]="currentDevice"
-(scanSuccess)="onScanSuccess($event)"
-(permissionResponse)="onHasPermission($event)">
-
+  #scanner
+  [(device)]="currentDevice"
+  (scanSuccess)="onScanSuccess($event)"
+  (permissionResponse)="onHasPermission($event)"
+>
 </zxing-scanner>
+<ng-container *ngIf="ticket"
+  ><h1>Resultaat</h1>
+  <p>{{ ticket.firstName }}</p>
+  <p>{{ ticket.lastName }}</p></ng-container
+>

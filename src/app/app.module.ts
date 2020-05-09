@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import * as hammer from 'hammerjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import * as hammer from 'hammerjs';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HammerModule
+    HammerModule,
+    HttpClientModule
   ],
   providers: [
     {

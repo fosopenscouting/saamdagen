@@ -14,6 +14,6 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   getTicket(hash: string): Observable<Ticket> {
-    return this.httpClient.get(`${this.BASE_URL}/ticket?hash=${hash}`).pipe(map(data => data.data));
+    return this.httpClient.get<any>(`${this.BASE_URL}/ticket?hash=${hash}`).pipe(map(data => data.data));
   }
 }

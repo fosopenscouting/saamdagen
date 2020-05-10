@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/core/api/api.service';
 import { Ticket } from '../../shared/ticket.model';
 import { ProfileService } from '../../shared/profile.service';
 import { Router } from '@angular/router';
+import { AppTitleService } from 'src/app/core/title/app-title.service';
 
 @Component({
   selector: 'app-scan',
@@ -22,7 +23,10 @@ scanner: ZXingScannerComponent;
   constructor(
     private apiService: ApiService,
     private profileService: ProfileService,
-    private router: Router) { }
+    private router: Router,
+    private titleService: AppTitleService) {
+      this.titleService.setTitle('Ticket scannen');
+     }
 
   ngOnInit(): void {
 

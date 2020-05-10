@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { ApiService } from 'src/app/core/api/api.service';
 import { Ticket } from '../../shared/ticket.model';
+import { ProfileService } from '../../shared/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scan',
@@ -17,7 +19,10 @@ scanner: ZXingScannerComponent;
   hasPermission: boolean;
   ticket: Ticket;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private profileService: ProfileService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -25,7 +30,8 @@ scanner: ZXingScannerComponent;
 
   onScanSuccess(result: string) {
     this.apiService.getTicket(result).subscribe(res => {
-     this.ticket = res;
+      this.profileService.setTicket(res);
+      this.router.navigate(['profile']);
     });
   }
 

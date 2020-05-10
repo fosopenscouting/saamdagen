@@ -1,5 +1,6 @@
-export interface Ticket {
+export class Ticket {
     firstName: string;
     lastName: string;
-    submissionData: string;
+    firstActivity: string;
+    secondActivity: string;
 }

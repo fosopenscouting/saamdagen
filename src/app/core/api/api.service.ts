@@ -14,6 +14,17 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   getTicket(hash: string): Observable<Ticket> {
-    return this.httpClient.get<any>(`${this.BASE_URL}/ticket?hash=${hash}`).pipe(map(data => data.data));
+    return this.httpClient.get<any>(`${this.BASE_URL}/ticket?hash=${hash}`).pipe(map(data => {
+
+      const ticket = new Ticket();
+
+      ticket.firstName = data.data.firstName;
+      ticket.lastName = data.data.lastName;
+      ticket.firstActivity = data.data.submissionData.data.formValues.woorkshops_voormiddag;
+      ticket.secondActivity =
+        data.data.submissionData.data.formValues.workshops_namiddag;
+
+      return ticket;
+    }));
   }
 }

@@ -1,12 +1,26 @@
-<zxing-scanner
+<div class="scanner-container">
+  <zxing-scanner
   #scanner
+  class="scanner"
   [(device)]="currentDevice"
   (scanSuccess)="onScanSuccess($event)"
   (permissionResponse)="onHasPermission($event)"
 >
 </zxing-scanner>
-<ng-container *ngIf="ticket"
-  ><h1>Resultaat</h1>
-  <p>{{ ticket.firstName }}</p>
-  <p>{{ ticket.lastName }}</p></ng-container
->
+<div *ngIf="success" class="scanner-overlay__success">
+  <p>Ticket werd gescand!</p>
+</div>
+
+<div *ngIf="loading" class="scanner-overlay__loading">
+  <p>Scannen..</p>
+</div>
+
+<div *ngIf="failure" class="scanner-overlay__failure">
+  <p>Ticket werd niet herkend, probeer opnieuw!</p>
+</div>
+
+</div>
+
+
+
+

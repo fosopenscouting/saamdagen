@@ -9,6 +9,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$default-blue: #094e95;
+
 $fos-blue: (
     50 : #e2ebf3,
     100 : #b6cce2,

@@ -5,7 +5,6 @@ import { Ticket } from '../../shared/ticket.model';
 import { ProfileService } from '../../shared/profile.service';
 import { Router } from '@angular/router';
 import { AppTitleService } from 'src/app/core/title/app-title.service';
-import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-scan',
@@ -42,7 +41,6 @@ scanner: ZXingScannerComponent;
       this.loading = false;
       this.success = true,
       this.profileService.setTicket(res);
-      timeout(2000);
       this.router.navigate(['profile']);
     }, err => {
       this.loading = false;

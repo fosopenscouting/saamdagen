@@ -1,5 +1,3 @@
-@import "../../../../../styles/material-theme.scss";
-
 .scanner-container {
   position: relative;
 }
@@ -20,7 +18,7 @@
 .scanner-overlay__loading {
   @extend .scanner-overlay;
 
-  background-color: rgba($default-blue, 0.4);
+  background-color: rgba(#094e95, 0.4);
 }
 
 .scanner-overlay__failure {

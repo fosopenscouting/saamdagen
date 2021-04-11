@@ -29,7 +29,7 @@ jobs:
       - name: 'Replace tokens'  
         uses: cschleiden/replace-tokens@v1
         with:
-          files: '["**environment.*.ts"]'
+          files: '["**/environment.*.ts"]'
         env:
           VERSION: ${{env.SEMVER}}
 

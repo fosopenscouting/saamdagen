@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin-ext');
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -7,8 +8,19 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
 
+
+@font-face {
+    font-family: "Andes";
+    src: local("Andes"), url(./assets/fonts/Andes.otf)
+}
+
+$general-typography: mat-typography-config(
+    $font-family: "'Lato', sans-serif",
+    $title: mat-typography-level(20px, 32px, 400, 'Andes')
+);
+
+@include mat-core($general-typography);
 $default-blue: #094e95;
 
 $fos-blue: (

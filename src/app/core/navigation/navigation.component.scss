@@ -5,12 +5,11 @@ body {
 .container {
   display: flex;
   flex-direction: column;
- position: absolute;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
   z-index: 1000;
 }
 
@@ -24,6 +23,23 @@ body {
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
+
+
+.top-items {
+  justify-content: normal;
+}
+
+.bottom-items {
+  justify-content: flex-end;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 
 
 

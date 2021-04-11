@@ -1,44 +1,34 @@
-<div class="container" [class.is-mobile]="isHandset$ | async" >
+<div class="container" [class.is-mobile]="isHandset$ | async">
   <mat-toolbar class="toolbar" color="primary">
-    <button
-      type="button"
-      aria-label="Toggle sidenav"
-      mat-icon-button
-      (click)="drawer.toggle()"
-    >
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <span>{{title$ | async}}</span>
- 
-   
+    <h1>{{title$ | async}}</h1>
+
+
   </mat-toolbar>
   <mat-sidenav-container class="sidenav-container" (swipeleft)="drawer.close()">
-    <mat-sidenav
-      #drawer
-      
-      class="sidenav mat-elevation-z2"
-      [fixedInViewport]="isHandset$ | async"
-      [mode]="(isHandset$ | async) ? 'over': 'side'"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [fixedTopGap]="(isHandset$ | async) ? '56' : '64'"
-      [opened]="(isHandset$ | async) === false"
-    >
-      <!--<mat-toolbar>Menu</mat-toolbar>-->
-      <mat-nav-list>
-        <a mat-list-item routerLink="/settings" routerLinkActive="active" (click)="drawer.close()">Instellingen</a>
-        <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="drawer.close()"
-          >Profiel</a
-        >
-        <a mat-list-item routerLink="/map" routerLinkActive="active" (click)="drawer.close()"
-          >Grondplan</a
-        >
-        <a mat-list-item (click)="checkUpdate()">Controleren op updates</a>
-      </mat-nav-list>
+    <mat-sidenav #drawer class="sidenav mat-elevation-z2" [fixedInViewport]="isHandset$ | async"
+      [mode]="(isHandset$ | async) ? 'over': 'side'" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [fixedTopGap]="(isHandset$ | async) ? '56' : '64'" [opened]="(isHandset$ | async) === false">
+      <div class="nav-list">
+        <mat-nav-list class="top-items">
+
+          <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="drawer.close()">Mijn Saamdagen</a>
+          <a mat-list-item routerLink="/map" routerLinkActive="active" (click)="drawer.close()">Grondplan</a>
+
+
+        </mat-nav-list>
+        <mat-nav-list class="bottom-items">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/settings" routerLinkActive="active" (click)="drawer.close()">Instellingen</a>
+          <a mat-list-item (click)="checkUpdate()">Controleren op updates</a>
+        </mat-nav-list>
+      </div>
+
     </mat-sidenav>
     <mat-sidenav-content (swiperight)="drawer.open()" class="content-container">
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
-

@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: ScheduleComponent
   }
-]
+];
 
 @NgModule({
   declarations: [ScheduleComponent],

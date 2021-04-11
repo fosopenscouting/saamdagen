@@ -11,7 +11,7 @@ export class ScheduleComponent implements OnInit {
   constructor(private titleService: AppTitleService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Programma')
+    this.titleService.setTitle('Programma');
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/core/theme/theme.service';
 import { Observable } from 'rxjs';
 import { AppTitleService } from 'src/app/core/title/app-title.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +17,8 @@ export class SettingsComponent implements OnInit {
     private titleService: AppTitleService) {
       this.titleService.setTitle('Instellingen');
      }
+    
+     version: string = environment.version;
 
   ngOnInit(): void {
     this.isDarkTheme$ = this.themeService.isDarkTheme$;

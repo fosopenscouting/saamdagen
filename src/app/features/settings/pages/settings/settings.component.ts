@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
     private titleService: AppTitleService) {
       this.titleService.setTitle('Instellingen');
      }
-    
+
      version: string = environment.version;
 
   ngOnInit(): void {

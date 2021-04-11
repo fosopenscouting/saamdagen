@@ -33,7 +33,7 @@ jobs:
         with:
           files: '["**/environment.*.ts"]'
         env:
-          VERSION: ${{env.SEMVER}}
+          VERSION: ${{env.GITVERSION_SEMVER}}
 
       - name: 'Install dependencies'
         run: npm ci 

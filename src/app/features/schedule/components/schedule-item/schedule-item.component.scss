@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    border-radius: 0;
+    padding: 16px;
+}
+
+.icon {
+    align-self: center;
+    height: 100%;
+    margin-right: 16px;
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.text-content {
+    grid-column: 2 ;
+}
+
+.time {
+    margin-top: 0px;
+    margin-bottom: 0;
+    grid-column: 1;
+}

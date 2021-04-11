@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/core/material/material.module';
+import { ScheduleItemComponent } from './components/schedule-item/schedule-item.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ScheduleComponent],
+  declarations: [ScheduleComponent, ScheduleItemComponent],
   imports: [
     CommonModule,
     MaterialModule,

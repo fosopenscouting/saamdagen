@@ -1,0 +1,8 @@
+<mat-card class="container" [style.background-color]="scheduleItem.color">
+    <mat-icon class="icon">home</mat-icon>
+    <div class="text-content">
+        <h4 class="title">{{scheduleItem.title}}</h4>
+        <p class="time">{{scheduleItem.start | date: 'HH:mm'}} - {{scheduleItem.end | date: 'HH:mm'}}</p>
+    </div>
+
+</mat-card>

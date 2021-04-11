@@ -1,7 +1,8 @@
-
-<p>Voornaam: {{ticket.firstName}}</p>
+<ng-container *ngIf="ticket">
+    <p>Voornaam: {{ticket.firstName}}</p>
 <p>Familienaam: {{ticket.lastName}}</p>
 <p>Eerste activiteit: {{ticket.firstActivity}}</p>
 <p>Tweede activiteit: {{ticket.secondActivity}}</p>
+</ng-container>
 
 <a routerLink="scan">Scan je ticket</a>

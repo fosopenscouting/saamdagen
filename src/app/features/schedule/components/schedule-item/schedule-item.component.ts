@@ -9,7 +9,7 @@ import { ScheduleItem } from '../../shared/schedule-item.model';
 export class ScheduleItemComponent implements OnInit {
 
   @Input() scheduleItem: ScheduleItem;
-  
+
   constructor() { }
 
   ngOnInit(): void {

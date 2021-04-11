@@ -11,10 +11,11 @@ export class ScheduleComponent implements OnInit {
 
   scheduleItem: ScheduleItem = {
     title: 'Test',
-    color: "#C9DD03",
+    color: '#C9DD03',
     start: new Date('2021-09-23 20:00'),
     end: new Date('2021-09-23 23:00'),
-  }
+  };
+
   constructor(private titleService: AppTitleService) { }
 
   ngOnInit(): void {

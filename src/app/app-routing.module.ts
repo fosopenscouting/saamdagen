@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/map/map.module').then(mod => mod.MapModule)
   },
   {
+    path: 'schedule',
+    loadChildren: () => import('./features/schedule/schedule.module').then(mod => mod.ScheduleModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

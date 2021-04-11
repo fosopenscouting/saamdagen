@@ -17,7 +17,7 @@
 
 $general-typography: mat-typography-config(
     $font-family: "'Lato', sans-serif",
-    $title: mat-typography-level(20px, 32px, 400, 'Andes')
+    $title: mat-typography-level(24px, 32px, 400, 'Andes')
 );
 
 @include mat-core($general-typography);

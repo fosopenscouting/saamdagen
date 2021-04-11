@@ -3,12 +3,12 @@
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
-    <h1>{{title$ | async}}</h1>
+    <h1 class="nav-title">{{title$ | async}}</h1>
 
 
   </mat-toolbar>
   <mat-sidenav-container class="sidenav-container" (swipeleft)="drawer.close()">
-    <mat-sidenav #drawer class="sidenav mat-elevation-z2" [fixedInViewport]="isHandset$ | async"
+    <mat-sidenav #drawer autoFocus="false" class="sidenav mat-elevation-z2" [fixedInViewport]="isHandset$ | async"
       [mode]="(isHandset$ | async) ? 'over': 'side'" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [fixedTopGap]="(isHandset$ | async) ? '56' : '64'" [opened]="(isHandset$ | async) === false">
       <div class="nav-list">

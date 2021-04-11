@@ -1,3 +1,5 @@
+@import '../../../styles/_variables';
+
 body {
   box-sizing: border-box;
 }
@@ -16,6 +18,7 @@ body {
 
 .sidenav {
   width:256px;
+  border-radius: 0 10px 10px 0;
 }
 
 .sidenav-container {
@@ -40,6 +43,13 @@ body {
   height: 100%;
 }
 
+.active {
+  background-color: rgba($fos-green, 0.3);
+}
+
+.nav-title {
+  margin-left: 8px;
+}
 
 
 

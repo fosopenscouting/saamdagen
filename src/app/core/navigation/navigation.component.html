@@ -13,7 +13,6 @@
       [fixedTopGap]="(isHandset$ | async) ? '56' : '64'" [opened]="(isHandset$ | async) === false">
       <div class="nav-list">
         <mat-nav-list class="top-items">
-
           <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="drawer.close()">Home</a>
           <a mat-list-item routerLink="/schedule" routerLinkActive="active" (click)="drawer.close()">Programma</a>
           <a mat-list-item routerLink="/map" routerLinkActive="active" (click)="drawer.close()">Grondplan</a>

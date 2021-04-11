@@ -16,6 +16,8 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.8

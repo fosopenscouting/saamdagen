@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppTitleService } from 'src/app/core/title/app-title.service';
+import { ScheduleDay } from '../../shared/schedule-day.model';
 import { ScheduleItem } from '../../shared/schedule-item.model';
+import { ScheduleService } from '../../shared/schedule.service';
 
 @Component({
   selector: 'app-schedule',
@@ -9,17 +11,16 @@ import { ScheduleItem } from '../../shared/schedule-item.model';
 })
 export class ScheduleComponent implements OnInit {
 
-  scheduleItem: ScheduleItem = {
-    title: 'Test',
-    color: '#C9DD03',
-    start: new Date('2021-09-23 20:00'),
-    end: new Date('2021-09-23 23:00'),
-  };
+  days: ScheduleDay[];
 
-  constructor(private titleService: AppTitleService) { }
+  constructor(
+    private titleService: AppTitleService,
+    private scheduleService: ScheduleService) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Programma');
+
+    this.days = this.scheduleService.data;
   }
 
 }

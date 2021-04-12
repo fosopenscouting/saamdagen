@@ -1,10 +1,7 @@
 <mat-tab-group mat-stretch-tabs="center" animationDuration="0ms">
-    <mat-tab label="Dag 1">
-        <app-schedule-item [scheduleItem]="scheduleItem"></app-schedule-item>
+    <mat-tab *ngFor="let day of days" [label]="day.title">
+        <div class="schedule-item" *ngFor="let item of day.items">
+            <app-schedule-item [scheduleItem]="item"></app-schedule-item>
+        </div>
     </mat-tab>
-    <mat-tab label="Dag 2">Dag 1</mat-tab>
-    <mat-tab label="Dag 3">Dag 1</mat-tab>
 </mat-tab-group>
-<div class="container">
-
-</div>

@@ -4,7 +4,7 @@
     <mat-icon class="icon">home</mat-icon>
     <div class="text-content">
         <h4 class="title">{{scheduleItem.title}}</h4>
-        <p class="time">{{scheduleItem.start | date: 'HH:mm'}} - {{scheduleItem.end | date: 'HH:mm'}}</p>
+        <p class="time">{{scheduleItem.start | date: 'HH:mm'}} 
+            <span *ngIf="scheduleItem.end"> - </span>{{scheduleItem.end | date: 'HH:mm'}}</p>
     </div>
-
 </div>

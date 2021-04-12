@@ -1,4 +1,4 @@
-import { ScheduleColor } from "./schedule-color.model";
+import { ScheduleColor } from './schedule-color.model';
 
 export interface ScheduleItem {
     title: string;

@@ -1,4 +1,4 @@
-import { ScheduleItem } from "./schedule-item.model";
+import { ScheduleItem } from './schedule-item.model';
 
 export interface ScheduleDay {
     title: string;

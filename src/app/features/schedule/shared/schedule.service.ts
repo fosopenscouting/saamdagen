@@ -7,20 +7,21 @@ import { ScheduleItem } from './schedule-item.model';
 const NORMAL_EVENT: ScheduleColor = {
   backgroundColor: '#c9db2e',
   borderColor: '#c9db2e'
-}
+};
+
 const WORKSHOP: ScheduleColor = {
   backgroundColor: '#ffffff',
   borderColor: '#99cccc'
-}
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
 
-  private days$: BehaviorSubject<ScheduleDay[]> = new BehaviorSubject<ScheduleDay[]>(null)
+  private days$: BehaviorSubject<ScheduleDay[]> = new BehaviorSubject<ScheduleDay[]>(null);
 
-  schedule$ = this.days$.asObservable()
+  schedule$ = this.days$.asObservable();
 
   public data: ScheduleDay[] = [
     {
@@ -84,7 +85,7 @@ export class ScheduleService {
         }
       ]
     }
-  ]
+  ];
 
   constructor() { }
 }

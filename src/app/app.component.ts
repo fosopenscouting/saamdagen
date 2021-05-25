@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { SwUpdate } from '@angular/service-worker';
 import { UpdateService } from './core/update/update.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoggingService } from './core/logging/logging.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
     private themeService: ThemeService,
     private updates: SwUpdate,
     private updateService: UpdateService,
-    private snackbar: MatSnackBar) {
+    private snackbar: MatSnackBar,
+    private loggingService: LoggingService) {
 
     this.updates.available.subscribe(res => {
       const snackRef = this.snackbar.open('Er is een nieuwe versie beschikbaar!', 'Bijwerken');

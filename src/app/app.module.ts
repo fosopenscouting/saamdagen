@@ -1,5 +1,5 @@
 import { BrowserModule, HammerModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import * as hammer from 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorHandlerService } from './core/logging/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: HammerGestureConfig
+    },
+    {
+      provide: ErrorHandler,
+      useClass: ErrorHandlerService,
     }
   ],
   bootstrap: [AppComponent]

@@ -5,6 +5,6 @@
     },
     "mimeTypes": {
         "json": "application/json",
-        "webmanifest": "application/json"
+        "webmanifest": "application/manifest+json"
     }
 }

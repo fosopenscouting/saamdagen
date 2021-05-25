@@ -4,8 +4,8 @@
   "theme_color": "#09559D",
   "background_color": "#09559D",
   "display": "standalone",
-  "scope": "https://app.saamdagen.be",
-  "start_url": "https://app.saamdagen.be",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
 
     {

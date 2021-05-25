@@ -20,24 +20,24 @@ export class LoggingService {
 
   logPageView(name?: string, url?: string) { // option to call manually
     this.appInsights.trackPageView({
-      name: name,
+      name,
       uri: url
     });
   }
 
   logEvent(name: string, properties?: { [key: string]: any }) {
-    this.appInsights.trackEvent({ name: name }, properties);
+    this.appInsights.trackEvent({ name }, properties);
   }
 
   logMetric(name: string, average: number, properties?: { [key: string]: any }) {
-    this.appInsights.trackMetric({ name: name, average: average }, properties);
+    this.appInsights.trackMetric({ name, average }, properties);
   }
 
   logException(exception: Error, severityLevel?: number) {
-    this.appInsights.trackException({ exception: exception, severityLevel: severityLevel });
+    this.appInsights.trackException({ exception, severityLevel });
   }
 
   logTrace(message: string, properties?: { [key: string]: any }) {
-    this.appInsights.trackTrace({ message: message }, properties);
+    this.appInsights.trackTrace({ message }, properties);
   }
 }

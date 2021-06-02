@@ -20,7 +20,6 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.get('assets/map.geo.json').subscribe(res => {
-      console.log(res);
       this.map.data.addGeoJson(res);
     }) 
     

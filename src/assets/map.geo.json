@@ -1,0 +1,59 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "stroke": "#555555",
+                "stroke-width": 2,
+                "stroke-opacity": 1,
+                "fill": "#555555",
+                "fill-opacity": 0.5,
+                "name": "podium"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            4.851332902908325,
+                            51.203334187318816
+                        ],
+                        [
+                            4.850431680679321,
+                            51.20303168539118
+                        ],
+                        [
+                            4.8507535457611075,
+                            51.20267540279533
+                        ],
+                        [
+                            4.851644039154053,
+                            51.20288379483689
+                        ],
+                        [
+                            4.851332902908325,
+                            51.203334187318816
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#7e7e7e",
+                "marker-size": "medium",
+                "marker-symbol": "roadblock",
+                "name": "Hello"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    4.849884510040283,
+                    51.20256112288838
+                ]
+            }
+        }
+    ]
+}

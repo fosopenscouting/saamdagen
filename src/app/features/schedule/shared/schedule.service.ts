@@ -10,7 +10,7 @@ const NORMAL_EVENT: ScheduleColor = {
 };
 
 const WORKSHOP: ScheduleColor = {
-  backgroundColor: '#ffffff',
+  backgroundColor: '#0B559D',
   borderColor: '#99cccc'
 };
 

@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: "Andes";
-    src: local("Andes"), url(./assets/fonts/Andes.otf)
+    src: local("Andes"), url(../assets/fonts/Andes.otf)
 }
 
 $general-typography: mat.define-typography-config(

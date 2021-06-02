@@ -21,7 +21,7 @@ De applicatie voor de editie van 2020 is een Angular PWA zodat deze beschikbaar 
 Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. Daarvoor moet er een productie build gemaakt worden. Die moet vervolgens geserved worden door een http server.
 
 - `$ npm install -g http-server` (eenmalig)
-- `$ ng build --prod`
+- `$ ng build --configuration production`
 - `$ http-server -c-1 dist/saamdagen`
 
 ### Branching

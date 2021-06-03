@@ -38,7 +38,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
       this.handsetSubscription = this.isHandset$.subscribe(res => {
         this.isHandset = res;
-      })
+      });
     }
 
     ngOnDestroy() {

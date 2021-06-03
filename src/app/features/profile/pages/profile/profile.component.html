@@ -1,8 +1,22 @@
-<ng-container *ngIf="ticket">
+<div class="container">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title class="mat-title">Mijn Saamdagen</mat-card-title>
+        <mat-card-subtitle>een woordje uitleg hier?</mat-card-subtitle> 
+    </mat-card-header>
+    
+    <mat-card-content class="container">
+        <ng-container *ngIf="ticket">
     <p>Voornaam: {{ticket.firstName}}</p>
-<p>Familienaam: {{ticket.lastName}}</p>
-<p>Eerste activiteit: {{ticket.firstActivity}}</p>
-<p>Tweede activiteit: {{ticket.secondActivity}}</p>
+    <p>Familienaam: {{ticket.lastName}}</p>
+    <p>Eerste activiteit: {{ticket.firstActivity}}</p>
+    <p>Tweede activiteit: {{ticket.secondActivity}}</p>
 </ng-container>
+<ng-container *ngIf="!ticket">
+    <p class="mat-caption center">Scan je ticket om je workshops en activiteiten hier te zien.</p>
+    <a routerLink="scan" class="scan-button" mat-raised-button color="primary">Scan je ticket</a>
+</ng-container>
+    </mat-card-content>
 
-<a routerLink="scan">Scan je ticket</a>
+</mat-card>
+</div>

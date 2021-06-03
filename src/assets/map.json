@@ -1,0 +1,11 @@
+[
+    {
+        "name": "podium",
+        "displayName": "Podium",
+        "info":"Hier wordt er gedanst!",
+        "coordinates": {
+            "lng": 4.849884510040283,
+            "lat": 51.20256112288838
+        }
+    }
+]

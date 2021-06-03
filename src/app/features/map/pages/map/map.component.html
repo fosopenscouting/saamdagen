@@ -1,9 +1,9 @@
-<google-map
-(swipeleft)='onswipe($event)'
-width="100%"
-height="100%"
-[center]="center"
-[zoom]="zoom"
->
-
+<google-map (swipeleft)='onswipe($event)' width="100%" height="100%" [center]="center" [zoom]="zoom">
+    <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.coordinates"
+    [title]="marker.displayName"
+    (mapClick)="openInfo(markerElem, marker.info)"></map-marker>
+    <map-info-window>{{ infoContent }}</map-info-window>
 </google-map>

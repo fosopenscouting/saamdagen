@@ -12,7 +12,7 @@ export class MapComponent implements OnInit {
   zoom = 17;
   center = { lng: 4.849884510040283, lat: 51.20256112288838 };
 
-  @ViewChild(GoogleMap, { static: false }) map: GoogleMap
+  @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
 
   constructor(private titleService: AppTitleService, private httpClient: HttpClient) {
     this.titleService.setTitle('Grondplan');
@@ -21,8 +21,7 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get('assets/map.geo.json').subscribe(res => {
       this.map.data.addGeoJson(res);
-    }) 
-    
+    });
   }
 
   onswipe(event) {

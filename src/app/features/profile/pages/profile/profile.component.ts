@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private profileService: ProfileService,
     private titleService: AppTitleService) {
-      titleService.setTitle('Profiel');
+      titleService.setTitle('Mijn Saamdagen');
      }
 
   ngOnInit(): void {

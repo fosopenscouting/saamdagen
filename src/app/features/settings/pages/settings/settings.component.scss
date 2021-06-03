@@ -1,0 +1,22 @@
+.toggle {
+    width: 100%;
+}
+
+.setting {
+    display: flex;
+    flex-direction: row;
+}
+
+.setting-label {
+    align-self: stretch;
+    width: 100%;
+    margin: 0;
+}
+
+.toggle {
+    width: fit-content;
+}
+
+.card + .card {
+    margin-top: 24px;
+}

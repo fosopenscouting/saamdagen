@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SwUpdate } from '@angular/service-worker';
@@ -11,7 +11,7 @@ import { AppTitleService } from '../title/app-title.service';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnDestroy {
 
   @ViewChild('drawer') sidenav: MatSidenav;
 
@@ -21,7 +21,11 @@ export class NavigationComponent implements OnInit {
       shareReplay()
     );
 
+    isHandset: boolean;
+
     title$: Observable<string>;
+
+    private handsetSubscription: Subscription;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -31,6 +35,14 @@ export class NavigationComponent implements OnInit {
 
     ngOnInit() {
       this.title$ = this.titleService.title$;
+
+      this.handsetSubscription = this.isHandset$.subscribe(res => {
+        this.isHandset = res;
+      })
+    }
+
+    ngOnDestroy() {
+      this.handsetSubscription.unsubscribe();
     }
 
   checkUpdate() {

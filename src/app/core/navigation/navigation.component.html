@@ -13,15 +13,15 @@
       [fixedTopGap]="(isHandset$ | async) ? '56' : '64'" [opened]="(isHandset$ | async) === false">
       <div class="nav-list">
         <mat-nav-list class="top-items">
-          <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="drawer.close()">Home</a>
-          <a mat-list-item routerLink="/schedule" routerLinkActive="active" (click)="drawer.close()">Programma</a>
-          <a mat-list-item routerLink="/map" routerLinkActive="active" (click)="drawer.close()">Grondplan</a>
-          <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="drawer.close()">Mijn Saamdagen</a>
+          <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="isHandset ? drawer.close() : null">Home</a>
+          <a mat-list-item routerLink="/schedule" routerLinkActive="active" (click)="isHandset ? drawer.close() : null">Programma</a>
+          <a mat-list-item routerLink="/map" routerLinkActive="active" (click)="isHandset ? drawer.close() : null">Grondplan</a>
+          <a mat-list-item routerLink="/profile" routerLinkActive="active" (click)="isHandset ? drawer.close() : null">Mijn Saamdagen</a>
 
         </mat-nav-list>
         <mat-nav-list class="bottom-items">
           <mat-divider></mat-divider>
-          <a mat-list-item routerLink="/settings" routerLinkActive="active" (click)="drawer.close()">Instellingen</a>
+          <a mat-list-item routerLink="/settings" routerLinkActive="active" (click)="isHandset ? drawer.close() : null">Instellingen</a>
           <a mat-list-item (click)="checkUpdate()">Controleren op updates</a>
         </mat-nav-list>
       </div>

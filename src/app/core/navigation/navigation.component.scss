@@ -7,50 +7,38 @@ body {
 .nav-container {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  height: 100%;
 }
 
-
-.sidenav {
-  width:256px;
-  border-radius: 0 10px 10px 0;
-}
-
-.sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-  flex: 1;
-}
-
-
-.top-items {
-  justify-content: normal;
+.content {
+    flex: 1 1 auto;
+    align-self: stretch;
 }
 
 .bottom-items {
-  justify-content: flex-end;
+  display: flex;
+  justify-content: space-between;
 }
 
 .nav-list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100%;
 }
 
 .active {
-  background-color: rgba($fos-green, 0.3);
+  color: $fos-green;
 }
 
 .nav-title {
   margin-left: 8px;
 }
 
+
+.nav-icon {
+  transform: scale(1.4);
+}
 
 
 

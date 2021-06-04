@@ -1,4 +1,4 @@
-<div class="nav-container" [class.is-mobile]="isHandset$ | async">
+<!--<div class="nav-container" [class.is-mobile]="isHandset$ | async">
   <mat-toolbar class="toolbar" color="primary">
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -31,4 +31,26 @@
       <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>-->
+
+<div class="nav-container">
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+  <mat-toolbar color="primary" class="bottom-items">
+    <a class="nav-icon" routerLinkActive="active" routerLink="/home" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>home</mat-icon>
+    </a>
+    <a class="nav-icon" routerLinkActive="active" routerLink="/schedule" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>calendar_view_day</mat-icon>
+    </a>
+
+    <a class="nav-icon" routerLinkActive="active" routerLink="/map" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>explore</mat-icon>
+    </a>
+    <a class="nav-icon" routerLinkActive="active" routerLink="/profile" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>account_circle</mat-icon>
+    </a>
+</mat-toolbar>
 </div>
+

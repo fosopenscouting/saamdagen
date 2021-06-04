@@ -1,0 +1,20 @@
+.hero-image {
+    max-width: 100%;
+}
+
+.expansion-title {
+    text-transform: uppercase;
+}
+
+mat-expansion-panel-header {
+    border-radius: 0;
+}
+
+mat-expansion-panel-header:first-child {
+    background-color: blue;
+    color: white;
+}
+
+mat-expansion-panel {
+    border-radius: 0 !important;
+}

@@ -42,9 +42,8 @@ Pull Requests naar master triggeren ook een build. Deze wordt ook gedeployed naa
 
 De sleutel kan ook niet ingeladen worden via de environment.ts file omdat het script in index.html wordt ingeladen. Op het moment van inladen, is onze Angular applicatie nog niet gestart.
 
-
 ### Base design
 
 De app zou er ongeveer zo moeten uitzien
 
-![alt text](./.github/assets/base-design.png "Design")
+![Base design](./.github/assets/base-design.png "Design")

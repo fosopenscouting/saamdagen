@@ -44,8 +44,4 @@ Pull Requests naar master triggeren ook een build. Deze wordt ook gedeployed naa
 
 ### UI design
 
-<https://xd.adobe.com/view/92d4685b-fc9a-40c7-814b-50cb14ffe31f-c787/grid>
-
-De app zou er ongeveer zo moeten uitzien
-
-![Base design](./.github/assets/base-design.png "Design")
+<https://xd.adobe.com/view/1cef593f-f39e-4138-a5b5-217d87659aee-49bc/>

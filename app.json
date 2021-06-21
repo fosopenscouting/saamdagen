@@ -3,6 +3,7 @@
     "name": "saamdagen",
     "slug": "saamdagen",
     "version": "1.0.0",
+    "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",

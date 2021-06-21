@@ -2,27 +2,29 @@
 
 Android app voor de komende editie van Saamdagen.
 
-De applicatie voor de editie van 2020 is een Angular PWA zodat deze beschikbaar is voor apparaten van alle geuren en kleuren.
+De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 ## Setup/Running
 
 ### Installatie
 
-- Node.js
-- Angular CLI (`$ npm install -g @angular/cli`)
+- Node.js 12+ (dit installeert ook meteen npm)
+- Yarn ( `npm install -g yarn`)
+- Expo CLI (`npm install -g expo-cli`)
+- Expo Go (iOS of Android app)
+
+### Tooling
+
+VS Code is een goede optie om in te ontwikkelen. Bij het openen van deze repo in VS Code zal je ook een aantal suggesties krijgen voor handige extensies.
 
 ### Lokaal uitvoeren (development)
 
-- `$ npm install`
-- `$ npm start`
+Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 
-### PWA functionaliteit testen
+- `$ expo start`
+- Scan de QR code die verschijnt met de Expo app
 
-Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. Daarvoor moet er een productie build gemaakt worden. Die moet vervolgens geserved worden door een http server.
-
-- `$ npm install -g http-server` (eenmalig)
-- `$ ng build --configuration production`
-- `$ http-server -c-1 dist/saamdagen`
+Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/create-a-new-app/>
 
 ### Branching
 
@@ -30,17 +32,15 @@ Door `ng serve` uit te voeren wordt de PWA functionaliteit niet 'geactiveerd'. D
 
 **saamdagen-2019:** App voor de editie van 2019. Deze versie wordt bewaard in een aparte branch omdat er tussen '19 en '20 volledig opnieuw werd begonnen.
 
+**saamdagen-2020**: App voor de afgelaste editie van 2020. Deze applicatie werd nooit afgewerkt of gebruikt.
+
+Push nooit direct naar de master branch, maar gebruik Pull Requests.
+
 ### CI/CD
 
 Elke push/merge naar de **master** branch triggert een build en deploy naar app.saamdagen.be. Aanvullend bij de build, wordt ook **ng lint** uitgevoerd. De applicatie wordt gehost op Azure in een 'Static Web App'.
 
 Pull Requests naar master triggeren ook een build. Deze wordt ook gedeployed naar een tijdelijke omgeving waar je je changes kan (laten) valideren vooraleer er gemerged wordt naar master.
-
-### Google Maps
-
-`@angular/google-maps` wordt gebruikt voor het weergeven van een kaart/grondplan. In `index.html` wordt de API sleutel opgegeven. Deze sleutel kan niet geheim zijn aangezien het hier gaat over een frontend applicatie. Daarom is het belangrijk dat er restricties worden ingesteld in de API Console van Google.
-
-De sleutel kan ook niet ingeladen worden via de environment.ts file omdat het script in index.html wordt ingeladen. Op het moment van inladen, is onze Angular applicatie nog niet gestart.
 
 ### UI design
 

@@ -15,7 +15,8 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 ### Tooling
 
-VS Code is een goede optie om in te ontwikkelen. Bij het openen van deze repo in VS Code zal je ook een aantal suggesties krijgen voor handige extensies.
+- VS Code is een goede optie om in te ontwikkelen. Bij het openen van deze repo in VS Code zal je ook een aantal suggesties krijgen voor handige extensies.
+- React Native Directory: directory met third party libraries die compatibel zijn met React Native. <https://reactnative.directory/>
 
 ### Lokaal uitvoeren (development)
 
@@ -45,3 +46,27 @@ Pull Requests naar master triggeren ook een build. Deze wordt ook gedeployed naa
 ### UI design
 
 <https://xd.adobe.com/view/1cef593f-f39e-4138-a5b5-217d87659aee-49bc/>
+
+### Conventions
+
+#### 1. Gebruik functionele componenten
+
+Gebruik steeds functionele componenten tegenover class componenten. Voor functionele componenten gebruiken we volgende syntax:
+
+```JSX
+const Component = (props: PropType) => {
+    const [counter, setCounter] = useState(0);
+
+    return (
+        <View>
+        <Text>Hello World!</Text>
+        </View>
+    )
+}
+
+export default Component;
+```
+
+#### 2. .tsx vs .ts
+
+Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` extensie wanneer het om 'pure' TypeScript gaat.

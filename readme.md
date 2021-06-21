@@ -39,9 +39,7 @@ Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
 ### CI/CD
 
-Elke push/merge naar de **master** branch triggert een build en deploy naar app.saamdagen.be. Aanvullend bij de build, wordt ook **ng lint** uitgevoerd. De applicatie wordt gehost op Azure in een 'Static Web App'.
-
-Pull Requests naar master triggeren ook een build. Deze wordt ook gedeployed naar een tijdelijke omgeving waar je je changes kan (laten) valideren vooraleer er gemerged wordt naar master.
+TBD
 
 ### UI design
 
@@ -62,7 +60,7 @@ const Component = (props: PropType) => {
         <Text>Hello World!</Text>
         </View>
     )
-}
+};
 
 export default Component;
 ```

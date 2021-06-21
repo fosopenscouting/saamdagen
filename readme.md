@@ -27,6 +27,12 @@ Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'pac
 
 Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/create-a-new-app/>
 
+#### Uitvoeren in een emulator
+
+1. Installeer en start een iOS en/of Android emulator
+2. Volg de algemene stappen zoals hierboven beschreven
+3. Kies, in het browserscherm dat opende na `expo start`te draaien, om de app te openen in een emulator naar keuze.
+
 ### Branching
 
 **master:** Code zoals ze in productie is. Changes op deze branch triggeren een build en deploy

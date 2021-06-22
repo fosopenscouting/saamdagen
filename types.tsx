@@ -12,7 +12,7 @@ export type BottomTabParamList = {
   Info: undefined;
   Programma: undefined;
   Grondplan: undefined;
-  "Mijn Saamdagen": undefined
+  'Mijn Saamdagen': undefined;
 };
 
 export type InfoParamList = {

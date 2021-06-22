@@ -16,15 +16,17 @@ const TabScreen: React.FC<Props> = (props: Props): React.ReactElement => {
     <View style={styles.container}>
       <Text>Hello Tab {props.tabNumber}</Text>
     </View>
-  )
-}
-
+  );
+};
 
 export default function ScheduleScreen() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Vrijdag" children={() => <TabScreen tabNumber={0} />} />
-      <Tab.Screen name="Zaterdag" children={() => <TabScreen tabNumber={1} />} />
+      <Tab.Screen
+        name="Zaterdag"
+        children={() => <TabScreen tabNumber={1} />}
+      />
       <Tab.Screen name="Zondag" children={() => <TabScreen tabNumber={2} />} />
     </Tab.Navigator>
   );

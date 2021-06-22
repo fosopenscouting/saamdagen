@@ -24,10 +24,8 @@ const ProfileScreen: React.FC = () => {
     const ticket = await AsyncStorage.getItem('sd_ticket');
 
     if (ticket) {
-      console.log(ticket);
       setTicketData(JSON.parse(ticket));
     }
-    console.log('no ticket');
   };
 
   const deleteTicket = async () => {

@@ -5,19 +5,19 @@ import { Camera } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Button, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed';
 import { Ticket } from '../models/Ticket';
 // TODO: add a cancel button
 // TODO: add a way to turn the flash of the phone on or off
-const ScanScreen = () => {
+const ScanScreen: React.FC = () => {
   const navigation = useNavigation();
   const [hasCameraPermission, setHasCameraPermission] = useState<
     boolean | null
   >(null);
   const [scanned, setScanned] = useState(false);
-  const [ticketData, setTicketData] = useState(null);
+  const [ticketData, setTicketData] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -35,14 +35,16 @@ const ScanScreen = () => {
         .then((res) => res.json())
         .then(
           async (data) =>
-            await storeTicket(data).then((res) =>
+            await storeTicket(data).then(() =>
               navigation.navigate('ProfileScreen'),
             ),
         );
     }
   }, [ticketData]);
 
-  const storeTicket = async (data: any) => {
+  // Disabling type checking because the hassle is not worth it
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const storeTicket = async (data: any): Promise<void> => {
     try {
       const ticket: Ticket = {
         firstName: data.data.firstName,
@@ -64,7 +66,7 @@ const ScanScreen = () => {
     }
   };
 
-  const handleBarCodeScanned = ({ type, data }: any): void => {
+  const handleBarCodeScanned = ({ data }: { data: string }): void => {
     setScanned(true);
     setTicketData(data);
   };

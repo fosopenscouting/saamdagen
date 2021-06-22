@@ -11,13 +11,14 @@
     "plugin:jest/recommended"
   ],
   "rules": {
-    "no-console": 1,
+    "no-console": 0,
     "prettier/prettier": 2,
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "react/display-name": "off"
   },
   "settings": {
     "react": {

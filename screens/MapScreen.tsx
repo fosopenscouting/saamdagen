@@ -3,7 +3,7 @@ import { View } from '../components/Themed';
 import { Dimensions, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
-const MapScreen = () => {
+const MapScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <MapView style={styles.map} />

@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { RootStackParamList } from '../types';
 
-export default function NotFoundScreen({
+const NotFoundScreen = ({
   navigation,
-}: StackScreenProps<RootStackParamList, 'NotFound'>) {
+}: StackScreenProps<RootStackParamList, 'NotFound'>) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This screen doesn't exist.</Text>
+      <Text style={styles.title}>This screen doesn&apos;t exist.</Text>
       <TouchableOpacity
         onPress={() => navigation.replace('Root')}
         style={styles.link}
@@ -18,7 +19,9 @@ export default function NotFoundScreen({
       </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default NotFoundScreen;
 
 const styles = StyleSheet.create({
   container: {

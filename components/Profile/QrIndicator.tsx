@@ -5,7 +5,7 @@ import Svg, { Path, SvgProps } from 'react-native-svg';
 /**
  * A pulsing 'crosshair' that is overlayed on the camera screen. Taken from the Expo Go app source code
  */
-const QrIndicator = () => {
+const QrIndicator: React.FC = () => {
   const scale = useMemo(() => new Animated.Value(1), []);
   const duration = 500;
   React.useEffect(() => {

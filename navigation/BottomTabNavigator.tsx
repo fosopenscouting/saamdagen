@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * Learn more about createBottomTabNavigator:
  * https://reactnavigation.org/docs/bottom-tab-navigator
@@ -25,7 +26,7 @@ import {
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
+const BottomTabNavigator: React.FC = () => {
   const colorScheme = useColorScheme();
 
   return (
@@ -75,7 +76,9 @@ export default function BottomTabNavigator() {
       />
     </BottomTab.Navigator>
   );
-}
+};
+
+export default BottomTabNavigator;
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab

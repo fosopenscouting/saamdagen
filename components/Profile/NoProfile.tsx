@@ -5,7 +5,7 @@ import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';
 import { useNavigation } from '@react-navigation/native';
 
-const NoProfile = () => {
+const NoProfile: React.FC = () => {
   const colorScheme = useColorScheme();
   const navigation = useNavigation();
 

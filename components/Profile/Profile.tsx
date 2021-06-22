@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import { View } from '../Themed';
 
-const Profile = () => {
-
+const Profile: React.FC = () => {
+  return <View></View>;
 };
 
 export default Profile;

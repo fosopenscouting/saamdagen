@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * Learn more about createBottomTabNavigator:
  * https://reactnavigation.org/docs/bottom-tab-navigator
@@ -15,11 +16,17 @@ import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ScanScreen from '../screens/ScanScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
-import { BottomTabParamList, InfoParamList, MapParamList, ProfileParamList, ScheduleParamList } from '../types';
+import {
+  BottomTabParamList,
+  InfoParamList,
+  MapParamList,
+  ProfileParamList,
+  ScheduleParamList,
+} from '../types';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
+const BottomTabNavigator: React.FC = () => {
   const colorScheme = useColorScheme();
 
   return (
@@ -33,14 +40,18 @@ export default function BottomTabNavigator() {
         name="Info"
         component={InfoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" color={color} size={26} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} />
+          ),
         }}
       />
       <BottomTab.Screen
         name="Programma"
         component={ScheduleNavigator}
         options={{
-          tabBarIcon: ({ color }) => <MaterialIcons name="calendar-view-day" color={color} size={26} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="calendar-view-day" color={color} size={26} />
+          ),
         }}
       />
 
@@ -48,21 +59,26 @@ export default function BottomTabNavigator() {
         name="Grondplan"
         component={MapNavigator}
         options={{
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="map" color={color} size={26} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="map" color={color} size={26} />
+          ),
         }}
       />
-
 
       <BottomTab.Screen
         name="Mijn Saamdagen"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account" color={color} size={26} />,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={26} />
+          ),
         }}
       />
     </BottomTab.Navigator>
   );
-}
+};
+
+export default BottomTabNavigator;
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -75,11 +91,15 @@ const InfoNavigator = () => {
       <InfoStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Info', headerTintColor: Colors[colorScheme].tabTextColor, headerStyle: { backgroundColor: Colors[colorScheme].tabBackground } }}
+        options={{
+          headerTitle: 'Info',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
       />
     </InfoStack.Navigator>
   );
-}
+};
 
 const ScheduleStack = createStackNavigator<ScheduleParamList>();
 
@@ -90,14 +110,21 @@ const ScheduleNavigator = () => {
       <ScheduleStack.Screen
         name="ScheduleScreen"
         component={ScheduleScreen}
-        options={{ headerTitle: 'Programma', headerTintColor: Colors[colorScheme].tabTextColor, headerStyle: { elevation: 0, shadowOpacity: 0, backgroundColor: Colors[colorScheme].tabBackground } }}
+        options={{
+          headerTitle: 'Programma',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: {
+            elevation: 0,
+            shadowOpacity: 0,
+            backgroundColor: Colors[colorScheme].tabBackground,
+          },
+        }}
       />
     </ScheduleStack.Navigator>
   );
-}
+};
 
 const MapStack = createStackNavigator<MapParamList>();
-
 
 const MapNavigator = () => {
   const colorScheme = useColorScheme();
@@ -106,14 +133,17 @@ const MapNavigator = () => {
       <MapStack.Screen
         name="MapScreen"
         component={MapScreen}
-        options={{ headerTitle: 'Grondplan', headerTintColor: Colors[colorScheme].tabTextColor, headerStyle: { backgroundColor: Colors[colorScheme].tabBackground } }}
+        options={{
+          headerTitle: 'Grondplan',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
       />
     </MapStack.Navigator>
   );
-}
+};
 
 const ProfileStack = createStackNavigator<ProfileParamList>();
-
 
 const ProfileNavigator = () => {
   const colorScheme = useColorScheme();
@@ -122,13 +152,21 @@ const ProfileNavigator = () => {
       <ProfileStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Mijn Saamdagen', headerTintColor: Colors[colorScheme].tabTextColor, headerStyle: { backgroundColor: Colors[colorScheme].tabBackground } }}
+        options={{
+          headerTitle: 'Mijn Saamdagen',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
       />
       <ProfileStack.Screen
         name="ScanScreen"
         component={ScanScreen}
-        options={{ headerTitle: 'Mijn Saamdagen', headerTintColor: Colors[colorScheme].tabTextColor, headerStyle: { backgroundColor: Colors[colorScheme].tabBackground } }}
+        options={{
+          headerTitle: 'Mijn Saamdagen',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
       />
-    </ ProfileStack.Navigator>
+    </ProfileStack.Navigator>
   );
-}
+};

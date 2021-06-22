@@ -5,7 +5,8 @@ import { Camera } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import QRFooterButton from '../components/Profile/QRFooterButton';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed';
 import { Ticket } from '../models/Ticket';
@@ -15,6 +16,7 @@ const ScanScreen: React.FC = () => {
   const navigation = useNavigation();
   const [scanned, setScanned] = useState(false);
   const [ticketData, setTicketData] = useState<string | null>(null);
+  const [isLit, setLit] = useState(false);
 
   useEffect(() => {
     // TODO: move this to a routed screen that gets the ticket from the api and stores it. That way we can enable deep linking from an url as well.
@@ -31,6 +33,14 @@ const ScanScreen: React.FC = () => {
         );
     }
   }, [ticketData]);
+
+  const onFlashToggle = React.useCallback(() => {
+    setLit((isLit) => !isLit);
+  }, []);
+
+  const onCancel = React.useCallback(() => {
+    navigation.goBack();
+  }, []);
 
   // Disabling type checking because the hassle is not worth it
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -69,7 +79,16 @@ const ScanScreen: React.FC = () => {
         }}
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
+        flashMode={isLit ? 'torch' : 'off'}
       />
+      <View style={[styles.footer, { bottom: 30 }]}>
+        <QRFooterButton
+          onPress={onFlashToggle}
+          isActive={isLit}
+          iconName="ios-flashlight"
+        />
+        <QRFooterButton onPress={onCancel} iconName="ios-close" iconSize={48} />
+      </View>
       <QrIndicator />
     </View>
   );
@@ -82,5 +101,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  footer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: '10%',
+    backgroundColor: 'transparent',
   },
 });

@@ -22,6 +22,7 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 
+- `$ yarn install` (enkel bij de eerste keer starten)
 - `$ expo start`
 - Scan de QR code die verschijnt met de Expo app
 

@@ -4,7 +4,7 @@ import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
-// @ts-expect-error Error is ignored because the imported type doesn't have Typings available
+// @ts-expect-error Error is ignored because the imported component doesn't have Typings available
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
 
 import Colors from '../../constants/Colors';

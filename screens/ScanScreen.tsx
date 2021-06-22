@@ -5,7 +5,7 @@ import { Camera } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import QRFooterButton from '../components/Profile/QRFooterButton';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed';

@@ -82,7 +82,7 @@ const ProfileScreen: React.FC = () => {
             ) : null}
             <View style={styles.deleteContainer}>
               <Button
-                color={Colors[colorScheme].tabBackground}
+                color="#EB5961"
                 onPress={deleteTicket}
                 title="Verwijder"
               />

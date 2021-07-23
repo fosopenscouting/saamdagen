@@ -72,12 +72,13 @@ const ProfileScreen: React.FC = () => {
                     {ticketData.workshopBeforeNoon}
                   </Text>
                 </View>
-
-                <Text>Namiddag</Text>
-                <Text style={styles.ticketText}>
-                  {ticketData.activityAfterNoon}
-                  {ticketData.workshopAfterNoon}
-                </Text>
+                <View style={styles.infoBlock}>
+                  <Text>Namiddag</Text>
+                  <Text style={styles.ticketText}>
+                    {ticketData.activityAfterNoon}
+                    {ticketData.workshopAfterNoon}
+                  </Text>
+                </View>
               </View>
             ) : null}
             <View style={styles.deleteContainer}>
@@ -98,7 +99,7 @@ const ProfileScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flex: 1,
+    //flex: 1,
   },
   container: {
     flex: 1,
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   deleteContainer: {
-    marginTop: 8,
+    marginTop: 12,
   },
 });
 

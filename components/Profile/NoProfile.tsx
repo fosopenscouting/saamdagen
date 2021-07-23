@@ -4,10 +4,22 @@ import { Button, StyleSheet } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';
 import { useNavigation } from '@react-navigation/native';
+import requestCameraPermissionsAsync from '../../utils/requestCameraPermissionsAsync';
 
 const NoProfile: React.FC = () => {
   const colorScheme = useColorScheme();
   const navigation = useNavigation();
+
+  const handleScanPress = async () => {
+    if (await requestCameraPermissionsAsync()) {
+      navigation.navigate('ScanScreen');
+    } else {
+      // TODO: replace with better alert
+      alert(
+        'Om je ticket te kunnen scannen, moet je toegang geven tot je camera. Geef toegang tot je camera via de instellingen van je apparaat',
+      );
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -21,7 +33,7 @@ const NoProfile: React.FC = () => {
       <Button
         color={Colors[colorScheme].tabBackground}
         title="Ticket scannen"
-        onPress={() => navigation.navigate('ScanScreen')}
+        onPress={handleScanPress}
       />
     </View>
   );

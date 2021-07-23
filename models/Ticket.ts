@@ -6,4 +6,5 @@ export interface Ticket {
   workshopAfterNoon: string;
   activityBeforeNoon: string;
   activityAfterNoon: string;
+  hash: string;
 }

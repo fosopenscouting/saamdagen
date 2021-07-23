@@ -15,24 +15,24 @@ import { Ticket } from '../models/Ticket';
 const ScanScreen: React.FC = () => {
   const navigation = useNavigation();
   const [scanned, setScanned] = useState(false);
-  const [ticketData, setTicketData] = useState<string | null>(null);
+  const [ticketHash, setTicketHash] = useState<string | null>(null);
   const [isLit, setLit] = useState(false);
 
   useEffect(() => {
     // TODO: move this to a routed screen that gets the ticket from the api and stores it. That way we can enable deep linking from an url as well.
-    if (ticketData) {
-      fetch(`https://ticketing.fos.be/api/ticket?hash=${ticketData}`, {
+    if (ticketHash) {
+      fetch(`https://ticketing.fos.be/api/ticket?hash=${ticketHash}`, {
         method: 'GET',
       })
         .then((res) => res.json())
         .then(
           async (data) =>
-            await storeTicket(data).then(() =>
+            await storeTicket(data, ticketHash).then(() =>
               navigation.navigate('ProfileScreen'),
             ),
         );
     }
-  }, [ticketData]);
+  }, [ticketHash]);
 
   const onFlashToggle = React.useCallback(() => {
     setLit((isLit) => !isLit);
@@ -44,21 +44,34 @@ const ScanScreen: React.FC = () => {
 
   // Disabling type checking because the hassle is not worth it
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const storeTicket = async (data: any): Promise<void> => {
+  const storeTicket = async (data: any, ticketHash: string): Promise<void> => {
     try {
+      const formValues = data.data.submissionData.data.formValues;
+      const workshopsBeforeNoon =
+        data.data.submissionData.formElements.workshops_voormiddag;
+      const workshopsAfterNoon =
+        data.data.submissionData.formElements.workshops_namiddag;
+      const activitiesBeforeNoon =
+        data.data.submissionData.formElements.activiteit_voormiddag;
+      const activitiesAfterNoon =
+        data.data.submissionData.formElements.activiteit_namiddag;
       const ticket: Ticket = {
         firstName: data.data.firstName,
         lastName: data.data.lastName,
-        ticketType:
-          data.data.submissionData.data.formValues.type_deelnemer_keuze,
-        workshopBeforeNoon:
-          data.data.submissionData.data.formValues.workshops_voormiddag,
-        workshopAfterNoon:
-          data.data.submissionData.data.formValues.workshops_namiddag,
-        activityBeforeNoon:
-          data.data.submissionData.data.formValues.activiteit_namiddag,
-        activityAfterNoon:
-          data.data.submissionData.data.formValues.activiteit_voormiddag,
+        ticketType: formValues.type_deelnemer_keuze,
+        workshopBeforeNoon: formValues.workshops_voormiddag
+          ? workshopsBeforeNoon['#options'][formValues.workshops_voormiddag]
+          : null,
+        workshopAfterNoon: formValues.workshops_namiddag
+          ? workshopsAfterNoon['#options'][formValues.workshops_namiddag]
+          : null,
+        activityBeforeNoon: formValues.activiteit_voormiddag
+          ? activitiesBeforeNoon['#options'][formValues.activiteit_voormiddag]
+          : null,
+        activityAfterNoon: formValues.activiteit_namiddag
+          ? activitiesAfterNoon['#options'][formValues.activiteit_namiddag]
+          : null,
+        hash: ticketHash,
       };
       await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
     } catch (e) {
@@ -67,8 +80,9 @@ const ScanScreen: React.FC = () => {
   };
 
   const handleBarCodeScanned = ({ data }: { data: string }): void => {
+    console.log(data);
     setScanned(true);
-    setTicketData(data);
+    setTicketHash(data);
   };
 
   return (

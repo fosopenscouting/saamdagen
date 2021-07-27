@@ -71,8 +71,10 @@ const MapScreen: React.FC = () => {
           ))}
         </MapView>
         <BottomSheetModal ref={sheetRef} snapPoints={snapPoints}>
-          <Text>{selectedMarker?.title}</Text>
-          <Text>{selectedMarker?.description}</Text>
+          <View style={styles.markerDetail}>
+            <Text style={styles.title}>{selectedMarker?.title}</Text>
+            <Text>{selectedMarker?.description}</Text>
+          </View>
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
@@ -93,9 +95,8 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   markerDetail: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     padding: 16,
-    height: 450,
   },
 });
 

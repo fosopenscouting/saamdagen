@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { View, Text } from '../components/Themed';
+import { View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
-import MapView, { Marker, Region } from 'react-native-maps';
+import MapView, { Marker, Region, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import {
@@ -44,7 +44,7 @@ const MapScreen: React.FC = () => {
       <View style={styles.container}>
         <MapView
           style={styles.map}
-          provider="google"
+          provider={PROVIDER_GOOGLE}
           region={mapRegion}
           showsUserLocation={true}
           minZoomLevel={16}

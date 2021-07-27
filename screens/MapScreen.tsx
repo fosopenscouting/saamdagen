@@ -81,16 +81,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
   map: {
     ...StyleSheet.absoluteFillObject,
-  },
-  markerDetail: {
-    backgroundColor: 'transparent',
-    padding: 16,
   },
 });
 

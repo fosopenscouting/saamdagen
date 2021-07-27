@@ -1,10 +1,19 @@
-import React from 'react';
-import { View } from '../components/Themed';
-import { Dimensions, StyleSheet } from 'react-native';
-import MapView, { Region } from 'react-native-maps';
+import React, { useState, useRef, useMemo } from 'react';
+import { View, Text } from '../components/Themed';
+import { StyleSheet } from 'react-native';
+import MapView, { Marker, Region } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { MapMarker } from '../models/MapMarker';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
+import { useCallback } from 'react';
 
 const MapScreen: React.FC = () => {
+  const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
+  const sheetRef = useRef<BottomSheetModal>(null);
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
   const mapRegion: Region = {
     latitude: 51.200977,
     longitude: 4.850671,
@@ -12,22 +21,61 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
+  const markers: MapMarker[] = [
+    {
+      id: 'infopunt',
+      title: 'Infopunt',
+      description: 'Vind hier alle info die je nodig hebt!',
+      latLng: {
+        latitude: 51.200974,
+        longitude: 4.850735,
+      },
+    },
+  ];
+
   const onMapReady = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
+    await Location.requestForegroundPermissionsAsync();
   };
 
+  const onMarkerSelect = useCallback((markerIdentifier: string) => {
+    const markerObject = markers.find((x) => x.id == markerIdentifier);
+    setSelectedMarker(markerObject);
+    sheetRef.current?.present();
+  }, []);
+
+  const handleMapPress = useCallback(() => {
+    sheetRef.current?.dismiss();
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        provider="google"
-        region={mapRegion}
-        showsUserLocation={true}
-        minZoomLevel={16}
-        showsMyLocationButton
-        onMapReady={onMapReady}
-      />
-    </View>
+    <BottomSheetModalProvider>
+      <View style={styles.container}>
+        <MapView
+          style={styles.map}
+          provider="google"
+          region={mapRegion}
+          showsUserLocation={true}
+          // minZoomLevel={16}
+          showsMyLocationButton
+          toolbarEnabled={false}
+          onMapReady={onMapReady}
+          onPress={handleMapPress}
+        >
+          {markers.map((marker, index) => (
+            <Marker
+              onPress={(e) => onMarkerSelect(e.nativeEvent.id)}
+              key={index}
+              coordinate={marker.latLng}
+              identifier={marker.id}
+            />
+          ))}
+        </MapView>
+        <BottomSheetModal ref={sheetRef} snapPoints={snapPoints}>
+          <Text>{selectedMarker?.title}</Text>
+          <Text>{selectedMarker?.description}</Text>
+        </BottomSheetModal>
+      </View>
+    </BottomSheetModalProvider>
   );
 };
 
@@ -42,8 +90,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    ...StyleSheet.absoluteFillObject,
+  },
+  markerDetail: {
+    backgroundColor: 'white',
+    padding: 16,
+    height: 450,
   },
 });
 

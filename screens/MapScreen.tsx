@@ -9,6 +9,8 @@ import {
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
 import { useCallback } from 'react';
+import { getMapMarkers } from '../services/DataService';
+import MapDetail from '../components/Map/MapDetail';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
@@ -21,17 +23,7 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
-  const markers: MapMarker[] = [
-    {
-      id: 'infopunt',
-      title: 'Infopunt',
-      description: 'Vind hier alle info die je nodig hebt!',
-      latLng: {
-        latitude: 51.200974,
-        longitude: 4.850735,
-      },
-    },
-  ];
+  const markers: MapMarker[] = getMapMarkers();
 
   const onMapReady = async () => {
     await Location.requestForegroundPermissionsAsync();
@@ -55,7 +47,7 @@ const MapScreen: React.FC = () => {
           provider="google"
           region={mapRegion}
           showsUserLocation={true}
-          // minZoomLevel={16}
+          minZoomLevel={16}
           showsMyLocationButton
           toolbarEnabled={false}
           onMapReady={onMapReady}
@@ -71,10 +63,12 @@ const MapScreen: React.FC = () => {
           ))}
         </MapView>
         <BottomSheetModal ref={sheetRef} snapPoints={snapPoints}>
-          <View style={styles.markerDetail}>
-            <Text style={styles.title}>{selectedMarker?.title}</Text>
-            <Text>{selectedMarker?.description}</Text>
-          </View>
+          {selectedMarker ? (
+            <MapDetail
+              title={selectedMarker?.title}
+              description={selectedMarker?.description}
+            />
+          ) : null}
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>

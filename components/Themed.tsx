@@ -47,3 +47,13 @@ export const View: React.FC<ViewProps> = (props: ViewProps) => {
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 };
+
+export const Separator: React.FC = () => {
+  return (
+    <View
+      style={{ marginVertical: 24, height: 1, width: '100%' }}
+      lightColor={Colors.light.tabBackground}
+      darkColor="rgb(255,255,255)"
+    />
+  );
+};

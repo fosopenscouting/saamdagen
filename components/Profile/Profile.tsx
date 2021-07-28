@@ -22,13 +22,17 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
       <Text style={styles.ticketType}>
         Je bent op Saamdagen als {props.participantType}
       </Text>
-      <Text style={styles.activityHeader}>Workshopkeuze</Text>
-      <Text>
-        <Text>Voormiddag:</Text> {props.beforeNoon}
-      </Text>
-      <Text>
-        <Text>Namiddag:</Text> {props.beforeNoon}
-      </Text>
+      {props.participantType === 'Deelnemer' ? (
+        <>
+          <Text style={styles.activityHeader}>Workshopkeuze</Text>
+          <Text>
+            <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
+          </Text>
+          <Text>
+            <Text style={styles.bold}>Namiddag:</Text> {props.afterNoon}
+          </Text>
+        </>
+      ) : null}
     </View>
   );
 };
@@ -60,6 +64,9 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 4,
     textTransform: 'uppercase',
+  },
+  bold: {
+    fontWeight: 'bold',
   },
 });
 

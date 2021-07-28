@@ -46,7 +46,7 @@ Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
 ### CI/CD
 
-TBD
+Elke push naar master triggert een Expo Publish. In de toekomst moet er nog een branching strategie opgesteld worden die rekening houdt met release channels.
 
 ### UI design
 

@@ -8,8 +8,11 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { useCallback } from 'react';
 import { getMapMarkers } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
 
 const MapScreen: React.FC = () => {
+  const colorScheme = useColorScheme();
   const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
@@ -63,7 +66,11 @@ const MapScreen: React.FC = () => {
         ))}
       </MapView>
       {selectedMarker ? (
-        <BottomSheet ref={sheetRef} snapPoints={snapPoints}>
+        <BottomSheet
+          backgroundComponent={View}
+          ref={sheetRef}
+          snapPoints={snapPoints}
+        >
           {selectedMarker ? (
             <MapDetail
               title={selectedMarker?.title}

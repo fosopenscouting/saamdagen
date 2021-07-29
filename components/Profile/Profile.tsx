@@ -23,7 +23,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         Je bent op Saamdagen als {props.participantType}
       </Text>
       {props.participantType === 'Deelnemer' ? (
-        <>
+        <View style={styles.activityContainer}>
           <Text style={styles.activityHeader}>Workshopkeuze</Text>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
@@ -31,7 +31,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           <Text>
             <Text style={styles.bold}>Namiddag:</Text> {props.afterNoon}
           </Text>
-        </>
+        </View>
       ) : null}
     </View>
   );
@@ -64,9 +64,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 4,
     textTransform: 'uppercase',
+    textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
+  },
+  activityContainer: {
+    backgroundColor: 'transparent',
   },
 });
 

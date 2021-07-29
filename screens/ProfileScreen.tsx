@@ -54,8 +54,16 @@ const ProfileScreen: React.FC = () => {
             <Profile
               firstName={ticketData.firstName}
               lastName={ticketData.lastName}
-              beforeNoon={ticketData.activityBeforeNoon}
-              afterNoon={ticketData.workshopAfterNoon}
+              beforeNoon={
+                ticketData.activityBeforeNoon
+                  ? ticketData.activityBeforeNoon
+                  : ticketData.workshopBeforeNoon
+              }
+              afterNoon={
+                ticketData.activityAfterNoon
+                  ? ticketData.activityAfterNoon
+                  : ticketData.workshopAfterNoon
+              }
               participantType={ticketData.ticketType}
             />
             <Separator />

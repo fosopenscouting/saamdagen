@@ -11,6 +11,7 @@ export default {
     tabBackground: '#0a559d',
     tabTextColor: 'white',
     white: 'white',
+    headerColor: '#0a559d',
   },
   dark: {
     text: '#fff',
@@ -21,5 +22,6 @@ export default {
     tabBackground: '#0a559d',
     tabTextColor: 'white',
     white: 'white',
+    headerColor: 'white',
   },
 };

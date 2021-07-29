@@ -1,6 +1,6 @@
 import React from 'react';
 import { Separator, Text, View } from '../components/Themed';
-import { StyleSheet, Button, ScrollView } from 'react-native';
+import { StyleSheet, Button, ScrollView, Alert } from 'react-native';
 import NoProfile from '../components/Profile/NoProfile';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -24,6 +24,24 @@ const ProfileScreen: React.FC = () => {
 
     return unsubscribe;
   }, []);
+
+  const showConfirmDialog = () => {
+    return Alert.alert(
+      'Ben je zeker',
+      'Ben je zeker dat je je ticket wil verwijderen?',
+      [
+        {
+          text: 'Ja',
+          onPress: () => {
+            deleteTicket();
+          },
+        },
+        {
+          text: 'Nee',
+        },
+      ],
+    );
+  };
 
   const getTicket = async () => {
     const ticket = await AsyncStorage.getItem('sd_ticket');
@@ -68,7 +86,11 @@ const ProfileScreen: React.FC = () => {
             />
             <Separator />
 
-            <Button color="#EB5961" onPress={deleteTicket} title="Verwijder" />
+            <Button
+              color="#EB5961"
+              onPress={showConfirmDialog}
+              title="Verwijder"
+            />
           </View>
         ) : (
           <View style={styles.profileContainer}>

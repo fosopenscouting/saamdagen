@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text } from '../Themed';
 import { StyleSheet } from 'react-native';
-import { white } from 'react-native-paper/lib/typescript/styles/colors';
+import Colors from '../../constants/Colors';
+import useColorScheme from '../../hooks/useColorScheme';
 
 interface ProfileProps {
   firstName: string;
@@ -12,19 +13,35 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
+  const colorScheme = useColorScheme();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.greetingHeader}>Hey {props.firstName}</Text>
+      <Text
+        style={[
+          styles.greetingHeader,
+          { color: Colors[colorScheme].headerColor },
+        ]}
+      >
+        Hey {props.firstName}
+      </Text>
       <Text style={styles.ticketText}>Dit is jouw ticket voor Saamdagen.</Text>
       <Text style={styles.ticketText}>
         Met deze QR-code krijg je toegang tot het evenement.
       </Text>
       <Text style={styles.ticketType}>
-        Je bent op Saamdagen als {props.participantType}
+        Je bent op Saamdagen als {props.participantType}.
       </Text>
       {props.participantType === 'Deelnemer' ? (
         <View style={styles.activityContainer}>
-          <Text style={styles.activityHeader}>Workshopkeuze</Text>
+          <Text
+            style={[
+              styles.activityHeader,
+              { color: Colors[colorScheme].headerColor },
+            ]}
+          >
+            Workshopkeuze
+          </Text>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
           </Text>
@@ -39,7 +56,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
@@ -56,6 +73,7 @@ const styles = StyleSheet.create({
   ticketType: {
     marginTop: 16,
     marginBottom: 8,
+    textAlign: 'center',
   },
   activityHeader: {
     marginTop: 8,

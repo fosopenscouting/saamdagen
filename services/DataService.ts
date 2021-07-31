@@ -1,4 +1,5 @@
 import { MapMarker } from '../models/MapMarker';
+import { ScheduleData } from '../models/ScheduleData';
 
 export const getMapMarkers = (): MapMarker[] => {
   return [
@@ -22,3 +23,29 @@ export const getMapMarkers = (): MapMarker[] => {
     },
   ];
 };
+
+export const getScheduleData = (): ScheduleData[] => {
+  return [
+    {
+      startTime: new Date(2021, 9, 24, 20),
+      endTime: undefined,
+      location: 'infopunt',
+      name: 'Incheck',
+      description: "Inchecken met de saamdagen app!" 
+    },
+    {
+      startTime: new Date(2021, 9, 24, 21),
+      endTime: new Date(2021, 9, 24, 22),
+      location: 'podium',
+      name: 'PodiumShow',
+      description: "Sfeer met team saamdagen!"
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 25, 2),
+      location: 'podium',
+      name: 'White Shoes',
+      description: "Leef je helemaal uit met deze party band"
+    }
+  ]
+}

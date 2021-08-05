@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from '../Themed';
+import { View, Text, Separator } from '../Themed';
 import { Button, StyleSheet } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';
@@ -23,6 +23,7 @@ const NoProfile: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <Separator />
       <Text style={styles.title}>
         Naar welke workshop of activiteit ga jij?
       </Text>
@@ -30,6 +31,7 @@ const NoProfile: React.FC = () => {
         Scan jouw ticket om je workshops en activiteiten hier te zien. Doe dit
         op voorhand: je hebt een werkende internetconnectie nodig.
       </Text>
+      <Separator />
       <Button
         color={Colors[colorScheme].tabBackground}
         title="Ticket scannen"
@@ -46,10 +48,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
   text: {
     textAlign: 'center',
-    marginBottom: 16,
   },
   title: {
     fontSize: 16,

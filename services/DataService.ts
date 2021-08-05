@@ -46,6 +46,27 @@ export const getScheduleData = (): ScheduleData[] => {
       location: 'podium',
       name: 'White Shoes',
       description: "Leef je helemaal uit met deze party band"
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 25, 2),
+      location: 'fuiftent',
+      name: 'Silent Disco',
+      description: "Losgaan"
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22, 30),
+      endTime: new Date(2021, 9, 25, 4),
+      location: 'kampvuur',
+      name: 'Kampvuur',
+      description: "Kamperen is de mooiste zomersport"
+    },
+    {
+      startTime: new Date(2021, 9, 24, 23),
+      endTime: new Date(2021, 9, 25, 4),
+      location: 'test',
+      name: 'Scroll Test',
+      description: "Kamperen is de mooiste zomersport"
     }
   ]
 }

@@ -52,7 +52,7 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
                 <View style={{flex: 1, flexDirection: "column"}}>
                     <View style={{flex: 1, flexDirection: "row"}}>
                         <View style={{flex: 1}}>
-                            <HeaderText style={styles.eventSmallHeader}>
+                            <HeaderText style={styles.eventH3}>
                                 {renderScheduleTime(content)} - {content.location}
                             </HeaderText>
                         </View>
@@ -61,7 +61,7 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
                         </View>
                     </View>
                     <View style={{flex: 1}}>
-                        <HeaderText style={styles.eventBigHeader}>{content.name}</HeaderText>
+                        <HeaderText style={styles.eventH1}>{content.name}</HeaderText>
                     </View>
                 </View>
             </Animatable.View>
@@ -93,21 +93,30 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
         <View>
             <ScrollView contentContainerStyle={{
                 paddingTop: 30, margin: 10 }}>
-                <TouchableOpacity
-                    onPress={() => setHideOverview(!hideOverview)}>
-                    <HeaderText>ALGEMENE OPENINGSUREN</HeaderText>
-                </TouchableOpacity>
+                <View style={{ flex: 1, flexDirection: "row" }}>
+                    <View style={{flex: 1}}>
+                        <TouchableOpacity
+                            onPress={() => setHideOverview(!hideOverview)}>
+                            <HeaderText style={styles.eventH2}>ALGEMENE OPENINGSUREN</HeaderText>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        {renderCollapsibleIcon(hideOverview)}
+                    </View>
+                </View>
                 <Collapsible collapsed={hideOverview}>
                     <View style={styles.container}>
+                        {/* :TODO: make this dynamic? */}
                         <HeaderText>
-                            Infopunt: 20u00 tot 02u30{"\n"}
-                            Hoofdbar: 21u00 tot 02u00{"\n"}
-                            Rustige bar: 23u00 tot 02u30{"\n"}
-                            Bar fuiftent: 22u30 tot 03u00{"\n"}
-                            FOS-Shop: 20u00 tot 22u00
+                            <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00 tot 02u30{"\n"}
+                            <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00 tot 02u00{"\n"}
+                            <HeaderText style={styles.eventH3}>Rustige bar:</HeaderText> 23u00 tot 02u30{"\n"}
+                            <HeaderText style={styles.eventH3}>Bar fuiftent:</HeaderText> 22u30 tot 03u00{"\n"}
+                            <HeaderText style={styles.eventH3}>FOS-Shop:</HeaderText> 20u00 tot 22u00
                         </HeaderText>
                     </View>
                 </Collapsible>
+                <View style={[styles.filterBar, {backgroundColor: Colors[colorScheme].tabBackground}]}></View>
                 <Accordion
                     sections={dayEvents}
                     renderHeader={renderHeader}
@@ -127,7 +136,7 @@ export default DayScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
     },
     collapsibleIndicator: { 
@@ -135,12 +144,19 @@ const styles = StyleSheet.create({
         textAlign: "right",
         fontSize: 32,
     },
-    eventSmallHeader: {
+    eventH3: {
         fontSize: 16,
         fontWeight: 'bold',
         flex: 1
     },
-    eventBigHeader: {
+    eventH2: {
+        fontSize: 24,
+        fontWeight: 'normal',
+        fontFamily: 'AndesLight',
+        textTransform: 'uppercase',
+        textAlign: 'left'
+    },
+    eventH1: {
         fontSize: 32,
         fontWeight: 'normal',
         fontFamily: 'AndesLight',
@@ -154,5 +170,8 @@ const styles = StyleSheet.create({
     },
     inactiveEvent: {
         borderBottomWidth: 2,
+    },
+    filterBar: {
+        height: 100,
     }
 });

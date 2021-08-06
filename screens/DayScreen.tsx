@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet } from "react-native";
-import { getScheduleData } from '../services/DataService';
+import { getMapMarkers, getScheduleData } from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
@@ -24,6 +24,7 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
     const dayEvents : ScheduleData[] = getScheduleData()
         .filter((event) => event.startTime.getDate() == dayInfo.day);
     const colorScheme = useColorScheme();
+    const mapMarkers = getMapMarkers()
 
     const renderScheduleTime = (scheduleData : ScheduleData) : string => {
         var startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
@@ -48,7 +49,7 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
                     <View style={{flex: 1, flexDirection: "row"}}>
                         <View style={{flex: 1}}>
                             <HeaderText style={styles.eventH3}>
-                                {renderScheduleTime(content)} - {content.location}
+                                {renderScheduleTime(content)} - {mapMarkers.get(content.location)?.title}
                             </HeaderText>
                         </View>
                         <View>

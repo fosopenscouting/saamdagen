@@ -55,7 +55,7 @@ export const getScheduleData = (): ScheduleData[] => {
       startTime: new Date(2021, 9, 24, 21),
       endTime: new Date(2021, 9, 24, 22),
       location: "Podium",
-      name: 'PodiumShow',
+      name: 'Podium Show',
       description: "Sfeer met team saamdagen!"
     },
     {

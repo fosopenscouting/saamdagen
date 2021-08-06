@@ -42,11 +42,6 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
         return (
             <Animatable.View
                 duration={400}
-                style={[
-                    styles.header, 
-                    isActive ? styles.activeEvent : styles.inactiveEvent,
-                    { borderBottomColor: Colors[colorScheme].headerColor }
-                ]}
                 transition="backgroundColor"
             >
                 <View style={{flex: 1, flexDirection: "column"}}>
@@ -79,53 +74,63 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
         return (
             <Animatable.View
                 duration={400}
-                // style={[styles.content, isActive ? styles.active : styles.inactive]}
+                style={styles.content}
                 transition="backgroundColor"
             >
-                <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>
+                <HeaderText>
                     {content.description}
-                </Animatable.Text>
+                </HeaderText>
             </Animatable.View>
         );
     }
 
+    const renderFooter = (content: ScheduleData, _, isActive : boolean) => {
+        return <View
+            style={[
+                styles.eventSeparator,
+                { borderBottomColor: Colors[colorScheme].headerColor }
+            ]}/>
+    }
+
     return (
         <View>
-            <ScrollView contentContainerStyle={{
-                paddingTop: 30, margin: 10 }}>
-                <View style={{ flex: 1, flexDirection: "row" }}>
-                    <View style={{flex: 1}}>
-                        <TouchableOpacity
-                            onPress={() => setHideOverview(!hideOverview)}>
-                            <HeaderText style={styles.eventH2}>ALGEMENE OPENINGSUREN</HeaderText>
-                        </TouchableOpacity>
+            <ScrollView>
+                <View style={{paddingTop: 30, margin: 10}}>
+                    <View style={{ flex: 1, flexDirection: "row" }}>
+                        <View style={{flex: 1}}>
+                            <TouchableOpacity
+                                onPress={() => setHideOverview(!hideOverview)}>
+                                <HeaderText style={styles.eventH2}>ALGEMENE OPENINGSUREN</HeaderText>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            {renderCollapsibleIcon(!hideOverview)}
+                        </View>
                     </View>
-                    <View>
-                        {renderCollapsibleIcon(hideOverview)}
-                    </View>
+                    <Collapsible collapsed={hideOverview}>
+                        <View style={styles.container}>
+                            {/* :TODO: make this dynamic? */}
+                            <HeaderText>
+                                <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00 tot 02u30{"\n"}
+                                <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00 tot 02u00{"\n"}
+                                <HeaderText style={styles.eventH3}>Rustige bar:</HeaderText> 23u00 tot 02u30{"\n"}
+                                <HeaderText style={styles.eventH3}>Bar fuiftent:</HeaderText> 22u30 tot 03u00{"\n"}
+                                <HeaderText style={styles.eventH3}>FOS-Shop:</HeaderText> 20u00 tot 22u00
+                            </HeaderText>
+                        </View>
+                    </Collapsible>
+                    <View style={[styles.filterBar, {backgroundColor: Colors[colorScheme].tabBackground}]}></View>
+                    <Accordion
+                        sections={dayEvents}
+                        renderHeader={renderHeader}
+                        // renderSectionTitle={renderHeader}
+                        renderContent={renderContent}
+                        renderFooter={renderFooter}
+                        activeSections={activeSections}
+                        onChange={setActiveSections}
+                        underlayColor= {Colors[colorScheme].background}
+                    />
                 </View>
-                <Collapsible collapsed={hideOverview}>
-                    <View style={styles.container}>
-                        {/* :TODO: make this dynamic? */}
-                        <HeaderText>
-                            <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00 tot 02u30{"\n"}
-                            <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00 tot 02u00{"\n"}
-                            <HeaderText style={styles.eventH3}>Rustige bar:</HeaderText> 23u00 tot 02u30{"\n"}
-                            <HeaderText style={styles.eventH3}>Bar fuiftent:</HeaderText> 22u30 tot 03u00{"\n"}
-                            <HeaderText style={styles.eventH3}>FOS-Shop:</HeaderText> 20u00 tot 22u00
-                        </HeaderText>
-                    </View>
-                </Collapsible>
-                <View style={[styles.filterBar, {backgroundColor: Colors[colorScheme].tabBackground}]}></View>
-                <Accordion
-                    sections={dayEvents}
-                    renderHeader={renderHeader}
-                    // renderSectionTitle={renderHeader}
-                    renderContent={renderContent}
-                    activeSections={activeSections}
-                    onChange={setActiveSections}
-                    underlayColor= {Colors[colorScheme].background}
-                />
             </ScrollView>
         </View>
     )
@@ -134,6 +139,9 @@ const DayScreen : React.FC<DayInfo> = (dayInfo: DayInfo) => {
 export default DayScreen;
 
 const styles = StyleSheet.create({
+    content: {
+        marginBottom: 5
+    },
     container: {
         flex: 1,
         alignItems: 'flex-start',
@@ -163,13 +171,10 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         textAlign: 'left'
     },
-    header: {
-        // margin: 10
-    },
-    activeEvent: {
-    },
-    inactiveEvent: {
+    eventSeparator: {
         borderBottomWidth: 2,
+        marginTop: 5,
+        marginBottom: 5
     },
     filterBar: {
         height: 100,

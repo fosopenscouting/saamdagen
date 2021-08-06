@@ -26,6 +26,7 @@ export const getMapMarkers = (): MapMarker[] => {
 
 export const getScheduleData = (): ScheduleData[] => {
   return [
+    // Vrijdag
     {
       startTime: new Date(2021, 9, 24, 20),
       endTime: undefined,
@@ -52,7 +53,7 @@ export const getScheduleData = (): ScheduleData[] => {
       endTime: new Date(2021, 9, 25, 2),
       location: 'fuiftent',
       name: 'Silent Disco',
-      description: "Losgaan"
+      description: "Laat je volledig gaan met een Silent Disco. Ook dit jaar een beperkte capaciteit. Ieder halfuur een nieuw feestje: Snel pieken is de opdracht! DJ Rabeat, DJ Bowti en Twomey Tunes verzorgen jullie avond in stijl!"
     },
     {
       startTime: new Date(2021, 9, 24, 22, 30),
@@ -61,12 +62,55 @@ export const getScheduleData = (): ScheduleData[] => {
       name: 'Kampvuur',
       description: "Kamperen is de mooiste zomersport"
     },
+    // Zaterdag
     {
-      startTime: new Date(2021, 9, 24, 23),
-      endTime: new Date(2021, 9, 25, 4),
-      location: 'test',
-      name: 'Scroll Test',
-      description: "Kamperen is de mooiste zomersport"
+      startTime: new Date(2021, 9, 25, 9, 30),
+      endTime: new Date(2021, 9, 25, 11, 45),
+      location: 'podium',
+      name: 'Groot Spel',
+      description: "Kom naar het podium voor het groot spel."
+    },
+    {
+      startTime: new Date(2021, 9, 25, 12),
+      endTime: new Date(2021, 9, 25, 13),
+      location: 'podium',
+      name: 'Lunch',
+      description: "Eten"
+    },
+    {
+      startTime: new Date(2021, 9, 25, 13, 30),
+      endTime: new Date(2021, 9, 25, 18),
+      location: 'podium',
+      name: 'Activiteiten',
+      description: ""
+    },
+    {
+      startTime: new Date(2021, 9, 25, 18),
+      endTime: new Date(2021, 9, 25, 19, 45),
+      location: 'kampvuur',
+      name: 'Avondmaal',
+      description: "Eten"
+    },
+    {
+      startTime: new Date(2021, 9, 25, 20, 15),
+      endTime: new Date(2021, 9, 25, 20, 40),
+      location: 'podium',
+      name: 'Podium Show',
+      description: "Slot van het groot spel"
+    },
+    {
+      startTime: new Date(2021, 9, 25, 20, 40),
+      endTime: new Date(2021, 9, 25, 20, 50),
+      location: 'podium',
+      name: 'Speech FV',
+      description: "Bingo?"
+    },
+    {
+      startTime: new Date(2021, 9, 25, 20, 50),
+      endTime: new Date(2021, 9, 25, 22, 20),
+      location: 'podium',
+      name: 'Maiskie Molie',
+      description: "Rock 'n Roll!"
     }
   ]
 }

@@ -10,9 +10,7 @@ import { HeaderText, View } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
-
-import UilAngleDown from '@iconscout/react-native-unicons/icons/uil-angle-down';
-import UilAngleRight from '@iconscout/react-native-unicons/icons/uil-angle-right';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface DayInfo {
   day: number;
@@ -28,15 +26,18 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const mapMarkers = getMapMarkers();
 
   const renderScheduleTime = (scheduleData: ScheduleData): string => {
-    var startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
-    var startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
+    const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
+    const startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
       2,
       '0',
     );
-    var startTime = `${startHours}u${startMinutes}`;
+    const startTime = `${startHours}u${startMinutes}`;
     if (scheduleData.endTime) {
-      var endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
-      var endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(2, '0');
+      const endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
+      const endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(
+        2,
+        '0',
+      );
       return `${startTime} tot ${endHours}u${endMinutes}`;
     } else {
       return startTime;
@@ -65,9 +66,14 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   };
 
   const renderCollapsibleIcon = (isActive: boolean) => {
-    if (isActive) return <UilAngleDown size="26" color="#000000" />;
+    if (isActive)
+      return (
+        <MaterialCommunityIcons name="chevron-down" size={26} color="#000000" />
+      );
 
-    return <UilAngleRight size="26" color="#000000" />;
+    return (
+      <MaterialCommunityIcons name="chevron-right" size={26} color="#000000" />
+    );
   };
 
   const renderContent = (content: ScheduleData, _, isActive: boolean) => {

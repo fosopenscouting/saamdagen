@@ -9,11 +9,21 @@ import { useCallback } from 'react';
 import { getMapMarkers } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
 import { PointOfInterest } from '../models/PointOfInterest';
+import { FAB, Portal, Provider } from 'react-native-paper';
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import { useEffect } from 'react';
+import { MapLayer } from '../models/MapLayer';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
+  const [layer, setLayer] = useState<MapLayer>('normal');
+  const [markers, setMarkers] = useState<Map<PointOfInterest, MapMarker>>();
+  const [fabOpen, setFabOpen] = useState<boolean>(false);
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const colorScheme = useColorScheme();
+
   const mapRegion: Region = {
     latitude: 51.200977,
     longitude: 4.850671,
@@ -21,31 +31,47 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
-  const markers: Map<PointOfInterest, MapMarker> = getMapMarkers();
+  useEffect(() => {
+    const newMarkers: Map<PointOfInterest, MapMarker> = new Map();
+    getMapMarkers().forEach((value: MapMarker, key: PointOfInterest) => {
+      if (value.layer === layer) {
+        newMarkers.set(key, value);
+      }
+    });
+
+    setMarkers(newMarkers);
+  }, [layer]);
 
   const onMapReady = async () => {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  const onMarkerSelect = useCallback((markerIdentifier: PointOfInterest) => {
-    const markerObject = markers.get(markerIdentifier);
-    setSelectedMarker(markerObject);
+  const handleMarkerSelect = useCallback(
+    (markerIdentifier: PointOfInterest) => {
+      const markerObject = markers?.get(markerIdentifier);
+      setSelectedMarker(markerObject);
 
-    sheetRef.current?.snapTo(0);
-  }, []);
+      sheetRef.current?.snapTo(0);
+    },
+    [],
+  );
 
   const handleMapPress = useCallback(() => {
     sheetRef.current?.close();
   }, []);
 
+  const handleLayerSelect = (layer: MapLayer): void => {
+    setLayer(layer);
+  };
+
   const renderMarkers = () => {
     const nodes: JSX.Element[] = [];
-    markers.forEach((value: MapMarker, key: PointOfInterest) =>
+    markers?.forEach((value: MapMarker, key: PointOfInterest) =>
       nodes.push(
         <Marker
           onPress={(e) => {
             e.stopPropagation();
-            onMarkerSelect(e.nativeEvent.id as PointOfInterest);
+            handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
           }}
           key={key}
           coordinate={value.latLng}
@@ -85,6 +111,29 @@ const MapScreen: React.FC = () => {
           ) : null}
         </BottomSheet>
       ) : null}
+      <Provider>
+        <Portal>
+          <FAB.Group
+            visible
+            fabStyle={{ backgroundColor: Colors[colorScheme].tabBackground }}
+            open={fabOpen}
+            icon="layers"
+            actions={[
+              {
+                icon: 'map-marker-outline',
+                label: 'Normaal',
+                onPress: () => handleLayerSelect('normal'),
+              },
+              {
+                icon: 'basketball',
+                label: 'Activiteiten',
+                onPress: () => handleLayerSelect('activities'),
+              },
+            ]}
+            onStateChange={() => setFabOpen(!fabOpen)}
+          />
+        </Portal>
+      </Provider>
     </View>
   );
 };
@@ -97,6 +146,12 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });
 

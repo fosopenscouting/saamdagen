@@ -12,6 +12,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.200974,
         longitude: 4.850735,
       },
+      layer: 'normal',
     },
   ],
   [
@@ -23,6 +24,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.201108,
         longitude: 4.851519,
       },
+      layer: 'normal',
     },
   ],
   [
@@ -34,6 +36,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.2005331,
         longitude: 4.8502755,
       },
+      layer: 'normal',
     },
   ],
   [
@@ -45,6 +48,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.2005331,
         longitude: 4.8502755,
       },
+      layer: 'normal',
     },
   ],
 ]);

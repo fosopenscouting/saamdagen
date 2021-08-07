@@ -1,5 +1,1 @@
-export type PointOfInterest =
-    | "Podium"
-    | "KampVuur"
-    | "InfoPunt"
-    | "FuifTent"
+export type PointOfInterest = 'Podium' | 'KampVuur' | 'InfoPunt' | 'FuifTent';

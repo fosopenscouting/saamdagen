@@ -1,9 +1,9 @@
-import { PointOfInterest } from "./PointOfInterest";
+import { PointOfInterest } from './PointOfInterest';
 
 export interface ScheduleData {
-    startTime: Date;
-    endTime?: Date;
-    location: PointOfInterest;
-    name: string;
-    description: string;
+  startTime: Date;
+  endTime?: Date;
+  location: PointOfInterest;
+  name: string;
+  description: string;
 }

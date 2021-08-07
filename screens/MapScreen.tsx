@@ -39,20 +39,22 @@ const MapScreen: React.FC = () => {
   }, []);
 
   const renderMarkers = () => {
-    let nodes : JSX.Element[] = [];
-    markers.forEach((value: MapMarker, key: PointOfInterest) => (
-      nodes.push(<Marker
-        onPress={(e) => {
-          e.stopPropagation();
-          onMarkerSelect(e.nativeEvent.id as PointOfInterest);
-        }}
-        key={key}
-        coordinate={value.latLng}
-        identifier={key}
-      />)
-    ));
+    let nodes: JSX.Element[] = [];
+    markers.forEach((value: MapMarker, key: PointOfInterest) =>
+      nodes.push(
+        <Marker
+          onPress={(e) => {
+            e.stopPropagation();
+            onMarkerSelect(e.nativeEvent.id as PointOfInterest);
+          }}
+          key={key}
+          coordinate={value.latLng}
+          identifier={key}
+        />,
+      ),
+    );
     return nodes;
-  }
+  };
 
   return (
     <View style={styles.container}>

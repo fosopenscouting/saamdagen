@@ -26,10 +26,7 @@ const ScheduleScreen: React.FC = () => {
         name="Vrijdag"
         children={() => <DayScreen day={24} />}
       ></Tab.Screen>
-      <Tab.Screen
-        name="Zaterdag"
-        children={() => <DayScreen day={25} />}
-      />
+      <Tab.Screen name="Zaterdag" children={() => <DayScreen day={25} />} />
       <Tab.Screen name="Zondag" children={() => <DayScreen day={26} />} />
     </Tab.Navigator>
   );

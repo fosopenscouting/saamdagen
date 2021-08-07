@@ -8,6 +8,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { useCallback } from 'react';
 import { getMapMarkers } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
+import { PointOfInterest } from '../models/PointOfInterest';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
@@ -20,14 +21,14 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
-  const markers: MapMarker[] = getMapMarkers();
+  const markers: Map<PointOfInterest, MapMarker> = getMapMarkers();
 
   const onMapReady = async () => {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  const onMarkerSelect = useCallback((markerIdentifier: string) => {
-    const markerObject = markers.find((x) => x.id == markerIdentifier);
+  const onMarkerSelect = useCallback((markerIdentifier: PointOfInterest) => {
+    const markerObject = markers.get(markerIdentifier);
     setSelectedMarker(markerObject);
 
     sheetRef.current?.snapTo(0);
@@ -36,6 +37,24 @@ const MapScreen: React.FC = () => {
   const handleMapPress = useCallback(() => {
     sheetRef.current?.close();
   }, []);
+
+  const renderMarkers = () => {
+    const nodes: JSX.Element[] = [];
+    markers.forEach((value: MapMarker, key: PointOfInterest) =>
+      nodes.push(
+        <Marker
+          onPress={(e) => {
+            e.stopPropagation();
+            onMarkerSelect(e.nativeEvent.id as PointOfInterest);
+          }}
+          key={key}
+          coordinate={value.latLng}
+          identifier={key}
+        />,
+      ),
+    );
+    return nodes;
+  };
 
   return (
     <View style={styles.container}>
@@ -50,17 +69,7 @@ const MapScreen: React.FC = () => {
         onMapReady={onMapReady}
         onPress={handleMapPress}
       >
-        {markers.map((marker, index) => (
-          <Marker
-            onPress={(e) => {
-              e.stopPropagation();
-              onMarkerSelect(e.nativeEvent.id);
-            }}
-            key={index}
-            coordinate={marker.latLng}
-            identifier={marker.id}
-          />
-        ))}
+        {renderMarkers()}
       </MapView>
       {selectedMarker ? (
         <BottomSheet ref={sheetRef} snapPoints={snapPoints}>

@@ -49,7 +49,6 @@ const MapScreen: React.FC = () => {
 
   const handleMarkerSelect = useCallback(
     (markerIdentifier: PointOfInterest) => {
-      console.log(markerIdentifier);
       const markerObject = markers?.get(markerIdentifier);
       setSelectedMarker(markerObject);
     },
@@ -57,6 +56,7 @@ const MapScreen: React.FC = () => {
   );
 
   const handleMapPress = useCallback(() => {
+    setSelectedMarker(null);
     sheetRef.current?.close();
   }, []);
 

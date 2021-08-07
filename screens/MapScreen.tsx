@@ -39,7 +39,7 @@ const MapScreen: React.FC = () => {
   }, []);
 
   const renderMarkers = () => {
-    let nodes: JSX.Element[] = [];
+    const nodes: JSX.Element[] = [];
     markers.forEach((value: MapMarker, key: PointOfInterest) =>
       nodes.push(
         <Marker

@@ -31,6 +31,17 @@ type ThemeProps = {
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
+export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    'headerColor',
+  );
+  const fontFamily = 'Andes';
+
+  return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
+};
+
 export const Text: React.FC<TextProps> = (props: TextProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');

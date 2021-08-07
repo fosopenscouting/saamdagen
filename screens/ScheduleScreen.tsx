@@ -3,6 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
+import DayScreen from './DayScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,13 +24,10 @@ const ScheduleScreen: React.FC = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Vrijdag"
-        children={() => <TabScreen tabNumber={0} />}
+        children={() => <DayScreen day={24} />}
       ></Tab.Screen>
-      <Tab.Screen
-        name="Zaterdag"
-        children={() => <TabScreen tabNumber={1} />}
-      />
-      <Tab.Screen name="Zondag" children={() => <TabScreen tabNumber={2} />} />
+      <Tab.Screen name="Zaterdag" children={() => <DayScreen day={25} />} />
+      <Tab.Screen name="Zondag" children={() => <DayScreen day={26} />} />
     </Tab.Navigator>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from '../Themed';
+import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
@@ -17,14 +17,14 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 
   return (
     <View style={styles.container}>
-      <Text
+      <HeaderText
         style={[
           styles.greetingHeader,
           { color: Colors[colorScheme].headerColor },
         ]}
       >
         Hey {props.firstName}
-      </Text>
+      </HeaderText>
       <Text style={styles.ticketText}>Dit is jouw ticket voor Saamdagen.</Text>
       <Text style={styles.ticketText}>
         Met deze QR-code krijg je toegang tot het evenement.
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   greetingHeader: {
-    fontWeight: 'bold',
     fontSize: 17,
+    fontFamily: 'AndesBold',
   },
   ticketText: {
     textAlign: 'center',
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
   },
   activityHeader: {
     marginTop: 8,
-    fontWeight: 'bold',
     textDecorationLine: 'underline',
     fontSize: 17,
     marginBottom: 4,
     textTransform: 'uppercase',
     textAlign: 'center',
+    fontFamily: 'AndesBold',
   },
   bold: {
     fontWeight: 'bold',

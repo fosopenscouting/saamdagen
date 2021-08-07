@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 15,
+    fontFamily: 'AndesBold',
+    textAlign: 'center',
   },
 });

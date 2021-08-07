@@ -5,7 +5,6 @@ import MapView, { Marker, Region, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useCallback } from 'react';
 import { getMapMarkers } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
 import { PointOfInterest } from '../models/PointOfInterest';

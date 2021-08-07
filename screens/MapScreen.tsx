@@ -47,18 +47,15 @@ const MapScreen: React.FC = () => {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  const handleMarkerSelect = useCallback(
-    (markerIdentifier: PointOfInterest) => {
-      const markerObject = markers?.get(markerIdentifier);
-      setSelectedMarker(markerObject);
-    },
-    [],
-  );
+  const handleMarkerSelect = (markerIdentifier: PointOfInterest) => {
+    const markerObject = markers?.get(markerIdentifier);
+    setSelectedMarker(markerObject);
+  };
 
-  const handleMapPress = useCallback(() => {
+  const handleMapPress = () => {
     setSelectedMarker(null);
     sheetRef.current?.close();
-  }, []);
+  };
 
   const handleLayerSelect = (newLayer: MapLayer): void => {
     if (layer !== newLayer) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Separator } from '../Themed';
+import { View, Text, Separator, HeaderText } from '../Themed';
 import { Button, StyleSheet } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';
@@ -24,9 +24,9 @@ const NoProfile: React.FC = () => {
   return (
     <View style={styles.container}>
       <Separator />
-      <Text style={styles.title}>
+      <HeaderText style={styles.title}>
         Naar welke workshop of activiteit ga jij?
-      </Text>
+      </HeaderText>
       <Text style={styles.text}>
         Scan jouw ticket om je workshops en activiteiten hier te zien. Doe dit
         op voorhand: je hebt een werkende internetconnectie nodig.

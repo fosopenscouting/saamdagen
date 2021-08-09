@@ -28,15 +28,18 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const mapMarkers = getMapMarkers();
 
   const renderScheduleTime = (scheduleData: ScheduleData): string => {
-    var startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
-    var startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
+    const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
+    const startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
       2,
       '0',
     );
-    var startTime = `${startHours}u${startMinutes}`;
+    const startTime = `${startHours}u${startMinutes}`;
     if (scheduleData.endTime) {
-      var endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
-      var endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(2, '0');
+      const endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
+      const endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(
+        2,
+        '0',
+      );
       return `${startTime} tot ${endHours}u${endMinutes}`;
     } else {
       return startTime;
@@ -70,7 +73,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     return <UilAngleRight size="26" color="#000000" />;
   };
 
-  const renderContent = (content: ScheduleData, _, isActive: boolean) => {
+  const renderContent = (content: ScheduleData, _: any, isActive: boolean) => {
     return (
       <Animatable.View
         duration={400}
@@ -82,7 +85,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderFooter = (content: ScheduleData, _, isActive: boolean) => {
+  const renderFooter = (content: ScheduleData, _: any, isActive: boolean) => {
     return (
       <View
         style={[

@@ -17,12 +17,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 
   return (
     <View style={styles.container}>
-      <HeaderText
-        style={[
-          styles.greetingHeader,
-          { color: Colors[colorScheme].headerColor },
-        ]}
-      >
+      <HeaderText style={[styles.greetingHeader]}>
         Hey {props.firstName}
       </HeaderText>
       <Text style={styles.ticketText}>Dit is jouw ticket voor Saamdagen.</Text>
@@ -34,14 +29,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
       </Text>
       {props.participantType === 'Deelnemer' ? (
         <View style={styles.activityContainer}>
-          <Text
-            style={[
-              styles.activityHeader,
-              { color: Colors[colorScheme].headerColor },
-            ]}
-          >
-            Workshopkeuze
-          </Text>
+          <Text style={[styles.activityHeader]}>Workshopkeuze</Text>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
           </Text>

@@ -1,7 +1,13 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
-import MapView, { Marker, Region, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, {
+  Marker,
+  Region,
+  PROVIDER_GOOGLE,
+  Overlay,
+  Coordinate,
+} from 'react-native-maps';
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -11,6 +17,7 @@ import { PointOfInterest } from '../models/PointOfInterest';
 import { useEffect } from 'react';
 import { MapLayer } from '../models/MapLayer';
 import MapFab from '../components/Map/MapFab';
+import OverlayImage from '../assets/images/2021_Saamdagen_Grondplan_Baselayer.png';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
@@ -18,6 +25,10 @@ const MapScreen: React.FC = () => {
   const [markers, setMarkers] = useState<Map<PointOfInterest, MapMarker>>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+  const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
+  const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.198039, 4.856122];
+  const IMAGE = OverlayImage;
 
   const mapRegion: Region = {
     latitude: 51.200977,
@@ -94,6 +105,13 @@ const MapScreen: React.FC = () => {
         onMapReady={onMapReady}
         onPress={handleMapPress}
       >
+        <Overlay
+          bounds={[
+            OVERLAY_TOP_LEFT_COORDINATE,
+            OVERLAY_BOTTOM_RIGHT_COORDINATE,
+          ]}
+          image={IMAGE}
+        />
         {renderMarkers()}
       </MapView>
       {selectedMarker ? (

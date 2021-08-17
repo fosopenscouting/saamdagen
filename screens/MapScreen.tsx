@@ -11,7 +11,7 @@ import MapView, {
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { getMapMarkers } from '../services/DataService';
+import { getMapMarkers, getMapStyle } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { useEffect } from 'react';
@@ -106,66 +106,7 @@ const MapScreen: React.FC = () => {
         toolbarEnabled={false}
         onMapReady={onMapReady}
         onPress={handleMapPress}
-        customMapStyle={[
-          {
-            elementType: 'labels',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'administrative',
-            elementType: 'geometry',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'administrative.land_parcel',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'administrative.neighborhood',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'poi',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'road',
-            elementType: 'labels.icon',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-          {
-            featureType: 'transit',
-            stylers: [
-              {
-                visibility: 'off',
-              },
-            ],
-          },
-        ]}
+        customMapStyle={getMapStyle()}
       >
         <Overlay
           bounds={[

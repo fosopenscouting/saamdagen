@@ -1,3 +1,4 @@
+import { MapStyleElement } from 'react-native-maps';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { ScheduleData } from '../models/ScheduleData';
@@ -145,6 +146,69 @@ export const getScheduleData = (): ScheduleData[] => {
       location: 'Podium',
       name: 'Maiskie Molie',
       description: "Rock 'n Roll!",
+    },
+  ];
+};
+
+export const getMapStyle = (): MapStyleElement[] => {
+  return [
+    {
+      elementType: 'labels',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative.land_parcel',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative.neighborhood',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'poi',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'transit',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
     },
   ];
 };

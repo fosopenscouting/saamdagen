@@ -101,9 +101,71 @@ const MapScreen: React.FC = () => {
         showsUserLocation={true}
         minZoomLevel={16}
         showsMyLocationButton
+        moveOnMarkerPress={false}
+        showsPointsOfInterest={false}
         toolbarEnabled={false}
         onMapReady={onMapReady}
         onPress={handleMapPress}
+        customMapStyle={[
+          {
+            elementType: 'labels',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'administrative',
+            elementType: 'geometry',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'administrative.land_parcel',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'administrative.neighborhood',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'poi',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'road',
+            elementType: 'labels.icon',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+          {
+            featureType: 'transit',
+            stylers: [
+              {
+                visibility: 'off',
+              },
+            ],
+          },
+        ]}
       >
         <Overlay
           bounds={[

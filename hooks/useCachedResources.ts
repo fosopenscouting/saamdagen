@@ -18,6 +18,7 @@ const useCachedResources: () => boolean = () => {
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
           Andes: require('../assets/fonts/Andes.otf'),
           AndesLight: require('../assets/fonts/AndesLight.otf'),
+          AndesBold: require('../assets/fonts/AndesBold.otf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

@@ -29,7 +29,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
       </Text>
       {props.participantType === 'Deelnemer' ? (
         <View style={styles.activityContainer}>
-          <Text style={[styles.activityHeader]}>Workshopkeuze</Text>
+          <HeaderText style={[styles.activityHeader]}>Workshopkeuze</HeaderText>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
           </Text>

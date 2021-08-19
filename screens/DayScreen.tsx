@@ -113,7 +113,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           <Collapsible collapsed={hideOverview}>
             <View style={styles.container}>
               {/* :TODO: make this dynamic? */}
-              <HeaderText>
+              <HeaderText style={styles.openingHours}>
                 <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00
                 tot 02u30{'\n'}
                 <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00
@@ -159,6 +159,9 @@ const styles = StyleSheet.create({
   content: {
     marginBottom: 5,
   },
+  openingHours: {
+    lineHeight: 22,
+  },
   container: {
     flex: 1,
     alignItems: 'flex-start',
@@ -194,7 +197,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   filterBar: {
-    height: 100,
+    // height: 100,
+    height: 5,
     marginTop: 10,
     marginBottom: 10,
   },

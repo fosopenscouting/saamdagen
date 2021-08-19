@@ -1,17 +1,85 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
+import React, { useState } from 'react';
+import * as Animatable from 'react-native-animatable';
+
+import { ScrollView, StyleSheet } from 'react-native';
+import { HeaderText, View } from '../components/Themed';
 import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import Accordion from 'react-native-collapsible/Accordion';
+import { getHomeScreenSections } from '../services/DataService';
+import { HomeScreenSection } from '../models/HomeScreenSection';
+
+import UilAngleDown from '@iconscout/react-native-unicons/icons/uil-angle-down';
+import UilAngleRight from '@iconscout/react-native-unicons/icons/uil-angle-right';
+
 
 const HomeScreen: React.FC = () => {
-  return (
-    <View style={styles.container} darkColor={Colors.dark.background}>
-      <Text style={styles.title}>Tab One</Text>
+  const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
+  const colorScheme = useColorScheme();
+
+  const renderHeader = (content: HomeScreenSection, _, isActive: boolean) => {
+    return (
+      <Animatable.View duration={400} transition="backgroundColor">
+        <View style={{ flex: 1, flexDirection: 'column' }}>
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+              <HeaderText style={styles.eventH3}>
+                {content.title}
+              </HeaderText>
+            </View>
+            <View>{renderCollapsibleIcon(isActive)}</View>
+          </View>
+        </View>
+      </Animatable.View>
+    );
+  };
+
+  // :TODO: duplicated in DayScreen.tsx. Abstract?
+  const renderCollapsibleIcon = (isActive: boolean) => {
+    if (isActive) return <UilAngleDown size="26" color="#000000" />;
+
+    return <UilAngleRight size="26" color="#000000" />;
+  };
+
+  const renderContent = (content: HomeScreenSection, _: any, isActive: boolean) => {
+    return (
+      <Animatable.View
+        duration={400}
+        style={styles.content}
+        transition="backgroundColor"
+      >
+        <HeaderText>{content.content}</HeaderText>
+      </Animatable.View>
+    );
+  };
+
+  const renderFooter = (content: HomeScreenSection, _: any, isActive: boolean) => {
+    return (
       <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+        style={[
+          styles.eventSeparator,
+          { borderBottomColor: Colors[colorScheme].headerColor },
+        ]}
       />
+    );
+  };
+
+
+  return (
+    <View>
+      <ScrollView>
+        <View style={{ paddingTop: 30, margin: 10 }}>
+          <Accordion
+            sections={getHomeScreenSections()}
+            renderHeader={renderHeader}
+            renderContent={renderContent}
+            renderFooter={renderFooter}
+            activeSections={activeSections}
+            onChange={setActiveSections}
+            underlayColor={Colors[colorScheme].background}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -19,6 +87,9 @@ const HomeScreen: React.FC = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  content: {
+    marginBottom: 5,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -32,5 +103,15 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
+  },
+  eventH3: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    flex: 1,
+  },
+  eventSeparator: {
+    borderBottomWidth: 2,
+    marginTop: 5,
+    marginBottom: 5,
   },
 });

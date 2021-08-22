@@ -86,6 +86,7 @@ const MapScreen: React.FC = () => {
           key={key}
           coordinate={value.latLng}
           identifier={key}
+          image={value.icon}
         />,
       ),
     );

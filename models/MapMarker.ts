@@ -5,4 +5,5 @@ export interface MapMarker {
   description: string;
   latLng: LatLng;
   layer: MapLayer;
+  icon?: number;
 }

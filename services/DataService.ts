@@ -14,6 +14,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         longitude: 4.850735,
       },
       layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-infopunt.png'),
     },
   ],
   [

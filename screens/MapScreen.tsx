@@ -22,7 +22,8 @@ import OverlayImage from '../assets/images/2021_Saamdagen_Grondplan_Baselayer.pn
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
   const [layer, setLayer] = useState<MapLayer>('normal');
-  const [markers, setMarkers] = useState<Map<PointOfInterest, MapMarker>>();
+  const [markers, setMarkers] =
+    useState<Map<PointOfInterest | string, MapMarker>>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
@@ -39,14 +40,7 @@ const MapScreen: React.FC = () => {
 
   useEffect(() => {
     setSelectedMarker(null);
-    const newMarkers: Map<PointOfInterest, MapMarker> = new Map();
-    getMapMarkers().forEach((value: MapMarker, key: PointOfInterest) => {
-      if (value.layer === layer) {
-        newMarkers.set(key, value);
-      }
-    });
-
-    setMarkers(newMarkers);
+    setMarkers(getMapMarkers(layer));
   }, [layer]);
 
   useEffect(() => {
@@ -76,7 +70,7 @@ const MapScreen: React.FC = () => {
 
   const renderMarkers = () => {
     const nodes: JSX.Element[] = [];
-    markers?.forEach((value: MapMarker, key: PointOfInterest) =>
+    markers?.forEach((value: MapMarker, key: PointOfInterest | string) =>
       nodes.push(
         <Marker
           onPress={(e) => {

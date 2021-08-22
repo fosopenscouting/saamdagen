@@ -1,9 +1,10 @@
 import { MapStyleElement } from 'react-native-maps';
+import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { ScheduleData } from '../models/ScheduleData';
 
-const markers = new Map<PointOfInterest, MapMarker>([
+const markers = new Map<PointOfInterest | string, MapMarker>([
   [
     'InfoPunt',
     {
@@ -53,10 +54,31 @@ const markers = new Map<PointOfInterest, MapMarker>([
       layer: 'normal',
     },
   ],
+  [
+    '1',
+    {
+      title: 'Boogschieten',
+      description: 'Hunger Games vibes',
+      latLng: {
+        latitude: 51.202028,
+        longitude: 4.848857,
+      },
+      icon: require('../assets/images/map-icons/icon-1.png'),
+      layer: 'activities',
+    },
+  ],
 ]);
 
-export const getMapMarkers = (): Map<PointOfInterest, MapMarker> => {
-  return markers;
+export const getMapMarkers = (
+  layer: MapLayer,
+): Map<PointOfInterest | string, MapMarker> => {
+  const filteredMarkers = new Map();
+  markers.forEach((value, key) => {
+    if (value.layer === layer) {
+      filteredMarkers.set(key, value);
+    }
+  });
+  return filteredMarkers;
 };
 
 export const getScheduleData = (): ScheduleData[] => {

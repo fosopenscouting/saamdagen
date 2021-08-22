@@ -149,29 +149,28 @@ export const getScheduleData = (): ScheduleData[] => {
 export const getHomeScreenSections = (): HomeScreenSection[] => {
   return [
     {
-      title: "Welkom op Saamdagen",
-      content: 
-`Saamdagen is terug!
+      title: 'Welkom op Saamdagen',
+      content: `Saamdagen is terug!
 We hebben er even op moeten wachten maar geduld wordt beloond.
 Maak je klaar voor een legendarisch editie.
 Samen trekken we het scoutsjaar op gang. 
-Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en vooral heel wat gezelligheid!`
+Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en vooral heel wat gezelligheid!`,
     },
     {
-      title: "Saamregels",
-      content: "",
+      title: 'Saamregels',
+      content: '',
     },
     {
-      title: "Infopunt",
-      content: "",
+      title: 'Infopunt',
+      content: '',
     },
     {
-      title: "Betalen op saamdagen",
-      content: "",
+      title: 'Betalen op saamdagen',
+      content: '',
     },
     {
-      title: "UItcheck",
-      content: "",
-    }
-  ]
+      title: 'UItcheck',
+      content: '',
+    },
+  ];
 };

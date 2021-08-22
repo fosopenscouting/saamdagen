@@ -12,7 +12,6 @@ import { HomeScreenSection } from '../models/HomeScreenSection';
 import UilAngleDown from '@iconscout/react-native-unicons/icons/uil-angle-down';
 import UilAngleRight from '@iconscout/react-native-unicons/icons/uil-angle-right';
 
-
 const HomeScreen: React.FC = () => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const colorScheme = useColorScheme();
@@ -23,9 +22,7 @@ const HomeScreen: React.FC = () => {
         <View style={{ flex: 1, flexDirection: 'column' }}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ flex: 1 }}>
-              <HeaderText style={styles.eventH3}>
-                {content.title}
-              </HeaderText>
+              <HeaderText style={styles.eventH3}>{content.title}</HeaderText>
             </View>
             <View>{renderCollapsibleIcon(isActive)}</View>
           </View>
@@ -41,7 +38,11 @@ const HomeScreen: React.FC = () => {
     return <UilAngleRight size="26" color="#000000" />;
   };
 
-  const renderContent = (content: HomeScreenSection, _: any, isActive: boolean) => {
+  const renderContent = (
+    content: HomeScreenSection,
+    _: any,
+    isActive: boolean,
+  ) => {
     return (
       <Animatable.View
         duration={400}
@@ -53,7 +54,11 @@ const HomeScreen: React.FC = () => {
     );
   };
 
-  const renderFooter = (content: HomeScreenSection, _: any, isActive: boolean) => {
+  const renderFooter = (
+    content: HomeScreenSection,
+    _: any,
+    isActive: boolean,
+  ) => {
     return (
       <View
         style={[
@@ -63,7 +68,6 @@ const HomeScreen: React.FC = () => {
       />
     );
   };
-
 
   return (
     <View>

@@ -23,7 +23,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     (event) => event.startTime.getDate() == dayInfo.day,
   );
   const colorScheme = useColorScheme();
-  const mapMarkers = getMapMarkers();
+  const mapMarkers = getMapMarkers('normal');
 
   const renderScheduleTime = (scheduleData: ScheduleData): string => {
     const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');

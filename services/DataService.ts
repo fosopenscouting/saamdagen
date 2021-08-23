@@ -1,8 +1,10 @@
+import { MapStyleElement } from 'react-native-maps';
+import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { ScheduleData } from '../models/ScheduleData';
 
-const markers = new Map<PointOfInterest, MapMarker>([
+const markers = new Map<PointOfInterest | string, MapMarker>([
   [
     'InfoPunt',
     {
@@ -12,6 +14,8 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.200974,
         longitude: 4.850735,
       },
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-infopunt.png'),
     },
   ],
   [
@@ -23,6 +27,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.201108,
         longitude: 4.851519,
       },
+      layer: 'normal',
     },
   ],
   [
@@ -34,6 +39,7 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.2005331,
         longitude: 4.8502755,
       },
+      layer: 'normal',
     },
   ],
   [
@@ -45,12 +51,34 @@ const markers = new Map<PointOfInterest, MapMarker>([
         latitude: 51.2005331,
         longitude: 4.8502755,
       },
+      layer: 'normal',
+    },
+  ],
+  [
+    '1',
+    {
+      title: 'Boogschieten',
+      description: 'Hunger Games vibes',
+      latLng: {
+        latitude: 51.202028,
+        longitude: 4.848857,
+      },
+      icon: require('../assets/images/map-icons/icon-1.png'),
+      layer: 'activities',
     },
   ],
 ]);
 
-export const getMapMarkers = (): Map<PointOfInterest, MapMarker> => {
-  return markers;
+export const getMapMarkers = (
+  layer: MapLayer,
+): Map<PointOfInterest | string, MapMarker> => {
+  const filteredMarkers = new Map();
+  markers.forEach((value, key) => {
+    if (value.layer === layer) {
+      filteredMarkers.set(key, value);
+    }
+  });
+  return filteredMarkers;
 };
 
 export const getScheduleData = (): ScheduleData[] => {
@@ -141,6 +169,69 @@ export const getScheduleData = (): ScheduleData[] => {
       location: 'Podium',
       name: 'Maiskie Molie',
       description: "Rock 'n Roll!",
+    },
+  ];
+};
+
+export const getMapStyle = (): MapStyleElement[] => {
+  return [
+    {
+      elementType: 'labels',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative',
+      elementType: 'geometry',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative.land_parcel',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative.neighborhood',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'poi',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      featureType: 'transit',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
     },
   ];
 };

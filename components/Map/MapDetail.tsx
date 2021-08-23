@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from '../Themed';
+import { View, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
 
 interface MapDetailProps {
@@ -10,8 +10,8 @@ interface MapDetailProps {
 const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.title}</Text>
-      <Text>{props.description}</Text>
+      <HeaderText style={styles.title}>{props.title}</HeaderText>
+      <HeaderText>{props.description}</HeaderText>
     </View>
   );
 };
@@ -22,8 +22,11 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 32,
+    fontWeight: 'normal',
+    fontFamily: 'AndesLight',
+    textTransform: 'uppercase',
+    textAlign: 'left',
   },
 });
 

@@ -16,7 +16,6 @@
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
     "@gorhom/bottom-sheet": "^3",
-    "@iconscout/react-native-unicons": "iconscout/react-native-unicons",
     "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "5.11.2",

@@ -1,19 +1,36 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
-import MapView, { Marker, Region, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, {
+  Marker,
+  Region,
+  PROVIDER_GOOGLE,
+  Overlay,
+  Coordinate,
+} from 'react-native-maps';
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useCallback } from 'react';
-import { getMapMarkers } from '../services/DataService';
+import { getMapMarkers, getMapStyle } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
 import { PointOfInterest } from '../models/PointOfInterest';
+import { useEffect } from 'react';
+import { MapLayer } from '../models/MapLayer';
+import MapFab from '../components/Map/MapFab';
+import OverlayImage from '../assets/images/2021_Saamdagen_Grondplan_Baselayer.png';
 
 const MapScreen: React.FC = () => {
-  const [selectedMarker, setSelectedMarker] = useState<MapMarker>();
+  const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
+  const [layer, setLayer] = useState<MapLayer>('normal');
+  const [markers, setMarkers] =
+    useState<Map<PointOfInterest | string, MapMarker>>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+  const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
+  const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.198039, 4.856122];
+  const IMAGE = OverlayImage;
+
   const mapRegion: Region = {
     latitude: 51.200977,
     longitude: 4.850671,
@@ -21,35 +38,49 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
-  const markers: Map<PointOfInterest, MapMarker> = getMapMarkers();
+  useEffect(() => {
+    setSelectedMarker(null);
+    setMarkers(getMapMarkers(layer));
+  }, [layer]);
+
+  useEffect(() => {
+    sheetRef.current?.snapTo(0);
+  }, [selectedMarker]);
 
   const onMapReady = async () => {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  const onMarkerSelect = useCallback((markerIdentifier: PointOfInterest) => {
-    const markerObject = markers.get(markerIdentifier);
+  const handleMarkerSelect = (markerIdentifier: PointOfInterest) => {
+    const markerObject = markers?.get(markerIdentifier);
     setSelectedMarker(markerObject);
+  };
 
-    sheetRef.current?.snapTo(0);
-  }, []);
-
-  const handleMapPress = useCallback(() => {
+  const handleMapPress = () => {
+    setSelectedMarker(null);
     sheetRef.current?.close();
-  }, []);
+  };
+
+  const handleLayerSelect = (newLayer: MapLayer): void => {
+    if (layer !== newLayer) {
+      sheetRef.current?.close();
+      setLayer(newLayer);
+    }
+  };
 
   const renderMarkers = () => {
     const nodes: JSX.Element[] = [];
-    markers.forEach((value: MapMarker, key: PointOfInterest) =>
+    markers?.forEach((value: MapMarker, key: PointOfInterest | string) =>
       nodes.push(
         <Marker
           onPress={(e) => {
             e.stopPropagation();
-            onMarkerSelect(e.nativeEvent.id as PointOfInterest);
+            handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
           }}
           key={key}
           coordinate={value.latLng}
           identifier={key}
+          image={value.icon}
         />,
       ),
     );
@@ -65,14 +96,28 @@ const MapScreen: React.FC = () => {
         showsUserLocation={true}
         minZoomLevel={16}
         showsMyLocationButton
+        moveOnMarkerPress={false}
+        showsPointsOfInterest={false}
         toolbarEnabled={false}
         onMapReady={onMapReady}
         onPress={handleMapPress}
+        customMapStyle={getMapStyle()}
       >
+        <Overlay
+          bounds={[
+            OVERLAY_TOP_LEFT_COORDINATE,
+            OVERLAY_BOTTOM_RIGHT_COORDINATE,
+          ]}
+          image={IMAGE}
+        />
         {renderMarkers()}
       </MapView>
       {selectedMarker ? (
-        <BottomSheet ref={sheetRef} snapPoints={snapPoints}>
+        <BottomSheet
+          backgroundComponent={View}
+          ref={sheetRef}
+          snapPoints={snapPoints}
+        >
           {selectedMarker ? (
             <MapDetail
               title={selectedMarker?.title}
@@ -81,6 +126,7 @@ const MapScreen: React.FC = () => {
           ) : null}
         </BottomSheet>
       ) : null}
+      <MapFab handleLayerSelect={handleLayerSelect} />
     </View>
   );
 };
@@ -93,6 +139,12 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
   },
 });
 

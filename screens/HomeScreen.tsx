@@ -8,9 +8,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import Accordion from 'react-native-collapsible/Accordion';
 import { getHomeScreenSections } from '../services/DataService';
 import { HomeScreenSection } from '../models/HomeScreenSection';
-
-import UilAngleDown from '@iconscout/react-native-unicons/icons/uil-angle-down';
-import UilAngleRight from '@iconscout/react-native-unicons/icons/uil-angle-right';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 
 const HomeScreen: React.FC = () => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
@@ -24,18 +23,13 @@ const HomeScreen: React.FC = () => {
             <View style={{ flex: 1 }}>
               <HeaderText style={styles.eventH3}>{content.title}</HeaderText>
             </View>
-            <View>{renderCollapsibleIcon(isActive)}</View>
+            <View>
+              <CollapsibleChevron isActive={isActive} />
+            </View>
           </View>
         </View>
       </Animatable.View>
     );
-  };
-
-  // :TODO: duplicated in DayScreen.tsx. Abstract?
-  const renderCollapsibleIcon = (isActive: boolean) => {
-    if (isActive) return <UilAngleDown size="26" color="#000000" />;
-
-    return <UilAngleRight size="26" color="#000000" />;
   };
 
   const renderContent = (

@@ -8,14 +8,17 @@ import useColorScheme from '../hooks/useColorScheme';
 import Accordion from 'react-native-collapsible/Accordion';
 import { getHomeScreenSections } from '../services/DataService';
 import { HomeScreenSection } from '../models/HomeScreenSection';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 
 const HomeScreen: React.FC = () => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const colorScheme = useColorScheme();
 
-  const renderHeader = (content: HomeScreenSection, _, isActive: boolean) => {
+  const renderHeader = (
+    content: HomeScreenSection,
+    _: any,
+    isActive: boolean,
+  ) => {
     return (
       <Animatable.View duration={400} transition="backgroundColor">
         <View style={{ flex: 1, flexDirection: 'column' }}>

@@ -10,9 +10,7 @@ import { HeaderText, View } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
-
-import UilAngleDown from '@iconscout/react-native-unicons/icons/uil-angle-down';
-import UilAngleRight from '@iconscout/react-native-unicons/icons/uil-angle-right';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface DayInfo {
   day: number;
@@ -25,7 +23,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     (event) => event.startTime.getDate() == dayInfo.day,
   );
   const colorScheme = useColorScheme();
-  const mapMarkers = getMapMarkers();
+  const mapMarkers = getMapMarkers('normal');
 
   const renderScheduleTime = (scheduleData: ScheduleData): string => {
     const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
@@ -68,9 +66,14 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   };
 
   const renderCollapsibleIcon = (isActive: boolean) => {
-    if (isActive) return <UilAngleDown size="26" color="#000000" />;
+    if (isActive)
+      return (
+        <MaterialCommunityIcons name="chevron-down" size={26} color="#000000" />
+      );
 
-    return <UilAngleRight size="26" color="#000000" />;
+    return (
+      <MaterialCommunityIcons name="chevron-right" size={26} color="#000000" />
+    );
   };
 
   const renderContent = (content: ScheduleData, _: any, isActive: boolean) => {

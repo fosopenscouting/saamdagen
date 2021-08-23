@@ -1420,10 +1420,6 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@iconscout/react-native-unicons@iconscout/react-native-unicons":
-  version "1.0.3"
-  resolved "https://codeload.github.com/iconscout/react-native-unicons/tar.gz/5c2327d1be79629b6add299b9c90ef84a222eaa4"
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"

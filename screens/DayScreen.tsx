@@ -10,7 +10,6 @@ import { HeaderText, View } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 
 interface DayInfo {

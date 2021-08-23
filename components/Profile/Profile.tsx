@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import useColorScheme from '../../hooks/useColorScheme';
 
 interface ProfileProps {
   firstName: string;
@@ -13,8 +11,6 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
-  const colorScheme = useColorScheme();
-
   return (
     <View style={styles.container}>
       <HeaderText style={[styles.greetingHeader]}>

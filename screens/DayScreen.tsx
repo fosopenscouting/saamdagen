@@ -10,7 +10,7 @@ import { HeaderText, View } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 
 interface DayInfo {
   day: number;
@@ -44,7 +44,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     }
   };
 
-  const renderHeader = (content: ScheduleData, _, isActive: boolean) => {
+  const renderHeader = (content: ScheduleData, _: any, isActive: boolean) => {
     return (
       <Animatable.View duration={400} transition="backgroundColor">
         <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -55,24 +55,15 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                 {mapMarkers.get(content.location)?.title}
               </HeaderText>
             </View>
-            <View>{renderCollapsibleIcon(isActive)}</View>
+            <View>
+              <CollapsibleChevron isActive={isActive} />
+            </View>
           </View>
           <View style={{ flex: 1 }}>
             <HeaderText style={styles.eventH1}>{content.name}</HeaderText>
           </View>
         </View>
       </Animatable.View>
-    );
-  };
-
-  const renderCollapsibleIcon = (isActive: boolean) => {
-    if (isActive)
-      return (
-        <MaterialCommunityIcons name="chevron-down" size={26} color="#000000" />
-      );
-
-    return (
-      <MaterialCommunityIcons name="chevron-right" size={26} color="#000000" />
     );
   };
 
@@ -111,7 +102,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                 </HeaderText>
               </TouchableOpacity>
             </View>
-            <View>{renderCollapsibleIcon(!hideOverview)}</View>
+            <View>
+              <CollapsibleChevron isActive={!hideOverview} />
+            </View>
           </View>
           <Collapsible collapsed={hideOverview}>
             <View style={styles.container}>

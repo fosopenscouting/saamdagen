@@ -1,3 +1,4 @@
+import { HomeScreenSection } from '../models/HomeScreenSection';
 import { MapStyleElement } from 'react-native-maps';
 import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
@@ -169,6 +170,35 @@ export const getScheduleData = (): ScheduleData[] => {
       location: 'Podium',
       name: 'Maiskie Molie',
       description: "Rock 'n Roll!",
+    },
+  ];
+};
+
+export const getHomeScreenSections = (): HomeScreenSection[] => {
+  return [
+    {
+      title: 'Welkom op Saamdagen',
+      content: `Saamdagen is terug!
+We hebben er even op moeten wachten maar geduld wordt beloond.
+Maak je klaar voor een legendarisch editie.
+Samen trekken we het scoutsjaar op gang. 
+Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en vooral heel wat gezelligheid!`,
+    },
+    {
+      title: 'Saamregels',
+      content: '',
+    },
+    {
+      title: 'Infopunt',
+      content: '',
+    },
+    {
+      title: 'Betalen op saamdagen',
+      content: '',
+    },
+    {
+      title: 'UItcheck',
+      content: '',
     },
   ];
 };

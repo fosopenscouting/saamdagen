@@ -67,9 +67,9 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
-        <View style={{ paddingTop: 30, margin: 10 }}>
+        <View style={{ paddingTop: 8, margin: 10 }}>
           <Accordion
             sections={getHomeScreenSections()}
             renderHeader={renderHeader}

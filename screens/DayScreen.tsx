@@ -93,7 +93,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   return (
     <View>
       <ScrollView>
-        <View style={{ paddingTop: 30, margin: 10 }}>
+        <View style={{ paddingTop: 8, margin: 10 }}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ flex: 1 }}>
               <TouchableOpacity onPress={() => setHideOverview(!hideOverview)}>

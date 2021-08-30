@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
-
 import { ScrollView, StyleSheet } from 'react-native';
 import { HeaderText, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -90,11 +89,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   content: {
     marginBottom: 5,
+    // textAlign: 'justify',
   },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,

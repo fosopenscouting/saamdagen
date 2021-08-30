@@ -2,12 +2,19 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import * as React from 'react';
 import DayScreen from './DayScreen';
-
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
 const Tab = createMaterialTopTabNavigator();
 
 const ScheduleScreen: React.FC = () => {
+  const colorScheme = useColorScheme();
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        indicatorStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        labelStyle: { fontFamily: 'AndesBold' },
+      }}
+    >
       <Tab.Screen
         name="Vrijdag"
         children={() => <DayScreen day={24} />}

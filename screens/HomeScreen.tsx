@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
-
 import { ScrollView, StyleSheet } from 'react-native';
 import { HeaderText, View } from '../components/Themed';
 import Colors from '../constants/Colors';
@@ -67,9 +66,9 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
-        <View style={{ paddingTop: 30, margin: 10 }}>
+        <View style={{ paddingTop: 8, margin: 10 }}>
           <Accordion
             sections={getHomeScreenSections()}
             renderHeader={renderHeader}
@@ -90,11 +89,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   content: {
     marginBottom: 5,
+    // textAlign: 'justify',
   },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,

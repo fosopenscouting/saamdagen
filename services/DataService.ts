@@ -147,6 +147,113 @@ We ontvangen elk half uur 150 dansers in de silent disco.`,
       name: 'Einde',
       description: `Na een eerste geslaagde avond ronden we af om 03:00.`,
     },
+    {
+      startTime: new Date(2021, 9, 25, 8),
+      location: 'Camping',
+      name: 'Opstaan',
+      description: `Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 8, 15),
+      endTime: new Date(2021, 9, 25, 9, 15),
+      location: 'Eettent',
+      name: 'Ontbijt',
+      description: `We genieten samen van een hartig ontbijt.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 9, 30),
+      location: 'Podium',
+      name: 'Verzamelen',
+      description: `Verzamelen voor de eerste workshops en activiteiten.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 9, 45),
+      endTime: new Date(2021, 9, 25, 11, 45),
+      name: 'Workshops en activiteiten',
+      description: `We dompelen je onder in leerrijke workshops en ontspannende activiteiten.
+
+Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saamdagen op deze app hoe jouw programma eruitziet.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 12),
+      endTime: new Date(2021, 9, 25, 13, 15),
+      location: 'Eettent',
+      name: 'Lunch',
+      description: `Belegde broodjes voor iedereen!`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 13, 30),
+      location: 'Podium',
+      name: 'Verzamelen',
+      description: `Verzamelen voor de tweede sessie workshops en activiteiten.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 12, 45),
+      endTime: new Date(2021, 9, 25, 15, 45),
+      name: 'Workshops en activiteiten',
+      description: `We dompelen je onder in leerrijke workshops en ontspannende activiteiten.
+
+Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saamdagen op deze app hoe jouw programma eruitziet.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 15, 45),
+      endTime: new Date(2021, 9, 25, 16, 15),
+      name: 'Vieruurtje',
+      location: 'Eettent',
+      description: `Voor de kleine honger.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 16, 15),
+      endTime: new Date(2021, 9, 25, 18, 30),
+      name: 'Groot spel',
+      location: 'Podium',
+      description: `Tijd voor wat actie. De eenheden nemen het tegen elkaar op in de Highland Games. Welke clan kroont zich tot winnaar?`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 20, 15),
+      name: 'Verzamelen',
+      location: 'Podium',
+      description: ``,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 20, 15),
+      endTime: new Date(2021, 9, 25, 21),
+      name: 'Intro & Speech FV',
+      location: 'Podium',
+      description: `We verzamelen aan het podium voor de bekroning van het groot spel, de aftermovie van de kampenzomer, de aankondiging van het nieuwe jaarthema en een woordje van de Federaal Verantwoordelijke`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 21),
+      endTime: new Date(2021, 9, 25, 22, 30),
+      name: 'Band',
+      location: 'Podium',
+      description: `Broken Bottle Big Band zorgt voor de leukste hitjes en zetten de Brink in vuur en vlam. Ze nemen jullie mee op een trip door reggae, hip hop, the 90s, salsa, drum 'n bass ... Noem maar op! `,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 21),
+      endTime: new Date(2021, 9, 25, 4),
+      name: 'Kampvuur',
+      location: 'Kampvuur',
+      description: `De hele avond lang kan je genieten van een gezellig kampvuur aan de rustige bar. Op tijd en stond vind je er FOSsers die voor een streepje muziek zorgen.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 22, 30),
+      endTime: new Date(2021, 9, 25, 3),
+      name: 'Fuif',
+      location: 'Fuiftent',
+      description: `Op zaterdagavond doen we de fuiftent daveren. Vergeet je dansschoenen niet!`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 23),
+      endTime: new Date(2021, 9, 25, 2),
+      name: 'Snack',
+      description: `Stil je nachtelijke honger met een paar loempia’s (te betalen met jetons).`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 4),
+      name: 'Einde',
+      description: `Op dag 2 zoeken we ons bed op rond 04:00.`,
+    },
   ];
 };
 

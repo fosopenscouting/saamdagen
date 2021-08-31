@@ -6,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 
-import { HeaderText, View } from '../components/Themed';
+import { HeaderText, View, Text } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
@@ -51,8 +51,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ flex: 1 }}>
               <HeaderText style={styles.eventH3}>
-                {renderScheduleTime(content)} -{' '}
-                {mapMarkers.get(content.location)?.title}
+                {renderScheduleTime(content)}
+                {content.location
+                  ? ` - ${mapMarkers.get(content.location)?.title}`
+                  : null}
               </HeaderText>
             </View>
             <View>
@@ -74,7 +76,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
         style={styles.content}
         transition="backgroundColor"
       >
-        <HeaderText>{content.description}</HeaderText>
+        <Text>{content.description}</Text>
       </Animatable.View>
     );
   };
@@ -91,7 +93,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
         <View style={{ paddingTop: 8, margin: 10 }}>
           <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -160,8 +162,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    // alignItems: 'flex-start',
+    // justifyContent: 'center',
   },
   collapsibleIndicator: {
     flex: 1,

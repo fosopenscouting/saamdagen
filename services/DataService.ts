@@ -7,9 +7,9 @@ import { ScheduleData } from '../models/ScheduleData';
 
 const markers = new Map<PointOfInterest | string, MapMarker>([
   [
-    'InfoPunt',
+    'Infopunt',
     {
-      title: 'Info Punt',
+      title: 'Infopunt',
       description: 'Vind hier alle info die je nodig hebt!',
       latLng: {
         latitude: 51.200974,
@@ -32,9 +32,9 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     },
   ],
   [
-    'FuifTent',
+    'Fuiftent',
     {
-      title: 'Fuif Tent',
+      title: 'Fuiftent',
       description: 'Ook hier helemaal loos!',
       latLng: {
         latitude: 51.2005331,
@@ -44,7 +44,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     },
   ],
   [
-    'KampVuur',
+    'Kampvuur',
     {
       title: 'Kampvuur',
       description: 'Vrolijke vrolijke vrienden',
@@ -53,6 +53,18 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
         longitude: 4.8502755,
       },
       layer: 'normal',
+    },
+  ],
+  [
+    'Eettent',
+    {
+      title: 'Eettent',
+      description: 'Njam',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.2005331,
+        longitude: 4.8502755,
+      },
     },
   ],
   [
@@ -87,89 +99,53 @@ export const getScheduleData = (): ScheduleData[] => {
     // Vrijdag
     {
       startTime: new Date(2021, 9, 24, 20),
-      endTime: undefined,
-      location: 'InfoPunt',
+      endTime: new Date(2021, 9, 24, 0),
+      location: 'Infopunt',
       name: 'Incheck',
-      description: 'Inchecken met de saamdagen app!',
+      description: `Voor de incheck houd je 3 zaken klaar:
+
+1. Ticket Saamdagen. Via de QR-code op je ticket of via deze app.
+
+2. COVID Safe Ticket. Alle info vind je hier.
+
+3. Een identiteitsbewijs.
+
+Op Saamdagen is het niet toegestaan eigen drank mee te brengen.  `,
     },
     {
-      startTime: new Date(2021, 9, 24, 21),
-      endTime: new Date(2021, 9, 24, 22),
-      location: 'Podium',
-      name: 'Podium Show',
-      description: 'Sfeer met team saamdagen!',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22),
-      endTime: new Date(2021, 9, 25, 2),
-      location: 'Podium',
-      name: 'White Shoes',
-      description: 'Leef je helemaal uit met deze party band',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22),
-      endTime: new Date(2021, 9, 25, 2),
-      location: 'FuifTent',
-      name: 'Silent Disco',
-      description:
-        'Laat je volledig gaan met een Silent Disco. Ook dit jaar een beperkte capaciteit. Ieder halfuur een nieuw feestje: Snel pieken is de opdracht! DJ Rabeat, DJ Bowti en Twomey Tunes verzorgen jullie avond in stijl!',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22, 30),
-      endTime: new Date(2021, 9, 25, 4),
-      location: 'KampVuur',
+      startTime: new Date(2021, 9, 24, 21, 30),
+      endTime: new Date(2021, 9, 24, 3),
+      location: 'Kampvuur',
       name: 'Kampvuur',
-      description: 'Kamperen is de mooiste zomersport',
+      description: `De hele avond lang kan je genieten van een gezellig kampvuur aan de rustige bar. Op tijd en stond vind je er FOSsers die voor een streepje muziek zorgen.  `,
     },
-    // Zaterdag
     {
-      startTime: new Date(2021, 9, 25, 9, 30),
-      endTime: new Date(2021, 9, 25, 11, 45),
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 0),
+      location: 'Eettent',
+      name: 'Snack',
+      description: `Aan de eettent is voor iedereen een hamburger voorzien.`,
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 2),
       location: 'Podium',
-      name: 'Groot Spel',
-      description: 'Kom naar het podium voor het groot spel.',
+      name: 'Show + DJ',
+      description: `Een bende sfeermakers zorgt voor een 'welkom-terug-feestje'.`,
     },
     {
-      startTime: new Date(2021, 9, 25, 12),
-      endTime: new Date(2021, 9, 25, 13),
-      location: 'Podium',
-      name: 'Lunch',
-      description: 'Eten',
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 2),
+      location: 'Fuiftent',
+      name: 'Silent Disco',
+      description: `Switch tussen verschillende dj's op zoek naar de beste dansplaatjes. Haal je dansbenen maar boven!
+
+We ontvangen elk half uur 150 dansers in de silent disco.`,
     },
     {
-      startTime: new Date(2021, 9, 25, 13, 30),
-      endTime: new Date(2021, 9, 25, 18),
-      location: 'Podium',
-      name: 'Activiteiten',
-      description: '',
-    },
-    {
-      startTime: new Date(2021, 9, 25, 18),
-      endTime: new Date(2021, 9, 25, 19, 45),
-      location: 'KampVuur',
-      name: 'Avondmaal',
-      description: 'Eten',
-    },
-    {
-      startTime: new Date(2021, 9, 25, 20, 15),
-      endTime: new Date(2021, 9, 25, 20, 40),
-      location: 'Podium',
-      name: 'Podium Show',
-      description: 'Slot van het groot spel',
-    },
-    {
-      startTime: new Date(2021, 9, 25, 20, 40),
-      endTime: new Date(2021, 9, 25, 20, 50),
-      location: 'Podium',
-      name: 'Speech FV',
-      description: 'Bingo?',
-    },
-    {
-      startTime: new Date(2021, 9, 25, 20, 50),
-      endTime: new Date(2021, 9, 25, 22, 20),
-      location: 'Podium',
-      name: 'Maiskie Molie',
-      description: "Rock 'n Roll!",
+      startTime: new Date(2021, 9, 24, 3),
+      name: 'Einde',
+      description: `Na een eerste geslaagde avond ronden we af om 03:00.`,
     },
   ];
 };

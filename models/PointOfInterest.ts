@@ -4,4 +4,5 @@ export type PointOfInterest =
   | 'Infopunt'
   | 'Fuiftent'
   | 'Eettent'
-  | 'Camping';
+  | 'Camping'
+  | 'Markt';

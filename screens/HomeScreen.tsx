@@ -89,7 +89,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   content: {
     marginBottom: 5,
-    padding: 8,
     textAlign: 'justify',
   },
   container: {

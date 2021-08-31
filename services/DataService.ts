@@ -254,6 +254,57 @@ Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saam
       name: 'Einde',
       description: `Op dag 2 zoeken we ons bed op rond 04:00.`,
     },
+    {
+      startTime: new Date(2021, 9, 26, 8, 30),
+      name: 'Opstaan',
+      description: `Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 9),
+      endTime: new Date(2021, 9, 26, 10, 30),
+      name: 'Brunch',
+      location: 'Eettent',
+      description: `We genieten samen van een uitgebreide brunch.Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 10),
+      endTime: new Date(2021, 9, 26, 12),
+      name: 'Markt',
+      location: 'Markt',
+      description: `Kom het aanbod van FOS Open Scouting, Wegwijzer, JEKA, Mooimakers, Jint, Bouworde, de Aanstokerij, Tumult ... te weten.
+
+SPEL: Wie weet ga jij wel naar huis met een gratis ticket voor Saamdagen 2022!  `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 12, 15),
+      name: 'Verzamelen',
+      location: 'Podium',
+      description: ``,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 12, 30),
+      endTime: new Date(2021, 9, 26, 14),
+      name: 'Opkuis',
+      description: `We steken met z’n allen de handen uit de mouwen en zorgen ervoor dat de Brink er weer netjes bijligt. `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14),
+      endTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Tenten opruimen',
+      description: `Na de grote opkuis, plooit iedereen z’n tent weer op en maken we ons klaar voor vertrek.`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Snack',
+      description: `Bij vertrek krijgt iedereen een hotdog uit het vuistje.  `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Uitcheck',
+      description: `Het zit er helaas weer op. Tot volgend jaar!
+
+Je kan bij de uitcheck je overige jetons inruilen voor geld. Ook je beker met bekerjeton ruil je hier weer in.`,
+    },
   ];
 };
 

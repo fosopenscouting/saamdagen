@@ -186,19 +186,46 @@ Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en voora
     },
     {
       title: 'Saamregels',
-      content: '',
+      content: `1. Neem actief deel aan het programma
+2. Rook enkel in de rookzones
+3. Heb respect voor de nachtrust van anderen
+4. Gebruik, bezit of deal geen drugs
+5. Neem geen eigen drank mee en kom niet onder invloed aan
+6. Ga verantwoordelijk om met het consumeren van alcohol`,
     },
     {
-      title: 'Infopunt',
-      content: '',
+      title: 'COVID Safe',
+      content: `Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van:
+
+Een vaccinatiecertificaat. Dat wil zeggen dat je meer dan 2 weken volledig gevaccineerd bent.
+
+Een herstelcertificaat van minder dan 6 maanden.
+
+Een negatieve PCR-test die het volledige weekend geldig is. Een PCR-test is geldig op de dag van de test en 48 uur later. De negatieve PCR-test moet dus afgenomen zijn op vrijdag 24/09.
+
+Opgelet! Noch een negatief resultaat van een antigeen- of sneltest, noch een negatieve PCR-test ouder dan vrijdag 24/09 zijn voldoende om toegang te krijgen.
+
+Aan de ingang vragen we naar je identiteitskaart en je COVID Safe Ticket.
+
+Aan de ingang zijn de afstands- en mondmaskerregels nog van toepassing. Zorg dus dat je een mondmasker bijhebt. Vanaf dat je het terrein van de Brink betreedt, draag je een mondmasker en houd je rekening met de afstandsregels. Van zodra je COVID Safe Ticket werd ingescand en je toegang krijgt tot het terrein mag je mondmasker af en ben je welkom in het rijk der vrijheid.
+
+Meer info via https://fosopenscouting.be/nl/covid-safe-ticket `,
     },
     {
-      title: 'Betalen op saamdagen',
-      content: '',
+      title: 'Vragen of problemen',
+      content: `Met vragen of problemen kan je steeds terecht bij het infopunt. De openingsuren van het infopunt vind je bij het programma. De medewerkers van sfeerbeheer staan ook altijd voor je klaar. Trek gerust aan hun mouw. `,
     },
     {
-      title: 'UItcheck',
-      content: '',
+      title: 'Jetons en herbruikbare bekers',
+      content: `Op Saamdagen werken we met jetons. Daarmee betaal je jouw drankjes en eventueel een hapje voor de extra honger. Je koopt jetons aan bij het infopunt. Er zijn 2 soorten jetons:
+
+Vierkante jeton = €1 = niet-alcoholhoudende dranken
+
+Ronde jeton = 1,5€ = alcoholhoudende dranken
+
+We werken met herbruikbare bekers. Voor €2 koop je een beker met bekerjeton aan. Het hele weekend maak je gebruik van je beker. Als je aan de bar een drankje koopt, geef je je beker af. Je krijgt een gevulde beker terug. Die beker gebruik je dan opnieuw als je een drankje haalt. Op het einde van het weekend kan je bij de uitcheck de €2 terugkrijgen als je een beker en een bekerjeton afgeeft. Draag dus goed zorg voor je bekerjeton.
+
+Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor geld.  `,
     },
   ];
 };

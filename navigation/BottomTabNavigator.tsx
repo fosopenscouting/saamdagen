@@ -31,6 +31,7 @@ const BottomTabNavigator: React.FC = () => {
 
   return (
     <BottomTab.Navigator
+      shifting={false}
       initialRouteName="Info"
       activeColor={Colors[colorScheme].tint}
       inactiveColor={Colors[colorScheme].tabIconDefault}

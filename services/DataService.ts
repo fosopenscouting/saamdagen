@@ -7,9 +7,9 @@ import { ScheduleData } from '../models/ScheduleData';
 
 const markers = new Map<PointOfInterest | string, MapMarker>([
   [
-    'InfoPunt',
+    'Infopunt',
     {
-      title: 'Info Punt',
+      title: 'Infopunt',
       description: 'Vind hier alle info die je nodig hebt!',
       latLng: {
         latitude: 51.200974,
@@ -32,9 +32,9 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     },
   ],
   [
-    'FuifTent',
+    'Fuiftent',
     {
-      title: 'Fuif Tent',
+      title: 'Fuiftent',
       description: 'Ook hier helemaal loos!',
       latLng: {
         latitude: 51.2005331,
@@ -44,7 +44,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     },
   ],
   [
-    'KampVuur',
+    'Kampvuur',
     {
       title: 'Kampvuur',
       description: 'Vrolijke vrolijke vrienden',
@@ -53,6 +53,18 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
         longitude: 4.8502755,
       },
       layer: 'normal',
+    },
+  ],
+  [
+    'Eettent',
+    {
+      title: 'Eettent',
+      description: 'Njam',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.2005331,
+        longitude: 4.8502755,
+      },
     },
   ],
   [
@@ -87,89 +99,211 @@ export const getScheduleData = (): ScheduleData[] => {
     // Vrijdag
     {
       startTime: new Date(2021, 9, 24, 20),
-      endTime: undefined,
-      location: 'InfoPunt',
+      endTime: new Date(2021, 9, 24, 0),
+      location: 'Infopunt',
       name: 'Incheck',
-      description: 'Inchecken met de saamdagen app!',
+      description: `Voor de incheck houd je 3 zaken klaar:
+
+1. Ticket Saamdagen. Via de QR-code op je ticket of via deze app.
+
+2. COVID Safe Ticket. Alle info vind je hier.
+
+3. Een identiteitsbewijs.
+
+Op Saamdagen is het niet toegestaan eigen drank mee te brengen.  `,
     },
     {
-      startTime: new Date(2021, 9, 24, 21),
-      endTime: new Date(2021, 9, 24, 22),
-      location: 'Podium',
-      name: 'Podium Show',
-      description: 'Sfeer met team saamdagen!',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22),
-      endTime: new Date(2021, 9, 25, 2),
-      location: 'Podium',
-      name: 'White Shoes',
-      description: 'Leef je helemaal uit met deze party band',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22),
-      endTime: new Date(2021, 9, 25, 2),
-      location: 'FuifTent',
-      name: 'Silent Disco',
-      description:
-        'Laat je volledig gaan met een Silent Disco. Ook dit jaar een beperkte capaciteit. Ieder halfuur een nieuw feestje: Snel pieken is de opdracht! DJ Rabeat, DJ Bowti en Twomey Tunes verzorgen jullie avond in stijl!',
-    },
-    {
-      startTime: new Date(2021, 9, 24, 22, 30),
-      endTime: new Date(2021, 9, 25, 4),
-      location: 'KampVuur',
+      startTime: new Date(2021, 9, 24, 21, 30),
+      endTime: new Date(2021, 9, 24, 3),
+      location: 'Kampvuur',
       name: 'Kampvuur',
-      description: 'Kamperen is de mooiste zomersport',
+      description: `De hele avond lang kan je genieten van een gezellig kampvuur aan de rustige bar. Op tijd en stond vind je er FOSsers die voor een streepje muziek zorgen.  `,
     },
-    // Zaterdag
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 0),
+      location: 'Eettent',
+      name: 'Snack',
+      description: `Aan de eettent is voor iedereen een hamburger voorzien.`,
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 2),
+      location: 'Podium',
+      name: 'Show + DJ',
+      description: `Een bende sfeermakers zorgt voor een 'welkom-terug-feestje'.`,
+    },
+    {
+      startTime: new Date(2021, 9, 24, 22),
+      endTime: new Date(2021, 9, 24, 2),
+      location: 'Fuiftent',
+      name: 'Silent Disco',
+      description: `Switch tussen verschillende dj's op zoek naar de beste dansplaatjes. Haal je dansbenen maar boven!
+
+We ontvangen elk half uur 150 dansers in de silent disco.`,
+    },
+    {
+      startTime: new Date(2021, 9, 24, 3),
+      name: 'Einde',
+      description: `Na een eerste geslaagde avond ronden we af om 03:00.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 8),
+      location: 'Camping',
+      name: 'Opstaan',
+      description: `Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 8, 15),
+      endTime: new Date(2021, 9, 25, 9, 15),
+      location: 'Eettent',
+      name: 'Ontbijt',
+      description: `We genieten samen van een hartig ontbijt.`,
+    },
     {
       startTime: new Date(2021, 9, 25, 9, 30),
-      endTime: new Date(2021, 9, 25, 11, 45),
       location: 'Podium',
-      name: 'Groot Spel',
-      description: 'Kom naar het podium voor het groot spel.',
+      name: 'Verzamelen',
+      description: `Verzamelen voor de eerste workshops en activiteiten.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 9, 45),
+      endTime: new Date(2021, 9, 25, 11, 45),
+      name: 'Workshops en activiteiten',
+      description: `We dompelen je onder in leerrijke workshops en ontspannende activiteiten.
+
+Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saamdagen op deze app hoe jouw programma eruitziet.`,
     },
     {
       startTime: new Date(2021, 9, 25, 12),
-      endTime: new Date(2021, 9, 25, 13),
-      location: 'Podium',
+      endTime: new Date(2021, 9, 25, 13, 15),
+      location: 'Eettent',
       name: 'Lunch',
-      description: 'Eten',
+      description: `Belegde broodjes voor iedereen!`,
     },
     {
       startTime: new Date(2021, 9, 25, 13, 30),
-      endTime: new Date(2021, 9, 25, 18),
       location: 'Podium',
-      name: 'Activiteiten',
-      description: '',
+      name: 'Verzamelen',
+      description: `Verzamelen voor de tweede sessie workshops en activiteiten.`,
     },
     {
-      startTime: new Date(2021, 9, 25, 18),
-      endTime: new Date(2021, 9, 25, 19, 45),
-      location: 'KampVuur',
-      name: 'Avondmaal',
-      description: 'Eten',
+      startTime: new Date(2021, 9, 25, 12, 45),
+      endTime: new Date(2021, 9, 25, 15, 45),
+      name: 'Workshops en activiteiten',
+      description: `We dompelen je onder in leerrijke workshops en ontspannende activiteiten.
+
+Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saamdagen op deze app hoe jouw programma eruitziet.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 15, 45),
+      endTime: new Date(2021, 9, 25, 16, 15),
+      name: 'Vieruurtje',
+      location: 'Eettent',
+      description: `Voor de kleine honger.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 16, 15),
+      endTime: new Date(2021, 9, 25, 18, 30),
+      name: 'Groot spel',
+      location: 'Podium',
+      description: `Tijd voor wat actie. De eenheden nemen het tegen elkaar op in de Highland Games. Welke clan kroont zich tot winnaar?`,
     },
     {
       startTime: new Date(2021, 9, 25, 20, 15),
-      endTime: new Date(2021, 9, 25, 20, 40),
+      name: 'Verzamelen',
       location: 'Podium',
-      name: 'Podium Show',
-      description: 'Slot van het groot spel',
+      description: ``,
     },
     {
-      startTime: new Date(2021, 9, 25, 20, 40),
-      endTime: new Date(2021, 9, 25, 20, 50),
+      startTime: new Date(2021, 9, 25, 20, 15),
+      endTime: new Date(2021, 9, 25, 21),
+      name: 'Intro & Speech FV',
       location: 'Podium',
-      name: 'Speech FV',
-      description: 'Bingo?',
+      description: `We verzamelen aan het podium voor de bekroning van het groot spel, de aftermovie van de kampenzomer, de aankondiging van het nieuwe jaarthema en een woordje van de Federaal Verantwoordelijke`,
     },
     {
-      startTime: new Date(2021, 9, 25, 20, 50),
-      endTime: new Date(2021, 9, 25, 22, 20),
+      startTime: new Date(2021, 9, 25, 21),
+      endTime: new Date(2021, 9, 25, 22, 30),
+      name: 'Band',
       location: 'Podium',
-      name: 'Maiskie Molie',
-      description: "Rock 'n Roll!",
+      description: `Broken Bottle Big Band zorgt voor de leukste hitjes en zetten de Brink in vuur en vlam. Ze nemen jullie mee op een trip door reggae, hip hop, the 90s, salsa, drum 'n bass ... Noem maar op! `,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 21),
+      endTime: new Date(2021, 9, 25, 4),
+      name: 'Kampvuur',
+      location: 'Kampvuur',
+      description: `De hele avond lang kan je genieten van een gezellig kampvuur aan de rustige bar. Op tijd en stond vind je er FOSsers die voor een streepje muziek zorgen.`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 22, 30),
+      endTime: new Date(2021, 9, 25, 3),
+      name: 'Fuif',
+      location: 'Fuiftent',
+      description: `Op zaterdagavond doen we de fuiftent daveren. Vergeet je dansschoenen niet!`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 23),
+      endTime: new Date(2021, 9, 25, 2),
+      name: 'Snack',
+      description: `Stil je nachtelijke honger met een paar loempia’s (te betalen met jetons).`,
+    },
+    {
+      startTime: new Date(2021, 9, 25, 4),
+      name: 'Einde',
+      description: `Op dag 2 zoeken we ons bed op rond 04:00.`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 8, 30),
+      name: 'Opstaan',
+      description: `Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 9),
+      endTime: new Date(2021, 9, 26, 10, 30),
+      name: 'Brunch',
+      location: 'Eettent',
+      description: `We genieten samen van een uitgebreide brunch.Good morning!`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 10),
+      endTime: new Date(2021, 9, 26, 12),
+      name: 'Markt',
+      location: 'Markt',
+      description: `Kom het aanbod van FOS Open Scouting, Wegwijzer, JEKA, Mooimakers, Jint, Bouworde, de Aanstokerij, Tumult ... te weten.
+
+SPEL: Wie weet ga jij wel naar huis met een gratis ticket voor Saamdagen 2022!  `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 12, 15),
+      name: 'Verzamelen',
+      location: 'Podium',
+      description: ``,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 12, 30),
+      endTime: new Date(2021, 9, 26, 14),
+      name: 'Opkuis',
+      description: `We steken met z’n allen de handen uit de mouwen en zorgen ervoor dat de Brink er weer netjes bijligt. `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14),
+      endTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Tenten opruimen',
+      description: `Na de grote opkuis, plooit iedereen z’n tent weer op en maken we ons klaar voor vertrek.`,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Snack',
+      description: `Bij vertrek krijgt iedereen een hotdog uit het vuistje.  `,
+    },
+    {
+      startTime: new Date(2021, 9, 26, 14, 30),
+      name: 'Uitcheck',
+      description: `Het zit er helaas weer op. Tot volgend jaar!
+
+Je kan bij de uitcheck je overige jetons inruilen voor geld. Ook je beker met bekerjeton ruil je hier weer in.`,
     },
   ];
 };
@@ -186,19 +320,46 @@ Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en voora
     },
     {
       title: 'Saamregels',
-      content: '',
+      content: `1. Neem actief deel aan het programma
+2. Rook enkel in de rookzones
+3. Heb respect voor de nachtrust van anderen
+4. Gebruik, bezit of deal geen drugs
+5. Neem geen eigen drank mee en kom niet onder invloed aan
+6. Ga verantwoordelijk om met het consumeren van alcohol`,
     },
     {
-      title: 'Infopunt',
-      content: '',
+      title: 'COVID Safe',
+      content: `Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van:
+
+Een vaccinatiecertificaat. Dat wil zeggen dat je meer dan 2 weken volledig gevaccineerd bent.
+
+Een herstelcertificaat van minder dan 6 maanden.
+
+Een negatieve PCR-test die het volledige weekend geldig is. Een PCR-test is geldig op de dag van de test en 48 uur later. De negatieve PCR-test moet dus afgenomen zijn op vrijdag 24/09.
+
+Opgelet! Noch een negatief resultaat van een antigeen- of sneltest, noch een negatieve PCR-test ouder dan vrijdag 24/09 zijn voldoende om toegang te krijgen.
+
+Aan de ingang vragen we naar je identiteitskaart en je COVID Safe Ticket.
+
+Aan de ingang zijn de afstands- en mondmaskerregels nog van toepassing. Zorg dus dat je een mondmasker bijhebt. Vanaf dat je het terrein van de Brink betreedt, draag je een mondmasker en houd je rekening met de afstandsregels. Van zodra je COVID Safe Ticket werd ingescand en je toegang krijgt tot het terrein mag je mondmasker af en ben je welkom in het rijk der vrijheid.
+
+Meer info via https://fosopenscouting.be/nl/covid-safe-ticket `,
     },
     {
-      title: 'Betalen op saamdagen',
-      content: '',
+      title: 'Vragen of problemen',
+      content: `Met vragen of problemen kan je steeds terecht bij het infopunt. De openingsuren van het infopunt vind je bij het programma. De medewerkers van sfeerbeheer staan ook altijd voor je klaar. Trek gerust aan hun mouw. `,
     },
     {
-      title: 'UItcheck',
-      content: '',
+      title: 'Jetons en herbruikbare bekers',
+      content: `Op Saamdagen werken we met jetons. Daarmee betaal je jouw drankjes en eventueel een hapje voor de extra honger. Je koopt jetons aan bij het infopunt. Er zijn 2 soorten jetons:
+
+Vierkante jeton = €1 = niet-alcoholhoudende dranken
+
+Ronde jeton = 1,5€ = alcoholhoudende dranken
+
+We werken met herbruikbare bekers. Voor €2 koop je een beker met bekerjeton aan. Het hele weekend maak je gebruik van je beker. Als je aan de bar een drankje koopt, geef je je beker af. Je krijgt een gevulde beker terug. Die beker gebruik je dan opnieuw als je een drankje haalt. Op het einde van het weekend kan je bij de uitcheck de €2 terugkrijgen als je een beker en een bekerjeton afgeeft. Draag dus goed zorg voor je bekerjeton.
+
+Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor geld.  `,
     },
   ];
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { ScrollView, StyleSheet } from 'react-native';
-import { HeaderText, View } from '../components/Themed';
+import { HeaderText, View, Text } from '../components/Themed';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -45,7 +45,7 @@ const HomeScreen: React.FC = () => {
         style={styles.content}
         transition="backgroundColor"
       >
-        <HeaderText>{content.content}</HeaderText>
+        <Text>{content.content}</Text>
       </Animatable.View>
     );
   };
@@ -89,7 +89,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   content: {
     marginBottom: 5,
-    // textAlign: 'justify',
+    textAlign: 'justify',
   },
   container: {
     flex: 1,

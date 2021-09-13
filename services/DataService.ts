@@ -144,8 +144,8 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
       description:
         'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
       latLng: {
-        latitude: 51.199444,
-        longitude: 4.85119,
+        latitude: 51.199763,
+        longitude: 4.8506,
       },
       icon: require('../assets/images/map-icons/icon-6.png'),
       layer: 'activities',

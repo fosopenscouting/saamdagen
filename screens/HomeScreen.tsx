@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Image } from 'react-native';
 import { HeaderText, View, Text } from '../components/Themed';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -68,6 +68,10 @@ const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
+        <Image
+          style={{ width: '100%', height: 350 }}
+          source={require('../assets/images/20210513_promo_saamdagen-661.jpg')}
+        />
         <View style={{ paddingTop: 8, margin: 10 }}>
           <Accordion
             sections={getHomeScreenSections()}

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "saamdagen",
+    "name": "Saamdagen",
     "slug": "saamdagen",
     "version": "1.0.0",
     "owner": "fos-open-scouting",
@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0a559d"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0a559d"
       }
     },
     "web": {

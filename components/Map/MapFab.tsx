@@ -23,6 +23,11 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
           icon="layers"
           actions={[
             {
+              icon: 'alpha-g-box',
+              label: 'Groot spel',
+              onPress: () => props.handleLayerSelect('big_game'),
+            },
+            {
               icon: 'basketball',
               label: 'Activiteiten',
               onPress: () => props.handleLayerSelect('activities'),

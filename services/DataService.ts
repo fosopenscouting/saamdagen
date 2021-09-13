@@ -533,6 +533,83 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
       layer: 'activities',
     },
   ],
+  [
+    'G1',
+    {
+      title: 'Teamwork',
+      latLng: {
+        latitude: 51.200168,
+        longitude: 4.850508,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G2',
+    {
+      title: 'Eindspel',
+      latLng: {
+        latitude: 51.200612,
+        longitude: 4.850154,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G3',
+    {
+      title: 'Creativiteit',
+      latLng: {
+        latitude: 51.201086,
+        longitude: 4.851479,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G4',
+    {
+      title: 'Snelheid',
+      latLng: {
+        latitude: 51.201533,
+        longitude: 4.850138,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G5',
+    {
+      title: 'Intelligentie',
+      latLng: {
+        latitude: 51.202104,
+        longitude: 4.851667,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G6',
+    {
+      title: 'Listigheid',
+      latLng: {
+        latitude: 51.202743,
+        longitude: 4.850631,
+      },
+      layer: 'big_game',
+    },
+  ],
+  [
+    'G7',
+    {
+      title: 'Kracht',
+      latLng: {
+        latitude: 51.203512,
+        longitude: 4.850433,
+      },
+      layer: 'big_game',
+    },
+  ],
 ]);
 
 export const getMapMarkers = (

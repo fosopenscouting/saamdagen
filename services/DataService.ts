@@ -760,7 +760,7 @@ Je kan bij de uitcheck je overige jetons inruilen voor geld. Ook je beker met be
 export const getHomeScreenSections = (): HomeScreenSection[] => {
   return [
     {
-      title: 'Welkom op Saamdagen',
+      title: 'Welkom op Saamdagen!',
       content: `Saamdagen is terug!
 We hebben er even op moeten wachten maar geduld wordt beloond.
 Maak je klaar voor een legendarisch editie.

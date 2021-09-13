@@ -1,1 +1,1 @@
-export type MapLayer = 'normal' | 'activities';
+export type MapLayer = 'normal' | 'activities' | 'big_game';

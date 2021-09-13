@@ -29,6 +29,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
         longitude: 4.851519,
       },
       layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-podium.png'),
     },
   ],
   [
@@ -41,6 +42,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
         longitude: 4.8502755,
       },
       layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-fuiftent.png'),
     },
   ],
   [
@@ -53,6 +55,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
         longitude: 4.8502755,
       },
       layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-kampvuur.png'),
     },
   ],
   [
@@ -61,6 +64,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
       title: 'Eettent',
       description: 'Njam',
       layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-eten.png'),
       latLng: {
         latitude: 51.2005331,
         longitude: 4.8502755,

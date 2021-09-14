@@ -4,14 +4,14 @@ import { StyleSheet } from 'react-native';
 
 interface MapDetailProps {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
   return (
     <View style={styles.container}>
       <HeaderText style={styles.title}>{props.title}</HeaderText>
-      <HeaderText>{props.description}</HeaderText>
+      {props.description ? <HeaderText>{props.description}</HeaderText> : null}
     </View>
   );
 };

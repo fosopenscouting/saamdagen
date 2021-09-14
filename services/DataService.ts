@@ -10,10 +10,14 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Infopunt',
     {
       title: 'Infopunt',
-      description: 'Vind hier alle info die je nodig hebt!',
+      description: `Aan het infopunt kan je terecht voor … info! Hier koop je ook jetons en bekers. Oordoppen of condooms nodig? Zit je met een vraag of zin in een babbel? Het infopunt is the place to be! Ook voor EHBO kan je hier terecht.
+
+We werken met herbruikbare bekers. Voor €2 koop je een beker met bekerjeton aan. Het hele weekend maak je gebruik van je beker. Als je aan de bar een drankje koopt, geef je je beker af. Je krijgt een gevulde beker terug. Die beker gebruik je dan opnieuw als je een drankje haalt. Op het einde van het weekend kan je bij de uitcheck de €2 terugkrijgen als je een beker en een bekerjeton afgeeft. Draag dus goed zorg voor je bekerjeton.
+
+Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor geld.  `,
       latLng: {
-        latitude: 51.200974,
-        longitude: 4.850735,
+        latitude: 51.200962,
+        longitude: 4.85072,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-infopunt.png'),
@@ -23,10 +27,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Podium',
     {
       title: 'Podium',
-      description: 'Helemaal loos!',
+      description:
+        'Het hart van Saamdagen. De plaats waar alle ‘magic happens’.',
       latLng: {
-        latitude: 51.201108,
-        longitude: 4.851519,
+        latitude: 51.201001,
+        longitude: 4.851587,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-podium.png'),
@@ -36,10 +41,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Fuiftent',
     {
       title: 'Fuiftent',
-      description: 'Ook hier helemaal loos!',
+      description:
+        'De naam zegt het zelf. Een tent, hoe kan het ook anders, waarin vooral gedanst wordt.',
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.2008,
+        longitude: 4.850224,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-fuiftent.png'),
@@ -49,10 +55,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Kampvuur',
     {
       title: 'Kampvuur',
-      description: 'Vrolijke vrolijke vrienden',
+      description:
+        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.',
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.200161,
+        longitude: 4.850385,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-kampvuur.png'),
@@ -62,21 +69,117 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Eettent',
     {
       title: 'Eettent',
-      description: 'Njam',
+      description:
+        'Hier kan je telkens je maaltijd komen halen. Wij zorgen voor een lekkere maaltijd, jullie voor een gamel, bord, tas, bestek … ',
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-eten.png'),
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.200967,
+        longitude: 4.851257,
       },
+    },
+  ],
+  [
+    'Markt',
+    {
+      title: 'Markt',
+      description: '',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.200614,
+        longitude: 4.85027,
+      },
+      icon: require('../assets/images/map-icons/icon-markt.png'),
+    },
+  ],
+  [
+    'Rustige bar',
+    {
+      title: 'Rustige bar',
+      description:
+        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.200389,
+        longitude: 4.850433,
+      },
+      icon: require('../assets/images/map-icons/icon-rustige-bar.png'),
+    },
+  ],
+  [
+    'Sanitair',
+    {
+      title: 'Sanitair',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.201207,
+        longitude: 4.850218,
+      },
+      icon: require('../assets/images/map-icons/icon-douche.png'),
+      description: `Hier vind je:
+      - Toiletten
+      - Douches
+      - Kraantjeswater`,
+    },
+  ],
+  [
+    'SanitairCamping',
+    {
+      title: 'Sanitair',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.202863,
+        longitude: 4.849293,
+      },
+      icon: require('../assets/images/map-icons/icon-douche.png'),
+      description: `Hier vind je:
+      - Toiletten
+      - Kraantjeswater`,
+    },
+  ],
+  [
+    'Camping',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.20285,
+        longitude: 4.847783,
+      },
+      description: 'Hier slaat iedereen z’n tentje op.',
+    },
+  ],
+  [
+    'Camping2',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.203845,
+        longitude: 4.8487063,
+      },
+      description: 'Hier slaat iedereen z’n tentje op.',
+    },
+  ],
+  [
+    'Camping3',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.203616,
+        longitude: 4.85024,
+      },
+      description: 'Hier slaat iedereen z’n tentje op.',
     },
   ],
   [
     '1',
     {
       title: 'Hoogteparcours EN zandkastelen en knikkerbanen',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
       latLng: {
         latitude: 51.199612,
         longitude: 4.851292,
@@ -89,8 +192,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '2',
     {
       title: 'Techniekenspel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199807,
         longitude: 4.851271,
@@ -103,8 +205,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '3',
     {
       title: 'Buitenlandskamp voor dummies',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199474,
         longitude: 4.850606,
@@ -117,8 +218,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '4',
     {
       title: 'Een conflict? Animeren is anticiperen',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199548,
         longitude: 4.850928,
@@ -131,8 +231,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '5',
     {
       title: 'Afrikaans percussie',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199444,
         longitude: 4.85119,
@@ -145,8 +244,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '6',
     {
       title: 'In time!',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199763,
         longitude: 4.8506,
@@ -159,8 +257,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '7',
     {
       title: 'LEO verrast',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199998,
         longitude: 4.850423,
@@ -173,8 +270,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '8',
     {
       title: 'Sjorren',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20023,
         longitude: 4.850198,
@@ -187,8 +283,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '9',
     {
       title: 'Are you the one?',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200385,
         longitude: 4.850466,
@@ -201,8 +296,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '10',
     {
       title: 'Ballen aan je lijf',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200593,
         longitude: 4.850075,
@@ -215,8 +309,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '11',
     {
       title: 'Goed in je vel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200536,
         longitude: 4.851127,
@@ -229,8 +322,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '12',
     {
       title: 'Mocktails and partygames',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200845,
         longitude: 4.850647,
@@ -243,8 +335,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '13',
     {
       title: 'Circustechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200981,
         longitude: 4.850119,
@@ -257,8 +348,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '14',
     {
       title: 'Battle royal',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201138,
         longitude: 4.850639,
@@ -271,8 +361,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '15',
     {
       title: 'Kort maar krachtig',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201076,
         longitude: 4.85146,
@@ -285,8 +374,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '16',
     {
       title: 'Wij maken jouw dag (een stukje duurzamer)',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201082,
         longitude: 4.852013,
@@ -299,8 +387,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '17',
     {
       title: 'Gigantisch spel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20138,
         longitude: 4.85186,
@@ -313,8 +400,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '18',
     {
       title: 'Chaos 2.0',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201623,
         longitude: 4.852047,
@@ -327,8 +413,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '19',
     {
       title: 'Yoga',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202175,
         longitude: 4.851189,
@@ -341,8 +426,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '20',
     {
       title: 'Zeescouts op het droge',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202481,
         longitude: 4.851211,
@@ -355,8 +439,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '21',
     {
       title: 'Cluedo',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20244,
         longitude: 4.85047,
@@ -369,8 +452,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '22',
     {
       title: 'Survivaltechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20281,
         longitude: 4.850116,
@@ -383,8 +465,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '23',
     {
       title: 'Seniors begeleiden',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202511,
         longitude: 4.849296,
@@ -397,8 +478,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '24',
     {
       title: 'Het niet zo eerlijke levenswegspel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201909,
         longitude: 4.850052,
@@ -411,8 +491,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '25',
     {
       title: 'Kinderen met specifieke noden',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201587,
         longitude: 4.850325,
@@ -425,8 +504,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '26',
     {
       title: 'Scouting is kicken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201449,
         longitude: 4.849998,
@@ -439,8 +517,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '27',
     {
       title: 'Genderinclusief scouten, hoe doe je dat?',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201822,
         longitude: 4.849542,
@@ -453,8 +530,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '28',
     {
       title: 'Op tocht door FOS Open Scouting',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201704,
         longitude: 4.849226,
@@ -467,8 +543,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '29',
     {
       title: 'Grab ‘m by the pussy',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201324,
         longitude: 4.849692,
@@ -481,8 +556,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '30',
     {
       title: 'Evalueren kan je leren',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201227,
         longitude: 4.849017,
@@ -495,8 +569,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '31',
     {
       title: 'Overtuigen en werven',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201644,
         longitude: 4.848625,
@@ -509,8 +582,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '32',
     {
       title: 'EHBE',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201983,
         longitude: 4.848764,
@@ -523,8 +595,7 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     '33',
     {
       title: 'Vergadertechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202165,
         longitude: 4.848153,
@@ -636,7 +707,7 @@ export const getScheduleData = (): ScheduleData[] => {
 
 1. Ticket Saamdagen. Via de QR-code op je ticket of via deze app.
 
-2. COVID Safe Ticket. Alle info vind je hier.
+2. COVID Safe Ticket. Alle info vind je op de website.
 
 3. Een identiteitsbewijs.
 

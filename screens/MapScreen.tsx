@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { View } from '../components/Themed';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import MapView, {
   Marker,
   Region,
@@ -81,7 +81,8 @@ const MapScreen: React.FC = () => {
           coordinate={value.latLng}
           identifier={key}
           image={value.icon}
-        />,
+          flat
+        ></Marker>,
       ),
     );
     return nodes;
@@ -94,7 +95,7 @@ const MapScreen: React.FC = () => {
         provider={PROVIDER_GOOGLE}
         region={mapRegion}
         showsUserLocation={true}
-        minZoomLevel={16}
+        minZoomLevel={17}
         showsMyLocationButton
         moveOnMarkerPress={false}
         showsPointsOfInterest={false}

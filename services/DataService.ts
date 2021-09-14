@@ -180,8 +180,6 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '1',
     {
       title: 'Hoogteparcours EN zandkastelen en knikkerbanen',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
       latLng: {
         latitude: 51.199612,
         longitude: 4.851292,
@@ -194,8 +192,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '2',
     {
       title: 'Techniekenspel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199807,
         longitude: 4.851271,
@@ -208,8 +205,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '3',
     {
       title: 'Buitenlandskamp voor dummies',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199474,
         longitude: 4.850606,
@@ -222,8 +218,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '4',
     {
       title: 'Een conflict? Animeren is anticiperen',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199548,
         longitude: 4.850928,
@@ -236,8 +231,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '5',
     {
       title: 'Afrikaans percussie',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199444,
         longitude: 4.85119,
@@ -250,8 +244,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '6',
     {
       title: 'In time!',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199763,
         longitude: 4.8506,
@@ -264,8 +257,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '7',
     {
       title: 'LEO verrast',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.199998,
         longitude: 4.850423,
@@ -278,8 +270,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '8',
     {
       title: 'Sjorren',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20023,
         longitude: 4.850198,
@@ -292,8 +283,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '9',
     {
       title: 'Are you the one?',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200385,
         longitude: 4.850466,
@@ -306,8 +296,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '10',
     {
       title: 'Ballen aan je lijf',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200593,
         longitude: 4.850075,
@@ -320,8 +309,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '11',
     {
       title: 'Goed in je vel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200536,
         longitude: 4.851127,
@@ -334,8 +322,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '12',
     {
       title: 'Mocktails and partygames',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200845,
         longitude: 4.850647,
@@ -348,8 +335,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '13',
     {
       title: 'Circustechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.200981,
         longitude: 4.850119,
@@ -362,8 +348,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '14',
     {
       title: 'Battle royal',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201138,
         longitude: 4.850639,
@@ -376,8 +361,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '15',
     {
       title: 'Kort maar krachtig',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201076,
         longitude: 4.85146,
@@ -390,8 +374,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '16',
     {
       title: 'Wij maken jouw dag (een stukje duurzamer)',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201082,
         longitude: 4.852013,
@@ -404,8 +387,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '17',
     {
       title: 'Gigantisch spel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20138,
         longitude: 4.85186,
@@ -418,8 +400,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '18',
     {
       title: 'Chaos 2.0',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201623,
         longitude: 4.852047,
@@ -432,8 +413,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '19',
     {
       title: 'Yoga',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202175,
         longitude: 4.851189,
@@ -446,8 +426,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '20',
     {
       title: 'Zeescouts op het droge',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202481,
         longitude: 4.851211,
@@ -460,8 +439,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '21',
     {
       title: 'Cluedo',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20244,
         longitude: 4.85047,
@@ -474,8 +452,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '22',
     {
       title: 'Survivaltechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.20281,
         longitude: 4.850116,
@@ -488,8 +465,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '23',
     {
       title: 'Seniors begeleiden',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202511,
         longitude: 4.849296,
@@ -502,8 +478,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '24',
     {
       title: 'Het niet zo eerlijke levenswegspel',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201909,
         longitude: 4.850052,
@@ -516,8 +491,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '25',
     {
       title: 'Kinderen met specifieke noden',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201587,
         longitude: 4.850325,
@@ -530,8 +504,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '26',
     {
       title: 'Scouting is kicken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201449,
         longitude: 4.849998,
@@ -544,8 +517,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '27',
     {
       title: 'Genderinclusief scouten, hoe doe je dat?',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201822,
         longitude: 4.849542,
@@ -558,8 +530,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '28',
     {
       title: 'Op tocht door FOS Open Scouting',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201704,
         longitude: 4.849226,
@@ -572,8 +543,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '29',
     {
       title: 'Grab ‘m by the pussy',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201324,
         longitude: 4.849692,
@@ -586,8 +556,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '30',
     {
       title: 'Evalueren kan je leren',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201227,
         longitude: 4.849017,
@@ -600,8 +569,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '31',
     {
       title: 'Overtuigen en werven',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201644,
         longitude: 4.848625,
@@ -614,8 +582,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '32',
     {
       title: 'EHBE',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.201983,
         longitude: 4.848764,
@@ -628,8 +595,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     '33',
     {
       title: 'Vergadertechnieken',
-      description:
-        'Ouder dan 12 jaar maar toch nog zin om zandkastelen te bouwen en knikkerraces te houden? Op Saamdagen kan het!',
+
       latLng: {
         latitude: 51.202165,
         longitude: 4.848153,

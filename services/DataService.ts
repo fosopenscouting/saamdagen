@@ -56,7 +56,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     {
       title: 'Kampvuur',
       description:
-        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.  ',
+        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.',
       latLng: {
         latitude: 51.200161,
         longitude: 4.850385,
@@ -69,7 +69,8 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     'Eettent',
     {
       title: 'Eettent',
-      description: 'Njam',
+      description:
+        'Hier kan je telkens je maaltijd komen halen. Wij zorgen voor een lekkere maaltijd, jullie voor een gamel, bord, tas, bestek … ',
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-eten.png'),
       latLng: {
@@ -95,7 +96,8 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     'Rustige bar',
     {
       title: 'Rustige bar',
-      description: '',
+      description:
+        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.',
       layer: 'normal',
       latLng: {
         latitude: 51.200389,
@@ -145,6 +147,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
         latitude: 51.20285,
         longitude: 4.847783,
       },
+      description: 'Hier slaat iedereen z’n tentje op.',
     },
   ],
   [
@@ -157,6 +160,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
         latitude: 51.203845,
         longitude: 4.8487063,
       },
+      description: 'Hier slaat iedereen z’n tentje op.',
     },
   ],
   [
@@ -169,6 +173,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
         latitude: 51.203616,
         longitude: 4.85024,
       },
+      description: 'Hier slaat iedereen z’n tentje op.',
     },
   ],
   [
@@ -736,7 +741,7 @@ export const getScheduleData = (): ScheduleData[] => {
 
 1. Ticket Saamdagen. Via de QR-code op je ticket of via deze app.
 
-2. COVID Safe Ticket. Alle info vind je hier.
+2. COVID Safe Ticket. Alle info vind je op de website.
 
 3. Een identiteitsbewijs.
 

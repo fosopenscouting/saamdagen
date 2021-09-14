@@ -10,10 +10,14 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Infopunt',
     {
       title: 'Infopunt',
-      description: 'Vind hier alle info die je nodig hebt!',
+      description: `Aan het infopunt kan je terecht voor … info! Hier koop je ook jetons en bekers. Oordoppen of condooms nodig? Zit je met een vraag of zin in een babbel? Het infopunt is the place to be!
+
+We werken met herbruikbare bekers. Voor €2 koop je een beker met bekerjeton aan. Het hele weekend maak je gebruik van je beker. Als je aan de bar een drankje koopt, geef je je beker af. Je krijgt een gevulde beker terug. Die beker gebruik je dan opnieuw als je een drankje haalt. Op het einde van het weekend kan je bij de uitcheck de €2 terugkrijgen als je een beker en een bekerjeton afgeeft. Draag dus goed zorg voor je bekerjeton.
+
+Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor geld.  `,
       latLng: {
-        latitude: 51.200974,
-        longitude: 4.850735,
+        latitude: 51.200962,
+        longitude: 4.85072,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-infopunt.png'),
@@ -23,10 +27,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Podium',
     {
       title: 'Podium',
-      description: 'Helemaal loos!',
+      description:
+        'Het hart van Saamdagen. De plaats waar alle ‘magic happens’.',
       latLng: {
-        latitude: 51.201108,
-        longitude: 4.851519,
+        latitude: 51.201001,
+        longitude: 4.851587,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-podium.png'),
@@ -36,10 +41,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Fuiftent',
     {
       title: 'Fuiftent',
-      description: 'Ook hier helemaal loos!',
+      description:
+        'De naam zegt het zelf. Een tent, hoe kan het ook anders, waarin vooral gedanst wordt.',
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.2008,
+        longitude: 4.850224,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-fuiftent.png'),
@@ -49,10 +55,11 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
     'Kampvuur',
     {
       title: 'Kampvuur',
-      description: 'Vrolijke vrolijke vrienden',
+      description:
+        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.  ',
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.200161,
+        longitude: 4.850385,
       },
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-kampvuur.png'),
@@ -66,8 +73,94 @@ const markers = new Map<PointOfInterest | string, MapMarker>([
       layer: 'normal',
       icon: require('../assets/images/map-icons/icon-eten.png'),
       latLng: {
-        latitude: 51.2005331,
-        longitude: 4.8502755,
+        latitude: 51.200967,
+        longitude: 4.851257,
+      },
+    },
+  ],
+  [
+    'Markt',
+    {
+      title: 'Markt',
+      description: '',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.200614,
+        longitude: 4.85027,
+      },
+      icon: require('../assets/images/map-icons/icon-markt.png'),
+    },
+  ],
+  [
+    'Rustige bar',
+    {
+      title: 'Rustige bar',
+      description: '',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.200389,
+        longitude: 4.850433,
+      },
+      icon: require('../assets/images/map-icons/icon-rustige-bar.png'),
+    },
+  ],
+  [
+    'Sanitair',
+    {
+      title: 'Sanitair',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.201207,
+        longitude: 4.850218,
+      },
+      icon: require('../assets/images/map-icons/icon-douche.png'),
+    },
+  ],
+  [
+    'SanitairCamping',
+    {
+      title: 'Sanitair',
+      layer: 'normal',
+      latLng: {
+        latitude: 51.202863,
+        longitude: 4.849293,
+      },
+      icon: require('../assets/images/map-icons/icon-douche.png'),
+    },
+  ],
+  [
+    'Camping',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.20285,
+        longitude: 4.847783,
+      },
+    },
+  ],
+  [
+    'Camping2',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.203845,
+        longitude: 4.8487063,
+      },
+    },
+  ],
+  [
+    'Camping3',
+    {
+      title: 'Camping',
+      layer: 'normal',
+      icon: require('../assets/images/map-icons/icon-camping.png'),
+      latLng: {
+        latitude: 51.203616,
+        longitude: 4.85024,
       },
     },
   ],

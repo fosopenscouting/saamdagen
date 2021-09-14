@@ -94,7 +94,7 @@ const MapScreen: React.FC = () => {
         provider={PROVIDER_GOOGLE}
         region={mapRegion}
         showsUserLocation={true}
-        minZoomLevel={16}
+        minZoomLevel={17}
         showsMyLocationButton
         moveOnMarkerPress={false}
         showsPointsOfInterest={false}

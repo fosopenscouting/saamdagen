@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { getMapMarkers, getScheduleData } from '../services/DataService';
+import { getGeneralOpeningHours, getMapMarkers, getScheduleData } from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
@@ -22,10 +22,16 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const dayEvents: ScheduleData[] = getScheduleData().filter(
     (event) => event.startTime.getDate() == dayInfo.day,
   );
+  const dayGeneralHours: ScheduleData[] = getGeneralOpeningHours().filter(
+    (event) => event.startTime.getDate() == dayInfo.day,
+  );
   const colorScheme = useColorScheme();
   const mapMarkers = getMapMarkers('normal');
 
-  const renderScheduleTime = (scheduleData: ScheduleData): string => {
+  const renderScheduleTime = (
+    scheduleData: ScheduleData,
+    showUndefinedEndTime = false,
+  ): string => {
     const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
     const startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
       2,
@@ -39,6 +45,8 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
         '0',
       );
       return `${startTime} tot ${endHours}u${endMinutes}`;
+    } else if (showUndefinedEndTime) {
+      return `${startTime} tot ...`;
     } else {
       return startTime;
     }
@@ -92,6 +100,19 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
+  const renderGeneralOpeningHours = () => {
+    const elements: JSX.Element[] = [];
+    dayGeneralHours.forEach((element) => {
+      elements.push(
+        <HeaderText style={styles.openingHours}>
+          <HeaderText style={styles.eventH3}>{element.name}</HeaderText>{' '}
+          {renderScheduleTime(element, true)}
+        </HeaderText>,
+      );
+    });
+    return elements;
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -109,25 +130,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             </View>
           </View>
           <Collapsible collapsed={hideOverview}>
-            <View style={styles.container}>
-              {/* :TODO: make this dynamic? */}
-              <HeaderText style={styles.openingHours}>
-                <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00
-                tot 02u30{'\n'}
-                <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00
-                tot 02u00{'\n'}
-                <HeaderText style={styles.eventH3}>
-                  Rustige bar:
-                </HeaderText>{' '}
-                23u00 tot 02u30{'\n'}
-                <HeaderText style={styles.eventH3}>
-                  Bar fuiftent:
-                </HeaderText>{' '}
-                22u30 tot 03u00{'\n'}
-                <HeaderText style={styles.eventH3}>FOS-Shop:</HeaderText> 20u00
-                tot 22u00
-              </HeaderText>
-            </View>
+            <View style={styles.container}>{renderGeneralOpeningHours()}</View>
           </Collapsible>
           <View
             style={[

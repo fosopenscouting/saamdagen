@@ -695,6 +695,84 @@ export const getMapMarkers = (
   return filteredMarkers;
 };
 
+export const getGeneralOpeningHours = (): ScheduleData[] => {
+  return [
+    // Vrijdag
+    {
+      startTime: new Date(2021, 9, 24, 20),
+      endTime: new Date(2021, 9, 25, 2, 30),
+      location: 'Infopunt',
+      name: 'Infopunt',
+    },
+    {
+      startTime: new Date(2021, 9, 24, 21),
+      endTime: new Date(2021, 9, 25, 2),
+      location: 'Podium',
+      name: 'Bar',
+    },
+    {
+      startTime: new Date(2021, 9, 24, 21, 30),
+      endTime: new Date(2021, 9, 25, 2),
+      location: 'Kampvuur',
+      name: 'Rustige bar',
+    },
+    {
+      startTime: new Date(2021, 9, 24, 20),
+      endTime: new Date(2021, 9, 24, 22),
+      location: 'Markt',
+      name: 'FOS-Shop',
+    },
+    // Zaterdag
+    {
+      startTime: new Date(2021, 9, 25, 8),
+      endTime: new Date(2021, 9, 26, 2, 30),
+      location: 'Infopunt',
+      name: 'Infopunt',
+    },
+    {
+      startTime: new Date(2021, 9, 25, 12),
+      endTime: new Date(2021, 9, 25, 13, 15),
+      location: 'Podium',
+      name: 'Bar',
+    },
+    {
+      startTime: new Date(2021, 9, 25, 18, 30),
+      endTime: new Date(2021, 9, 26, 2, 45),
+      location: 'Podium',
+      name: 'Bar',
+    },
+    {
+      startTime: new Date(2021, 9, 25, 21),
+      endTime: new Date(2021, 9, 26, 2, 45),
+      location: 'Kampvuur',
+      name: 'Rustige bar',
+    },
+    {
+      startTime: new Date(2021, 9, 25, 12),
+      endTime: new Date(2021, 9, 25, 13, 15),
+      location: 'Markt',
+      name: 'FOS-Shop',
+    },
+    // Zondag
+    {
+      startTime: new Date(2021, 9, 26, 8, 30),
+      location: 'Infopunt',
+      name: 'Infopunt',
+    },
+    {
+      startTime: new Date(2021, 9, 26, 10, 30),
+      location: 'Podium',
+      name: 'Bar',
+    },
+    {
+      startTime: new Date(2021, 9, 26, 10),
+      endTime: new Date(2021, 9, 26, 12),
+      location: 'Markt',
+      name: 'FOS-Shop',
+    },
+  ]
+};
+
 export const getScheduleData = (): ScheduleData[] => {
   return [
     // Vrijdag

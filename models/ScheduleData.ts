@@ -5,5 +5,5 @@ export interface ScheduleData {
   endTime?: Date;
   location?: PointOfInterest;
   name: string;
-  description: string;
+  description?: string;
 }

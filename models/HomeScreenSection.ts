@@ -1,4 +1,4 @@
 export interface HomeScreenSection {
   title: string;
-  content: string;
+  content: string | JSX.Element;
 }

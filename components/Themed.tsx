@@ -5,6 +5,7 @@
 
 import * as React from 'react';
 import { Text as DefaultText, View as DefaultView } from 'react-native';
+import { Anchor as DefaultAnchor } from '../components/Anchor';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -40,6 +41,18 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
   const fontFamily = 'Andes';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
+};
+
+export const Anchor: React.FC<TextProps> = (props: TextProps) => {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor(
+    { light: lightColor, dark: darkColor },
+    'headerColor',
+  );
+
+  return (
+    <DefaultAnchor style={[{ color, fontWeight }, style]} {...otherProps} />
+  );
 };
 
 export const Text: React.FC<TextProps> = (props: TextProps) => {

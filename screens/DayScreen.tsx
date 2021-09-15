@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { getGeneralOpeningHours, getMapMarkers, getScheduleData } from '../services/DataService';
+import {
+  getGeneralOpeningHours,
+  getMapMarkers,
+  getScheduleData,
+} from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
@@ -20,10 +24,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [hideOverview, setHideOverview] = useState(false);
   const dayEvents: ScheduleData[] = getScheduleData().filter(
-    (event) => event.startTime.getDate() == dayInfo.day,
+    (event) => event.time[0].startTime.getDate() == dayInfo.day,
   );
   const dayGeneralHours: ScheduleData[] = getGeneralOpeningHours().filter(
-    (event) => event.startTime.getDate() == dayInfo.day,
+    (event) => event.time[0].startTime.getDate() == dayInfo.day,
   );
   const colorScheme = useColorScheme();
   const mapMarkers = getMapMarkers('normal');
@@ -32,24 +36,29 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     scheduleData: ScheduleData,
     showUndefinedEndTime = false,
   ): string => {
-    const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
-    const startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
-      2,
-      '0',
-    );
-    const startTime = `${startHours}u${startMinutes}`;
-    if (scheduleData.endTime) {
-      const endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
-      const endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(
+    let result = '';
+    scheduleData.time.forEach((timeslot, index) => {
+      if (index > 0) {
+        result += ' & ';
+      }
+      const startHours = `${timeslot.startTime.getHours()}`.padStart(2, '0');
+      const startMinutes = `${timeslot.startTime.getMinutes()}`.padStart(
         2,
         '0',
       );
-      return `${startTime} tot ${endHours}u${endMinutes}`;
-    } else if (showUndefinedEndTime) {
-      return `${startTime} tot ...`;
-    } else {
-      return startTime;
-    }
+      const startTime = `${startHours}u${startMinutes}`;
+      if (timeslot.endTime) {
+        const endHours = `${timeslot.endTime.getHours()}`.padStart(2, '0');
+        const endMinutes = `${timeslot.endTime.getMinutes()}`.padStart(2, '0');
+        result += `${startTime} tot ${endHours}u${endMinutes}`;
+      } else if (showUndefinedEndTime) {
+        result += `${startTime} tot ...`;
+      } else {
+        result += startTime;
+      }
+    });
+
+    return result;
   };
 
   const renderHeader = (content: ScheduleData, _: any, isActive: boolean) => {
@@ -77,7 +86,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderContent = (content: ScheduleData, _: any, isActive: boolean) => {
+  const renderContent = (content: ScheduleData, _: any) => {
     return (
       <Animatable.View
         duration={400}
@@ -89,7 +98,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderFooter = (content: ScheduleData, _: any, isActive: boolean) => {
+  const renderFooter = (content: ScheduleData, _: any) => {
     return (
       <View
         style={[

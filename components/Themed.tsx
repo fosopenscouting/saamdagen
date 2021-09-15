@@ -51,7 +51,7 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
   );
 
   return (
-    <DefaultAnchor style={[{ color, fontWeight }, style]} {...otherProps} />
+    <DefaultAnchor style={[{ color }, style]} {...otherProps} />
   );
 };
 

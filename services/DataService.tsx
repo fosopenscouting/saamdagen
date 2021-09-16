@@ -4,6 +4,8 @@ import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { ScheduleData } from '../models/ScheduleData';
+import React from 'react';
+import { Text, Anchor } from '../components/Themed';
 
 const markers = new Map<PointOfInterest | string, MapMarker>([
   [
@@ -1122,13 +1124,15 @@ Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en voora
     },
     {
       title: 'COVID Safe',
-      content: `Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van:
+      content: (
+        <Text>
+          {`Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van een van deze 3:
+          
+1: Een vaccinatiecertificaat. Dat wil zeggen dat je meer dan 2 weken volledig gevaccineerd bent.
 
-Een vaccinatiecertificaat. Dat wil zeggen dat je meer dan 2 weken volledig gevaccineerd bent.
+2: Een herstelcertificaat van minder dan 6 maanden.
 
-Een herstelcertificaat van minder dan 6 maanden.
-
-Een negatieve PCR-test die het volledige weekend geldig is. Een PCR-test is geldig op de dag van de test en 48 uur later. De negatieve PCR-test moet dus afgenomen zijn op vrijdag 24/09.
+3: Een negatieve PCR-test die het volledige weekend geldig is. Een PCR-test is geldig op de dag van de test en 48 uur later. De negatieve PCR-test moet dus afgenomen zijn op vrijdag 24/09.
 
 Opgelet! Noch een negatief resultaat van een antigeen- of sneltest, noch een negatieve PCR-test ouder dan vrijdag 24/09 zijn voldoende om toegang te krijgen.
 
@@ -1136,7 +1140,12 @@ Aan de ingang vragen we naar je identiteitskaart en je COVID Safe Ticket.
 
 Aan de ingang zijn de afstands- en mondmaskerregels nog van toepassing. Zorg dus dat je een mondmasker bijhebt. Vanaf dat je het terrein van de Brink betreedt, draag je een mondmasker en houd je rekening met de afstandsregels. Van zodra je COVID Safe Ticket werd ingescand en je toegang krijgt tot het terrein mag je mondmasker af en ben je welkom in het rijk der vrijheid.
 
-Meer info via https://fosopenscouting.be/nl/covid-safe-ticket `,
+Meer info via`}{' '}
+          <Anchor href="https://fosopenscouting.be/nl/covid-safe-ticket">
+            de website
+          </Anchor>
+        </Text>
+      ),
     },
     {
       title: 'Vragen of problemen',

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saamdagen",
     "slug": "saamdagen",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -18,13 +18,26 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "bundleIdentifier": "be.fos.saamdagen",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Laat Saamdagen toe om je camera te gebruiken.",
+        "NSLocationWhenInUseUsageDescription": "Laat Saamdagen toe om je locatie te gebruiken."
+      }
     },
     "android": {
+      "versionCode": 25,
+      "package": "be.fos.saamdagen",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#0000FF"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

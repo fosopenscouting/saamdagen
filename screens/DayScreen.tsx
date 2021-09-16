@@ -111,9 +111,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 
   const renderGeneralOpeningHours = () => {
     const elements: JSX.Element[] = [];
-    dayGeneralHours.forEach((element) => {
+    dayGeneralHours.forEach((element, index) => {
       elements.push(
-        <HeaderText style={styles.openingHours}>
+        <HeaderText key={index} style={styles.openingHours}>
           <HeaderText style={styles.eventH3}>{element.name}</HeaderText>{' '}
           {renderScheduleTime(element, true)}
         </HeaderText>,

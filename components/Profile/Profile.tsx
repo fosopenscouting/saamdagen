@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
+import Colors from '../../constants/Colors';
+import useColorScheme from '../../hooks/useColorScheme';
 
 interface ProfileProps {
   firstName: string;
@@ -11,8 +13,15 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
+  const colorScheme = useColorScheme();
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: Colors[colorScheme].cardBackground },
+      ]}
+    >
       <HeaderText style={[styles.greetingHeader]}>
         Hey {props.firstName}
       </HeaderText>
@@ -44,7 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: 'white',
     borderRadius: 8,
   },
   greetingHeader: {

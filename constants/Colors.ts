@@ -24,6 +24,6 @@ export default {
     tabTextColor: 'white',
     white: 'white',
     headerColor: 'white',
-    cardBackground: '#f5f5f5',
+    cardBackground: '#161B22',
   },
 };

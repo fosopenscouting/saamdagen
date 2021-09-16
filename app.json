@@ -16,7 +16,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "buildNumber": "1",
       "supportsTablet": true,
@@ -24,6 +26,9 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Laat Saamdagen toe om je camera te gebruiken.",
         "NSLocationWhenInUseUsageDescription": "Laat Saamdagen toe om je locatie te gebruiken."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyBQ1w5Cnh9_P1nmAlmM3wxj_nbFTeS222A"
       }
     },
     "android": {
@@ -37,7 +42,12 @@
         "CAMERA",
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION"
-      ]
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB1jFF2-vdFTJ6zMs9_m08vPSt2G9UngEE"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

@@ -1124,7 +1124,9 @@ Kom mee genieten van een streepje muziek, activiteiten, vormingen, bars en voora
     },
     {
       title: 'COVID Safe',
-      content: <Text>{`Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van een van deze 3:
+      content: (
+        <Text>
+          {`Enkel personen die kunnen aantonen dat ze het volledige weekend - vrijdagavond 24/09 tot en met zondag 26/09 - ‘safe’ zijn, krijgen toegang. Dat komt neer op het kunnen voorleggen van een van deze 3:
           
 1: Een vaccinatiecertificaat. Dat wil zeggen dat je meer dan 2 weken volledig gevaccineerd bent.
 
@@ -1138,7 +1140,12 @@ Aan de ingang vragen we naar je identiteitskaart en je COVID Safe Ticket.
 
 Aan de ingang zijn de afstands- en mondmaskerregels nog van toepassing. Zorg dus dat je een mondmasker bijhebt. Vanaf dat je het terrein van de Brink betreedt, draag je een mondmasker en houd je rekening met de afstandsregels. Van zodra je COVID Safe Ticket werd ingescand en je toegang krijgt tot het terrein mag je mondmasker af en ben je welkom in het rijk der vrijheid.
 
-Meer info via`} <Anchor href='https://fosopenscouting.be/nl/covid-safe-ticket'>de website</Anchor></Text>,
+Meer info via`}{' '}
+          <Anchor href="https://fosopenscouting.be/nl/covid-safe-ticket">
+            de website
+          </Anchor>
+        </Text>
+      ),
     },
     {
       title: 'Vragen of problemen',

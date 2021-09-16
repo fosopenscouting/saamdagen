@@ -50,9 +50,7 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
     'headerColor',
   );
 
-  return (
-    <DefaultAnchor style={[{ color }, style]} {...otherProps} />
-  );
+  return <DefaultAnchor style={[{ color }, style]} {...otherProps} />;
 };
 
 export const Text: React.FC<TextProps> = (props: TextProps) => {

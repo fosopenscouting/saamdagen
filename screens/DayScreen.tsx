@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { getMapMarkers, getScheduleData } from '../services/DataService';
+import {
+  getGeneralOpeningHours,
+  getMapMarkers,
+  getScheduleData,
+} from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
@@ -20,28 +24,41 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [hideOverview, setHideOverview] = useState(false);
   const dayEvents: ScheduleData[] = getScheduleData().filter(
-    (event) => event.startTime.getDate() == dayInfo.day,
+    (event) => event.time[0].startTime.getDate() == dayInfo.day,
+  );
+  const dayGeneralHours: ScheduleData[] = getGeneralOpeningHours().filter(
+    (event) => event.time[0].startTime.getDate() == dayInfo.day,
   );
   const colorScheme = useColorScheme();
   const mapMarkers = getMapMarkers('normal');
 
-  const renderScheduleTime = (scheduleData: ScheduleData): string => {
-    const startHours = `${scheduleData.startTime.getHours()}`.padStart(2, '0');
-    const startMinutes = `${scheduleData.startTime.getMinutes()}`.padStart(
-      2,
-      '0',
-    );
-    const startTime = `${startHours}u${startMinutes}`;
-    if (scheduleData.endTime) {
-      const endHours = `${scheduleData.endTime.getHours()}`.padStart(2, '0');
-      const endMinutes = `${scheduleData.endTime.getMinutes()}`.padStart(
+  const renderScheduleTime = (
+    scheduleData: ScheduleData,
+    showUndefinedEndTime = false,
+  ): string => {
+    let result = '';
+    scheduleData.time.forEach((timeslot, index) => {
+      if (index > 0) {
+        result += ' & ';
+      }
+      const startHours = `${timeslot.startTime.getHours()}`.padStart(2, '0');
+      const startMinutes = `${timeslot.startTime.getMinutes()}`.padStart(
         2,
         '0',
       );
-      return `${startTime} tot ${endHours}u${endMinutes}`;
-    } else {
-      return startTime;
-    }
+      const startTime = `${startHours}u${startMinutes}`;
+      if (timeslot.endTime) {
+        const endHours = `${timeslot.endTime.getHours()}`.padStart(2, '0');
+        const endMinutes = `${timeslot.endTime.getMinutes()}`.padStart(2, '0');
+        result += `${startTime} tot ${endHours}u${endMinutes}`;
+      } else if (showUndefinedEndTime) {
+        result += `${startTime} tot ...`;
+      } else {
+        result += startTime;
+      }
+    });
+
+    return result;
   };
 
   const renderHeader = (content: ScheduleData, _: any, isActive: boolean) => {
@@ -69,7 +86,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderContent = (content: ScheduleData, _: any, isActive: boolean) => {
+  const renderContent = (content: ScheduleData, _: any) => {
     return (
       <Animatable.View
         duration={400}
@@ -81,7 +98,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderFooter = (content: ScheduleData, _: any, isActive: boolean) => {
+  const renderFooter = (content: ScheduleData, _: any) => {
     return (
       <View
         style={[
@@ -90,6 +107,19 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
         ]}
       />
     );
+  };
+
+  const renderGeneralOpeningHours = () => {
+    const elements: JSX.Element[] = [];
+    dayGeneralHours.forEach((element) => {
+      elements.push(
+        <HeaderText style={styles.openingHours}>
+          <HeaderText style={styles.eventH3}>{element.name}</HeaderText>{' '}
+          {renderScheduleTime(element, true)}
+        </HeaderText>,
+      );
+    });
+    return elements;
   };
 
   return (
@@ -109,25 +139,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             </View>
           </View>
           <Collapsible collapsed={hideOverview}>
-            <View style={styles.container}>
-              {/* :TODO: make this dynamic? */}
-              <HeaderText style={styles.openingHours}>
-                <HeaderText style={styles.eventH3}>Infopunt:</HeaderText> 20u00
-                tot 02u30{'\n'}
-                <HeaderText style={styles.eventH3}>Hoofdbar:</HeaderText> 21u00
-                tot 02u00{'\n'}
-                <HeaderText style={styles.eventH3}>
-                  Rustige bar:
-                </HeaderText>{' '}
-                23u00 tot 02u30{'\n'}
-                <HeaderText style={styles.eventH3}>
-                  Bar fuiftent:
-                </HeaderText>{' '}
-                22u30 tot 03u00{'\n'}
-                <HeaderText style={styles.eventH3}>FOS-Shop:</HeaderText> 20u00
-                tot 22u00
-              </HeaderText>
-            </View>
+            <View style={styles.container}>{renderGeneralOpeningHours()}</View>
           </Collapsible>
           <View
             style={[

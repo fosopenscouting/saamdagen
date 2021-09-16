@@ -13,7 +13,6 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
-
   const colorScheme = useColorScheme();
 
   return (

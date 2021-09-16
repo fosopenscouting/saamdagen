@@ -12,6 +12,7 @@ export default {
     tabTextColor: 'white',
     white: 'white',
     headerColor: '#0000FF',
+    cardBackground: 'white',
   },
   dark: {
     text: '#fff',
@@ -23,5 +24,6 @@ export default {
     tabTextColor: 'white',
     white: 'white',
     headerColor: 'white',
+    cardBackground: '#f5f5f5',
   },
 };

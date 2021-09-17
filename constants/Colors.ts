@@ -13,6 +13,7 @@ export default {
     white: 'white',
     headerColor: '#0000FF',
     cardBackground: 'white',
+    linkColor: '#0000FF',
   },
   dark: {
     text: '#fff',
@@ -25,5 +26,6 @@ export default {
     white: 'white',
     headerColor: 'white',
     cardBackground: '#161B22',
+    linkColor: '#0000FF',
   },
 };

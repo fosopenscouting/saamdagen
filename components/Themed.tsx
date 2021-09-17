@@ -47,7 +47,7 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor(
     { light: lightColor, dark: darkColor },
-    'headerColor',
+    'linkColor',
   );
 
   return <DefaultAnchor style={[{ color }, style]} {...otherProps} />;

@@ -219,7 +219,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
   [
     '4',
     {
-      title: 'Een conflict? Animeren is anticiperen',
+      title: 'Psychisch welzijn - Rode Kruis',
 
       latLng: {
         latitude: 51.199548,
@@ -937,7 +937,7 @@ Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saam
     {
       time: [
         {
-          startTime: new Date(2021, 9, 25, 12, 45),
+          startTime: new Date(2021, 9, 25, 13, 45),
           endTime: new Date(2021, 9, 25, 15, 45),
         },
       ],

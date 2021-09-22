@@ -845,6 +845,17 @@ Op Saamdagen is het niet toegestaan eigen drank mee te brengen.  `,
     {
       time: [
         {
+          startTime: new Date(2021, 9, 24, 21),
+          endTime: new Date(2021, 9, 24, 2),
+        },
+      ],
+      location: 'Podium',
+      name: 'Show + DJ',
+      description: `Een bende sfeermakers zorgt voor een 'welkom-terug-feestje'.`,
+    },
+    {
+      time: [
+        {
           startTime: new Date(2021, 9, 24, 22),
           endTime: new Date(2021, 9, 24, 0),
         },
@@ -852,17 +863,6 @@ Op Saamdagen is het niet toegestaan eigen drank mee te brengen.  `,
       location: 'Eettent',
       name: 'Snack',
       description: `Aan de eettent is voor iedereen een hamburger voorzien.`,
-    },
-    {
-      time: [
-        {
-          startTime: new Date(2021, 9, 24, 22),
-          endTime: new Date(2021, 9, 24, 2),
-        },
-      ],
-      location: 'Podium',
-      name: 'Show + DJ',
-      description: `Een bende sfeermakers zorgt voor een 'welkom-terug-feestje'.`,
     },
     {
       time: [
@@ -967,6 +967,17 @@ Bij je inschrijving koos je voor een activiteit en workshop. Check via Mijn Saam
       name: 'Groot spel',
       location: 'Podium',
       description: `Tijd voor wat actie. De eenheden nemen het tegen elkaar op in de Highland Games. Welke clan kroont zich tot winnaar?`,
+    },
+    {
+      time: [
+        {
+          startTime: new Date(2021, 9, 25, 18, 30),
+          endTime: new Date(2021, 9, 25, 20),
+        },
+      ],
+      name: 'Avondmaal',
+      location: 'Podium',
+      description: ``,
     },
     {
       time: [{ startTime: new Date(2021, 9, 25, 20, 15) }],

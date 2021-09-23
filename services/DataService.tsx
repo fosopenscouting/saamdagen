@@ -140,19 +140,6 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     },
   ],
   [
-    'Camping',
-    {
-      title: 'Camping',
-      layer: 'normal',
-      icon: require('../assets/images/map-icons/icon-camping.png'),
-      latLng: {
-        latitude: 51.20285,
-        longitude: 4.847783,
-      },
-      description: 'Hier slaat iedereen z’n tentje op.',
-    },
-  ],
-  [
     'Camping2',
     {
       title: 'Camping',

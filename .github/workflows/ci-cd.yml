@@ -4,9 +4,25 @@ on:
     branches:
       - master
 jobs:
-  publish:
-    name: Install and publish
+  deployment:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    environment: Staging
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - uses: expo/expo-github-action@v6
+        with:
+          expo-version: 4.x
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: yarn install
+      - run: expo publish --release-channel staging
+  deployment:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: Production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1

@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  deployment:
+  staging:
     name: Build and deploy
     runs-on: ubuntu-latest
     environment: Staging
@@ -19,7 +19,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - run: yarn install
       - run: expo publish --release-channel staging
-  deployment:
+  production:
     name: Build and deploy
     runs-on: ubuntu-latest
     environment: Production

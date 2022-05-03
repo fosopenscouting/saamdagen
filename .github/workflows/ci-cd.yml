@@ -22,6 +22,7 @@ jobs:
   production:
     name: Build and deploy
     runs-on: ubuntu-latest
+    needs: [staging]
     environment: Production
     steps:
       - uses: actions/checkout@v2

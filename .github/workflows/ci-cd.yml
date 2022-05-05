@@ -16,6 +16,7 @@ jobs:
         with:
           versionSpec: '5.x'
       - uses: gittools/actions/gitversion/execute@v0.9.8
+        id: gitversion
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: "v${{steps.gitversion.outputs.semVer}}"

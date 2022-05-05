@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { View } from '../components/Themed';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 import MapView, {
   Marker,
   Region,
@@ -28,7 +28,7 @@ const MapScreen: React.FC = () => {
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
   const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
-  const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.198039, 4.856122];
+  const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.205039, 4.856122];
   const IMAGE = OverlayImage;
 
   const mapRegion: Region = {
@@ -44,7 +44,7 @@ const MapScreen: React.FC = () => {
   }, [layer]);
 
   useEffect(() => {
-    sheetRef.current?.snapTo(0);
+    sheetRef.current?.snapToPosition(0);
   }, [selectedMarker]);
 
   const onMapReady = async () => {

@@ -3,7 +3,6 @@ import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
-import Constants from 'expo-constants';
 
 interface ProfileProps {
   firstName: string;

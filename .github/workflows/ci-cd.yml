@@ -16,8 +16,8 @@ jobs:
       - uses: gittools/actions/gitversion/execute@v0.9.8
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "v{{env.SEMVER}}"
-          message: "v{{env.SEMVER}}"
+          tag: "v${{env.SEMVER}}"
+          message: "v${{env.SEMVER}}"
   staging:
     name: Build and deploy
     runs-on: ubuntu-latest

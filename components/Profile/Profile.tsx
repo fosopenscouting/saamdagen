@@ -3,6 +3,7 @@ import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
+import Constants from 'expo-constants';
 
 interface ProfileProps {
   firstName: string;
@@ -35,6 +36,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
       {props.participantType === 'Deelnemer' ? (
         <View style={styles.activityContainer}>
           <HeaderText style={[styles.activityHeader]}>Workshopkeuze</HeaderText>
+          <Text>{Constants.manifest.version}</Text>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
           </Text>

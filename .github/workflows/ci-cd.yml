@@ -7,6 +7,7 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: gittools/actions/gitversion/setup@v0.9.8
         with:
           versionSpec: '5.x'
@@ -18,6 +19,7 @@ jobs:
   staging:
     name: Build and deploy
     runs-on: ubuntu-latest
+    needs: [version]
     environment: Staging
     steps:
       - uses: actions/checkout@v2

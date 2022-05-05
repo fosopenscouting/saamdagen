@@ -1,7 +1,7 @@
 import { Camera } from 'expo-camera';
 
 const getCameraPermissionsAsync = async (): Promise<boolean> => {
-  const { status } = await Camera.requestPermissionsAsync();
+  const { status } = await Camera.requestCameraPermissionsAsync();
   return status === 'granted';
 };
 

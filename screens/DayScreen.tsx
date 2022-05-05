@@ -61,7 +61,11 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     return result;
   };
 
-  const renderHeader = (content: ScheduleData, _: any, isActive: boolean) => {
+  const renderHeader = (
+    content: ScheduleData,
+    _: unknown,
+    isActive: boolean,
+  ) => {
     return (
       <Animatable.View duration={400} transition="backgroundColor">
         <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -86,7 +90,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderContent = (content: ScheduleData, _: any) => {
+  const renderContent = (content: ScheduleData) => {
     return (
       <Animatable.View
         duration={400}
@@ -98,7 +102,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderFooter = (content: ScheduleData, _: any) => {
+  const renderFooter = () => {
     return (
       <View
         style={[

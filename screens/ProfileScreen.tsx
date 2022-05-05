@@ -1,5 +1,5 @@
 import React from 'react';
-import { Separator, Text, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed';
 import { StyleSheet, Button, ScrollView, Alert } from 'react-native';
 import NoProfile from '../components/Profile/NoProfile';
 import { useState } from 'react';
@@ -9,13 +9,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Ticket } from '../models/Ticket';
 import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import Profile from '../components/Profile/Profile';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const navigation = useNavigation();
-  const colorScheme = useColorScheme();
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {

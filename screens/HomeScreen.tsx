@@ -15,7 +15,7 @@ const HomeScreen: React.FC = () => {
 
   const renderHeader = (
     content: HomeScreenSection,
-    _: any,
+    _: unknown,
     isActive: boolean,
   ) => {
     return (
@@ -34,11 +34,7 @@ const HomeScreen: React.FC = () => {
     );
   };
 
-  const renderContent = (
-    content: HomeScreenSection,
-    _: any,
-    isActive: boolean,
-  ) => {
+  const renderContent = (content: HomeScreenSection) => {
     return (
       <Animatable.View
         duration={400}
@@ -50,11 +46,7 @@ const HomeScreen: React.FC = () => {
     );
   };
 
-  const renderFooter = (
-    content: HomeScreenSection,
-    _: any,
-    isActive: boolean,
-  ) => {
+  const renderFooter = () => {
     return (
       <View
         style={[

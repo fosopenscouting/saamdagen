@@ -10,9 +10,13 @@ const ScheduleScreen: React.FC = () => {
   const colorScheme = useColorScheme();
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        indicatorStyle: { backgroundColor: Colors[colorScheme].tabBackground },
-        labelStyle: { fontFamily: 'AndesBold' },
+      screenOptions={{
+        tabBarLabelStyle: {
+          fontFamily: 'AndesBold',
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: Colors[colorScheme].tabBackground,
+        },
       }}
     >
       <Tab.Screen

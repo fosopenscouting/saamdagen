@@ -14,21 +14,16 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   lint:
-    name: Install GitVersion
-    uses: gittools/actions/gitversion/setup@v0.9.8
-    with:
-      versionSpec: '5.x'
-          
-    name: Use GitVersion
-    id: gitversion # step id used as reference for output values
-    uses: gittools/actions/gitversion/execute@v0.9.8
-
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - run: yarn install
-      - run: yarn run lint
+    - name: Lint
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 14.x
+        -  uses: gittools/actions/gitversion/execute@v0.9.8
+        -  uses: gittools/actions/gitversion/setup@v0.9.8
+           with:
+             versionSpec: '5.x'
+        - run: yarn install
+        - run: yarn run lint

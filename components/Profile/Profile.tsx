@@ -36,7 +36,6 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
       {props.participantType === 'Deelnemer' ? (
         <View style={styles.activityContainer}>
           <HeaderText style={[styles.activityHeader]}>Workshopkeuze</HeaderText>
-          <Text>{Constants.manifest.version}</Text>
           <Text>
             <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
           </Text>

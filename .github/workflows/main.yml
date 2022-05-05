@@ -12,14 +12,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  lint:
-    name: Lint
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - run: yarn install
-      - run: yarn run lint
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    -  uses: gittools/actions/gitversion/setup@v0.9.8
+       with:
+         versionSpec: '5.x'
+    -  uses: gittools/actions/gitversion/execute@v0.9.8
+    - run: yarn install
+    - run: yarn run lint

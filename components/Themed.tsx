@@ -56,8 +56,8 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
 export const Text: React.FC<TextProps> = (props: TextProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  const fontFamily = 'Quicksand_300Light';
+  return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {

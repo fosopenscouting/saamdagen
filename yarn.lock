@@ -1111,6 +1111,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@expo-google-fonts/quicksand@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quicksand/-/quicksand-0.2.2.tgz#44f9ebd4f6d256dd6413f95d4e2df6200016e57c"
+  integrity sha512-lK4KzY5dxKm+Vfvfcgiu41u7A39s7PJak0/bcmrCUTNUrz+ke80R3L98c6nbRCrSXD6ZOUmht12aJv2+zgglZg==
+
 "@expo/config-plugins@4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.0.6.tgz#ef52f0e4d96ddd52b4cd4cc8c6efbe3d9576c72d"

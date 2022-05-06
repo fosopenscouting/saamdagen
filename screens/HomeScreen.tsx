@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
   },
   eventH3: {
     fontSize: 16,
-    fontWeight: 'bold',
     flex: 1,
   },
   eventSeparator: {

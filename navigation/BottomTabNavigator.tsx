@@ -102,6 +102,9 @@ const InfoNavigator = () => {
           headerTitle: 'Info',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
     </InfoStack.Navigator>
@@ -125,6 +128,9 @@ const ScheduleNavigator = () => {
             shadowOpacity: 0,
             backgroundColor: Colors[colorScheme].tabBackground,
           },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
     </ScheduleStack.Navigator>
@@ -144,6 +150,9 @@ const MapNavigator = () => {
           headerTitle: 'Grondplan',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
     </MapStack.Navigator>
@@ -164,6 +173,9 @@ const MoreScreenNavigator = () => {
           headerTitle: 'Meer',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
 
@@ -175,6 +187,9 @@ const MoreScreenNavigator = () => {
           headerTitle: 'Mijn Saamdagen',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
       <MoreStack.Screen
@@ -184,6 +199,9 @@ const MoreScreenNavigator = () => {
           headerTitle: 'Mijn Saamdagen',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
       <MoreStack.Screen
@@ -194,6 +212,9 @@ const MoreScreenNavigator = () => {
           headerTitle: 'Instellingen',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
         }}
       />
     </MoreStack.Navigator>

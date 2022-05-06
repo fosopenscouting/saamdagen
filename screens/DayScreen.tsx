@@ -188,20 +188,19 @@ const styles = StyleSheet.create({
   },
   eventH3: {
     fontSize: 16,
-    fontWeight: 'bold',
     flex: 1,
   },
   eventH2: {
     fontSize: 24,
     fontWeight: 'normal',
-    fontFamily: 'AndesLight',
+    fontFamily: 'Quicksand_300Light',
     textTransform: 'uppercase',
     textAlign: 'left',
   },
   eventH1: {
     fontSize: 32,
     fontWeight: 'normal',
-    fontFamily: 'AndesLight',
+    fontFamily: 'Quicksand_300Light',
     textTransform: 'uppercase',
     textAlign: 'left',
   },

@@ -38,7 +38,7 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
     { light: lightColor, dark: darkColor },
     'headerColor',
   );
-  const fontFamily = 'Andes';
+  const fontFamily = 'Quicksand_600SemiBold';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };

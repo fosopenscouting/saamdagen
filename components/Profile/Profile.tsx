@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   greetingHeader: {
     fontSize: 17,
-    fontFamily: 'AndesBold',
+    fontFamily: 'Quicksand_600SemiBold',
   },
   ticketText: {
     textAlign: 'center',
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     textTransform: 'uppercase',
     textAlign: 'center',
-    fontFamily: 'AndesBold',
+    fontFamily: 'Quicksand_600SemiBold',
   },
   bold: {
     fontWeight: 'bold',

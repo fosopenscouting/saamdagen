@@ -56,7 +56,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
-    "@types/react-native": "~0.64.12",
+    "@types/react-native": "^0.67.6",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0",
@@ -69,6 +69,12 @@
     "jest-expo": "^44.0.0",
     "prettier": "^2.3.1",
     "typescript": "~4.3.5"
+  },
+  "resolutions": {
+    "@types/react": "~17.0.21"
+  },
+  "dependenciesComments": {
+    "@types/react": "Resolution because of this issue: https://github.com/react-navigation/react-navigation/issues/10507"
   },
   "private": true
 }

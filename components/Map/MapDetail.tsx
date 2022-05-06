@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'normal',
-    fontFamily: 'AndesLight',
+    fontFamily: 'Quicksand_300Light',
     textTransform: 'uppercase',
     textAlign: 'left',
   },

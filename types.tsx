@@ -13,6 +13,7 @@ export type BottomTabParamList = {
   Programma: undefined;
   Grondplan: undefined;
   'Mijn Saamdagen': undefined;
+  Meer: undefined;
 };
 
 export type InfoParamList = {
@@ -27,7 +28,9 @@ export type MapParamList = {
   MapScreen: undefined;
 };
 
-export type ProfileParamList = {
+export type MoreScreenParamList = {
+  MoreScreen: undefined;
   ProfileScreen: undefined;
   ScanScreen: undefined;
+  SettingsScreen: undefined;
 };

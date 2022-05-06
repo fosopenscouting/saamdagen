@@ -38,7 +38,7 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
     { light: lightColor, dark: darkColor },
     'headerColor',
   );
-  const fontFamily = 'Andes';
+  const fontFamily = 'Quicksand_600SemiBold';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };
@@ -56,8 +56,8 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
 export const Text: React.FC<TextProps> = (props: TextProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  const fontFamily = 'Quicksand_300Light';
+  return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {
@@ -70,10 +70,15 @@ export const View: React.FC<ViewProps> = (props: ViewProps) => {
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 };
 
-export const Separator: React.FC = () => {
+type SeparatorProps = {
+  marginVertical?: number;
+};
+
+export const Separator: React.FC<SeparatorProps> = (props: SeparatorProps) => {
+  const realMarginVertical = props.marginVertical ?? 24;
   return (
     <View
-      style={{ marginVertical: 24, height: 1, width: '100%' }}
+      style={{ marginVertical: realMarginVertical, height: 1, width: '100%' }}
       lightColor={Colors.light.tabBackground}
       darkColor="rgb(255,255,255)"
     />

@@ -17,15 +17,74 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import {
+  DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+import merge from 'deepmerge';
+
+const CombinedDefaultTheme = merge(DefaultTheme, PaperDefaultTheme);
+const CombinedDarkTheme = merge(DarkTheme, PaperDarkTheme);
+
+const CustomDarkTheme = {
+  ...CombinedDarkTheme,
+  fonts: {
+    ...CombinedDarkTheme.fonts,
+    regular: {
+      fontFamily: 'Quicksand_400Regular',
+      fontWeight: '400',
+    },
+    medium: {
+      fontFamily: 'Quicksand_500Medium',
+      fontWeight: '500',
+    },
+    light: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+    thin: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+  },
+};
+
+const CustomDefaultTheme = {
+  ...CombinedDefaultTheme,
+  fonts: {
+    ...CombinedDefaultTheme.fonts,
+    regular: {
+      fontFamily: 'Quicksand_400Regular',
+      fontWeight: '400',
+    },
+    medium: {
+      fontFamily: 'Quicksand_500Medium',
+      fontWeight: '500',
+    },
+    light: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+    thin: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+  },
+};
 
 const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+    <PaperProvider
+      theme={colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme}
     >
-      <RootNavigator />
-    </NavigationContainer>
+      <NavigationContainer
+        linking={LinkingConfiguration}
+        theme={colorScheme === 'dark' ? CustomDarkTheme : CustomDefaultTheme}
+      >
+        <RootNavigator />
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
 
@@ -37,7 +96,11 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen
         name="NotFound"

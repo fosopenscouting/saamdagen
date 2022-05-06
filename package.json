@@ -14,6 +14,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo-google-fonts/quicksand": "^0.2.2",
     "@expo/vector-icons": "^12.0.0",
     "@gorhom/bottom-sheet": "^4.2.2",
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -23,6 +24,7 @@
     "@react-navigation/material-top-tabs": "^6.2.1",
     "@react-navigation/native": "~6.0.10",
     "@react-navigation/stack": "~6.2.1",
+    "deepmerge": "^4.2.2",
     "dotenv": "^16.0.0",
     "expo": "^44.0.0",
     "expo-asset": "~8.4.6",
@@ -56,7 +58,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
-    "@types/react-native": "~0.64.12",
+    "@types/react-native": "^0.67.6",
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0",
@@ -69,6 +71,12 @@
     "jest-expo": "^44.0.0",
     "prettier": "^2.3.1",
     "typescript": "~4.3.5"
+  },
+  "resolutions": {
+    "@types/react": "~17.0.21"
+  },
+  "dependenciesComments": {
+    "@types/react": "Resolution because of this issue: https://github.com/react-navigation/react-navigation/issues/10507"
   },
   "private": true
 }

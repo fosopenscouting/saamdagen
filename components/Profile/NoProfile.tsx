@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontFamily: 'AndesBold',
+    fontFamily: 'Quicksand_600SemiBold',
     textAlign: 'center',
   },
 });

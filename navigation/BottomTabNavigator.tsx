@@ -16,13 +16,15 @@ import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ScanScreen from '../screens/ScanScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
+import MoreScreen from '../screens/MoreScreen';
 import {
   BottomTabParamList,
   InfoParamList,
   MapParamList,
-  ProfileParamList,
+  MoreScreenParamList,
   ScheduleParamList,
 } from '../types';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -67,11 +69,15 @@ const BottomTabNavigator: React.FC = () => {
       />
 
       <BottomTab.Screen
-        name="Mijn Saamdagen"
-        component={ProfileNavigator}
+        name="Meer"
+        component={MoreScreenNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
+            <MaterialCommunityIcons
+              name="dots-horizontal"
+              color={color}
+              size={26}
+            />
           ),
         }}
       />
@@ -144,22 +150,34 @@ const MapNavigator = () => {
   );
 };
 
-const ProfileStack = createStackNavigator<ProfileParamList>();
+const MoreStack = createStackNavigator<MoreScreenParamList>();
 
-const ProfileNavigator = () => {
+const MoreScreenNavigator = () => {
   const colorScheme = useColorScheme();
+
   return (
-    <ProfileStack.Navigator>
-      <ProfileStack.Screen
+    <MoreStack.Navigator>
+      <MoreStack.Screen
+        name="MoreScreen"
+        component={MoreScreen}
+        options={{
+          headerTitle: 'Meer',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
+      />
+
+      <MoreStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
+          headerLeft: () => null,
           headerTitle: 'Mijn Saamdagen',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
         }}
       />
-      <ProfileStack.Screen
+      <MoreStack.Screen
         name="ScanScreen"
         component={ScanScreen}
         options={{
@@ -168,6 +186,16 @@ const ProfileNavigator = () => {
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
         }}
       />
-    </ProfileStack.Navigator>
+      <MoreStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: 'Instellingen',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+        }}
+      />
+    </MoreStack.Navigator>
   );
 };

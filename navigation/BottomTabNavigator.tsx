@@ -94,11 +94,12 @@ const InfoStack = createStackNavigator<InfoParamList>();
 const InfoNavigator = () => {
   const colorScheme = useColorScheme();
   return (
-    <InfoStack.Navigator>
+    <InfoStack.Navigator screenOptions={{ headerMode: 'screen' }}>
       <InfoStack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{
+          headerShown: false,
           headerTitle: 'Info',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },

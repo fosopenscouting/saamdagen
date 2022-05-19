@@ -52,6 +52,7 @@
     "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
+    "react-native-sticky-parallax-header": "^0.4.2",
     "react-native-svg": "12.1.1",
     "react-native-tab-view": "^3.1.1"
   },

@@ -8,75 +8,17 @@ import Accordion from 'react-native-collapsible/Accordion';
 import { getHomeScreenSections } from '../services/DataService';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
+import ContentCard from '../components/ContentCard';
+import CountdownTimer from '../components/CountDownTimer';
+import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 
 const HomeScreen: React.FC = () => {
-  const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
-  const colorScheme = useColorScheme();
-
-  const renderHeader = (
-    content: HomeScreenSection,
-    _: unknown,
-    isActive: boolean,
-  ) => {
-    return (
-      <Animatable.View duration={400} transition="backgroundColor">
-        <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <HeaderText style={styles.eventH3}>{content.title}</HeaderText>
-            </View>
-            <View>
-              <CollapsibleChevron isActive={isActive} />
-            </View>
-          </View>
-        </View>
-      </Animatable.View>
-    );
-  };
-
-  const renderContent = (content: HomeScreenSection) => {
-    return (
-      <Animatable.View
-        duration={400}
-        style={styles.content}
-        transition="backgroundColor"
-      >
-        <Text>{content.content}</Text>
-      </Animatable.View>
-    );
-  };
-
-  const renderFooter = () => {
-    return (
-      <View
-        style={[
-          styles.eventSeparator,
-          { borderBottomColor: Colors[colorScheme].headerColor },
-        ]}
-      />
-    );
-  };
-
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <Image
-          style={{ width: '100%', height: 350 }}
-          source={require('../assets/images/20210513_promo_saamdagen-661.jpg')}
-        />
-        <View style={{ paddingTop: 8, margin: 10 }}>
-          <Accordion
-            sections={getHomeScreenSections()}
-            renderHeader={renderHeader}
-            renderContent={renderContent}
-            renderFooter={renderFooter}
-            activeSections={activeSections}
-            onChange={setActiveSections}
-            underlayColor={Colors[colorScheme].background}
-          />
-        </View>
-      </ScrollView>
-    </View>
+    <StickyParallaxHeader
+      headerType="AvatarHeader"
+      title="Hello"
+      backgroundColor={Colors.schemeIndependent.fosBlue}
+    />
   );
 };
 

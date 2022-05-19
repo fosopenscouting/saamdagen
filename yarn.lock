@@ -6906,6 +6906,13 @@ react-native-screens@~3.10.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-sticky-parallax-header@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-sticky-parallax-header/-/react-native-sticky-parallax-header-0.4.2.tgz#4fad236553bd7cf1b3fadc07c1d0af921cf2415f"
+  integrity sha512-fcS2jvid2PLNNP8JkHEsA4sdp9uUr+y82rkB9VcnQCqpS6baUzP8PnEsy4L9j7mqCpu6/AlpA77RpiC9WLvFJg==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-svg@12.1.1:
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.1.1.tgz#5f292410b8bcc07bbc52b2da7ceb22caf5bcaaee"

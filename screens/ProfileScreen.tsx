@@ -28,7 +28,6 @@ const ProfileScreen: React.FC = () => {
     (async () => {
       const brightness = await Brightness.getSystemBrightnessAsync();
       setInitialBrightness(brightness);
-      console.log(brightness);
     })();
   }, []);
 

@@ -28,10 +28,8 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           {props.firstName} {props.lastName}
         </HeaderText>
 
-        <Text style={styles.ticketType}>
-          Je bent op Saamdagen als {props.participantType}. Tap op de QR-code om
-          ze te vergroten.
-        </Text>
+        <Text>Je gaat naar Saamdagen als {props.participantType}.</Text>
+        <Text>Tap op de QR-code om ze te vergroten.</Text>
       </ContentCard>
 
       {props.participantType === 'Deelnemer' ? (
@@ -64,10 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: 'Quicksand_600SemiBold',
   },
-  ticketType: {
-    marginTop: 16,
-    marginBottom: 8,
-  },
+
   activityHeader: {
     marginTop: 8,
     textDecorationLine: 'underline',

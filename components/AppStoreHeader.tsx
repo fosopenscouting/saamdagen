@@ -2,16 +2,14 @@ import React, { useRef } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
   Image,
   Animated,
-  TouchableOpacity,
   ImageBackground,
 } from 'react-native';
 import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 import SaamdagenAppbar from './SaamdagenAppbar';
 import { StackHeaderProps } from '@react-navigation/stack';
-import SaamdagenLogo from './SaamdagenLogo';
+import Colors from '../constants/Colors';
 
 const { event, ValueXY } = Animated;
 
@@ -23,6 +21,7 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
   const renderForeground = () => (
     <View>
       <ImageBackground
+        imageStyle={{ opacity: 0.6 }}
         source={require('../assets/images/home-banner.png')}
         style={styles.foregroundImage}
       >
@@ -34,7 +33,7 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
           }}
         >
           <Image
-            style={{marginTop: 26, height: '70%', resizeMode: 'contain' }}
+            style={{ marginTop: 26, height: '70%', resizeMode: 'contain' }}
             source={require('../assets/images/logo.png')}
           />
         </View>
@@ -52,7 +51,7 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
     return (
       <>
         <Animated.View style={{ opacity }}>
-          <SaamdagenAppbar {...props} />
+          <SaamdagenAppbar />
         </Animated.View>
       </>
     );
@@ -60,9 +59,7 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
 
   return (
     <StickyParallaxHeader
-      contentContainerStyles={{
-        marginTop: 17,
-      }}
+      transparentHeader
       hasBorderRadius={false}
       scrollEvent={event(
         [{ nativeEvent: { contentOffset: { y: scrollY.y } } }],
@@ -70,12 +67,11 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
           useNativeDriver: false,
         },
       )}
-      parallaxHeight={300}
-      transparentHeader
+      parallaxHeight={430}
       foreground={renderForeground()}
       header={renderHeader()}
       snapStartThreshold={50}
-      snapStopThreshold={300}
+      snapStopThreshold={180}
       snapValue={180}
     >
       {props.children}
@@ -86,13 +82,8 @@ const AppStoreHeader: React.FC<StackHeaderProps> = (
 const styles = StyleSheet.create({
   foregroundImage: {
     width: '100%',
-    height: 317,
-  },
-  foregroundContainer: {
-    flexDirection: 'row',
-    marginBottom: 100,
-    marginTop: 27,
-    marginLeft: 27,
+    height: 430,
+    backgroundColor: Colors.schemeIndependent.fosBlue,
   },
 });
 

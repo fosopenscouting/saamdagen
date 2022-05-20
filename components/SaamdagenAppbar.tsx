@@ -13,13 +13,14 @@ const SaamdagenAppbar: React.FC<StackHeaderProps> = (
 
   useEffect(() => {
     if (props.options && props.options.headerTitle) {
-      console.log(props.options);
       setTitle(props.options.headerTitle);
     }
   }, [props.options]);
 
   return (
-    <Appbar.Header style={{backgroundColor: Colors[colorScheme].tabBackground}}>
+    <Appbar.Header
+      style={{ backgroundColor: Colors[colorScheme].tabBackground }}
+    >
       {props.back ? (
         <Appbar.BackAction onPress={props.navigation.goBack} />
       ) : null}

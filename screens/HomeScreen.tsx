@@ -8,24 +8,59 @@ import CountdownTimer from '../components/CountDownTimer';
 import { StatusBar } from 'expo-status-bar';
 import AppStoreHeader from '../components/AppStoreHeader';
 import ContentCard from '../components/ContentCard';
+import ContentCardTitle from '../components/ContentCardTitle';
+import BasicCard from '../components/BasicCard';
 
-const data: number[] = [];
-for (let i = 0; i < 100; i++) {
-  data.push(i);
-}
+const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
+rem ipsa aspernatur nulla excepturi non?
+Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
 
 const HomeScreen: React.FC = () => {
   return (
     <>
       <AppStoreHeader>
-        <View>
+        <View style={{ height: '100%' }}>
           <ContentCard
-            title="Saamdagen"
-            palette="warmRed"
+            containerStyle={[styles.countdown, { marginTop: 8 }]}
+            colorOverlay
+            palette="fosBlue"
             backgroundImage={require('../assets/images/banner.jpg')}
           >
+            <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
             <CountdownTimer targetDate={new Date(2022, 9, 23)} />
           </ContentCard>
+          <BasicCard
+            containerStyle={styles.countdown}
+            content={loremIpsum}
+            title="Scan je ticket"
+            mode="elevated"
+            palette="fosBlue"
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="outlined"
+            palette="brightPink"
+            title="Volg je Saamdagen al op Facebook?"
+            content={loremIpsum}
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="elevated"
+            palette="seaGreen"
+            title="Praktische info"
+            content={loremIpsum}
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="outlined"
+            palette="brightYellow"
+            title="Programma"
+            content={loremIpsum}
+          />
         </View>
       </AppStoreHeader>
     </>
@@ -35,6 +70,10 @@ const HomeScreen: React.FC = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  countdown: {
+    marginHorizontal: 8,
+    marginVertical: 4,
+  },
   logo: {
     padding: 4,
     color: 'white',
@@ -49,7 +88,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  title: {
+  regularTitle: {
+    color: 'white',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+  },
+  countdownTitle: {
+    color: 'white',
+    textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
   },

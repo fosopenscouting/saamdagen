@@ -13,20 +13,21 @@ import Colors from '../constants/Colors';
 import { View } from './Themed';
 
 type Props = {
-  title: string;
   children: React.ReactNode;
   palette: ThemeIdentifier;
   mode?: 'elevated' | 'outlined';
   containerStyle?: StyleProp<ViewStyle>;
   backgroundImage?: ImageSourcePropType;
+  colorOverlay?: boolean;
 };
 
-type ThemeIdentifier =
+export type ThemeIdentifier =
   | 'warmRed'
   | 'seaGreen'
   | 'coral'
   | 'brightPink'
-  | 'brightYellow';
+  | 'brightYellow'
+  | 'fosBlue';
 
 type CardTheme = {
   backgroundColor: string;
@@ -34,7 +35,7 @@ type CardTheme = {
   borderColor?: string;
 };
 
-const themes: { [key in ThemeIdentifier]: CardTheme } = {
+export const themes: { [key in ThemeIdentifier]: CardTheme } = {
   warmRed: {
     backgroundColor: Colors.schemeIndependent.warmRed,
     textColor: 'white',
@@ -55,9 +56,14 @@ const themes: { [key in ThemeIdentifier]: CardTheme } = {
     backgroundColor: Colors.schemeIndependent.brightYellow,
     textColor: 'white',
   },
+  fosBlue: {
+    backgroundColor: Colors.schemeIndependent.fosBlue,
+    textColor: 'white',
+  },
 };
 
 const ContentCard: React.FC<Props> = (props: Props) => {
+  const overlayStyle = props.colorOverlay ? { opacity: 0.6 } : null;
   const borderStyle =
     props.mode == 'outlined'
       ? [{ borderColor: themes[props.palette].backgroundColor }, styles.border]
@@ -68,11 +74,19 @@ const ContentCard: React.FC<Props> = (props: Props) => {
         ];
 
   return (
-    <View style={[borderStyle, props.containerStyle]}>
+    <View
+      style={[
+        borderStyle,
+        props.containerStyle,
+        styles.borderRadius,
+        styles.shadow,
+      ]}
+    >
       {props.backgroundImage ? (
         <ImageBackground
           resizeMode="cover"
-          style={styles.image}
+          imageStyle={[overlayStyle, styles.borderRadius]}
+          style={[styles.image]}
           source={props.backgroundImage}
         >
           <View style={styles.container}>{props.children}</View>
@@ -85,9 +99,21 @@ const ContentCard: React.FC<Props> = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
+    alignSelf: 'stretch',
+  },
   border: {
     borderWidth: 2,
   },
+  borderRadius: {
+    borderRadius: 8,
+  },
+
   container: {
     backgroundColor: 'transparent',
     paddingHorizontal: 12,

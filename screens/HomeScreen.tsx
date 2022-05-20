@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image, Animated } from 'react-native';
 import { View, Text } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
-import AppStoreHeader from '../components/AppStoreHeader';
+import ParallaxHeader from '../components/ParallaxHeader';
 import ContentCard from '../components/ContentCard';
 import BasicCard from '../components/BasicCard';
 
@@ -14,7 +14,7 @@ Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
 const HomeScreen: React.FC = () => {
   return (
     <>
-      <AppStoreHeader>
+      <ParallaxHeader>
         <View style={{ height: '100%' }}>
           <ContentCard
             containerStyle={[styles.countdown, { marginTop: 8 }]}
@@ -57,7 +57,7 @@ const HomeScreen: React.FC = () => {
             content={loremIpsum}
           />
         </View>
-      </AppStoreHeader>
+      </ParallaxHeader>
     </>
   );
 };

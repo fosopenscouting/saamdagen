@@ -13,7 +13,7 @@ import Colors from '../constants/Colors';
 
 const { event, ValueXY } = Animated;
 
-const AppStoreHeader: React.FC<StackHeaderProps> = (
+const ParallaxHeader: React.FC<StackHeaderProps> = (
   props: StackHeaderProps,
 ) => {
   const scrollY = useRef(new ValueXY()).current;
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AppStoreHeader;
+export default ParallaxHeader;

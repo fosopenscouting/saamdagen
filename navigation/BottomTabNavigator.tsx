@@ -26,7 +26,6 @@ import {
 } from '../types';
 import SettingsScreen from '../screens/SettingsScreen';
 import SaamdagenAppbar from '../components/SaamdagenAppbar';
-import AppStoreHeader from '../components/AppStoreHeader';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 

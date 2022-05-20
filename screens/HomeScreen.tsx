@@ -1,14 +1,9 @@
 import React from 'react';
 import { StyleSheet, Image, Animated } from 'react-native';
 import { View, Text } from '../components/Themed';
-import { useCollapsibleHeader } from 'react-navigation-collapsible';
-import Colors from '../constants/Colors';
-import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 import CountdownTimer from '../components/CountDownTimer';
-import { StatusBar } from 'expo-status-bar';
 import AppStoreHeader from '../components/AppStoreHeader';
 import ContentCard from '../components/ContentCard';
-import ContentCardTitle from '../components/ContentCardTitle';
 import BasicCard from '../components/BasicCard';
 
 const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 

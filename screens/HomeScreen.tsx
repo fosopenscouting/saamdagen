@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
-import * as Animatable from 'react-native-animatable';
-import { ScrollView, StyleSheet, Image } from 'react-native';
-import { HeaderText, View, Text } from '../components/Themed';
+import React from 'react';
+import { StyleSheet, Image, Animated } from 'react-native';
+import { View, Text } from '../components/Themed';
+import { useCollapsibleHeader } from 'react-navigation-collapsible';
 import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import Accordion from 'react-native-collapsible/Accordion';
-import { getHomeScreenSections } from '../services/DataService';
-import { HomeScreenSection } from '../models/HomeScreenSection';
-import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
-import ContentCard from '../components/ContentCard';
-import CountdownTimer from '../components/CountDownTimer';
 import StickyParallaxHeader from 'react-native-sticky-parallax-header';
+import CountdownTimer from '../components/CountDownTimer';
+import { StatusBar } from 'expo-status-bar';
+import AppStoreHeader from '../components/AppStoreHeader';
+import ContentCard from '../components/ContentCard';
+
+const data: number[] = [];
+for (let i = 0; i < 100; i++) {
+  data.push(i);
+}
 
 const HomeScreen: React.FC = () => {
   return (
-    <StickyParallaxHeader
-      headerType="AvatarHeader"
-      title="Hello"
-      backgroundColor={Colors.schemeIndependent.fosBlue}
-    />
+    <>
+      <AppStoreHeader>
+        <View>
+          <ContentCard
+            title="Saamdagen"
+            palette="warmRed"
+            backgroundImage={require('../assets/images/banner.jpg')}
+          >
+            <CountdownTimer targetDate={new Date(2022, 9, 23)} />
+          </ContentCard>
+        </View>
+      </AppStoreHeader>
+    </>
   );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  logo: {
+    padding: 4,
+    color: 'white',
+    flex: 1,
+    alignItems: 'center',
+    margin: 16,
+  },
   content: {
     marginBottom: 5,
     textAlign: 'justify',

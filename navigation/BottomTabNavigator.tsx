@@ -25,6 +25,8 @@ import {
   ScheduleParamList,
 } from '../types';
 import SettingsScreen from '../screens/SettingsScreen';
+import SaamdagenAppbar from '../components/SaamdagenAppbar';
+import AppStoreHeader from '../components/AppStoreHeader';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -94,12 +96,13 @@ const InfoStack = createStackNavigator<InfoParamList>();
 const InfoNavigator = () => {
   const colorScheme = useColorScheme();
   return (
-    <InfoStack.Navigator screenOptions={{ headerMode: 'screen' }}>
+    <InfoStack.Navigator>
       <InfoStack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{
           headerShown: false,
+          headerMode: 'screen',
           headerTitle: 'Info',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
@@ -117,7 +120,11 @@ const ScheduleStack = createStackNavigator<ScheduleParamList>();
 const ScheduleNavigator = () => {
   const colorScheme = useColorScheme();
   return (
-    <ScheduleStack.Navigator>
+    <ScheduleStack.Navigator
+      screenOptions={{
+        header: (props) => <SaamdagenAppbar {...props} />,
+      }}
+    >
       <ScheduleStack.Screen
         name="ScheduleScreen"
         component={ScheduleScreen}
@@ -143,7 +150,11 @@ const MapStack = createStackNavigator<MapParamList>();
 const MapNavigator = () => {
   const colorScheme = useColorScheme();
   return (
-    <MapStack.Navigator>
+    <MapStack.Navigator
+      screenOptions={{
+        header: (props) => <SaamdagenAppbar {...props} />,
+      }}
+    >
       <MapStack.Screen
         name="MapScreen"
         component={MapScreen}
@@ -166,7 +177,11 @@ const MoreScreenNavigator = () => {
   const colorScheme = useColorScheme();
 
   return (
-    <MoreStack.Navigator>
+    <MoreStack.Navigator
+      screenOptions={{
+        header: (props) => <SaamdagenAppbar {...props} />,
+      }}
+    >
       <MoreStack.Screen
         name="MoreScreen"
         component={MoreScreen}

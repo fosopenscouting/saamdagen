@@ -1,12 +1,12 @@
 import React from 'react';
-import { Separator, View, Text } from '../components/Themed';
+import { Separator, View } from '../components/Themed';
 import {
   StyleSheet,
   Button,
   ScrollView,
   Alert,
-  TouchableOpacity,
   Modal,
+  Pressable,
 } from 'react-native';
 import NoProfile from '../components/Profile/NoProfile';
 import { useState, useEffect } from 'react';
@@ -115,11 +115,11 @@ const ProfileScreen: React.FC = () => {
                 <SvgQRCode size={300} value={ticketData.hash} />
               </View>
             </Modal>
-            <TouchableOpacity onPress={handleQrPress}>
+            <Pressable onPress={handleQrPress}>
               <View style={styles.qrContainer}>
                 <SvgQRCode size={130} value={ticketData.hash} />
               </View>
-            </TouchableOpacity>
+            </Pressable>
 
             <Separator />
             <Profile

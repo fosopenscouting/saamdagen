@@ -3,6 +3,7 @@ import { View, Text, HeaderText } from '../Themed';
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
+import ContentCard from '../ContentCard';
 
 interface ProfileProps {
   firstName: string;
@@ -22,26 +23,29 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         { backgroundColor: Colors[colorScheme].cardBackground },
       ]}
     >
-      <HeaderText style={[styles.greetingHeader]}>
-        Hey {props.firstName}
-      </HeaderText>
-      <Text style={styles.ticketText}>Dit is jouw ticket voor Saamdagen.</Text>
-      <Text style={styles.ticketText}>
-        Met deze QR-code krijg je toegang tot het evenement.
-      </Text>
-      <Text style={styles.ticketType}>
-        Je bent op Saamdagen als {props.participantType}.
-      </Text>
+      <ContentCard palette="seaGreen" containerStyle={{ marginBottom: 16 }}>
+        <HeaderText style={[styles.greetingHeader]}>
+          {props.firstName} {props.lastName}
+        </HeaderText>
+
+        <Text>Je gaat naar Saamdagen als {props.participantType}.</Text>
+        <Text>Tap op de QR-code om ze te vergroten.</Text>
+      </ContentCard>
+
       {props.participantType === 'Deelnemer' ? (
-        <View style={styles.activityContainer}>
-          <HeaderText style={[styles.activityHeader]}>Workshopkeuze</HeaderText>
-          <Text>
-            <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
-          </Text>
-          <Text>
-            <Text style={styles.bold}>Namiddag:</Text> {props.afterNoon}
-          </Text>
-        </View>
+        <ContentCard palette="coral">
+          <View style={styles.activityContainer}>
+            <HeaderText style={[styles.greetingHeader]}>
+              Workshopkeuze
+            </HeaderText>
+            <Text>
+              <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
+            </Text>
+            <Text>
+              <Text style={styles.bold}>Namiddag:</Text> {props.afterNoon}
+            </Text>
+          </View>
+        </ContentCard>
       ) : null}
     </View>
   );
@@ -52,21 +56,13 @@ const styles = StyleSheet.create({
     //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
     borderRadius: 8,
   },
   greetingHeader: {
     fontSize: 17,
     fontFamily: 'Quicksand_600SemiBold',
   },
-  ticketText: {
-    textAlign: 'center',
-  },
-  ticketType: {
-    marginTop: 16,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
+
   activityHeader: {
     marginTop: 8,
     textDecorationLine: 'underline',

@@ -1,88 +1,81 @@
-import React, { useState } from 'react';
-import * as Animatable from 'react-native-animatable';
-import { ScrollView, StyleSheet, Image } from 'react-native';
-import { HeaderText, View, Text } from '../components/Themed';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import Accordion from 'react-native-collapsible/Accordion';
-import { getHomeScreenSections } from '../services/DataService';
-import { HomeScreenSection } from '../models/HomeScreenSection';
-import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
+import React from 'react';
+import { StyleSheet, Image, Animated } from 'react-native';
+import { View, Text } from '../components/Themed';
+import CountdownTimer from '../components/CountDownTimer';
+import ParallaxHeader from '../components/ParallaxHeader';
+import ContentCard from '../components/ContentCard';
+import BasicCard from '../components/BasicCard';
+
+const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
+rem ipsa aspernatur nulla excepturi non?
+Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
 
 const HomeScreen: React.FC = () => {
-  const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
-  const colorScheme = useColorScheme();
-
-  const renderHeader = (
-    content: HomeScreenSection,
-    _: unknown,
-    isActive: boolean,
-  ) => {
-    return (
-      <Animatable.View duration={400} transition="backgroundColor">
-        <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <HeaderText style={styles.eventH3}>{content.title}</HeaderText>
-            </View>
-            <View>
-              <CollapsibleChevron isActive={isActive} />
-            </View>
-          </View>
-        </View>
-      </Animatable.View>
-    );
-  };
-
-  const renderContent = (content: HomeScreenSection) => {
-    return (
-      <Animatable.View
-        duration={400}
-        style={styles.content}
-        transition="backgroundColor"
-      >
-        <Text>{content.content}</Text>
-      </Animatable.View>
-    );
-  };
-
-  const renderFooter = () => {
-    return (
-      <View
-        style={[
-          styles.eventSeparator,
-          { borderBottomColor: Colors[colorScheme].headerColor },
-        ]}
-      />
-    );
-  };
-
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <Image
-          style={{ width: '100%', height: 350 }}
-          source={require('../assets/images/20210513_promo_saamdagen-661.jpg')}
-        />
-        <View style={{ paddingTop: 8, margin: 10 }}>
-          <Accordion
-            sections={getHomeScreenSections()}
-            renderHeader={renderHeader}
-            renderContent={renderContent}
-            renderFooter={renderFooter}
-            activeSections={activeSections}
-            onChange={setActiveSections}
-            underlayColor={Colors[colorScheme].background}
+    <>
+      <ParallaxHeader>
+        <View style={{ height: '100%' }}>
+          <ContentCard
+            containerStyle={[styles.countdown, { marginTop: 8 }]}
+            colorOverlay
+            palette="fosBlue"
+            backgroundImage={require('../assets/images/banner.jpg')}
+          >
+            <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
+            <CountdownTimer targetDate={new Date(2022, 9, 23)} />
+          </ContentCard>
+          <BasicCard
+            containerStyle={styles.countdown}
+            content={loremIpsum}
+            title="Scan je ticket"
+            mode="elevated"
+            palette="fosBlue"
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="outlined"
+            palette="brightPink"
+            title="Volg je Saamdagen al op Facebook?"
+            content={loremIpsum}
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="elevated"
+            palette="seaGreen"
+            title="Praktische info"
+            content={loremIpsum}
+          />
+
+          <BasicCard
+            containerStyle={styles.countdown}
+            mode="outlined"
+            palette="brightYellow"
+            title="Programma"
+            content={loremIpsum}
           />
         </View>
-      </ScrollView>
-    </View>
+      </ParallaxHeader>
+    </>
   );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  countdown: {
+    marginHorizontal: 8,
+    marginVertical: 4,
+  },
+  logo: {
+    padding: 4,
+    color: 'white',
+    flex: 1,
+    alignItems: 'center',
+    margin: 16,
+  },
   content: {
     marginBottom: 5,
     textAlign: 'justify',
@@ -90,7 +83,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  title: {
+  regularTitle: {
+    color: 'white',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+  },
+  countdownTitle: {
+    color: 'white',
+    textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
   },

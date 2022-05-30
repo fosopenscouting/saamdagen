@@ -30,6 +30,7 @@
     "expo-asset": "~8.4.6",
     "expo-barcode-scanner": "~11.2.0",
     "expo-blur": "~11.0.0",
+    "expo-brightness": "~10.1.0",
     "expo-camera": "~12.1.2",
     "expo-constants": "~13.0.1",
     "expo-font": "~10.0.4",
@@ -52,6 +53,7 @@
     "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
+    "react-native-sticky-parallax-header": "^0.4.2",
     "react-native-svg": "12.1.1",
     "react-native-tab-view": "^3.1.1"
   },

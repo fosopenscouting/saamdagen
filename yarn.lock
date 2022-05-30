@@ -3767,6 +3767,13 @@ expo-blur@~11.0.0:
   resolved "https://registry.yarnpkg.com/expo-blur/-/expo-blur-11.0.0.tgz#3542afed5c0037554657d98c31a5933dd78098dd"
   integrity sha512-EmIYXFwaqvVDhV4JnG9+nENU7FGZkCcuYZhoOOHjnHyADCGNsT6LIVv9/Q/rO0+qWJJxlUG6bziPHC2wbWcC9A==
 
+expo-brightness@~10.1.0:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/expo-brightness/-/expo-brightness-10.1.1.tgz#bf9a31e65572b63c10a5df9561c492ec42e3ed35"
+  integrity sha512-cAFEMHwXyxf8KbDz+9d/pr5MoglNiMILGHbZ6hmVapwiyWp/bTCEL0P6PaFpVcI2vXRnDIjWyykqL3KJWKy0bw==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
+
 expo-camera@~12.1.2:
   version "12.1.2"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-12.1.2.tgz#b549a8054ce5778fbf37a45b5d41003f36f5bb3c"
@@ -6905,6 +6912,13 @@ react-native-screens@~3.10.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-sticky-parallax-header@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-sticky-parallax-header/-/react-native-sticky-parallax-header-0.4.2.tgz#4fad236553bd7cf1b3fadc07c1d0af921cf2415f"
+  integrity sha512-fcS2jvid2PLNNP8JkHEsA4sdp9uUr+y82rkB9VcnQCqpS6baUzP8PnEsy4L9j7mqCpu6/AlpA77RpiC9WLvFJg==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-svg@12.1.1:
   version "12.1.1"

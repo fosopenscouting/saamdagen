@@ -32,4 +32,13 @@ export default {
     linkColor: '#0000FF',
     accent: '#F03CA0',
   },
+  schemeIndependent: {
+    warmRed: '#ff2e00',
+    fosBlue: '#00549F',
+    fosGreen: '#C9DD03',
+    seaGreen: '#009784',
+    coral: '#ff8680',
+    brightPink: '#ff5999',
+    brightYellow: '#ffff00',
+  },
 };

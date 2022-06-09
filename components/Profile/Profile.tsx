@@ -10,7 +10,6 @@ interface ProfileProps {
   lastName: string;
   participantType: string;
   beforeNoon: string;
-  afterNoon: string;
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
@@ -38,12 +37,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
             <HeaderText style={[styles.greetingHeader]}>
               Workshopkeuze
             </HeaderText>
-            <Text>
-              <Text style={styles.bold}>Voormiddag:</Text> {props.beforeNoon}
-            </Text>
-            <Text>
-              <Text style={styles.bold}>Namiddag:</Text> {props.afterNoon}
-            </Text>
+            <Text>{props.beforeNoon}</Text>
           </View>
         </ContentCard>
       ) : null}

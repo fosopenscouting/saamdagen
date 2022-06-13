@@ -7,6 +7,7 @@ import {
   Alert,
   Modal,
   Pressable,
+  TouchableOpacity,
 } from 'react-native';
 import NoProfile from '../components/Profile/NoProfile';
 import { useState, useEffect } from 'react';
@@ -44,6 +45,8 @@ const ProfileScreen: React.FC = () => {
       const { status } = await Brightness.requestPermissionsAsync();
       if (status === 'granted') {
         if (modalVisible) {
+          const brightness = await Brightness.getSystemBrightnessAsync();
+          setInitialBrightness(brightness);
           Brightness.setSystemBrightnessAsync(1);
         }
       }
@@ -111,10 +114,17 @@ const ProfileScreen: React.FC = () => {
               visible={modalVisible}
               onRequestClose={resetModal}
             >
-              <View style={[styles.qrModal, styles.qrContainer]}>
-                <SvgQRCode size={300} value={ticketData.hash} />
-              </View>
+              <TouchableOpacity
+                style={styles.container}
+                activeOpacity={1}
+                onPressOut={resetModal}
+              >
+                <View style={[styles.qrModal, styles.qrContainer]}>
+                  <SvgQRCode size={300} value={ticketData.hash} />
+                </View>
+              </TouchableOpacity>
             </Modal>
+
             <Pressable onPress={handleQrPress}>
               <View style={styles.qrContainer}>
                 <SvgQRCode size={130} value={ticketData.hash} />

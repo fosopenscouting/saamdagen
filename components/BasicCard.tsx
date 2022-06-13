@@ -3,7 +3,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
 import ContentCardTitle from './ContentCardTitle';
-import { Text } from './Themed';
+import { Text, Markdown } from './Themed';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
 const getTextColor = (

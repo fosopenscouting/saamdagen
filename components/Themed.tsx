@@ -70,9 +70,11 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
       case 'h4':
       case 'h5':
       case 'h6':
-          return <HeaderText>{children}</HeaderText>
+          return <HeaderText key={key}>{children}</HeaderText>
+      case 'strong':
+        return <Text key={key} style={[{ fontFamily: 'Quicksand_600SemiBold'}]}>{children}</Text>
       default:
-          return <Text>{children}</Text>
+          return <Text key={key}>{children}</Text>
     }
   }
 

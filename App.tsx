@@ -4,28 +4,19 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
+import * as SplashScreen from 'expo-splash-screen';
 import Navigation from './navigation';
-import {
-  useFonts,
-  Quicksand_300Light,
-  Quicksand_400Regular,
-  Quicksand_600SemiBold,
-  Quicksand_500Medium,
-} from '@expo-google-fonts/quicksand';
 
 export default function App(): React.ReactElement | null {
+  SplashScreen.preventAutoHideAsync();
+
   const isLoadingComplete = useCachedResources();
-  const [fontsLoaded] = useFonts({
-    Quicksand_300Light,
-    Quicksand_400Regular,
-    Quicksand_600SemiBold,
-    Quicksand_500Medium,
-  });
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete || !fontsLoaded) {
+  if (!isLoadingComplete) {
     return null;
   } else {
+    SplashScreen.hideAsync();
     return (
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />

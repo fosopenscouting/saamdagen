@@ -5,6 +5,7 @@
 
 import * as React from 'react';
 import { Text as DefaultText, View as DefaultView } from 'react-native';
+import DefaultMarkdown from './Markdown/markdown';
 import { Anchor as DefaultAnchor } from '../components/Anchor';
 
 import Colors from '../constants/Colors';
@@ -29,6 +30,7 @@ type ThemeProps = {
   darkColor?: string;
 };
 
+export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
@@ -51,6 +53,32 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
   );
 
   return <DefaultAnchor style={[{ color }, style]} {...otherProps} />;
+};
+
+export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
+  const { style, lightColor, darkColor, ...otherProps } = props;
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const fontFamily = 'Quicksand_300Light';
+
+  const renderText = (textType: string, children: React.Element | React.ReactElement[], key) => {
+    // console.log("Rendering markdown text with custom renderer.");
+    // Possible textTypes: h1, h2, h3, h4, h5, h6, strong, del, em, u
+    switch (textType) {
+      case 'h1':
+      case 'h2':
+      case 'h3':
+      case 'h4':
+      case 'h5':
+      case 'h6':
+          return <HeaderText>{children}</HeaderText>
+      default:
+          return <Text>{children}</Text>
+    }
+  }
+
+  return <DefaultMarkdown
+    renderText= {renderText}
+    {...otherProps} />;
 };
 
 export const Text: React.FC<TextProps> = (props: TextProps) => {

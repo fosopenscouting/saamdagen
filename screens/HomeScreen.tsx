@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Animated } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { View, Text } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';

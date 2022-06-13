@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Camera } from 'expo-camera';
@@ -35,7 +34,6 @@ const ScanScreen: React.FC = () => {
   const onCancel = React.useCallback(() => {
     navigation.goBack();
   }, []);
-
 
   const handleBarCodeScanned = ({ data }: { data: string }): void => {
     console.log(data);

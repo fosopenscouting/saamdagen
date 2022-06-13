@@ -9,12 +9,6 @@ export const storeTicket = async (
     const formValues = data.data.submissionData.data.formValues;
     const workshopsBeforeNoon =
       data.data.submissionData.formElements.workshops_voormiddag;
-    const workshopsAfterNoon =
-      data.data.submissionData.formElements.workshops_namiddag;
-    const activitiesBeforeNoon =
-      data.data.submissionData.formElements.activiteit_voormiddag;
-    const activitiesAfterNoon =
-      data.data.submissionData.formElements.activiteit_namiddag;
     const ticket: Ticket = {
       firstName: data.data.firstName,
       lastName: data.data.lastName,

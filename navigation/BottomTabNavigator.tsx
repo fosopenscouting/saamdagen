@@ -26,7 +26,6 @@ import {
 } from '../types';
 import SettingsScreen from '../screens/SettingsScreen';
 import SaamdagenAppbar from '../components/SaamdagenAppbar';
-import QrScreen from '../screens/QrScreen';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 

@@ -35,7 +35,6 @@ const ProfileScreen: React.FC = () => {
   useEffect(() => {
     const state = navigation.getState();
     const hash = state.routes[0]?.params?.hash;
-    console.log(hash);
     if (hash) {
       getTicketFromApi(hash).then(async (res) => {
         await storeTicket(res, hash);

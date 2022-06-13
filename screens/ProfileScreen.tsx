@@ -17,7 +17,7 @@ import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '../constants/Colors';
 import Profile from '../components/Profile/Profile';
 import * as Brightness from 'expo-brightness';
-import { getTicketFromApi, storeTicket } from '../services/TicketService';
+import { getTicketFromApi, getTicketFromStorage, storeTicket } from '../services/TicketService';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
@@ -44,7 +44,9 @@ const ProfileScreen: React.FC = () => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      getTicket();
+      getTicketFromStorage().then((res) => {
+        setTicketData(res);
+      });
     });
 
     return unsubscribe;
@@ -87,14 +89,6 @@ const ProfileScreen: React.FC = () => {
         },
       ],
     );
-  };
-
-  const getTicket = async () => {
-    const ticket = await AsyncStorage.getItem('sd_ticket');
-
-    if (ticket) {
-      setTicketData(JSON.parse(ticket));
-    }
   };
 
   const deleteTicket = async () => {

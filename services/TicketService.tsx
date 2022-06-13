@@ -24,6 +24,14 @@ export const storeTicket = async (
   }
 };
 
+export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {
+  const ticket = await AsyncStorage.getItem('sd_ticket');
+
+  if (ticket) {
+    return JSON.parse(ticket);
+  }
+};
+
 export const getTicketFromApi = (ticketHash: string) => {
   return fetch(`https://ticketing.fos.be/api/ticket?hash=${ticketHash}`, {
     method: 'GET',

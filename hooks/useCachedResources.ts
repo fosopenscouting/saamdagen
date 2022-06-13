@@ -46,15 +46,25 @@ const useCachedResources: () => boolean = () => {
   React.useEffect(() => {
     async function loadContentAsync() {
       try {
-        const response = await fetch("https://fosopenscouting.github.io/saamdagen/index.json");
-        const json = await response.json();
+        const response = await fetch("https://fosopenscouting.github.io/Saamdagen-App-inhoud/content.txt");
+        const paths = await response.text();
 
-        var results = [];
-        json.pages.forEach(page => {
-          results.push(fetch(page.url));
-        });
-        const content = await Promise.all(results);
-        
+        const content = await Promise.all(paths.split('\n').map(path => fetch("https://fosopenscouting.github.io/Saamdagen-App-inhoud/" + path)));
+        // now parse paths and fill content for each "view".
+        // convert this into same format as dataService?
+        // would be cleaner to use actual dataservice for this ;)
+        // Paths come in in this format
+        /* 
+Homepage/Tekstblok 1.md
+Programma/Vrijdag/Activiteiten/1 - Sjabloon activiteit.md
+Programma/Vrijdag/Algemene openingsuren.md
+Programma/Zaterdag/Activiteiten/1 - Sjabloon activiteit.md
+Programma/Zaterdag/Algemene openingsuren.md
+Programma/Zondag/Activiteiten/1 - Sjabloon activiteit.md
+Programma/Zondag/Algemene openingsuren.md
+        */
+       if ()
+
       } catch(e) {
         console.warn(e);
       } finally {

@@ -17,7 +17,11 @@ import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '../constants/Colors';
 import Profile from '../components/Profile/Profile';
 import * as Brightness from 'expo-brightness';
-import { getTicketFromApi, getTicketFromStorage, storeTicket } from '../services/TicketService';
+import {
+  getTicketFromApi,
+  getTicketFromStorage,
+  storeTicket,
+} from '../services/TicketService';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();

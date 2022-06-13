@@ -3,8 +3,5 @@ export interface Ticket {
   lastName: string;
   ticketType: string;
   workshopBeforeNoon: string;
-  workshopAfterNoon: string;
-  activityBeforeNoon: string;
-  activityAfterNoon: string;
   hash: string;
 }

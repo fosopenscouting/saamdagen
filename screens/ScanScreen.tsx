@@ -36,42 +36,6 @@ const ScanScreen: React.FC = () => {
     navigation.goBack();
   }, []);
 
-  // Disabling type checking because the hassle is not worth it
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  /*const storeTicket = async (data: any, ticketHash: string): Promise<void> => {
-    try {
-      const formValues = data.data.submissionData.data.formValues;
-      const workshopsBeforeNoon =
-        data.data.submissionData.formElements.workshops_voormiddag;
-      const workshopsAfterNoon =
-        data.data.submissionData.formElements.workshops_namiddag;
-      const activitiesBeforeNoon =
-        data.data.submissionData.formElements.activiteit_voormiddag;
-      const activitiesAfterNoon =
-        data.data.submissionData.formElements.activiteit_namiddag;
-      const ticket: Ticket = {
-        firstName: data.data.firstName,
-        lastName: data.data.lastName,
-        ticketType: formValues.type_deelnemer_keuze,
-        workshopBeforeNoon: formValues.workshops_voormiddag
-          ? workshopsBeforeNoon['#options'][formValues.workshops_voormiddag]
-          : null,
-        workshopAfterNoon: formValues.workshops_namiddag
-          ? workshopsAfterNoon['#options'][formValues.workshops_namiddag]
-          : null,
-        activityBeforeNoon: formValues.activiteit_voormiddag
-          ? activitiesBeforeNoon['#options'][formValues.activiteit_voormiddag]
-          : null,
-        activityAfterNoon: formValues.activiteit_namiddag
-          ? activitiesAfterNoon['#options'][formValues.activiteit_namiddag]
-          : null,
-        hash: ticketHash,
-      };
-      await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
-    } catch (e) {
-      console.error(e);
-    }
-  };*/
 
   const handleBarCodeScanned = ({ data }: { data: string }): void => {
     console.log(data);

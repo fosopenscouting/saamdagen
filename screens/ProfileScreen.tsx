@@ -17,6 +17,7 @@ import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '../constants/Colors';
 import Profile from '../components/Profile/Profile';
 import * as Brightness from 'expo-brightness';
+import { getTicketFromApi, storeTicket } from '../services/TicketService';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
@@ -29,6 +30,17 @@ const ProfileScreen: React.FC = () => {
       const brightness = await Brightness.getSystemBrightnessAsync();
       setInitialBrightness(brightness);
     })();
+  }, []);
+
+  useEffect(() => {
+    const state = navigation.getState();
+    const hash = state.routes[0]?.params?.hash;
+    console.log(hash);
+    if (hash) {
+      getTicketFromApi(hash).then(async (res) => {
+        await storeTicket(res, hash);
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -55,7 +67,6 @@ const ProfileScreen: React.FC = () => {
     (async () => {
       const { status } = await Brightness.requestPermissionsAsync();
       if (status === 'granted') {
-        console.log(initialBrightness);
         Brightness.setSystemBrightnessAsync(initialBrightness);
       }
     })();

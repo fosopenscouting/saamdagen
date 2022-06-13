@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -12,6 +12,7 @@ import {
   Quicksand_600SemiBold,
   Quicksand_500Medium,
 } from '@expo-google-fonts/quicksand';
+import { Linking } from 'react-native';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -22,6 +23,15 @@ export default function App(): React.ReactElement | null {
     Quicksand_500Medium,
   });
   const colorScheme = useColorScheme();
+
+  useEffect(() => {
+    Linking.getInitialURL().then(handleUrl);
+  }, []);
+
+  const handleUrl = (url: any) => {
+    const parsed = new URL(url);
+    console.log(parsed.searchParams);
+  };
 
   if (!isLoadingComplete || !fontsLoaded) {
     return null;

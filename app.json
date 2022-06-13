@@ -6,7 +6,7 @@
     "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "saamdagen",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",

@@ -9,7 +9,7 @@ import { StyleSheet } from 'react-native';
 import QRFooterButton from '../components/Profile/QRFooterButton';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed';
-import { Ticket } from '../models/Ticket';
+import { getTicketFromApi, storeTicket } from '../services/TicketService';
 // TODO: add a cancel button
 // TODO: add a way to turn the flash of the phone on or off
 const ScanScreen: React.FC = () => {
@@ -21,16 +21,10 @@ const ScanScreen: React.FC = () => {
   useEffect(() => {
     // TODO: move this to a routed screen that gets the ticket from the api and stores it. That way we can enable deep linking from an url as well.
     if (ticketHash) {
-      fetch(`https://ticketing.fos.be/api/ticket?hash=${ticketHash}`, {
-        method: 'GET',
-      })
-        .then((res) => res.json())
-        .then(
-          async (data) =>
-            await storeTicket(data, ticketHash).then(() =>
-              navigation.navigate('ProfileScreen'),
-            ),
-        );
+      getTicketFromApi(ticketHash).then(async (res) => {
+        await storeTicket(res, ticketHash);
+        navigation.navigate('ProfileScreen');
+      });
     }
   }, [ticketHash]);
 
@@ -44,7 +38,7 @@ const ScanScreen: React.FC = () => {
 
   // Disabling type checking because the hassle is not worth it
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const storeTicket = async (data: any, ticketHash: string): Promise<void> => {
+  /*const storeTicket = async (data: any, ticketHash: string): Promise<void> => {
     try {
       const formValues = data.data.submissionData.data.formValues;
       const workshopsBeforeNoon =
@@ -77,7 +71,7 @@ const ScanScreen: React.FC = () => {
     } catch (e) {
       console.error(e);
     }
-  };
+  };*/
 
   const handleBarCodeScanned = ({ data }: { data: string }): void => {
     console.log(data);

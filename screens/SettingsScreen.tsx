@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from '../components/Themed';
-import { StyleSheet, Text as NormalText } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';

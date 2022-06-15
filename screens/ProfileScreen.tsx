@@ -17,6 +17,11 @@ import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '../constants/Colors';
 import Profile from '../components/Profile/Profile';
 import * as Brightness from 'expo-brightness';
+import {
+  getTicketFromApi,
+  getTicketFromStorage,
+  storeTicket,
+} from '../services/TicketService';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
@@ -32,8 +37,20 @@ const ProfileScreen: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const state = navigation.getState();
+    const hash = state.routes[0]?.params?.hash;
+    if (hash) {
+      getTicketFromApi(hash).then(async (res) => {
+        await storeTicket(res, hash);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      getTicket();
+      getTicketFromStorage().then((res) => {
+        setTicketData(res);
+      });
     });
 
     return unsubscribe;
@@ -55,7 +72,6 @@ const ProfileScreen: React.FC = () => {
     (async () => {
       const { status } = await Brightness.requestPermissionsAsync();
       if (status === 'granted') {
-        console.log(initialBrightness);
         Brightness.setSystemBrightnessAsync(initialBrightness);
       }
     })();
@@ -77,14 +93,6 @@ const ProfileScreen: React.FC = () => {
         },
       ],
     );
-  };
-
-  const getTicket = async () => {
-    const ticket = await AsyncStorage.getItem('sd_ticket');
-
-    if (ticket) {
-      setTicketData(JSON.parse(ticket));
-    }
   };
 
   const deleteTicket = async () => {

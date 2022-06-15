@@ -7,14 +7,14 @@
 import * as Linking from 'expo-linking';
 
 export default {
-  prefixes: [Linking.makeUrl('/')],
+  prefixes: [Linking.createURL('/'), 'saamdagen://'],
   config: {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Meer: {
             screens: {
-              TabOneScreen: 'one',
+              ProfileScreen: 'Ticket',
             },
           },
           TabTwo: {

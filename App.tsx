@@ -13,6 +13,8 @@ import {
   Quicksand_500Medium,
 } from '@expo-google-fonts/quicksand';
 import { Linking } from 'react-native';
+import { getContent, getContentIndex } from './api/api';
+import { saveContent } from './services/contentService';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -26,6 +28,16 @@ export default function App(): React.ReactElement | null {
 
   useEffect(() => {
     Linking.getInitialURL().then(handleUrl);
+  }, []);
+
+  // Here temporarily to test if everything works. Should come somewhere else on app load
+  useEffect(() => {
+    const fetchData = async () => {
+      const index = await getContentIndex();
+      await saveContent(index);
+    };
+
+    fetchData().catch(console.error);
   }, []);
 
   const handleUrl = (url: any) => {

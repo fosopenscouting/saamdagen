@@ -5,6 +5,8 @@ import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
 import ContentCard from '../components/ContentCard';
 import BasicCard from '../components/BasicCard';
+import { HomeScreenSection } from '../models/HomeScreenSection';
+import { useContent } from '../hooks/useContent';
 
 const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
 Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
@@ -12,6 +14,9 @@ rem ipsa aspernatur nulla excepturi non?
 Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
 
 const HomeScreen: React.FC = () => {
+
+  const content = useContent<HomeScreenSection>('@home');
+
   return (
     <>
       <ParallaxHeader>
@@ -25,7 +30,17 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
             <CountdownTimer targetDate={new Date(2022, 9, 23)} />
           </ContentCard>
-          <BasicCard
+          {content?.map((item) => (
+            <BasicCard
+              key={item.order}
+              containerStyle={styles.countdown}
+              content={item.content}
+              title={item.title}
+              mode="elevated"
+              palette="fosBlue"
+            />
+          ))}
+          {/*<BasicCard
             containerStyle={styles.countdown}
             content={loremIpsum}
             title="Scan je ticket"
@@ -55,7 +70,7 @@ const HomeScreen: React.FC = () => {
             palette="brightYellow"
             title="Programma"
             content={loremIpsum}
-          />
+          />*/}
         </View>
       </ParallaxHeader>
     </>

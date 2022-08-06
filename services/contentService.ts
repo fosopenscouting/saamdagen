@@ -30,6 +30,7 @@ const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
     return {
       title: item.attributes.titel,
       order: item.attributes.volgorde,
+      content: item.body,
     };
   });
 

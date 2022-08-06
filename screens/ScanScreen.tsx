@@ -36,7 +36,6 @@ const ScanScreen: React.FC = () => {
   }, []);
 
   const handleBarCodeScanned = ({ data }: { data: string }): void => {
-    console.log(data);
     setScanned(true);
     setTicketHash(data);
   };

@@ -5,7 +5,6 @@ export const getContentIndex = async (): Promise<string[]> => {
       { cache: 'no-store' },
     )
   ).text();
-  console.log(text);
   let array = text.split('\n');
   array = array.filter((x) => x !== 'README.md').filter((x) => x !== '');
   return array;

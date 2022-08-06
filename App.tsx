@@ -30,19 +30,8 @@ export default function App(): React.ReactElement | null {
     Linking.getInitialURL().then(handleUrl);
   }, []);
 
-  // Here temporarily to test if everything works. Should come somewhere else on app load
-  useEffect(() => {
-    const fetchData = async () => {
-      const index = await getContentIndex();
-      await saveContent(index);
-    };
-
-    fetchData().catch(console.error);
-  }, []);
-
   const handleUrl = (url: any) => {
     const parsed = new URL(url);
-    console.log(parsed.searchParams);
   };
 
   if (!isLoadingComplete || !fontsLoaded) {

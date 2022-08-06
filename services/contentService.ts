@@ -55,7 +55,7 @@ const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {
   await AsyncStorageLib.setItem(PROGRAM_ITEMS, json);
 };
 
-const wrapContentInMetadata = (content): ContentMetadata => {
+const wrapContentInMetadata = (content: any): ContentMetadata => {
   return {
     lastUpdated: new Date(),
     content: content,

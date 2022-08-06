@@ -8,13 +8,7 @@ import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { useContent } from '../hooks/useContent';
 
-const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
-rem ipsa aspernatur nulla excepturi non?
-Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
-
 const HomeScreen: React.FC = () => {
-
   const content = useContent<HomeScreenSection>('@home');
 
   return (
@@ -40,37 +34,6 @@ const HomeScreen: React.FC = () => {
               palette="fosBlue"
             />
           ))}
-          {/*<BasicCard
-            containerStyle={styles.countdown}
-            content={loremIpsum}
-            title="Scan je ticket"
-            mode="elevated"
-            palette="fosBlue"
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="outlined"
-            palette="brightPink"
-            title="Volg je Saamdagen al op Facebook?"
-            content={loremIpsum}
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="elevated"
-            palette="seaGreen"
-            title="Praktische info"
-            content={loremIpsum}
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="outlined"
-            palette="brightYellow"
-            title="Programma"
-            content={loremIpsum}
-          />*/}
         </View>
       </ParallaxHeader>
     </>

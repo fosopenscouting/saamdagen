@@ -9,7 +9,7 @@ import { HomeScreenSection } from '../models/HomeScreenSection';
 import { useContent } from '../hooks/useContent';
 
 const HomeScreen: React.FC = () => {
-  const content = useContent<HomeScreenSection>('@home');
+  const [content, lastUpdated] = useContent<HomeScreenSection>('@home');
 
   return (
     <>
@@ -34,6 +34,7 @@ const HomeScreen: React.FC = () => {
               palette="fosBlue"
             />
           ))}
+          <Text>Laatst geupdatet: {lastUpdated}</Text>
         </View>
       </ParallaxHeader>
     </>

@@ -1,6 +1,7 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import fm, { FrontMatterResult } from 'front-matter';
 import { getContent } from '../api/api';
+import { ContentMetadata } from '../models/ContentMetadata';
 
 export const saveContent = async (paths: string[]) => {
   const programPrefix = 'Programma';
@@ -34,7 +35,9 @@ const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
     };
   });
 
-  const json = JSON.stringify(mapped);
+  const meta = wrapContentInMetadata(mapped);
+
+  const json = JSON.stringify(meta);
   await AsyncStorageLib.setItem('@home', json);
 };
 
@@ -48,5 +51,12 @@ const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {
   });
 
   const json = JSON.stringify(mapped);
-  await AsyncStorageLib.setItem('@home', json);
+  await AsyncStorageLib.setItem('@program', json);
+};
+
+const wrapContentInMetadata = (content): ContentMetadata => {
+  return {
+    lastUpdated: new Date(),
+    content: content,
+  };
 };

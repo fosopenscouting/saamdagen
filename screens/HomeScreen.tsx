@@ -7,9 +7,10 @@ import ContentCard from '../components/ContentCard';
 import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { useContent } from '../hooks/useContent';
+import { HOME_ITEMS } from '../constants/Strings';
 
 const HomeScreen: React.FC = () => {
-  const [content, lastUpdated] = useContent<HomeScreenSection>('@home');
+  const [content, lastUpdated] = useContent<HomeScreenSection>(HOME_ITEMS);
 
   return (
     <>

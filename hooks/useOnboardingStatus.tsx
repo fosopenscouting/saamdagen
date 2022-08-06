@@ -1,9 +1,10 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import React from 'react';
+import { ONBOARDED_ITEM } from '../constants/Strings';
 
 const checkIfFirstLaunched = async () => {
   try {
-    const hasFirstLaunched = await AsyncStorageLib.getItem('@user_onboarded');
+    const hasFirstLaunched = await AsyncStorageLib.getItem(ONBOARDED_ITEM);
     if (hasFirstLaunched === null) {
       return true;
     }

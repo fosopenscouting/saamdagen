@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import { getContentIndex } from '../api/api';
+import { ONBOARDED_ITEM } from '../constants/Strings';
 import { saveContent } from '../services/contentService';
 import { useOnboardingStatus } from './useOnboardingStatus';
 
@@ -37,7 +38,7 @@ const useCachedResources: () => boolean = () => {
             console.log('first launch');
             // Only set the onboarded item in prd, so we can test
             if (!__DEV__) {
-              AsyncStorageLib.setItem('@user_onboarded', JSON.stringify(true));
+              AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
             }
           }
         }

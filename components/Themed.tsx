@@ -60,7 +60,11 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
   const fontFamily = 'Quicksand_300Light';
 
-  const renderText = (textType: string, children: React.Element | React.ReactElement[], key) => {
+  const renderText = (
+    textType: string,
+    children: React.Element | React.ReactElement[],
+    key,
+  ) => {
     // console.log("Rendering markdown text with custom renderer.");
     // Possible textTypes: h1, h2, h3, h4, h5, h6, strong, del, em, u
     switch (textType) {
@@ -70,17 +74,25 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
       case 'h4':
       case 'h5':
       case 'h6':
-          return <HeaderText key={key}>{children}</HeaderText>
+        return <HeaderText key={key}>{children}</HeaderText>;
       case 'strong':
-        return <Text key={key} style={[{ fontFamily: 'Quicksand_600SemiBold'}]}>{children}</Text>
+        return (
+          <Text
+            key={key}
+            style={{
+              fontFamily: 'Quicksand_600SemiBold',
+              fontWeight: 'bold',
+            }}
+          >
+            {children}
+          </Text>
+        );
       default:
-          return <Text key={key}>{children}</Text>
+        return <Text key={key}>{children}</Text>;
     }
-  }
+  };
 
-  return <DefaultMarkdown
-    renderText= {renderText}
-    {...otherProps} />;
+  return <DefaultMarkdown renderText={renderText} {...otherProps} />;
 };
 
 export const Text: React.FC<TextProps> = (props: TextProps) => {

@@ -23,7 +23,7 @@ const HomeScreen: React.FC = () => {
             backgroundImage={require('../assets/images/banner.jpg')}
           >
             <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
-            <CountdownTimer targetDate={new Date(2022, 9, 23)} />
+            <CountdownTimer targetDate={new Date('2022-09-23T19:00:00+02:00')} />
           </ContentCard>
           {content?.map((item) => (
             <BasicCard

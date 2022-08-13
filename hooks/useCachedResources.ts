@@ -22,9 +22,6 @@ const useCachedResources: () => boolean = () => {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
-          Andes: require('../assets/fonts/Andes.otf'),
-          AndesLight: require('../assets/fonts/AndesLight.otf'),
-          AndesBold: require('../assets/fonts/AndesBold.otf'),
         });
 
         if (!isLoading) {

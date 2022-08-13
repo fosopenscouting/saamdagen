@@ -13,8 +13,6 @@ import {
   Quicksand_500Medium,
 } from '@expo-google-fonts/quicksand';
 import { Linking } from 'react-native';
-import { getContent, getContentIndex } from './api/api';
-import { saveContent } from './services/contentService';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();

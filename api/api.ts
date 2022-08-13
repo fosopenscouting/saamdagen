@@ -14,6 +14,7 @@ export const getContent = async (path: string): Promise<string> => {
   const text = await (
     await fetch(
       `https://fosopenscouting.github.io/Saamdagen-App-inhoud/${path}`,
+      { cache: 'no-store' },
     )
   ).text();
 

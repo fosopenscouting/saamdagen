@@ -37,7 +37,6 @@ const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
   });
 
   const meta = wrapContentInMetadata(mapped);
-
   const json = JSON.stringify(meta);
   await AsyncStorageLib.setItem(HOME_ITEMS, json);
 };

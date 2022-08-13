@@ -56,15 +56,13 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
 };
 
 export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-  const fontFamily = 'Quicksand_300Light';
+  const { ...otherProps } = props;
 
   const renderText = (
     textType: string,
-    children: React.Element | React.ReactElement[],
-    key,
-  ) => {
+    children: React.ReactElement[],
+    key: React.Key | null | undefined,
+  ): JSX.Element => {
     // console.log("Rendering markdown text with custom renderer.");
     // Possible textTypes: h1, h2, h3, h4, h5, h6, strong, del, em, u
     switch (textType) {

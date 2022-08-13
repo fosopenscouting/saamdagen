@@ -1,14 +1,11 @@
-import { Theme } from '@react-navigation/native';
 import React from 'react';
 import {
   ImageBackground,
   ImageSourcePropType,
   StyleProp,
   StyleSheet,
-  Text,
   ViewStyle,
 } from 'react-native';
-import { Card } from 'react-native-paper';
 import Colors from '../constants/Colors';
 import { View } from './Themed';
 

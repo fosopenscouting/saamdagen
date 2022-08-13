@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-prototype-builtins */
 import SimpleMarkdown from 'simple-markdown';
 
 const Utils = {

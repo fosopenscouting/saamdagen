@@ -32,7 +32,7 @@ export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {
   }
 };
 
-export const getTicketFromApi = (ticketHash: string) => {
+export const getTicketFromApi = (ticketHash: string): Promise<any> => {
   return fetch(`https://ticketing.fos.be/api/ticket?hash=${ticketHash}`, {
     method: 'GET',
   }).then((res) => res.json());

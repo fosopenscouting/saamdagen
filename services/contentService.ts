@@ -4,7 +4,7 @@ import { getContent } from '../api/api';
 import { HOME_ITEMS, PROGRAM_ITEMS } from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
-export const saveContent = async (paths: string[]) => {
+export const saveContent = async (paths: string[]): Promise<void> => {
   const programPrefix = 'Programma';
   const homePrefix = 'Homepage';
 
@@ -16,7 +16,9 @@ export const saveContent = async (paths: string[]) => {
   const programContent = await loadContent(programPaths);
 };
 
-export const loadContent = async (paths: string[]) => {
+export const loadContent = async (
+  paths: string[],
+): Promise<FrontMatterResult<unknown>[]> => {
   const result = paths.map(async (x) => await load(x));
   return await Promise.all(result);
 };
@@ -54,7 +56,7 @@ const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {
   await AsyncStorageLib.setItem(PROGRAM_ITEMS, json);
 };
 
-const wrapContentInMetadata = (content: any): ContentMetadata => {
+const wrapContentInMetadata = (content: never): ContentMetadata => {
   return {
     lastUpdated: new Date(),
     content: content,

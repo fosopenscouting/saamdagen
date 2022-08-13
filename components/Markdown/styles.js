@@ -109,4 +109,4 @@ const defaultStyles = {
   },
 };
 
-module.exports = defaultStyles;
+export default defaultStyles;

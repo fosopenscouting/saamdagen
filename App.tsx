@@ -28,8 +28,10 @@ export default function App(): React.ReactElement | null {
     Linking.getInitialURL().then(handleUrl);
   }, []);
 
-  const handleUrl = (url: any) => {
-    const parsed = new URL(url);
+  const handleUrl = (url: string | null) => {
+    if (url) {
+      const parsed = new URL(url);
+    }
   };
 
   if (!isLoadingComplete || !fontsLoaded) {

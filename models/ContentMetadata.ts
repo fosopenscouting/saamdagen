@@ -1,4 +1,4 @@
 export interface ContentMetadata {
-  content: never;
+  content: any;
   lastUpdated: Date;
 }

@@ -1,7 +1,12 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import fm, { FrontMatterResult } from 'front-matter';
 import { getContent } from '../api/api';
-import { HOME_ITEMS, PROGRAM_ITEMS } from '../constants/Strings';
+import {
+  FRIDAY_ITEMS,
+  HOME_ITEMS,
+  SATURDAY_ITEMS,
+  SUNDAY_ITEMS,
+} from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
 export const saveContent = async (paths: string[]): Promise<void> => {
@@ -14,6 +19,7 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const homeContent = await loadContent(homePaths);
   saveHomeContent(homeContent);
   const programContent = await loadContent(programPaths);
+  saveProgramContent(programContent);
 };
 
 export const loadContent = async (
@@ -43,20 +49,34 @@ const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
   await AsyncStorageLib.setItem(HOME_ITEMS, json);
 };
 
-// TODO: work this out further
 const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {
   const mapped = objects.map((item) => {
     return {
-      title: item.attributes.titel,
+      name: item.attributes.titel,
       order: item.attributes.volgorde,
+      location: item.attributes.locatie,
+      time: item.attributes.uren,
+      description: item.body,
+      day: item.attributes.dag,
+      type: item.attributes.type,
     };
   });
 
-  const json = JSON.stringify(mapped);
-  await AsyncStorageLib.setItem(PROGRAM_ITEMS, json);
+  const friday = mapped.filter((x) => x.day === 'Vrijdag');
+  const saturday = mapped.filter((x) => x.day === 'Zaterdag');
+  const sunday = mapped.filter((x) => x.day === 'Zondag');
+  saveDayItems(friday, FRIDAY_ITEMS);
+  saveDayItems(saturday, SATURDAY_ITEMS);
+  saveDayItems(sunday, SUNDAY_ITEMS);
 };
 
-const wrapContentInMetadata = (content: never): ContentMetadata => {
+const saveDayItems = async (items: any[], key: string) => {
+  const fridayMeta = wrapContentInMetadata(items);
+  const json = JSON.stringify(fridayMeta);
+  await AsyncStorageLib.setItem(key, json);
+};
+
+const wrapContentInMetadata = (content: any): ContentMetadata => {
   return {
     lastUpdated: new Date(),
     content: content,

@@ -1,65 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import {
-  getGeneralOpeningHours,
-  getMapMarkers,
-  getScheduleData,
-} from '../services/DataService';
+import { getMapMarkers } from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-
-import { HeaderText, View, Text } from '../components/Themed';
+import { HeaderText, View, Text, Markdown } from '../components/Themed';
 import Collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
 import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
+import { useContent } from '../hooks/useContent';
+import { PROGRAM_ITEMS } from '../constants/Strings';
 
-interface DayInfo {
-  day: number;
+export interface DayInfo {
+  day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
 }
 
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [hideOverview, setHideOverview] = useState(false);
-  const dayEvents: ScheduleData[] = getScheduleData().filter(
-    (event) => event.time[0].startTime.getDate() == dayInfo.day,
-  );
-  const dayGeneralHours: ScheduleData[] = getGeneralOpeningHours().filter(
-    (event) => event.time[0].startTime.getDate() == dayInfo.day,
+  const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
+  const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
+  const [content, lastUpdated] = useContent<ScheduleData>(
+    `${PROGRAM_ITEMS}/${dayInfo.day}`,
   );
   const colorScheme = useColorScheme();
   const mapMarkers = getMapMarkers('normal');
 
-  const renderScheduleTime = (
-    scheduleData: ScheduleData,
-    showUndefinedEndTime = false,
-  ): string => {
-    let result = '';
-    scheduleData.time.forEach((timeslot, index) => {
-      if (index > 0) {
-        result += ' & ';
-      }
-      const startHours = `${timeslot.startTime.getHours()}`.padStart(2, '0');
-      const startMinutes = `${timeslot.startTime.getMinutes()}`.padStart(
-        2,
-        '0',
-      );
-      const startTime = `${startHours}u${startMinutes}`;
-      if (timeslot.endTime) {
-        const endHours = `${timeslot.endTime.getHours()}`.padStart(2, '0');
-        const endMinutes = `${timeslot.endTime.getMinutes()}`.padStart(2, '0');
-        result += `${startTime} tot ${endHours}u${endMinutes}`;
-      } else if (showUndefinedEndTime) {
-        result += `${startTime} tot ...`;
-      } else {
-        result += startTime;
-      }
-    });
-
-    return result;
-  };
+  useEffect(() => {
+    const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
+    const openingHours = content?.filter(
+      (x) => x.type === 'algemene_openingsuren',
+    );
+    setDayEvents(events);
+    if (openingHours) {
+      setDayGeneralHours(openingHours[0]);
+    }
+  }, [content]);
 
   const renderHeader = (
     content: ScheduleData,
@@ -72,7 +50,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ flex: 1 }}>
               <HeaderText style={styles.eventH3}>
-                {renderScheduleTime(content)}
+                {content.time}
                 {content.location
                   ? ` - ${mapMarkers.get(content.location)?.title}`
                   : null}
@@ -114,16 +92,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   };
 
   const renderGeneralOpeningHours = () => {
-    const elements: JSX.Element[] = [];
-    dayGeneralHours.forEach((element, index) => {
-      elements.push(
-        <HeaderText key={index} style={styles.openingHours}>
-          <HeaderText style={styles.eventH3}>TEST?</HeaderText>{' '}
-          {renderScheduleTime(element, true)}
-        </HeaderText>,
-      );
-    });
-    return elements;
+    return <Markdown>{dayGeneralHours?.description}</Markdown>;
   };
 
   return (
@@ -143,7 +112,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             </View>
           </View>
           <Collapsible collapsed={hideOverview}>
-            <View style={styles.container}>{renderGeneralOpeningHours()}</View>
+            <View style={styles.container}>
+              {dayGeneralHours ? renderGeneralOpeningHours() : null}
+            </View>
           </Collapsible>
           <View
             style={[
@@ -151,16 +122,18 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               { backgroundColor: Colors[colorScheme].tabBackground },
             ]}
           ></View>
-          <Accordion
-            sections={dayEvents}
-            renderHeader={renderHeader}
-            // renderSectionTitle={renderHeader}
-            renderContent={renderContent}
-            renderFooter={renderFooter}
-            activeSections={activeSections}
-            onChange={setActiveSections}
-            underlayColor={Colors[colorScheme].background}
-          />
+          {dayEvents ? (
+            <Accordion
+              sections={dayEvents}
+              renderHeader={renderHeader}
+              // renderSectionTitle={renderHeader}
+              renderContent={renderContent}
+              renderFooter={renderFooter}
+              activeSections={activeSections}
+              onChange={setActiveSections}
+              underlayColor={Colors[colorScheme].background}
+            />
+          ) : null}
         </View>
       </ScrollView>
     </View>

@@ -3,7 +3,6 @@ import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 
-
 const markers = new Map<PointOfInterest | string, MapMarker>([
   [
     'Infopunt',

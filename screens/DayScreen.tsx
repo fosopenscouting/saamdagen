@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ScheduleData } from '../models/ScheduleData';
-import * as Animatable from 'react-native-animatable';
+
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { View, Markdown, Text } from '../components/Themed';
@@ -10,20 +10,12 @@ import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';
 import { OpeningHours } from '../components/Schedule/OpeningHours';
 import { ActivityHeader } from '../components/Schedule/ActivityHeader';
+import { ActivityFooter } from '../components/Schedule/ActivityFooter';
+import { ActivityContent } from '../components/Schedule/ActivityContent';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
 }
-
-const renderActivityHeader = (
-  content: ScheduleData,
-  _: unknown,
-  isActive: boolean,
-) => {
-  return (
-    <ActivityHeader content={content} isActive={isActive}></ActivityHeader>
-  );
-};
 
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
@@ -45,30 +37,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     }
   }, [content]);
 
-  const renderContent = (content: ScheduleData) => {
-    return (
-      <Animatable.View
-        duration={400}
-        style={styles.content}
-        transition="backgroundColor"
-      >
-        <Text style={{fontStyle: 'italic'}}>test</Text>
-        <Markdown>{content.description}</Markdown>
-      </Animatable.View>
-    );
-  };
-
-  const renderFooter = () => {
-    return (
-      <View
-        style={[
-          styles.eventSeparator,
-          { borderBottomColor: Colors[colorScheme].headerColor },
-        ]}
-      />
-    );
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -83,10 +51,11 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           {dayEvents ? (
             <Accordion
               sections={dayEvents}
-              renderHeader={renderActivityHeader}
-              // renderSectionTitle={renderHeader}
-              renderContent={renderContent}
-              renderFooter={renderFooter}
+              renderHeader={(content, _index, isActive, _sections) => (
+                <ActivityHeader content={content} isActive={isActive} />
+              )}
+              renderContent={ActivityContent}
+              renderFooter={() => <ActivityFooter />}
               activeSections={activeSections}
               onChange={setActiveSections}
               underlayColor={Colors[colorScheme].background}
@@ -101,9 +70,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 export default DayScreen;
 
 const styles = StyleSheet.create({
-  content: {
-    marginBottom: 5,
-  },
   openingHours: {
     lineHeight: 22,
   },
@@ -135,11 +101,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     textAlign: 'left',
   },
-  eventSeparator: {
-    borderBottomWidth: 2,
-    marginTop: 5,
-    marginBottom: 5,
-  },
+
   filterBar: {
     // height: 100,
     height: 5,

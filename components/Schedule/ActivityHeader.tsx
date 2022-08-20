@@ -4,7 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import { ScheduleData } from '../../models/ScheduleData';
 import { getMapMarkers } from '../../services/DataService';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
-import { HeaderText, View, Text } from '../Themed';
+import { HeaderText, View } from '../Themed';
 
 type Props = {
   content: ScheduleData;

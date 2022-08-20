@@ -66,6 +66,7 @@ const defaultStyles = {
     textDecorationLine: 'underline',
   },
   linkWrapper: {
+    textDecorationLine: 'underline',
     alignSelf: 'flex-start',
   },
   link: {

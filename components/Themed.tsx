@@ -85,6 +85,17 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
             {children}
           </Text>
         );
+      case 'em':
+        return (
+          <Text
+            key={key}
+            style={{
+              fontStyle: 'italic',
+            }}
+          >
+            {children}
+          </Text>
+        );
       default:
         return <Text key={key}>{children}</Text>;
     }

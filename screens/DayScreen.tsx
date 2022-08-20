@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { getMapMarkers } from '../services/DataService';
 import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { HeaderText, View, Text } from '../components/Themed';
+import { View, Markdown, Text } from '../components/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
-import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';
 import { OpeningHours } from '../components/Schedule/OpeningHours';
+import { ActivityHeader } from '../components/Schedule/ActivityHeader';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
 }
+
+const renderActivityHeader = (
+  content: ScheduleData,
+  _: unknown,
+  isActive: boolean,
+) => {
+  return (
+    <ActivityHeader content={content} isActive={isActive}></ActivityHeader>
+  );
+};
 
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
@@ -24,7 +33,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     `${PROGRAM_ITEMS}/${dayInfo.day}`,
   );
   const colorScheme = useColorScheme();
-  const mapMarkers = getMapMarkers('normal');
 
   useEffect(() => {
     const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
@@ -37,35 +45,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     }
   }, [content]);
 
-  const renderHeader = (
-    content: ScheduleData,
-    _: unknown,
-    isActive: boolean,
-  ) => {
-    return (
-      <Animatable.View duration={400} transition="backgroundColor">
-        <View style={{ flex: 1, flexDirection: 'column' }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <HeaderText style={styles.eventH3}>
-                {content.time}
-                {content.location
-                  ? ` - ${mapMarkers.get(content.location)?.title}`
-                  : null}
-              </HeaderText>
-            </View>
-            <View>
-              <CollapsibleChevron isActive={isActive} />
-            </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <HeaderText style={styles.eventH1}>{content.name}</HeaderText>
-          </View>
-        </View>
-      </Animatable.View>
-    );
-  };
-
   const renderContent = (content: ScheduleData) => {
     return (
       <Animatable.View
@@ -73,7 +52,8 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
         style={styles.content}
         transition="backgroundColor"
       >
-        <Text>{content.description}</Text>
+        <Text style={{fontStyle: 'italic'}}>test</Text>
+        <Markdown>{content.description}</Markdown>
       </Animatable.View>
     );
   };
@@ -103,7 +83,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           {dayEvents ? (
             <Accordion
               sections={dayEvents}
-              renderHeader={renderHeader}
+              renderHeader={renderActivityHeader}
               // renderSectionTitle={renderHeader}
               renderContent={renderContent}
               renderFooter={renderFooter}

@@ -5,13 +5,12 @@ import { ScheduleData } from '../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { HeaderText, View, Text, Markdown } from '../components/Themed';
-import Collapsible from 'react-native-collapsible';
+import { HeaderText, View, Text } from '../components/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
-import { TouchableOpacity } from '@gorhom/bottom-sheet';
 import CollapsibleChevron from '../components/CollapsibleChevron/CollapsibleChevron';
 import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';
+import { OpeningHours } from '../components/Schedule/OpeningHours';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
@@ -19,7 +18,6 @@ export interface DayInfo {
 
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
-  const [hideOverview, setHideOverview] = useState(false);
   const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
   const [content, lastUpdated] = useContent<ScheduleData>(
@@ -91,31 +89,11 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
   };
 
-  const renderGeneralOpeningHours = () => {
-    return <Markdown>{dayGeneralHours?.description}</Markdown>;
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={{ paddingTop: 8, margin: 10 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity onPress={() => setHideOverview(!hideOverview)}>
-                <HeaderText style={styles.eventH2}>
-                  ALGEMENE OPENINGSUREN
-                </HeaderText>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <CollapsibleChevron isActive={!hideOverview} />
-            </View>
-          </View>
-          <Collapsible collapsed={hideOverview}>
-            <View style={styles.container}>
-              {dayGeneralHours ? renderGeneralOpeningHours() : null}
-            </View>
-          </Collapsible>
+          <OpeningHours openingHours={dayGeneralHours} />
           <View
             style={[
               styles.filterBar,

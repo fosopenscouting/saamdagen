@@ -36,7 +36,6 @@ const HomeScreen: React.FC = () => {
               palette="fosBlue"
             />
           ))}
-          <Text>Laatst geupdatet: {lastUpdated}</Text>
         </View>
       </ParallaxHeader>
     </>

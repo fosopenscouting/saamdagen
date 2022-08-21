@@ -40,6 +40,7 @@
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "expo-web-browser": "~10.1.0",
+    "front-matter": "^4.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -55,7 +56,9 @@
     "react-native-screens": "~3.10.1",
     "react-native-sticky-parallax-header": "^0.4.2",
     "react-native-svg": "12.1.1",
-    "react-native-tab-view": "^3.1.1"
+    "react-native-tab-view": "^3.1.1",
+    "react-native-web": "0.17.1",
+    "simple-markdown": "^0.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -5,13 +5,12 @@ import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
 import ContentCard from '../components/ContentCard';
 import BasicCard from '../components/BasicCard';
-
-const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
-rem ipsa aspernatur nulla excepturi non?
-Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
+import { HomeScreenSection } from '../models/HomeScreenSection';
+import { useContent } from '../hooks/useContent';
+import { HOME_ITEMS } from '../constants/Strings';
 
 const HomeScreen: React.FC = () => {
+  const [content, lastUpdated] = useContent<HomeScreenSection>(HOME_ITEMS);
   return (
     <>
       <ParallaxHeader>
@@ -23,39 +22,21 @@ const HomeScreen: React.FC = () => {
             backgroundImage={require('../assets/images/banner.jpg')}
           >
             <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
-            <CountdownTimer targetDate={new Date(2022, 9, 23)} />
+            <CountdownTimer
+              targetDate={new Date('2022-09-23T19:00:00+02:00')}
+            />
           </ContentCard>
-          <BasicCard
-            containerStyle={styles.countdown}
-            content={loremIpsum}
-            title="Scan je ticket"
-            mode="elevated"
-            palette="fosBlue"
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="outlined"
-            palette="brightPink"
-            title="Volg je Saamdagen al op Facebook?"
-            content={loremIpsum}
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="elevated"
-            palette="seaGreen"
-            title="Praktische info"
-            content={loremIpsum}
-          />
-
-          <BasicCard
-            containerStyle={styles.countdown}
-            mode="outlined"
-            palette="brightYellow"
-            title="Programma"
-            content={loremIpsum}
-          />
+          {content?.map((item) => (
+            <BasicCard
+              key={item.order}
+              containerStyle={styles.countdown}
+              content={item.content}
+              title={item.title}
+              mode="elevated"
+              palette="fosBlue"
+            />
+          ))}
+          <Text>Laatst geupdatet: {lastUpdated}</Text>
         </View>
       </ParallaxHeader>
     </>

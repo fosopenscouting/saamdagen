@@ -1,3 +1,4 @@
+import { IOrderable } from './IOrderable';
 import { PointOfInterest } from './PointOfInterest';
 
 export interface TimeRange {
@@ -5,9 +6,11 @@ export interface TimeRange {
   endTime?: Date;
 }
 
-export interface ScheduleData {
-  time: TimeRange[];
+export interface ScheduleData extends IOrderable {
+  time: string;
   location?: PointOfInterest;
   name: string;
   description?: string;
+  day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
+  type: 'algemene_openingsuren' | undefined;
 }

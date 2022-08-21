@@ -2,9 +2,9 @@ import React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
-import ContentCardTitle from './ContentCardTitle';
-import { Text } from './Themed';
+import { HeaderText, Markdown } from './Themed';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+// import Markdown from './Markdown/markdown';
 
 const getTextColor = (
   colorScheme: 'light' | 'dark',
@@ -38,8 +38,10 @@ const BasicCard: React.FC<Props> = (props: Props) => {
       mode={props.mode}
       palette={props.palette}
     >
-      <Text style={[{ color: textColor }, styles.title]}>{props.title}</Text>
-      <Text style={[{ color: textColor }]}>{props.content}</Text>
+      <HeaderText style={[{ color: textColor }, styles.title]}>
+        {props.title}
+      </HeaderText>
+      <Markdown>{props.content}</Markdown>
     </ContentCard>
   );
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import Colors from '../constants/Colors';
 import { useCountdown } from '../hooks/useCountdown';
 import { View, Text } from './Themed';
 
@@ -29,7 +28,7 @@ const ShowCounter = (props: CounterProps) => {
 type CountdownTimerProps = {
   targetDate: Date;
 };
-const CountdownTimer = (props: CountdownTimerProps) => {
+const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
   const [days, hours, minutes, seconds] = useCountdown(props.targetDate);
 
   return (

@@ -97,7 +97,11 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
           </Text>
         );
       default:
-        return <Text key={key}>{children}</Text>;
+        return (
+          <Text style={props.markdownStyles?.text ?? null} key={key}>
+            {children}
+          </Text>
+        );
     }
   };
 

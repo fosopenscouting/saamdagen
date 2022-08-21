@@ -1,28 +1,49 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 
-import { View } from '../components/Themed';
-import { ScrollView, StyleSheet } from 'react-native';
+import { Separator, View } from '../components/Themed';
+import { FlatList, StyleSheet } from 'react-native';
 import FaqCard from '../components/FaqCard';
+import { useContent } from '../hooks/useContent';
+import { FaqItem } from '../models/FaqItem';
+import { FAQ_ITEMS } from '../constants/Strings';
 const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
 Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
 rem ipsa aspernatur nulla excepturi non?
 Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
 
+const dummyFaq = [
+  {
+    title: 'FAQ 1',
+    content: loremIpsum,
+  },
+  {
+    title: 'FAQ 2',
+    content: loremIpsum,
+  },
+  {
+    title: 'FAQ 3',
+    content: loremIpsum,
+  },
+  {
+    title: 'FAQ 4',
+    content: loremIpsum,
+  },
+];
+
 const FaqScreen: React.FC = () => {
+  const [content, lastUpdated] = useContent<FaqItem>(FAQ_ITEMS);
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={{ paddingTop: 8, margin: 10 }}>
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <FaqCard title={loremIpsum} text={loremIpsum}></FaqCard>
-              <FaqCard title="WAT?" text={loremIpsum}></FaqCard>
-              <FaqCard title="HOE?" text={loremIpsum}></FaqCard>
-            </View>
-          </View>
-        </View>
-      </ScrollView>
+      <FlatList
+        keyExtractor={(item) => item.title}
+        data={content}
+        renderItem={({ item }) => (
+          <FaqCard title={item.title} text={item.content} icon={item.icon} />
+        )}
+        ItemSeparatorComponent={() => <Separator marginVertical={0} />}
+        ListFooterComponent={() => <Separator marginVertical={0} />}
+      />
     </View>
   );
 };

@@ -33,8 +33,8 @@ const MoreScreen: React.FC = () => {
             source={require('../assets/images/banner.jpg')}
           />
         )}
-        ItemSeparatorComponent={() => <Separator marginVertical={0} />}
-        ListFooterComponent={() => <Separator marginVertical={0} />}
+        ItemSeparatorComponent={() => <Separator marginVertical={1} />}
+        ListFooterComponent={() => <Separator marginVertical={1} />}
         renderItem={(item) => (
           <NavigationListItem
             title={item.item.title}

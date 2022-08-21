@@ -12,23 +12,7 @@ const SettingsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-        <ContentCard
-          backgroundImage={require('../assets/images/banner.jpg')}
-          palette="warmRed"
-          title="Over deze app"
-        >
-          <Text
-            style={{
-              fontFamily: 'Quicksand_600SemiBold',
-              fontSize: 25,
-              textAlign: 'center',
-              color: 'white',
-            }}
-          >
-            SAAMDAGEEEN
-          </Text>
-          <CountdownTimer targetDate={new Date(2022, 9, 23, 19, 0)} />
-        </ContentCard>
+
       </View>
       <Text style={[styles.version, { color: versionColor }]}>
         v{Constants.manifest?.version}

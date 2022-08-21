@@ -43,7 +43,7 @@ const BottomTabNavigator: React.FC = () => {
       barStyle={{ backgroundColor: Colors[colorScheme].tabBackground }}
     >
       <BottomTab.Screen
-        name="Info"
+        name="Home"
         component={InfoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -72,7 +72,7 @@ const BottomTabNavigator: React.FC = () => {
       />
 
       <BottomTab.Screen
-        name="Faq"
+        name="Info"
         component={FaqNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -118,7 +118,7 @@ const InfoNavigator = () => {
         options={{
           headerShown: false,
           headerMode: 'screen',
-          headerTitle: 'Info',
+          headerTitle: 'Home',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
           headerTitleStyle: {
@@ -200,7 +200,7 @@ const FaqNavigator = () => {
         name="FaqScreen"
         component={FaqScreen}
         options={{
-          headerTitle: 'FAQ',
+          headerTitle: 'Info',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
           headerTitleStyle: {

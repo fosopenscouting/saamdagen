@@ -3,7 +3,7 @@ import * as React from 'react';
 import { List } from 'react-native-paper';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { Markdown, Separator, Text } from './Themed';
+import { Markdown, Separator, Text, View } from './Themed';
 
 type Props = {
   title: string;
@@ -27,7 +27,9 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         title={props.title}
         theme={{ colors: { primary: Colors.schemeIndependent.fosGreen } }}
       >
-        <Markdown style={{ margin: 5 }}>{props.text}</Markdown>
+        <View style={{ marginLeft: -40, marginRight: 8 }}>
+          <Markdown>{props.text}</Markdown>
+        </View>
       </List.Accordion>
     </>
   );

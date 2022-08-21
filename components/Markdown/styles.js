@@ -52,6 +52,7 @@ const defaultStyles = {
   },
   text: {
     alignSelf: 'flex-start',
+    textAlign: 'justify',
   },
   strong: {
     fontWeight: 'bold',

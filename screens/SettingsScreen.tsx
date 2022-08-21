@@ -4,15 +4,14 @@ import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import ContentCard from '../components/ContentCard';
-import CountdownTimer from '../components/CountDownTimer';
+
 const SettingsScreen: React.FC = () => {
   const colorScheme = useColorScheme();
   const versionColor = Colors[colorScheme].muted;
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-
+        <Text>Placeholder</Text>
       </View>
       <Text style={[styles.version, { color: versionColor }]}>
         v{Constants.manifest?.version}

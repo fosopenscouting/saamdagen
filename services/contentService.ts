@@ -6,20 +6,25 @@ import {
   HOME_ITEMS,
   SATURDAY_ITEMS,
   SUNDAY_ITEMS,
+  FAQ_ITEMS,
 } from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
 export const saveContent = async (paths: string[]): Promise<void> => {
   const programPrefix = 'Programma';
   const homePrefix = 'Homepage';
+  const faqPrefix = 'Faq';
 
   const homePaths = paths.filter((x) => x.startsWith(homePrefix));
   const programPaths = paths.filter((x) => x.startsWith(programPrefix));
+  const faqPaths = paths.filter((x) => x.startsWith(faqPrefix));
 
   const homeContent = await loadContent(homePaths);
   saveHomeContent(homeContent);
   const programContent = await loadContent(programPaths);
   saveProgramContent(programContent);
+  const faqContent = await loadContent(faqPaths);
+  saveFaqContent(faqContent);
 };
 
 export const loadContent = async (
@@ -74,6 +79,21 @@ const saveDayItems = async (items: any[], key: string) => {
   const fridayMeta = wrapContentInMetadata(items);
   const json = JSON.stringify(fridayMeta);
   await AsyncStorageLib.setItem(key, json);
+};
+
+const saveFaqContent = async (objects: FrontMatterResult<any>[]) => {
+  const mapped = objects.map((item) => {
+    return {
+      title: item.attributes.titel,
+      order: item.attributes.volgorde,
+      icon: item.attributes.icoon,
+      content: item.body,
+    };
+  });
+
+  const meta = wrapContentInMetadata(mapped);
+  const json = JSON.stringify(meta);
+  await AsyncStorageLib.setItem(FAQ_ITEMS, json);
 };
 
 const wrapContentInMetadata = (content: any): ContentMetadata => {

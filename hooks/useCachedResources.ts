@@ -4,7 +4,12 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import { getContentIndex } from '../api/api';
-import { ONBOARDED_ITEM } from '../constants/Strings';
+import {
+  FAQ_ITEMS,
+  HOME_ITEMS,
+  ONBOARDED_ITEM,
+  PROGRAM_ITEMS,
+} from '../constants/Strings';
 import { saveContent } from '../services/contentService';
 import { useOnboardingStatus } from './useOnboardingStatus';
 
@@ -25,7 +30,12 @@ const useCachedResources: () => boolean = () => {
         });
 
         if (!isLoading) {
-          if (isFirstLaunch) {
+          const keys = await AsyncStorageLib.getAllKeys();
+          const hasData =
+            keys.includes(HOME_ITEMS) &&
+            keys.includes(PROGRAM_ITEMS) &&
+            keys.includes(FAQ_ITEMS);
+          if (isFirstLaunch || !hasData) {
             const fetchData = async () => {
               const index = await getContentIndex();
               await saveContent(index);
@@ -37,6 +47,8 @@ const useCachedResources: () => boolean = () => {
             if (!__DEV__) {
               AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
             }
+          } else {
+            console.log('not first launch');
           }
         }
       } catch (e) {

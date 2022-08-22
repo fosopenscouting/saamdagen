@@ -17,12 +17,14 @@ import ProfileScreen from '../screens/ProfileScreen';
 import ScanScreen from '../screens/ScanScreen';
 import ScheduleScreen from '../screens/ScheduleScreen';
 import MoreScreen from '../screens/MoreScreen';
+import FaqScreen from '../screens/FaqScreen';
 import {
   BottomTabParamList,
   InfoParamList,
   MapParamList,
   MoreScreenParamList,
   ScheduleParamList,
+  FaqParamList,
 } from '../types';
 import SettingsScreen from '../screens/SettingsScreen';
 import SaamdagenAppbar from '../components/SaamdagenAppbar';
@@ -41,7 +43,7 @@ const BottomTabNavigator: React.FC = () => {
       barStyle={{ backgroundColor: Colors[colorScheme].tabBackground }}
     >
       <BottomTab.Screen
-        name="Info"
+        name="Home"
         component={InfoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -65,6 +67,20 @@ const BottomTabNavigator: React.FC = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="map" color={color} size={26} />
+          ),
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Info"
+        component={FaqNavigator}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="frequently-asked-questions"
+              color={color}
+              size={26}
+            />
           ),
         }}
       />
@@ -102,7 +118,7 @@ const InfoNavigator = () => {
         options={{
           headerShown: false,
           headerMode: 'screen',
-          headerTitle: 'Info',
+          headerTitle: 'Home',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
           headerTitleStyle: {
@@ -167,6 +183,32 @@ const MapNavigator = () => {
         }}
       />
     </MapStack.Navigator>
+  );
+};
+
+const FaqStack = createStackNavigator<FaqParamList>();
+
+const FaqNavigator = () => {
+  const colorScheme = useColorScheme();
+  return (
+    <FaqStack.Navigator
+      screenOptions={{
+        header: (props) => <SaamdagenAppbar {...props} />,
+      }}
+    >
+      <FaqStack.Screen
+        name="FaqScreen"
+        component={FaqScreen}
+        options={{
+          headerTitle: 'Info',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
+        }}
+      />
+    </FaqStack.Navigator>
   );
 };
 

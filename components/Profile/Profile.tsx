@@ -16,28 +16,29 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
   const colorScheme = useColorScheme();
 
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: Colors[colorScheme].cardBackground },
-      ]}
-    >
+    <View style={[styles.container]}>
       <ContentCard palette="seaGreen" containerStyle={{ marginBottom: 16 }}>
-        <HeaderText style={[styles.greetingHeader]}>
+        <HeaderText lightColor="white" style={[styles.greetingHeader]}>
           {props.firstName} {props.lastName}
         </HeaderText>
 
-        <Text>Je gaat naar Saamdagen als {props.participantType}.</Text>
-        <Text>Tap op de QR-code om ze te vergroten.</Text>
+        <Text lightColor="white" darkColor="white">
+          Je gaat naar Saamdagen als {props.participantType}.
+        </Text>
+        <Text lightColor="white" darkColor="white">
+          Tap op de QR-code om ze te vergroten.
+        </Text>
       </ContentCard>
 
       {props.participantType === 'Deelnemer' ? (
         <ContentCard palette="coral">
           <View style={styles.activityContainer}>
-            <HeaderText style={[styles.greetingHeader]}>
+            <HeaderText lightColor="white" style={[styles.greetingHeader]}>
               Workshopkeuze
             </HeaderText>
-            <Text>{props.beforeNoon}</Text>
+            <Text lightColor="white" darkColor="white">
+              {props.beforeNoon}
+            </Text>
           </View>
         </ContentCard>
       ) : null}

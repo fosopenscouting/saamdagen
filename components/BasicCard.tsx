@@ -4,6 +4,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
 import { HeaderText, Markdown } from './Themed';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import { IProps } from 'react-native-easy-markdown';
 // import Markdown from './Markdown/markdown';
 
 const getTextColor = (
@@ -41,7 +42,9 @@ const BasicCard: React.FC<Props> = (props: Props) => {
       <HeaderText style={[{ color: textColor }, styles.title]}>
         {props.title}
       </HeaderText>
-      <Markdown>{props.content}</Markdown>
+      <Markdown markdownStyles={{ text: { color: textColor } }}>
+        {props.content}
+      </Markdown>
     </ContentCard>
   );
 };

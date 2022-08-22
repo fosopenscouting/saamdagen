@@ -5,6 +5,15 @@ import { PointOfInterest } from '../models/PointOfInterest';
 
 const markers = new Map<PointOfInterest | string, MapMarker>([
   [
+
+
+
+]])
+
+
+
+/*const markers = new Map<PointOfInterest | string, MapMarker>([
+  [
     'Infopunt',
     {
       title: 'Infopunt',
@@ -667,6 +676,8 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
     },
   ],
 ]);
+
+*/
 
 export const getMapMarkers = (
   layer: MapLayer,

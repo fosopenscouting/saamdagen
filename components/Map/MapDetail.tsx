@@ -1,15 +1,12 @@
 import React from 'react';
 import { View, HeaderText, Text } from '../Themed';
-import { StyleSheet, ScrollView } from 'react-native';
-import { BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
+import { StyleSheet } from 'react-native';
+import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 
 interface MapDetailProps {
   title: string;
   description?: string;
 }
-
-const loremIpsum =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempore nam ipsa, quae at incidunt veritatis et exercitationem commodi aperiam temporibus laborum aut adipisci, qui laboriosam sint ipsam iste consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempore nam ipsa, quae at incidunt veritatis et exercitationem commodi aperiam temporibus laborum aut adipisci, qui laboriosam sint ipsam iste consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempore nam ipsa, quae at incidunt veritatis et exercitationem commodi aperiam temporibus laborum aut adipisci, qui laboriosam sint ipsam iste consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempore nam ipsa, quae at incidunt veritatis et exercitationem commodi aperiam temporibus laborum aut adipisci, qui laboriosam sint ipsam iste consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id tempore nam ipsa, quae at incidunt veritatis et exercitationem commodi aperiam temporibus laborum aut adipisci, qui laboriosam sint ipsam iste consequuntur.';
 
 const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
   return (
@@ -18,7 +15,7 @@ const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
       {props.description ? (
         <BottomSheetScrollView>
           <View style={styles.scrollContainer}>
-            <Text>{loremIpsum}</Text>
+            <Text>{props.description}</Text>
           </View>
         </BottomSheetScrollView>
       ) : null}

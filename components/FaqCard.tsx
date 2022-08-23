@@ -25,7 +25,12 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         )}
         titleNumberOfLines={10}
         title={props.title}
-        theme={{ colors: { primary: Colors.schemeIndependent.fosGreen } }}
+        theme={{
+          colors: {
+            primary: Colors.schemeIndependent.fosGreen,
+            background: Colors[colorScheme].background,
+          },
+        }}
       >
         <View style={{ marginLeft: -40, marginRight: 8 }}>
           <Markdown>{props.text}</Markdown>

@@ -44,7 +44,7 @@ const MapScreen: React.FC = () => {
   }, [layer]);
 
   useEffect(() => {
-    sheetRef.current?.snapToPosition(0);
+    sheetRef.current?.collapse();
   }, [selectedMarker]);
 
   const onMapReady = async () => {

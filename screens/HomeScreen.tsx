@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 import { View, Text } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
-import ContentCard from '../components/ContentCard';
 import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { useContent } from '../hooks/useContent';
@@ -15,21 +14,13 @@ const HomeScreen: React.FC = () => {
     <>
       <ParallaxHeader>
         <View style={{ height: '100%' }}>
-          <ContentCard
-            containerStyle={[styles.countdown, { marginTop: 8 }]}
-            colorOverlay
-            palette="fosBlue"
-            backgroundImage={require('../assets/images/banner.jpg')}
-          >
-            <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
-            <CountdownTimer
-              targetDate={new Date('2022-09-23T19:00:00+02:00')}
-            />
-          </ContentCard>
+          <CountdownTimer
+            targetDate={new Date('2022-09-23T19:00:00+02:00')}
+          />
           {content?.map((item) => (
             <BasicCard
               key={item.order}
-              containerStyle={styles.countdown}
+              containerStyle={styles.basicCard}
               content={item.content}
               title={item.title}
               mode="elevated"
@@ -45,9 +36,9 @@ const HomeScreen: React.FC = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  countdown: {
+  basicCard: {
     marginHorizontal: 8,
-    marginVertical: 4,
+    marginTop: 8,
   },
   logo: {
     padding: 4,
@@ -68,12 +59,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: 'bold',
   },
-  countdownTitle: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
   separator: {
     marginVertical: 30,
     height: 1,
@@ -85,7 +70,6 @@ const styles = StyleSheet.create({
   },
   eventSeparator: {
     borderBottomWidth: 2,
-    marginTop: 5,
-    marginBottom: 5,
+    marginTop: 10,
   },
 });

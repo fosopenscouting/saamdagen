@@ -3,7 +3,7 @@ import * as React from 'react';
 import { List } from 'react-native-paper';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { Markdown, Separator, Text, View } from './Themed';
+import { Markdown, View } from './Themed';
 
 type Props = {
   title: string;

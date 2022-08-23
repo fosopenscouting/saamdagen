@@ -120,7 +120,7 @@ class Markdown extends Component {
 
     if (ordered) {
       return (
-        <Text key={'listBullet_' + index} style={[styles.listItemNumber]}>
+        <Text key={'listBullet_' + index} style={styles.listItemNumber}>
           {index + 1 + '.'}
         </Text>
       );

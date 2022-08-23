@@ -117,7 +117,6 @@ class Markdown extends Component {
   renderListBullet(ordered, index) {
     const { styles } = this.state;
     const scheme = Appearance.getColorScheme();
-    console.log(scheme);
 
     if (ordered) {
       return (

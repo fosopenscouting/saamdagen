@@ -92,7 +92,7 @@ const defaultStyles = {
   listItemBullet: {
     width: 4,
     height: 4,
-    backgroundColor: 'black',
+   // backgroundColor: 'black',
     borderRadius: 2,
     marginRight: 10,
   },

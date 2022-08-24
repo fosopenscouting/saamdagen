@@ -7,29 +7,6 @@ import FaqCard from '../components/FaqCard';
 import { useContent } from '../hooks/useContent';
 import { FaqItem } from '../models/FaqItem';
 import { FAQ_ITEMS } from '../constants/Strings';
-const loremIpsum = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-Eveniet unde, eaque asperiores aliquid iste molestias corporis reiciendis
-rem ipsa aspernatur nulla excepturi non?
-Reiciendis soluta sunt maxime accusantium voluptatibus odio.`;
-
-const dummyFaq = [
-  {
-    title: 'FAQ 1',
-    content: loremIpsum,
-  },
-  {
-    title: 'FAQ 2',
-    content: loremIpsum,
-  },
-  {
-    title: 'FAQ 3',
-    content: loremIpsum,
-  },
-  {
-    title: 'FAQ 4',
-    content: loremIpsum,
-  },
-];
 
 const FaqScreen: React.FC = () => {
   const [content, lastUpdated] = useContent<FaqItem>(FAQ_ITEMS);

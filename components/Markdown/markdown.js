@@ -9,11 +9,14 @@ import {
   Image,
   Linking,
   StyleSheet,
-  Text,
+  Appearance,
 } from 'react-native';
+
+import { Text } from '../Themed';
 
 import styles from './styles';
 import Utils from './Utils';
+import Colors from '../../constants/Colors';
 
 class Markdown extends Component {
   constructor(props) {
@@ -113,6 +116,7 @@ class Markdown extends Component {
 
   renderListBullet(ordered, index) {
     const { styles } = this.state;
+    const scheme = Appearance.getColorScheme();
 
     if (ordered) {
       return (
@@ -122,7 +126,15 @@ class Markdown extends Component {
       );
     }
 
-    return <View key={'listBullet_' + index} style={styles.listItemBullet} />;
+    return (
+      <View
+        key={'listBullet_' + index}
+        style={[
+          styles.listItemBullet,
+          { backgroundColor: Colors[scheme].text },
+        ]}
+      />
+    );
   }
 
   renderListItem(node, key, index, extras) {

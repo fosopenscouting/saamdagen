@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, HeaderText } from '../Themed';
+import { View, HeaderText, Text } from '../Themed';
 import { StyleSheet } from 'react-native';
+import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 
 interface MapDetailProps {
   title: string;
@@ -9,10 +10,16 @@ interface MapDetailProps {
 
 const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
   return (
-    <View style={styles.container}>
+    <>
       <HeaderText style={styles.title}>{props.title}</HeaderText>
-      {props.description ? <HeaderText>{props.description}</HeaderText> : null}
-    </View>
+      {props.description ? (
+        <BottomSheetScrollView>
+          <View style={styles.scrollContainer}>
+            <Text>{props.description}</Text>
+          </View>
+        </BottomSheetScrollView>
+      ) : null}
+    </>
   );
 };
 
@@ -20,6 +27,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     padding: 16,
+    flex: 1,
   },
   title: {
     fontSize: 32,
@@ -27,6 +35,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand_300Light',
     textTransform: 'uppercase',
     textAlign: 'left',
+    marginLeft: 10,
+    marginBottom: 16,
+  },
+  scrollContainer: {
+    marginBottom: 92,
+    marginHorizontal: 10,
   },
 });
 

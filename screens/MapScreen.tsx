@@ -1,5 +1,5 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { View } from '../components/Themed';
+import { View, Text } from '../components/Themed';
 import { StyleSheet } from 'react-native';
 import MapView, {
   Marker,
@@ -11,21 +11,25 @@ import MapView, {
 import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { getMapMarkers, getMapStyle } from '../services/DataService';
 import MapDetail from '../components/Map/MapDetail';
 import { PointOfInterest } from '../models/PointOfInterest';
 import { useEffect } from 'react';
 import { MapLayer } from '../models/MapLayer';
 import MapFab from '../components/Map/MapFab';
 import OverlayImage from '../assets/images/2021_Saamdagen_Grondplan_Baselayer.png';
+import { useContent } from '../hooks/useContent';
+import { MAP_ITEMS } from '../constants/Strings';
+import { getMapStyle } from '../services/DataService';
+import { images, markerImages } from '../constants/ImageMap';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
   const [layer, setLayer] = useState<MapLayer>('normal');
-  const [markers, setMarkers] =
-    useState<Map<PointOfInterest | string, MapMarker>>();
+  const [markers, setMarkers] = useState<MapMarker[]>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+  const [content, lastUpdated] = useContent<MapMarker>(MAP_ITEMS);
 
   const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
   const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.205039, 4.856122];
@@ -40,7 +44,8 @@ const MapScreen: React.FC = () => {
 
   useEffect(() => {
     setSelectedMarker(null);
-    setMarkers(getMapMarkers(layer));
+    const markersForLayer = content?.filter((x) => x.layer === layer);
+    setMarkers(markersForLayer);
   }, [layer]);
 
   useEffect(() => {
@@ -51,8 +56,10 @@ const MapScreen: React.FC = () => {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  const handleMarkerSelect = (markerIdentifier: PointOfInterest) => {
-    const markerObject = markers?.get(markerIdentifier);
+  const handleMarkerSelect = (markerIdentifier: string) => {
+    const markerObject = markers?.find(
+      (item) => item.title === markerIdentifier,
+    );
     setSelectedMarker(markerObject);
   };
 
@@ -69,23 +76,18 @@ const MapScreen: React.FC = () => {
   };
 
   const renderMarkers = () => {
-    const nodes: JSX.Element[] = [];
-    markers?.forEach((value: MapMarker, key: PointOfInterest | string) =>
-      nodes.push(
-        <Marker
-          onPress={(e) => {
-            e.stopPropagation();
-            handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
-          }}
-          key={key}
-          coordinate={value.latLng}
-          identifier={key}
-          image={value.icon}
-          flat
-        ></Marker>,
-      ),
-    );
-    return nodes;
+    return markers?.map((item) => (
+      <Marker
+        onPress={(e) => {
+          e.stopPropagation();
+          handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
+        }}
+        key={item.title}
+        coordinate={item.latLng}
+        identifier={item.title}
+        icon={markerImages[item.icon as keyof typeof markerImages]}
+      />
+    ));
   };
 
   return (

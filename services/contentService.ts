@@ -10,6 +10,7 @@ import {
   NORMALLAYER_ITEMS,
   BIGGAMELAYER_ITEMS,
   ACTIVITIESLAYER_ITEMS,
+  MAP_ITEMS,
 } from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
@@ -32,7 +33,6 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   saveFaqContent(faqContent);
   const mapContent = await loadContent(mapPaths);
   saveMapContent(mapContent);
-  console.log(mapContent);
 };
 
 export const loadContent = async (
@@ -111,8 +111,10 @@ const saveMapContent = async (objects: FrontMatterResult<any>[]) => {
       layer: item.attributes.layer,
       title: item.attributes.title,
       description: item.body,
-      latitude: item.attributes.latitude,
-      longitude: item.attributes.longitude,
+      latLng: {
+        latitude: item.attributes.latitude,
+        longitude: item.attributes.longitude,
+      },
       icon: item.attributes.icon,
     };
   });
@@ -120,6 +122,7 @@ const saveMapContent = async (objects: FrontMatterResult<any>[]) => {
   const normal = mapped.filter((x) => x.layer === 'normal');
   const big_game = mapped.filter((x) => x.layer === 'big_game');
   const activities = mapped.filter((x) => x.layer === 'activities');
+  saveLayerMarker(mapped, MAP_ITEMS);
   saveLayerMarker(normal, NORMALLAYER_ITEMS);
   saveLayerMarker(big_game, BIGGAMELAYER_ITEMS);
   saveLayerMarker(activities, ACTIVITIESLAYER_ITEMS);

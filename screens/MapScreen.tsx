@@ -1,49 +1,15 @@
 import React, { useState, useRef, useMemo } from 'react';
-import { View, Text } from '../components/Themed';
+import { View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
-import MapView, {
-  Marker,
-  Region,
-  PROVIDER_GOOGLE,
-  Overlay,
-  Coordinate,
-} from 'react-native-maps';
-import * as Location from 'expo-location';
 import { MapMarker } from '../models/MapMarker';
 import BottomSheet from '@gorhom/bottom-sheet';
 import MapDetail from '../components/Map/MapDetail';
-import { PointOfInterest } from '../models/PointOfInterest';
 import { useEffect } from 'react';
 import { MapLayer } from '../models/MapLayer';
 import MapFab from '../components/Map/MapFab';
-import OverlayImage from '../assets/images/baselayer.png';
 import { useContent } from '../hooks/useContent';
 import { MAP_ITEMS } from '../constants/Strings';
-import { getMapStyle } from '../services/DataService';
-import { markerImages } from '../constants/ImageMap';
-
-type MarkerProps = {
-  markers: MapMarker[];
-  handleMarkerSelect: (e: PointOfInterest) => void;
-};
-const Markers: React.FC<MarkerProps> = (props: MarkerProps) => {
-  return (
-    <>
-      {props.markers?.map((item) => (
-        <Marker
-          onPress={(e) => {
-            e.stopPropagation();
-            props.handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
-          }}
-          key={item.id}
-          coordinate={item.latLng}
-          identifier={item.title}
-          icon={markerImages[item.icon as keyof typeof markerImages]}
-        />
-      ))}
-    </>
-  );
-};
+import Map from '../components/Map/Map';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
@@ -51,19 +17,7 @@ const MapScreen: React.FC = () => {
   const [markers, setMarkers] = useState<MapMarker[]>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
-
   const [content, lastUpdated] = useContent<MapMarker>(MAP_ITEMS);
-
-  const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
-  const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.205039, 4.856122];
-  const IMAGE = OverlayImage;
-
-  const mapRegion: Region = {
-    latitude: 51.200977,
-    longitude: 4.850671,
-    latitudeDelta: 0.005,
-    longitudeDelta: 0.005,
-  };
 
   const handleLayerChange = (layer: MapLayer) => {
     setSelectedMarker(null);
@@ -78,10 +32,6 @@ const MapScreen: React.FC = () => {
   useEffect(() => {
     sheetRef.current?.collapse();
   }, [selectedMarker]);
-
-  const onMapReady = async () => {
-    await Location.requestForegroundPermissionsAsync();
-  };
 
   const handleMarkerSelect = (markerIdentifier: string) => {
     const markerObject = markers?.find(
@@ -104,31 +54,11 @@ const MapScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        provider={PROVIDER_GOOGLE}
-        region={mapRegion}
-        showsUserLocation={true}
-        minZoomLevel={17}
-        showsMyLocationButton
-        moveOnMarkerPress={false}
-        showsPointsOfInterest={false}
-        toolbarEnabled={false}
-        onMapReady={onMapReady}
-        onPress={handleMapPress}
-        customMapStyle={getMapStyle()}
-      >
-        <Overlay
-          bounds={[
-            OVERLAY_TOP_LEFT_COORDINATE,
-            OVERLAY_BOTTOM_RIGHT_COORDINATE,
-          ]}
-          image={IMAGE}
-        />
-        {markers ? (
-          <Markers markers={markers} handleMarkerSelect={handleMarkerSelect} />
-        ) : null}
-      </MapView>
+      <Map
+        markers={markers}
+        onMapsPress={handleMapPress}
+        onMarkerSelect={handleMarkerSelect}
+      />
       {selectedMarker ? (
         <BottomSheet
           backgroundComponent={View}
@@ -154,9 +84,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
+
   fab: {
     position: 'absolute',
     margin: 16,

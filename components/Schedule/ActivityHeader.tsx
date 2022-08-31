@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { ScheduleData } from '../../models/ScheduleData';
-import { getMapMarkers } from '../../services/DataService';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
 import { HeaderText, View } from '../Themed';
 
@@ -12,7 +11,6 @@ type Props = {
 };
 
 export const ActivityHeader = (props: Props) => {
-  const mapMarkers = getMapMarkers('normal');
   return (
     <Animatable.View duration={400} transition="backgroundColor">
       <View style={{ flex: 1, flexDirection: 'column' }}>
@@ -20,9 +18,7 @@ export const ActivityHeader = (props: Props) => {
           <View style={{ flex: 1 }}>
             <HeaderText style={styles.eventH3}>
               {props.content.time}
-              {props.content.location
-                ? ` - ${mapMarkers.get(props.content.location)?.title}`
-                : null}
+              {props.content.location ? ` - ${props.content.location}` : null}
             </HeaderText>
           </View>
           <View>

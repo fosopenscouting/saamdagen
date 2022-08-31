@@ -17,7 +17,7 @@ const MapScreen: React.FC = () => {
   const [markers, setMarkers] = useState<MapMarker[]>();
   const sheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['25%', '50%'], []);
-  const [content, lastUpdated] = useContent<MapMarker>(MAP_ITEMS);
+  const [content] = useContent<MapMarker>(MAP_ITEMS);
 
   const handleLayerChange = (layer: MapLayer) => {
     setSelectedMarker(null);

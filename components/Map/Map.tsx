@@ -21,7 +21,6 @@ type Props = {
 const Map: React.FC<Props> = (props: Props) => {
   const OVERLAY_TOP_LEFT_COORDINATE: Coordinate = [51.205039, 4.842844];
   const OVERLAY_BOTTOM_RIGHT_COORDINATE: Coordinate = [51.205039, 4.856122];
-  console.log('render map ');
 
   const mapRegion: Region = {
     latitude: 51.200977,

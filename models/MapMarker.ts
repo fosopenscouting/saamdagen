@@ -7,5 +7,5 @@ export interface MapMarker extends IOrderable {
   description?: string;
   latLng: LatLng;
   layer: MapLayer;
-  icon: string;
+  icon?: string;
 }

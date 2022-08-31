@@ -3,75 +3,8 @@ import { MapLayer } from '../models/MapLayer';
 import { MapMarker } from '../models/MapMarker';
 import { PointOfInterest } from '../models/PointOfInterest';
 
-const markers = new Map<PointOfInterest | string, MapMarker>([
-  [
-
-
-
-]])
-
-
-
 /*const markers = new Map<PointOfInterest | string, MapMarker>([
-  [
-    'Infopunt',
-    {
-      title: 'Infopunt',
-      description: `Aan het infopunt kan je terecht voor … info! Hier koop je ook jetons en bekers. Oordoppen of condooms nodig? Zit je met een vraag of zin in een babbel? Het infopunt is the place to be! Ook voor EHBO kan je hier terecht.
 
-We werken met herbruikbare bekers. Voor €2 koop je een beker met bekerjeton aan. Het hele weekend maak je gebruik van je beker. Als je aan de bar een drankje koopt, geef je je beker af. Je krijgt een gevulde beker terug. Die beker gebruik je dan opnieuw als je een drankje haalt. Op het einde van het weekend kan je bij de uitcheck de €2 terugkrijgen als je een beker en een bekerjeton afgeeft. Draag dus goed zorg voor je bekerjeton.
-
-Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor geld.  `,
-      latLng: {
-        latitude: 51.200962,
-        longitude: 4.85072,
-      },
-      layer: 'normal',
-      icon: require('../assets/images/map-icons/icon-infopunt.png'),
-    },
-  ],
-  [
-    'Podium',
-    {
-      title: 'Podium',
-      description:
-        'Het hart van Saamdagen. De plaats waar alle ‘magic happens’.',
-      latLng: {
-        latitude: 51.201001,
-        longitude: 4.851587,
-      },
-      layer: 'normal',
-      icon: require('../assets/images/map-icons/icon-podium.png'),
-    },
-  ],
-  [
-    'Fuiftent',
-    {
-      title: 'Fuiftent',
-      description:
-        'De naam zegt het zelf. Een tent, hoe kan het ook anders, waarin vooral gedanst wordt.',
-      latLng: {
-        latitude: 51.2008,
-        longitude: 4.850224,
-      },
-      layer: 'normal',
-      icon: require('../assets/images/map-icons/icon-fuiftent.png'),
-    },
-  ],
-  [
-    'Kampvuur',
-    {
-      title: 'Kampvuur',
-      description:
-        'Ook wie op het gemak een drankje wil nuttigen en een babbeltje wil slaan, vindt op Saamdagen een plekje. Enkele FOS’sers zorgen voor een streepje muziek aan het kampvuur. In de rustige bar vind je ook een photobooth. Leg jullie herinneringen er vast op foto en neem meteen aan afgeprinte foto mee naar huis.',
-      latLng: {
-        latitude: 51.200161,
-        longitude: 4.850385,
-      },
-      layer: 'normal',
-      icon: require('../assets/images/map-icons/icon-kampvuur.png'),
-    },
-  ],
   [
     'Eettent',
     {
@@ -675,21 +608,7 @@ Ook de overschot van je jetons kan je op het einde van het weekend inruilen voor
       layer: 'big_game',
     },
   ],
-]);
-
-*/
-
-export const getMapMarkers = (
-  layer: MapLayer,
-): Map<PointOfInterest | string, MapMarker> => {
-  const filteredMarkers = new Map();
-  markers.forEach((value, key) => {
-    if (value.layer === layer) {
-      filteredMarkers.set(key, value);
-    }
-  });
-  return filteredMarkers;
-};
+]);*/
 
 export const getMapStyle = (): MapStyleElement[] => {
   return [

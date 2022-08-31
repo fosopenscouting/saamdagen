@@ -16,11 +16,34 @@ import { PointOfInterest } from '../models/PointOfInterest';
 import { useEffect } from 'react';
 import { MapLayer } from '../models/MapLayer';
 import MapFab from '../components/Map/MapFab';
-import OverlayImage from '../assets/images/2021_Saamdagen_Grondplan_Baselayer.png';
+import OverlayImage from '../assets/images/baselayer.png';
 import { useContent } from '../hooks/useContent';
 import { MAP_ITEMS } from '../constants/Strings';
 import { getMapStyle } from '../services/DataService';
-import { images, markerImages } from '../constants/ImageMap';
+import { markerImages } from '../constants/ImageMap';
+
+type MarkerProps = {
+  markers: MapMarker[];
+  handleMarkerSelect: (e: PointOfInterest) => void;
+};
+const Markers: React.FC<MarkerProps> = (props: MarkerProps) => {
+  return (
+    <>
+      {props.markers?.map((item) => (
+        <Marker
+          onPress={(e) => {
+            e.stopPropagation();
+            props.handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
+          }}
+          key={item.id}
+          coordinate={item.latLng}
+          identifier={item.title}
+          icon={markerImages[item.icon as keyof typeof markerImages]}
+        />
+      ))}
+    </>
+  );
+};
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
@@ -42,11 +65,15 @@ const MapScreen: React.FC = () => {
     longitudeDelta: 0.005,
   };
 
-  useEffect(() => {
+  const handleLayerChange = (layer: MapLayer) => {
     setSelectedMarker(null);
     const markersForLayer = content?.filter((x) => x.layer === layer);
     setMarkers(markersForLayer);
-  }, [layer]);
+  };
+
+  useEffect(() => {
+    handleLayerChange(layer);
+  }, [content, layer]);
 
   useEffect(() => {
     sheetRef.current?.collapse();
@@ -75,21 +102,6 @@ const MapScreen: React.FC = () => {
     }
   };
 
-  const renderMarkers = () => {
-    return markers?.map((item) => (
-      <Marker
-        onPress={(e) => {
-          e.stopPropagation();
-          handleMarkerSelect(e.nativeEvent.id as PointOfInterest);
-        }}
-        key={item.title}
-        coordinate={item.latLng}
-        identifier={item.title}
-        icon={markerImages[item.icon as keyof typeof markerImages]}
-      />
-    ));
-  };
-
   return (
     <View style={styles.container}>
       <MapView
@@ -113,7 +125,9 @@ const MapScreen: React.FC = () => {
           ]}
           image={IMAGE}
         />
-        {renderMarkers()}
+        {markers ? (
+          <Markers markers={markers} handleMarkerSelect={handleMarkerSelect} />
+        ) : null}
       </MapView>
       {selectedMarker ? (
         <BottomSheet

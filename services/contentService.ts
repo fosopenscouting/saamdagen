@@ -123,7 +123,6 @@ const saveMapContent = async (objects: FrontMatterResult<any>[]) => {
   const big_game = mapped.filter((x) => x.layer === 'big_game');
   const activities = mapped.filter((x) => x.layer === 'activities');
   saveLayerMarker(mapped, MAP_ITEMS);
-  console.log(mapped);
   saveLayerMarker(normal, NORMALLAYER_ITEMS);
   saveLayerMarker(big_game, BIGGAMELAYER_ITEMS);
   saveLayerMarker(activities, ACTIVITIESLAYER_ITEMS);

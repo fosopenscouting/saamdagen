@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, HeaderText, Text } from '../Themed';
+import { View, HeaderText, Text, Markdown } from '../Themed';
 import { StyleSheet } from 'react-native';
 import { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 
@@ -15,7 +15,7 @@ const MapDetail: React.FC<MapDetailProps> = (props: MapDetailProps) => {
       {props.description ? (
         <BottomSheetScrollView>
           <View style={styles.scrollContainer}>
-            <Text>{props.description}</Text>
+            <Markdown>{props.description}</Markdown>
           </View>
         </BottomSheetScrollView>
       ) : null}

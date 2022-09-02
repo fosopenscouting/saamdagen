@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { View, Text } from '../components/Themed';
+import { View } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
 import BasicCard from '../components/BasicCard';
@@ -9,7 +9,7 @@ import { useContent } from '../hooks/useContent';
 import { HOME_ITEMS } from '../constants/Strings';
 
 const HomeScreen: React.FC = () => {
-  const [content, lastUpdated] = useContent<HomeScreenSection>(HOME_ITEMS);
+  const [content] = useContent<HomeScreenSection>(HOME_ITEMS);
   return (
     <>
       <ParallaxHeader>

@@ -5,3 +5,7 @@ export const FRIDAY_ITEMS = `${PROGRAM_ITEMS}/Vrijdag`;
 export const SATURDAY_ITEMS = `${PROGRAM_ITEMS}/Zaterdag`;
 export const SUNDAY_ITEMS = `${PROGRAM_ITEMS}/Zondag`;
 export const FAQ_ITEMS = '@faq';
+export const MAP_ITEMS = '@markers';
+export const NORMALLAYER_ITEMS = `${MAP_ITEMS}/Normaal`;
+export const BIGGAMELAYER_ITEMS = `${MAP_ITEMS}/groot_spel`;
+export const ACTIVITIESLAYER_ITEMS = `${MAP_ITEMS}/Activiteiten`;

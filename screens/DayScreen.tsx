@@ -4,7 +4,7 @@ import { ScheduleData } from '../models/ScheduleData';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { View, Markdown, Text } from '../components/Themed';
+import { View } from '../components/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
 import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';
@@ -21,9 +21,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
-  const [content, lastUpdated] = useContent<ScheduleData>(
-    `${PROGRAM_ITEMS}/${dayInfo.day}`,
-  );
+  const [content] = useContent<ScheduleData>(`${PROGRAM_ITEMS}/${dayInfo.day}`);
   const colorScheme = useColorScheme();
 
   useEffect(() => {
@@ -50,8 +48,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           ></View>
           {dayEvents ? (
             <Accordion
+              keyExtractor={(item) => item.order}
               sections={dayEvents}
-              renderHeader={(content, _index, isActive, _sections) => (
+              renderHeader={(content, _index, isActive) => (
                 <ActivityHeader content={content} isActive={isActive} />
               )}
               renderContent={ActivityContent}

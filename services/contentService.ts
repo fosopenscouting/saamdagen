@@ -7,6 +7,10 @@ import {
   SATURDAY_ITEMS,
   SUNDAY_ITEMS,
   FAQ_ITEMS,
+  NORMALLAYER_ITEMS,
+  BIGGAMELAYER_ITEMS,
+  ACTIVITIESLAYER_ITEMS,
+  MAP_ITEMS,
 } from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
@@ -14,10 +18,12 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const programPrefix = 'Programma';
   const homePrefix = 'Homepage';
   const faqPrefix = 'Faq';
+  const mapPrefix = 'Kaart';
 
   const homePaths = paths.filter((x) => x.startsWith(homePrefix));
   const programPaths = paths.filter((x) => x.startsWith(programPrefix));
   const faqPaths = paths.filter((x) => x.startsWith(faqPrefix));
+  const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
 
   const homeContent = await loadContent(homePaths);
   saveHomeContent(homeContent);
@@ -25,6 +31,8 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   saveProgramContent(programContent);
   const faqContent = await loadContent(faqPaths);
   saveFaqContent(faqContent);
+  const mapContent = await loadContent(mapPaths);
+  saveMapContent(mapContent);
 };
 
 export const loadContent = async (
@@ -94,6 +102,36 @@ const saveFaqContent = async (objects: FrontMatterResult<any>[]) => {
   const meta = wrapContentInMetadata(mapped);
   const json = JSON.stringify(meta);
   await AsyncStorageLib.setItem(FAQ_ITEMS, json);
+};
+
+const saveMapContent = async (objects: FrontMatterResult<any>[]) => {
+  const mapped = objects.map((item) => {
+    return {
+      id: item.attributes.id,
+      layer: item.attributes.layer,
+      title: item.attributes.title,
+      description: item.body,
+      latLng: {
+        latitude: item.attributes.latitude,
+        longitude: item.attributes.longitude,
+      },
+      icon: item.attributes.icon,
+    };
+  });
+
+  const normal = mapped.filter((x) => x.layer === 'normal');
+  const big_game = mapped.filter((x) => x.layer === 'big_game');
+  const activities = mapped.filter((x) => x.layer === 'activities');
+  saveLayerMarker(mapped, MAP_ITEMS);
+  saveLayerMarker(normal, NORMALLAYER_ITEMS);
+  saveLayerMarker(big_game, BIGGAMELAYER_ITEMS);
+  saveLayerMarker(activities, ACTIVITIESLAYER_ITEMS);
+};
+
+const saveLayerMarker = async (items: any[], key: string) => {
+  const layerMeta = wrapContentInMetadata(items);
+  const json = JSON.stringify(layerMeta);
+  await AsyncStorageLib.setItem(key, json);
 };
 
 const wrapContentInMetadata = (content: any): ContentMetadata => {

@@ -9,6 +9,7 @@ import {
   HOME_ITEMS,
   ONBOARDED_ITEM,
   PROGRAM_ITEMS,
+  MAP_ITEMS,
 } from '../constants/Strings';
 import { saveContent } from '../services/contentService';
 import { useOnboardingStatus } from './useOnboardingStatus';
@@ -34,7 +35,8 @@ const useCachedResources: () => boolean = () => {
           const hasData =
             keys.includes(HOME_ITEMS) &&
             keys.includes(PROGRAM_ITEMS) &&
-            keys.includes(FAQ_ITEMS);
+            keys.includes(FAQ_ITEMS) &&
+            keys.includes(MAP_ITEMS);
           if (isFirstLaunch || !hasData) {
             const fetchData = async () => {
               const index = await getContentIndex();

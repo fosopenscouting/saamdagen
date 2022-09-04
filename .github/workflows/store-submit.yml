@@ -1,9 +1,5 @@
 name: EAS Build
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 jobs:
   build:
     name: Install and build

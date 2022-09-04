@@ -34,7 +34,7 @@
       "package": "be.fos.saamdagen",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#0000FF"
+        "backgroundColor": "#2A61A8"
       },
       "permissions": [
         "CAMERA",

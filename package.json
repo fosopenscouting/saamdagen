@@ -28,6 +28,7 @@
     "dotenv": "^16.0.0",
     "expo": "^46.0.0",
     "expo-asset": "~8.6.1",
+    "expo-background-fetch": "~10.3.0",
     "expo-barcode-scanner": "~11.4.0",
     "expo-blur": "~11.2.0",
     "expo-brightness": "~10.3.0",

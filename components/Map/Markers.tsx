@@ -1,6 +1,5 @@
 import React from 'react';
 import { MapMarker } from '../../models/MapMarker';
-import { PointOfInterest } from '../../models/PointOfInterest';
 import { Marker } from 'react-native-maps';
 import { markerImages } from '../../constants/ImageMap';
 

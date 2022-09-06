@@ -1,8 +1,10 @@
 import React from 'react';
 import { MapMarker } from '../../models/MapMarker';
-import { PointOfInterest } from '../../models/PointOfInterest';
+import { Text, View } from '../Themed';
 import { Marker } from 'react-native-maps';
 import { markerImages } from '../../constants/ImageMap';
+import { StyleSheet } from 'react-native';
+import Colors from '../../constants/Colors';
 
 type MarkerProps = {
   markers: MapMarker[];
@@ -21,10 +23,27 @@ const Markers: React.FC<MarkerProps> = (props: MarkerProps) => {
           coordinate={item.latLng}
           identifier={item.title}
           icon={markerImages[item.icon as keyof typeof markerImages]}
-        />
+        >
+          {item.icon ? null : (
+            <View style={styles.markerContainer}>
+              <Text>{item.id}</Text>
+            </View>
+          )}
+        </Marker>
       ))}
     </>
   );
 };
 
 export default Markers;
+
+const styles = StyleSheet.create({
+  markerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+    backgroundColor: Colors.schemeIndependent.fosBlue,
+    borderRadius: 8,
+  },
+});

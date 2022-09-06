@@ -53,7 +53,7 @@ const MapScreen: React.FC = () => {
     }
   };
 
- // return <NewMap />;
+  // return <NewMap />;
 
   return (
     <View style={styles.container}>

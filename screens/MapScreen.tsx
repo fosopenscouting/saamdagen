@@ -10,6 +10,7 @@ import MapFab from '../components/Map/MapFab';
 import { useContent } from '../hooks/useContent';
 import { MAP_ITEMS } from '../constants/Strings';
 import Map from '../components/Map/Map';
+import NewMap from '../components/Map/NewMap';
 
 const MapScreen: React.FC = () => {
   const [selectedMarker, setSelectedMarker] = useState<MapMarker | null>();
@@ -51,6 +52,8 @@ const MapScreen: React.FC = () => {
       setLayer(newLayer);
     }
   };
+
+  // return <NewMap />;
 
   return (
     <View style={styles.container}>

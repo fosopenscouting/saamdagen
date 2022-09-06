@@ -1808,6 +1808,13 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@openspacelabs/react-native-zoomable-view@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@openspacelabs/react-native-zoomable-view/-/react-native-zoomable-view-2.0.4.tgz#e907a9d68e9b48bd2934ed0354bd5b3eb958f575"
+  integrity sha512-/mtLvqpP99NdYsskD+e+mNivBY+y/JzufxS2GWHeJE6H4NF63jDAfuBFV2gVmr1YIF3clZGlXqdvuqLIOk/H4g==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@react-native-async-storage/async-storage@~1.17.3":
   version "1.17.10"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.17.10.tgz#8d6a4771912be8454a9e215eebd469b1b8e2e638"

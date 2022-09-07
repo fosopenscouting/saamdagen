@@ -53,9 +53,9 @@ const MapScreen: React.FC = () => {
     }
   };
 
-  // return <NewMap />;
+  return <NewMap />;
 
-  return (
+  /*return (
     <View style={styles.container}>
       <Map
         markers={markers}
@@ -78,7 +78,7 @@ const MapScreen: React.FC = () => {
       ) : null}
       <MapFab handleLayerSelect={handleLayerSelect} />
     </View>
-  );
+  );*/
 };
 
 const styles = StyleSheet.create({

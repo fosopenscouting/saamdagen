@@ -11,7 +11,7 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   Info: undefined;
   Programma: undefined;
-  Grondplan: undefined;
+  Plattegrond: undefined;
   'Mijn Saamdagen': undefined;
   Meer: undefined;
   Home: undefined;

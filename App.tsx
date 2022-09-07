@@ -14,10 +14,12 @@ import {
 } from '@expo-google-fonts/quicksand';
 import { Linking } from 'react-native';
 import useBackgroundRefresh from './hooks/useBackgroundRefresh';
+import useNotifications from './hooks/useNotifications';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
   useBackgroundRefresh();
+  useNotifications();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
     Quicksand_400Regular,

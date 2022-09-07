@@ -39,6 +39,7 @@
     "expo-haptics": "~11.3.0",
     "expo-linking": "~3.2.2",
     "expo-location": "~14.3.0",
+    "expo-notifications": "~0.16.1",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "expo-web-browser": "~11.0.0",

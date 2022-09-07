@@ -14,4 +14,5 @@ export const markerImages = {
   rookzone: require('../assets/images/map-icons/icon-rookzone.png'),
   rustigeBar: require('../assets/images/map-icons/icon-rustige-bar.png'),
   wc: require('../assets/images/map-icons/icon-wc.png'),
+  stilleCamping: require('../assets/images/map-icons/icon-stille-camping.png'),
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
@@ -10,12 +10,18 @@ import { HOME_ITEMS } from '../constants/Strings';
 
 const HomeScreen: React.FC = () => {
   const [content] = useContent<HomeScreenSection>(HOME_ITEMS);
+  const [data, setData] = useState<HomeScreenSection[] | undefined>();
+
+  useEffect(() => {
+    setData(content);
+  }, [content]);
+
   return (
     <>
       <ParallaxHeader>
         <View style={{ height: '100%' }}>
           <CountdownTimer targetDate={new Date('2022-09-23T19:00:00+02:00')} />
-          {content?.map((item) => (
+          {data?.map((item) => (
             <BasicCard
               key={item.order}
               containerStyle={styles.basicCard}

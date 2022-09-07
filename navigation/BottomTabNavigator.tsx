@@ -62,7 +62,7 @@ const BottomTabNavigator: React.FC = () => {
       />
 
       <BottomTab.Screen
-        name="Grondplan"
+        name="Plattegrond"
         component={MapNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -174,7 +174,7 @@ const MapNavigator = () => {
         name="MapScreen"
         component={MapScreen}
         options={{
-          headerTitle: 'Grondplan',
+          headerTitle: 'Plattegrond',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
           headerTitleStyle: {

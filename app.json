@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saamdagen",
     "slug": "saamdagen",
-    "version": "2.0.3",
+    "version": "3.0.0",
     "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -18,7 +18,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "buildNumber": "6",
+      "buildNumber": "7",
       "supportsTablet": true,
       "bundleIdentifier": "be.fos.saamdagen",
       "infoPlist": {
@@ -31,7 +31,7 @@
       }
     },
     "android": {
-      "versionCode": 30,
+      "versionCode": 31,
       "package": "be.fos.saamdagen",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",

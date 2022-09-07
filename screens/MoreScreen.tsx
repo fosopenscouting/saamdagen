@@ -10,11 +10,11 @@ const MoreScreen: React.FC = () => {
       destination: 'ProfileScreen',
       icon: 'heart-outline',
     },
-    {
+   /* {
       title: 'Instellingen',
       destination: 'SettingsScreen',
       icon: 'tune-vertical',
-    },
+    },*/
   ];
 
   return (
@@ -22,17 +22,6 @@ const MoreScreen: React.FC = () => {
       <FlatList
         data={items}
         keyExtractor={(item) => item.title}
-        ListHeaderComponent={() => (
-          <Image
-            style={{
-              width: '100%',
-              height: undefined,
-              aspectRatio: 2.6,
-              resizeMode: 'cover',
-            }}
-            source={require('../assets/images/banner.jpg')}
-          />
-        )}
         ItemSeparatorComponent={() => <Separator marginVertical={1} />}
         ListFooterComponent={() => <Separator marginVertical={1} />}
         renderItem={(item) => (

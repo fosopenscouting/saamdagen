@@ -3,25 +3,24 @@ import { StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
 import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
-import { useContent } from '../hooks/useContent';
+import { sortByOrder, useContent } from '../hooks/useContent';
 import { HOME_ITEMS } from '../constants/Strings';
+import { ContentMetadata } from '../models/ContentMetadata';
 
 const HomeScreen: React.FC = () => {
   const [content] = useContent<HomeScreenSection>(HOME_ITEMS);
   const [data, setData] = useState<HomeScreenSection[] | undefined>();
 
-  useEffect(() => {
-    setData(content);
-  }, [content]);
-
+  console.log('home rendered');
   return (
     <>
       <ParallaxHeader>
         <View style={{ height: '100%' }}>
           <CountdownTimer targetDate={new Date('2022-09-23T19:00:00+02:00')} />
-          {data?.map((item) => (
+          {content?.map((item) => (
             <BasicCard
               key={item.order}
               containerStyle={styles.basicCard}

@@ -26,13 +26,13 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
 
   const homeContent = await loadContent(homePaths);
-  saveHomeContent(homeContent);
+  await saveHomeContent(homeContent);
   const programContent = await loadContent(programPaths);
-  saveProgramContent(programContent);
+  await saveProgramContent(programContent);
   const faqContent = await loadContent(faqPaths);
-  saveFaqContent(faqContent);
+  await saveFaqContent(faqContent);
   const mapContent = await loadContent(mapPaths);
-  saveMapContent(mapContent);
+  await saveMapContent(mapContent);
 };
 
 export const loadContent = async (
@@ -60,6 +60,7 @@ const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
   const meta = wrapContentInMetadata(mapped);
   const json = JSON.stringify(meta);
   await AsyncStorageLib.setItem(HOME_ITEMS, json);
+  console.log('saved home');
 };
 
 const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {

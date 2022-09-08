@@ -20,49 +20,46 @@ const useCachedResources: () => boolean = () => {
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
+    loadResourcesAndDataAsync();
+
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHideAsync();
-
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
         });
 
-        if (!isLoading) {
-          const keys = await AsyncStorageLib.getAllKeys();
-          const hasData =
-            keys.includes(HOME_ITEMS) &&
-            keys.includes(PROGRAM_ITEMS) &&
-            keys.includes(FAQ_ITEMS) &&
-            keys.includes(MAP_ITEMS);
-          if (isFirstLaunch || !hasData) {
-            const fetchData = async () => {
-              const index = await getContentIndex();
-              await saveContent(index);
-            };
+        const keys = await AsyncStorageLib.getAllKeys();
+        const hasData =
+          keys.includes(HOME_ITEMS) &&
+          keys.includes(PROGRAM_ITEMS) &&
+          keys.includes(FAQ_ITEMS) &&
+          keys.includes(MAP_ITEMS);
+        if (isFirstLaunch || !hasData) {
+          const fetchData = async () => {
+            const index = await getContentIndex();
+            await saveContent(index);
+          };
 
-            fetchData().catch(console.error);
-            console.log('first launch');
-            // Only set the onboarded item in prd, so we can test
-            if (!__DEV__) {
-              AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
-            }
-          } else {
-            console.log('not first launch');
+          await fetchData().catch(console.error);
+          console.log('first launch');
+          // Only set the onboarded item in prd, so we can test
+          if (!__DEV__) {
+            await AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
           }
+        } else {
+          console.log('not first launch');
         }
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setLoadingComplete(true);
-        SplashScreen.hideAsync();
+        await SplashScreen.hideAsync();
       }
     }
-
-    loadResourcesAndDataAsync();
   }, [isLoading]);
 
   return isLoadingComplete;

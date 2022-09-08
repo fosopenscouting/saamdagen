@@ -10,7 +10,7 @@ const MoreScreen: React.FC = () => {
       destination: 'ProfileScreen',
       icon: 'heart-outline',
     },
-   /* {
+    /* {
       title: 'Instellingen',
       destination: 'SettingsScreen',
       icon: 'tune-vertical',

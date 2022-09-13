@@ -10,6 +10,9 @@ import {
   ONBOARDED_ITEM,
   PROGRAM_ITEMS,
   MAP_ITEMS,
+  FRIDAY_ITEMS,
+  SATURDAY_ITEMS,
+  SUNDAY_ITEMS,
 } from '../constants/Strings';
 import { saveContent } from '../services/contentService';
 import { useOnboardingStatus } from './useOnboardingStatus';
@@ -34,9 +37,12 @@ const useCachedResources: () => boolean = () => {
         const keys = await AsyncStorageLib.getAllKeys();
         const hasData =
           keys.includes(HOME_ITEMS) &&
-          keys.includes(PROGRAM_ITEMS) &&
+          keys.includes(FRIDAY_ITEMS) &&
+          keys.includes(SATURDAY_ITEMS) &&
+          keys.includes(SUNDAY_ITEMS) &&
           keys.includes(FAQ_ITEMS) &&
           keys.includes(MAP_ITEMS);
+          console.log(hasData);
         if (isFirstLaunch || !hasData) {
           const fetchData = async () => {
             const index = await getContentIndex();
@@ -44,11 +50,9 @@ const useCachedResources: () => boolean = () => {
           };
 
           await fetchData().catch(console.error);
-          console.log('first launch');
           // Only set the onboarded item in prd, so we can test
-          if (!__DEV__) {
-            await AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
-          }
+
+          await AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
         } else {
           console.log('not first launch');
         }

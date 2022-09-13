@@ -8,7 +8,6 @@ import { View, Text } from '../Themed';
 import MapFab from './MapFab';
 
 const NewMap = () => {
-
   const [layer, setLayer] = useState<MapLayer>('normal');
 
   const handleLayerSelect = (newLayer: MapLayer): void => {

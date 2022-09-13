@@ -42,7 +42,7 @@ const useCachedResources: () => boolean = () => {
           keys.includes(SUNDAY_ITEMS) &&
           keys.includes(FAQ_ITEMS) &&
           keys.includes(MAP_ITEMS);
-          console.log(hasData);
+        console.log(hasData);
         if (isFirstLaunch || !hasData) {
           const fetchData = async () => {
             const index = await getContentIndex();

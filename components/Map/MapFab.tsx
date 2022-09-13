@@ -28,11 +28,6 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
               onPress: () => props.handleLayerSelect('big_game'),
             },
             {
-              icon: 'basketball',
-              label: 'Vorming',
-              onPress: () => props.handleLayerSelect('activities'),
-            },
-            {
               icon: 'map-marker-outline',
               label: 'Normaal',
               onPress: () => props.handleLayerSelect('normal'),

@@ -14,7 +14,7 @@ import Colors from '../constants/Colors';
 const { event, ValueXY } = Animated;
 
 const ParallaxHeader: React.FC<StackHeaderProps> = (
-  props: StackHeaderProps,
+  props: StackHeaderProps & { refreshControl },
 ) => {
   const scrollY = useRef(new ValueXY()).current;
 
@@ -73,6 +73,7 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
       snapStartThreshold={50}
       snapStopThreshold={180}
       snapValue={180}
+      refreshControl={props.refreshControl}
     >
       {props.children}
     </StickyParallaxHeader>

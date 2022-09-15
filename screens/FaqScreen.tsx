@@ -2,17 +2,27 @@
 import React from 'react';
 
 import { Separator, View } from '../components/Themed';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import FaqCard from '../components/FaqCard';
 import { useContent } from '../hooks/useContent';
 import { FaqItem } from '../models/FaqItem';
 import { FAQ_ITEMS } from '../constants/Strings';
+import useRefresh from '../hooks/useRefresh';
 
 const FaqScreen: React.FC = () => {
-  const [content, lastUpdated] = useContent<FaqItem>(FAQ_ITEMS);
+  const { content, refreshContent } = useContent<FaqItem>(FAQ_ITEMS);
+  const { refreshing, refresh } = useRefresh();
+
+  const handleRefresh = async () => {
+    await refresh();
+    refreshContent();
+  };
   return (
     <View style={styles.container}>
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
         keyExtractor={(item) => item.title}
         data={content}
         renderItem={({ item }) => (

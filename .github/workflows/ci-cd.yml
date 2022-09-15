@@ -39,10 +39,11 @@ jobs:
           node-version: 14.x
       - uses: expo/expo-github-action@v6
         with:
-          expo-version: 4.x
+          expo-version: latest
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - run: yarn install
-      - run: expo publish --release-channel staging
+      - run: yarn install --immutable
+      - run: eas update --branch staging
   production:
     name: Build and deploy
     runs-on: ubuntu-latest
@@ -58,7 +59,8 @@ jobs:
 
       - uses: expo/expo-github-action@v6
         with:
-          expo-version: 4.x
+          expo-version: latest
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - run: yarn install
-      - run: expo publish
+      - run: yarn install --immutable
+      - run: eas update --branch production

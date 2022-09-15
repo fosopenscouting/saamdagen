@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { ScheduleData } from '../models/ScheduleData';
 
 import Colors from '../constants/Colors';
@@ -12,6 +12,10 @@ import { OpeningHours } from '../components/Schedule/OpeningHours';
 import { ActivityHeader } from '../components/Schedule/ActivityHeader';
 import { ActivityFooter } from '../components/Schedule/ActivityFooter';
 import { ActivityContent } from '../components/Schedule/ActivityContent';
+import { useNetInfo } from '@react-native-community/netinfo';
+import { getContentIndex } from '../api/api';
+import { saveContent } from '../services/contentService';
+import useRefresh from '../hooks/useRefresh';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
@@ -21,9 +25,11 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
-  const [content] = useContent<ScheduleData>(`${PROGRAM_ITEMS}/${dayInfo.day}`);
+  const { content, refreshContent } = useContent<ScheduleData>(
+    `${PROGRAM_ITEMS}/${dayInfo.day}`,
+  );
   const colorScheme = useColorScheme();
-
+  const { refreshing, refresh } = useRefresh();
   useEffect(() => {
     const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
     const openingHours = content?.filter(
@@ -35,9 +41,18 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     }
   }, [content]);
 
+  const onRefresh = async () => {
+    await refresh();
+    refreshContent();
+  };
+
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <View style={{ paddingTop: 8, margin: 10 }}>
           <OpeningHours openingHours={dayGeneralHours} />
           <View

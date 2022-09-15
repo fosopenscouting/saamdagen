@@ -14,6 +14,7 @@ import {
 } from '@expo-google-fonts/quicksand';
 import { Linking } from 'react-native';
 import useBackgroundRefresh from './hooks/useBackgroundRefresh';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -40,10 +41,12 @@ export default function App(): React.ReactElement | null {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar style="light" />
-      </SafeAreaProvider>
+      <RootSiblingParent>
+        <SafeAreaProvider>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar style="light" />
+        </SafeAreaProvider>
+      </RootSiblingParent>
     );
   }
 }

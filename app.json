@@ -23,11 +23,7 @@
       "bundleIdentifier": "be.fos.saamdagen",
       "infoPlist": {
         "NSCameraUsageDescription": "Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.",
-        "NSLocationWhenInUseUsageDescription": "Je kan toestemming geven aan de app om je locatie te gebruiken. Zo kan je in de app zien waar je je bevindt op het terrein.",
         "UIBackgroundModes": ["fetch"]
-      },
-      "config": {
-        "googleMapsApiKey": "AIzaSyBQ1w5Cnh9_P1nmAlmM3wxj_nbFTeS222A"
       }
     },
     "android": {
@@ -37,16 +33,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#2A61A8"
       },
-      "permissions": [
-        "CAMERA",
-        "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
-      ],
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyB1jFF2-vdFTJ6zMs9_m08vPSt2G9UngEE"
-        }
-      }
+      "permissions": ["CAMERA"]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

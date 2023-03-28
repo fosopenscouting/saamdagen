@@ -25,7 +25,7 @@ const NewMap = () => {
           backgroundColor: '#AEDBC4',
         }}
       >
-        <ReactNativeZoomableView maxZoom={10}>
+        <ReactNativeZoomableView maxZoom={5}>
           <Image
             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
             source={layer === 'normal' ? Grondplan : GrondPlanGrootSpel}

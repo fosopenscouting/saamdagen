@@ -4,7 +4,7 @@ import { Ticket } from '../models/Ticket';
 export const storeTicket = async (
   data: any,
   ticketHash: string,
-): Promise<void> => {
+): Promise<Ticket> => {
   try {
     const formValues = data.data.submissionData.data.formValues;
     const workshopsBeforeNoon =
@@ -19,9 +19,11 @@ export const storeTicket = async (
       hash: ticketHash,
     };
     await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
+    return ticket;
   } catch (e) {
     console.error(e);
   }
+  return null;
 };
 
 export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {

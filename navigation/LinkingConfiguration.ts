@@ -14,6 +14,7 @@ export default {
         screens: {
           Meer: {
             screens: {
+              initialRouteName: 'MoreScreen',
               ProfileScreen: 'Ticket',
             },
           },

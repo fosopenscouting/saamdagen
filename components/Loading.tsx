@@ -14,7 +14,6 @@ const Loading: React.FC<PropsWithChildren<LoadingProps>> = (
   if (!props.loading) {
     return props.children;
   }
-  console.log('loading');
   return (
     <ActivityIndicator size="large" color={Colors.schemeIndependent.fosBlue} />
   );

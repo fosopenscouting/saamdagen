@@ -25,7 +25,7 @@ const HomeScreen: React.FC = () => {
         }
       >
         <ScrollView style={{ height: '100%' }}>
-          <CountdownTimer targetDate={new Date('2022-09-23T19:00:00+02:00')} />
+          <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
           {content?.map((item) => (
             <BasicCard
               key={item.order}

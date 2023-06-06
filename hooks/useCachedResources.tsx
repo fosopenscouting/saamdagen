@@ -42,7 +42,6 @@ const useCachedResources: () => boolean = () => {
           keys.includes(SUNDAY_ITEMS) &&
           keys.includes(FAQ_ITEMS) &&
           keys.includes(MAP_ITEMS);
-        console.log(hasData);
         if (isFirstLaunch || !hasData) {
           const fetchData = async () => {
             const index = await getContentIndex();
@@ -53,8 +52,6 @@ const useCachedResources: () => boolean = () => {
           // Only set the onboarded item in prd, so we can test
 
           await AsyncStorageLib.setItem(ONBOARDED_ITEM, JSON.stringify(true));
-        } else {
-          console.log('not first launch');
         }
       } catch (e) {
         // We might want to provide this error information to an error reporting service

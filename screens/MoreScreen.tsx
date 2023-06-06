@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, Image } from 'react-native';
 import NavigationListItem from '../components/NavigationListItem';
-import { Separator, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed/Themed';
 
 const MoreScreen: React.FC = () => {
   const items = [

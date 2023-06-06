@@ -4,7 +4,7 @@ import { ScheduleData } from '../models/ScheduleData';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { View } from '../components/Themed';
+import { View } from '../components/Themed/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
 import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text, TextProps } from './Themed';
+import { Text, TextProps } from './Themed/Themed';
 
 const MonoText: React.FC = (props: TextProps) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScheduleData } from '../../models/ScheduleData';
 import * as Animatable from 'react-native-animatable';
-import { Markdown } from '../Themed';
+import { Markdown } from '../Themed/Themed';
 import { StyleSheet } from 'react-native';
 
 export const ActivityContent = (content: ScheduleData) => {

@@ -5,33 +5,13 @@
 
 import * as React from 'react';
 import { Text as DefaultText, View as DefaultView } from 'react-native';
-import DefaultMarkdown from './Markdown/markdown';
-import { Anchor as DefaultAnchor } from '../components/Anchor';
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-
-const useThemeColor = (
-  props: { light?: string; dark?: string },
-  colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
-) => {
-  const theme = useColorScheme();
-  const colorFromProps = props[theme];
-
-  if (colorFromProps) {
-    return colorFromProps;
-  } else {
-    return Colors[theme][colorName];
-  }
-};
-
-type ThemeProps = {
-  lightColor?: string;
-  darkColor?: string;
-};
+import DefaultMarkdown from '../Markdown/markdown';
+import { Anchor as DefaultAnchor } from '../Anchor';
+import { Text } from './Text';
+import { ThemeProps, TextProps, useThemeColor } from './Helpers';
+import Colors from '../../constants/Colors';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
-export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
 export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
@@ -106,13 +86,6 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
   };
 
   return <DefaultMarkdown renderText={renderText} {...otherProps} />;
-};
-
-export const Text: React.FC<TextProps> = (props: TextProps) => {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-  const fontFamily = 'Quicksand_300Light';
-  return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {

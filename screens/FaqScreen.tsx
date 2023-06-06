@@ -1,7 +1,7 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 
-import { Separator, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed/Themed';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import FaqCard from '../components/FaqCard';
 import { useContent } from '../hooks/useContent';

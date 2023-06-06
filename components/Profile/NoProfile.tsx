@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Separator, HeaderText } from '../Themed';
+import { View, Text, Separator, HeaderText } from '../Themed/Themed';
 import { Button, StyleSheet } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, HeaderText } from '../Themed';
+import { View, Text, HeaderText } from '../Themed/Themed';
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Separator, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed/Themed';
 import {
   StyleSheet,
   Button,

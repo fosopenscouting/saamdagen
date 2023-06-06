@@ -12,7 +12,7 @@ import {
   Appearance,
 } from 'react-native';
 
-import { Text } from '../Themed';
+import { Text } from '../Themed/Text';
 
 import styles from './styles';
 import Utils from './Utils';

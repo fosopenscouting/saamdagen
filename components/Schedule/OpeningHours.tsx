@@ -3,7 +3,7 @@ import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { ScheduleData } from '../../models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
-import { HeaderText, Markdown } from '../Themed';
+import { HeaderText, Markdown } from '../Themed/Themed';
 
 type Props = {
   openingHours: ScheduleData | undefined;

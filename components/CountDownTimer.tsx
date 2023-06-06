@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCountdown } from '../hooks/useCountdown';
-import { View, Text } from './Themed/Themed';
+import { View } from './Themed/Themed';
+import { Text } from './Themed/Text';
 import ContentCard from '../components/ContentCard';
 import { StyleSheet } from 'react-native';
 

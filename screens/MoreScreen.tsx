@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FlatList, Image } from 'react-native';
 import NavigationListItem from '../components/NavigationListItem';
 import { Separator, View } from '../components/Themed';
+import { getTicketFromStorage } from '../services/TicketService';
+import { Ticket } from '../models/Ticket';
+import { TicketContext } from '../components/contexts/TicketProvider';
 
 const MoreScreen: React.FC = () => {
+  const { ticketData } =  useContext(TicketContext);
+ 
+
   const items = [
     {
       title: 'Mijn Saamdagen',
@@ -16,6 +22,16 @@ const MoreScreen: React.FC = () => {
       icon: 'tune-vertical',
     },*/
   ];
+  console.log(ticketData);
+
+  
+
+  if (ticketData?.ticketType === 'Medewerker')
+    items.push({
+      title: 'Helpende hand',
+      destination: 'VolunteerScreen',
+      icon: 'heart-outline',
+    });
 
   return (
     <View style={{ height: '100%' }}>

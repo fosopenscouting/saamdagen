@@ -38,4 +38,5 @@ export type MoreScreenParamList = {
   ProfileScreen: undefined;
   ScanScreen: undefined;
   SettingsScreen: undefined;
+  VolunteerScreen: undefined;
 };

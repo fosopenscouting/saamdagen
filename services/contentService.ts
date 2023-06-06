@@ -11,6 +11,7 @@ import {
   BIGGAMELAYER_ITEMS,
   ACTIVITIESLAYER_ITEMS,
   MAP_ITEMS,
+  VOLUNTEER_ITEMS,
 } from '../constants/Strings';
 import { ContentMetadata } from '../models/ContentMetadata';
 
@@ -19,11 +20,13 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const homePrefix = 'Homepage';
   const faqPrefix = 'Faq';
   const mapPrefix = 'Kaart';
+  const volunteerPrefix = 'helpendeHand';
 
   const homePaths = paths.filter((x) => x.startsWith(homePrefix));
   const programPaths = paths.filter((x) => x.startsWith(programPrefix));
   const faqPaths = paths.filter((x) => x.startsWith(faqPrefix));
   const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
+  const volunteerPaths = paths.filter((x)=> x.startsWith(volunteerPrefix))
 
   const homeContent = await loadContent(homePaths);
   await saveHomeContent(homeContent);
@@ -33,6 +36,8 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   await saveFaqContent(faqContent);
   const mapContent = await loadContent(mapPaths);
   await saveMapContent(mapContent);
+  const volunteerContent = await loadContent(volunteerPaths);
+  await saveVolunteerContent(volunteerContent);
 };
 
 export const loadContent = async (
@@ -103,6 +108,21 @@ const saveFaqContent = async (objects: FrontMatterResult<any>[]) => {
   const meta = wrapContentInMetadata(mapped);
   const json = JSON.stringify(meta);
   await AsyncStorageLib.setItem(FAQ_ITEMS, json);
+};
+
+const saveVolunteerContent = async (objects: FrontMatterResult<any>[]) => {
+  const mapped = objects.map((item) => {
+    return {
+      title: item.attributes.titel,
+      order: item.attributes.volgorde,
+      icon: item.attributes.icoon,
+      content: item.body,
+    };
+  });
+
+  const meta = wrapContentInMetadata(mapped);
+  const json = JSON.stringify(meta);
+  await AsyncStorageLib.setItem(VOLUNTEER_ITEMS, json);
 };
 
 const saveMapContent = async (objects: FrontMatterResult<any>[]) => {

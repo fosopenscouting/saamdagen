@@ -23,6 +23,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
           organization: process.env.SENTRY_ORG,
           project: process.env.SENTRY_PROJECT,
           setCommits: true,
+          authToken: process.env.SENTRY_AUTH_TOKEN,
         },
       },
     ],

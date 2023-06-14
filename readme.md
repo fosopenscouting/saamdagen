@@ -18,7 +18,11 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 - VS Code is een goede optie om in te ontwikkelen. Bij het openen van deze repo in VS Code zal je ook een aantal suggesties krijgen voor handige extensies.
 - React Native Directory: directory met third party libraries die compatibel zijn met React Native. <https://reactnative.directory/>
 
+### .env file
+Je hebt een .env bestand nodig om een aantal instellingen te kunnen uitlezen. Je kan een aanmaken op basis van `.env.example`
+
 ### Lokaal uitvoeren (development)
+
 
 Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 

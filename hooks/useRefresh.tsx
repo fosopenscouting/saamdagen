@@ -32,6 +32,7 @@ const useRefresh = (): {
       });
       console.error(e);
     } finally {
+      console.log('done');
       setRefreshing(false);
     }
   }, []);

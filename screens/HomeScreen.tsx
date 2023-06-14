@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, RefreshControl, ScrollView } from 'react-native';
 import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
@@ -7,15 +7,21 @@ import { HomeScreenSection } from '../models/HomeScreenSection';
 import { useContent } from '../hooks/useContent';
 import { HOME_ITEMS } from '../constants/Strings';
 import useRefresh from '../hooks/useRefresh';
+import { useDataContext } from '../hooks/useDataContext';
 
 const HomeScreen: React.FC = () => {
-  const { content, refreshContent } = useContent<HomeScreenSection>(HOME_ITEMS);
-  const { refreshing, refresh } = useRefresh();
-
+  const { data, refreshContext, refreshing, dataLoaded } = useDataContext();
   const handleRefresh = async () => {
-    await refresh();
-    refreshContent();
+    await refreshContext();
   };
+
+  // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
+  useEffect(() => {
+    const refreshAsync = async () => {
+      await refreshContext();
+    };
+    refreshAsync();
+  }, []);
 
   return (
     <>
@@ -26,16 +32,18 @@ const HomeScreen: React.FC = () => {
       >
         <ScrollView style={{ height: '100%' }}>
           <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
-          {content?.map((item) => (
-            <BasicCard
-              key={item.order}
-              containerStyle={styles.basicCard}
-              content={item.content}
-              title={item.title}
-              mode="elevated"
-              palette="fosBlue"
-            />
-          ))}
+          {data
+            ?.filter((x) => x.key === HOME_ITEMS)[0]
+            .content?.map((item: HomeScreenSection) => (
+              <BasicCard
+                key={item.order}
+                containerStyle={styles.basicCard}
+                content={item.content}
+                title={item.title}
+                mode="elevated"
+                palette="fosBlue"
+              />
+            ))}
         </ScrollView>
       </ParallaxHeader>
     </>

@@ -15,6 +15,7 @@ import {
 import { Linking } from 'react-native';
 import useBackgroundRefresh from './hooks/useBackgroundRefresh';
 import { RootSiblingParent } from 'react-native-root-siblings';
+import { DataContextProvider } from './hooks/useDataContext';
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -43,8 +44,10 @@ export default function App(): React.ReactElement | null {
     return (
       <RootSiblingParent>
         <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar style="light" />
+          <DataContextProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar style="light" />
+          </DataContextProvider>
         </SafeAreaProvider>
       </RootSiblingParent>
     );

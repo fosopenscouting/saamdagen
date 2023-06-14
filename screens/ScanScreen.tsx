@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native';
 import QRFooterButton from '../components/Profile/QRFooterButton';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed/Themed';
-import { getTicketFromApi, storeTicket } from '../services/TicketService';
+import { getTicketFromApi, storeTicket } from '../services/ticketService';
 // TODO: add a cancel button
 // TODO: add a way to turn the flash of the phone on or off
 const ScanScreen: React.FC = () => {

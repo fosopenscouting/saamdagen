@@ -22,7 +22,7 @@ import {
   getTicketFromApi,
   getTicketFromStorage,
   storeTicket,
-} from '../services/TicketService';
+} from '../services/ticketService';
 import Loading from '../components/Loading';
 
 const ProfileScreen: React.FC = () => {

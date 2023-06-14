@@ -1,7 +1,7 @@
 export const getContentIndex = async (): Promise<string[]> => {
   const text = await (
     await fetch(
-      'https://fosopenscouting.github.io/Saamdagen-App-inhoud/content.txt',
+      'https://fosopenscouting.github.io/Saamdagen-App-inhoud/contentTest.txt',
       { cache: 'no-store' },
     )
   ).text();
@@ -10,7 +10,7 @@ export const getContentIndex = async (): Promise<string[]> => {
   return array;
 };
 
-export const getContent = async (path: string): Promise<string> => {
+export const getMarkdown = async (path: string): Promise<string> => {
   const text = await (
     await fetch(
       `https://fosopenscouting.github.io/Saamdagen-App-inhoud/${path}`,

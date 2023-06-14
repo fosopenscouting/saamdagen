@@ -6,7 +6,6 @@ import useRefresh from './useRefresh';
 
 type DataContextType = {
   data: ContentMetadata[] | undefined;
-  dataLoaded: boolean;
   refreshing: boolean;
   refreshContext: () => Promise<void>;
 };
@@ -21,7 +20,6 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
   children,
 }: DataContextProviderProps) => {
   const [data, setData] = useState<ContentMetadata[]>();
-  const [dataLoaded, setDataLoaded] = useState<boolean>(false);
 
   const { refresh, refreshing } = useRefresh();
 
@@ -41,8 +39,6 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
   useEffect(() => {
     const asyncWrap = async () => {
       await loadDataFromStorage();
-      console.log('loaded data from storage');
-      setDataLoaded(true);
     };
     asyncWrap();
   }, []);
@@ -51,7 +47,6 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
     <DataContext.Provider
       value={{
         data,
-        dataLoaded,
         refreshing,
         refreshContext,
       }}

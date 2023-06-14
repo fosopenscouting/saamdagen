@@ -4,13 +4,12 @@ import CountdownTimer from '../components/CountDownTimer';
 import ParallaxHeader from '../components/ParallaxHeader';
 import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
-import { useContent } from '../hooks/useContent';
 import { HOME_ITEMS } from '../constants/Strings';
-import useRefresh from '../hooks/useRefresh';
 import { useDataContext } from '../hooks/useDataContext';
 
+
 const HomeScreen: React.FC = () => {
-  const { data, refreshContext, refreshing, dataLoaded } = useDataContext();
+  const { data, refreshContext, refreshing } = useDataContext();
   const handleRefresh = async () => {
     await refreshContext();
   };

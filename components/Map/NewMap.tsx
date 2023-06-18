@@ -4,7 +4,7 @@ import { Image, StyleSheet } from 'react-native';
 import Grondplan from '../../assets/grondplan.png';
 import GrondPlanGrootSpel from '../../assets/groot-spel-map.png';
 import { MapLayer } from '../../models/MapLayer';
-import { View, Text } from '../Themed/Themed';
+import { View } from '../Themed/Themed';
 import MapFab from './MapFab';
 
 const NewMap = () => {

@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [staging]
     env:
-      SEMVER: ${{needs.version.outputs.semVer}}
+      SEMVER: "temp value"
       CI: 1
       CONTENT_ROOT: Production
     environment: Production

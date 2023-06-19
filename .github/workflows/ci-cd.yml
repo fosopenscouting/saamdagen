@@ -49,9 +49,9 @@ jobs:
   production:
     name: Build and deploy
     runs-on: ubuntu-latest
-    needs: [staging]
+    needs: [stagin, version]
     env:
-      SEMVER: "temp value"
+      SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
       CONTENT_ROOT: Production
     environment: Production

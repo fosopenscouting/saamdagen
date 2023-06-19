@@ -82,10 +82,14 @@ Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` ex
 
 ### Deployen naar stores
 
-Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
+1. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
 
-Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je manueel een build te triggeren en je via terminal te authenticeren. Je doet dit in de root folder van de app, met dit commando:
+    > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je manueel een build te triggeren en je via terminal te authenticeren. Je doet dit in de root folder van de app, met dit commando:
 
-``bash
-eas build --platform ios
-``
+    >``bash
+    >eas build --platform ios
+    >``
+
+    De action verhoogt de nodige versienummers in app.json.
+
+2. Submit naar de stores. Momenteel doe je dit nog handmatig via de respectievelijke app consoles voor Android en iOS.

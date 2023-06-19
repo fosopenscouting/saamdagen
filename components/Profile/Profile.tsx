@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, HeaderText } from '../Themed/Themed';
+import { View, HeaderText } from '../Themed/Themed';
+import { Text } from '../Themed/Text';
 import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import ContentCard from '../ContentCard';
 

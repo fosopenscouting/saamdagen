@@ -4,7 +4,15 @@ import * as Animatable from 'react-native-animatable';
 import { Markdown } from '../Themed/Themed';
 import { StyleSheet } from 'react-native';
 
-export const ActivityContent = (content: ScheduleData) => {
+export const ActivityContent = (
+  content: ScheduleData,
+  index: number,
+  isActive: boolean,
+) => {
+  if (isActive == false) {
+    return;
+  }
+
   return (
     <Animatable.View
       duration={400}

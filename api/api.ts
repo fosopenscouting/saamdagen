@@ -1,6 +1,7 @@
 import { CONTENT_ROOT } from '@env';
 
 export const getContentIndex = async (): Promise<string[]> => {
+  console.log(CONTENT_ROOT);
   const text = await (
     await fetch(
       'https://fosopenscouting.github.io/Saamdagen-App-inhoud/content.txt',

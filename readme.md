@@ -82,14 +82,27 @@ Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` ex
 
 ### Deployen naar stores
 
-1. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
+1. Verhoog de versie in app.json
+
+2. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
 
     > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je manueel een build te triggeren en je via terminal te authenticeren. Je doet dit in de root folder van de app, met dit commando:
 
     >``bash
     >eas build --platform ios
     >``
+    > Deze build kan je niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action
 
     De action verhoogt de nodige versienummers in app.json.
 
-2. Submit naar de stores. Momenteel doe je dit nog handmatig via de respectievelijke app consoles voor Android en iOS.
+3. Submit naar de stores. Momenteel doe je dit nog handmatig via de respectievelijke app consoles voor Android en iOS.
+
+### Deep-linking
+
+Gebruikers kunnen hun ticket in de app zetten d.m.v. een link. We hanteren hier een 'hack' omdat links met specifieke prefix (saamdagen://) niet altijd werken.
+
+URL voor deep-linking: https://ticketing.fos.be/external/app/{ticketHash}
+
+Deze link verwijst door naar saamdagen:///Ticket?hash=${ticketHash}. Op mobiele devices wordt zo de app geopend.
+
+Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/Ticket?hash=${myParam}).

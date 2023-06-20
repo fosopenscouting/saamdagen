@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { ScheduleData } from '../models/ScheduleData';
-
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import { View } from '../components/Themed';
+import { View } from '../components/Themed/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
-import { useContent } from '../hooks/useContent';
 import { PROGRAM_ITEMS } from '../constants/Strings';
 import { OpeningHours } from '../components/Schedule/OpeningHours';
 import { ActivityHeader } from '../components/Schedule/ActivityHeader';
 import { ActivityFooter } from '../components/Schedule/ActivityFooter';
 import { ActivityContent } from '../components/Schedule/ActivityContent';
-import { useNetInfo } from '@react-native-community/netinfo';
-import { getContentIndex } from '../api/api';
-import { saveContent } from '../services/contentService';
-import useRefresh from '../hooks/useRefresh';
+import { useDataContext } from '../hooks/useDataContext';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
@@ -25,12 +20,15 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [activeSections, setActiveSections] = useState<number[] | string[]>([]);
   const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
-  const { content, refreshContent } = useContent<ScheduleData>(
-    `${PROGRAM_ITEMS}/${dayInfo.day}`,
-  );
+
   const colorScheme = useColorScheme();
-  const { refreshing, refresh } = useRefresh();
+
+  const { data, refreshContext, refreshing } = useDataContext();
+
   useEffect(() => {
+    const content = data?.filter(
+      (x) => x.key === `${PROGRAM_ITEMS}/${dayInfo.day}`,
+    )[0].content;
     const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
     const openingHours = content?.filter(
       (x) => x.type === 'algemene_openingsuren',
@@ -39,11 +37,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     if (openingHours) {
       setDayGeneralHours(openingHours[0]);
     }
-  }, [content]);
+  }, [data]);
 
   const onRefresh = async () => {
-    await refresh();
-    refreshContent();
+    await refreshContext();
   };
 
   return (

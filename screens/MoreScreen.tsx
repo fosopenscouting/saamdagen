@@ -5,6 +5,7 @@ import { Separator, View } from '../components/Themed';
 import { getTicketFromStorage } from '../services/TicketService';
 import { Ticket } from '../models/Ticket';
 import { TicketContext } from '../components/contexts/TicketProvider';
+import { Separator, View } from '../components/Themed/Themed';
 
 const MoreScreen: React.FC = () => {
   const { ticketData } =  useContext(TicketContext);

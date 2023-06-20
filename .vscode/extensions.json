@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "bycedric.vscode-expo",
+    "expo.vscode-expo-tools",
     "davidanson.vscode-markdownlint",
     "msjsdiag.vscode-react-native"
   ]

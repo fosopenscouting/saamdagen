@@ -32,6 +32,7 @@ jobs:
     env:
       SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
+      CONTENT_ROOT: Staging
     environment: Staging
     steps:
       - uses: actions/checkout@v2
@@ -48,10 +49,11 @@ jobs:
   production:
     name: Build and deploy
     runs-on: ubuntu-latest
-    needs: [staging]
+    needs: [staging, version]
     env:
       SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
+      CONTENT_ROOT: Production
     environment: Production
     steps:
       - uses: actions/checkout@v2

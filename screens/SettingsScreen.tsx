@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from '../components/Themed';
+import { Text, View } from '../components/Themed/Themed';
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import Colors from '../constants/Colors';

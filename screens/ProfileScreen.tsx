@@ -1,5 +1,5 @@
 import React from 'react';
-import { Separator, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed/Themed';
 import {
   StyleSheet,
   Button,
@@ -22,7 +22,7 @@ import {
   getTicketFromApi,
   getTicketFromStorage,
   storeTicket,
-} from '../services/TicketService';
+} from '../services/ticketService';
 import Loading from '../components/Loading';
 
 const ProfileScreen: React.FC = () => {

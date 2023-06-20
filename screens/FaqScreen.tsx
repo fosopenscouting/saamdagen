@@ -1,21 +1,26 @@
 /* eslint-disable react/no-children-prop */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Separator, View } from '../components/Themed';
+import { Separator, View } from '../components/Themed/Themed';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import FaqCard from '../components/FaqCard';
-import { useContent } from '../hooks/useContent';
-import { FaqItem } from '../models/FaqItem';
 import { FAQ_ITEMS } from '../constants/Strings';
-import useRefresh from '../hooks/useRefresh';
+import { useDataContext } from '../hooks/useDataContext';
+import { ContentMetadata } from '../models/ContentMetadata';
 
 const FaqScreen: React.FC = () => {
-  const { content, refreshContent } = useContent<FaqItem>(FAQ_ITEMS);
-  const { refreshing, refresh } = useRefresh();
+  const { data, refreshContext, refreshing } = useDataContext();
+  const [faqData, setFaqData] = useState<ContentMetadata>();
+
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter((x) => x.key === FAQ_ITEMS)[0];
+      setFaqData(filtered);
+    }
+  }, [data]);
 
   const handleRefresh = async () => {
-    await refresh();
-    refreshContent();
+    await refreshContext();
   };
   return (
     <View style={styles.container}>
@@ -24,7 +29,7 @@ const FaqScreen: React.FC = () => {
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
         keyExtractor={(item) => item.title}
-        data={content}
+        data={faqData?.content}
         renderItem={({ item }) => (
           <FaqCard title={item.title} text={item.content} icon={item.icon} />
         )}

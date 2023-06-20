@@ -1,163 +1,80 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import fm, { FrontMatterResult } from 'front-matter';
-import { getContent } from '../api/api';
+import { getMarkdown } from '../api/api';
 import {
   FRIDAY_ITEMS,
   HOME_ITEMS,
   SATURDAY_ITEMS,
   SUNDAY_ITEMS,
   FAQ_ITEMS,
+  // MAP_ITEMS,
   NORMALLAYER_ITEMS,
   BIGGAMELAYER_ITEMS,
   ACTIVITIESLAYER_ITEMS,
   MAP_ITEMS,
   VOLUNTEER_ITEMS,
 } from '../constants/Strings';
-import { ContentMetadata } from '../models/ContentMetadata';
+import { createMetadata } from '../models/ContentMetadata';
+import { mapFaq, mapHomeItems, mapProgram } from './contentMapping';
 
-export const saveContent = async (paths: string[]): Promise<void> => {
-  const programPrefix = 'Programma';
-  const homePrefix = 'Homepage';
-  const faqPrefix = 'Faq';
-  const mapPrefix = 'Kaart';
+const programPrefix = 'Programma';
+const homePrefix = 'Homepage';
+const faqPrefix = 'Faq';
+// const mapPrefix = 'Kaart';
   const volunteerPrefix = 'helpendeHand';
 
+// Load all content from the API, parse it to the format we want and then save it as one huge array in local storage.
+export const saveContent = async (paths: string[]): Promise<void> => {
+  // Filter out paths per screen, each needs a different mapping logic
   const homePaths = paths.filter((x) => x.startsWith(homePrefix));
   const programPaths = paths.filter((x) => x.startsWith(programPrefix));
   const faqPaths = paths.filter((x) => x.startsWith(faqPrefix));
-  const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
+  // const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
   const volunteerPaths = paths.filter((x)=> x.startsWith(volunteerPrefix))
 
-  const homeContent = await loadContent(homePaths);
-  await saveHomeContent(homeContent);
-  const programContent = await loadContent(programPaths);
-  await saveProgramContent(programContent);
-  const faqContent = await loadContent(faqPaths);
-  await saveFaqContent(faqContent);
-  const mapContent = await loadContent(mapPaths);
-  await saveMapContent(mapContent);
-  const volunteerContent = await loadContent(volunteerPaths);
-  await saveVolunteerContent(volunteerContent);
+  // HOME - Load and wrap in metadata
+  const homeMarkdown = await loadContent(homePaths);
+  const homeContent = createMetadata(mapHomeItems(homeMarkdown), HOME_ITEMS);
+
+  // PROGRAM - Load and wrap in metadata
+  const programMarkdown = await loadContent(programPaths);
+  const parsedProgram = await parseProgramContent(programMarkdown);
+
+  // FAQ - Load and wrap in metadata
+  const faqMarkdown = await loadContent(faqPaths);
+  const faqContent = createMetadata(mapFaq(faqMarkdown), FAQ_ITEMS);
+
+  // MAP - Currently not needed because we use a static image for map
+  // const mapMarkdown = await loadContent(mapPaths);
+  // const mapContent = createMetadata(mapMap(mapMarkdown), MAP_ITEMS);
+
+  const allData = parsedProgram.concat(homeContent, faqContent);
+
+  await AsyncStorageLib.setItem('DATA', JSON.stringify(allData));
 };
 
+// Load all provided paths into async storage
 export const loadContent = async (
   paths: string[],
 ): Promise<FrontMatterResult<unknown>[]> => {
-  const result = paths.map(async (x) => await load(x));
+  const result = paths.map(async (x) => {
+    const content = await getMarkdown(x);
+    const parsed = fm(content);
+    return parsed;
+  });
   return await Promise.all(result);
 };
 
-const load = async (path: string) => {
-  const content = await getContent(path);
-  const parsed = fm(content);
-  return parsed;
-};
-
-const saveHomeContent = async (objects: FrontMatterResult<any>[]) => {
-  const mapped = objects.map((item) => {
-    return {
-      title: item.attributes.titel,
-      order: item.attributes.volgorde,
-      content: item.body,
-    };
-  });
-
-  const meta = wrapContentInMetadata(mapped);
-  const json = JSON.stringify(meta);
-  await AsyncStorageLib.setItem(HOME_ITEMS, json);
-  console.log('saved home');
-};
-
-const saveProgramContent = async (objects: FrontMatterResult<any>[]) => {
-  const mapped = objects.map((item) => {
-    return {
-      name: item.attributes.titel,
-      order: item.attributes.volgorde,
-      location: item.attributes.locatie,
-      time: item.attributes.uren,
-      description: item.body,
-      day: item.attributes.dag,
-      type: item.attributes.type,
-    };
-  });
+const parseProgramContent = async (objects: FrontMatterResult<any>[]) => {
+  const mapped = mapProgram(objects);
 
   const friday = mapped.filter((x) => x.day === 'Vrijdag');
   const saturday = mapped.filter((x) => x.day === 'Zaterdag');
   const sunday = mapped.filter((x) => x.day === 'Zondag');
-  saveDayItems(friday, FRIDAY_ITEMS);
-  saveDayItems(saturday, SATURDAY_ITEMS);
-  saveDayItems(sunday, SUNDAY_ITEMS);
-};
 
-const saveDayItems = async (items: any[], key: string) => {
-  const fridayMeta = wrapContentInMetadata(items);
-  const json = JSON.stringify(fridayMeta);
-  await AsyncStorageLib.setItem(key, json);
-};
+  const fridayParsed = createMetadata(friday, FRIDAY_ITEMS);
+  const saturDayParsed = createMetadata(saturday, SATURDAY_ITEMS);
+  const sundayParsed = createMetadata(sunday, SUNDAY_ITEMS);
 
-const saveFaqContent = async (objects: FrontMatterResult<any>[]) => {
-  const mapped = objects.map((item) => {
-    return {
-      title: item.attributes.titel,
-      order: item.attributes.volgorde,
-      icon: item.attributes.icoon,
-      content: item.body,
-    };
-  });
-
-  const meta = wrapContentInMetadata(mapped);
-  const json = JSON.stringify(meta);
-  await AsyncStorageLib.setItem(FAQ_ITEMS, json);
-};
-
-const saveVolunteerContent = async (objects: FrontMatterResult<any>[]) => {
-  const mapped = objects.map((item) => {
-    return {
-      title: item.attributes.titel,
-      order: item.attributes.volgorde,
-      icon: item.attributes.icoon,
-      content: item.body,
-    };
-  });
-
-  const meta = wrapContentInMetadata(mapped);
-  const json = JSON.stringify(meta);
-  await AsyncStorageLib.setItem(VOLUNTEER_ITEMS, json);
-};
-
-const saveMapContent = async (objects: FrontMatterResult<any>[]) => {
-  const mapped = objects.map((item) => {
-    return {
-      id: item.attributes.id,
-      layer: item.attributes.layer,
-      title: item.attributes.title,
-      description: item.body,
-      latLng: {
-        latitude: item.attributes.latitude,
-        longitude: item.attributes.longitude,
-      },
-      icon: item.attributes.icon,
-    };
-  });
-
-  const normal = mapped.filter((x) => x.layer === 'normal');
-  const big_game = mapped.filter((x) => x.layer === 'big_game');
-  const activities = mapped.filter((x) => x.layer === 'activities');
-  saveLayerMarker(mapped, MAP_ITEMS);
-  saveLayerMarker(normal, NORMALLAYER_ITEMS);
-  saveLayerMarker(big_game, BIGGAMELAYER_ITEMS);
-  saveLayerMarker(activities, ACTIVITIESLAYER_ITEMS);
-};
-
-const saveLayerMarker = async (items: any[], key: string) => {
-  const layerMeta = wrapContentInMetadata(items);
-  const json = JSON.stringify(layerMeta);
-  await AsyncStorageLib.setItem(key, json);
-};
-
-const wrapContentInMetadata = (content: any): ContentMetadata => {
-  return {
-    lastUpdated: new Date(),
-    content: content,
-  };
+  return [fridayParsed, saturDayParsed, sundayParsed];
 };

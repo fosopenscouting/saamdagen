@@ -15,6 +15,14 @@ import {
 import { Linking } from 'react-native';
 import useBackgroundRefresh from './hooks/useBackgroundRefresh';
 import { RootSiblingParent } from 'react-native-root-siblings';
+import * as Sentry from 'sentry-expo';
+import { DataContextProvider } from './hooks/useDataContext';
+
+Sentry.init({
+  dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
+  enableInExpoDevelopment: true,
+  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+});
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -43,8 +51,10 @@ export default function App(): React.ReactElement | null {
     return (
       <RootSiblingParent>
         <SafeAreaProvider>
-          <Navigation colorScheme={colorScheme} />
-          <StatusBar style="light" />
+          <DataContextProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar style="light" />
+          </DataContextProvider>
         </SafeAreaProvider>
       </RootSiblingParent>
     );

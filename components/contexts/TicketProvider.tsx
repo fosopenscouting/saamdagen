@@ -8,7 +8,15 @@ import {
 import { getTicketFromStorage } from '../../services/TicketService';
 import { Ticket } from '../../models/Ticket';
 
-export const TicketContext = createContext(null);
+export const TicketContext = createContext({
+  Ticket: {
+    firstName: '',
+    lastName: '',
+    ticketType: '',
+    workshopBeforeNoon: '',
+    hash: '',
+  },
+});
 export const useTicket = () => useContext(TicketContext);
 
 export const TicketProvider = () => {
@@ -19,7 +27,7 @@ export const TicketProvider = () => {
     setTicketData(ticket);
   }, []);
   getTickets();
-  const value = useMemo(
+  const value: any = useMemo(
     () => ({
       ticketData,
     }),

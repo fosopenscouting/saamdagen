@@ -18,12 +18,11 @@ const MoreScreen: React.FC = () => {
     },
     /* {
       title: 'Instellingen',
-      destination: 'SettingsScreen',
+      destination: 'SettingsScreen ',
       icon: 'tune-vertical',
     },*/
   ];
   console.log(ticketData);
-
   
 
   if (ticketData?.ticketType === 'Medewerker')

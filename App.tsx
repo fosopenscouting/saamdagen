@@ -17,9 +17,11 @@ import useBackgroundRefresh from './hooks/useBackgroundRefresh';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import * as Sentry from 'sentry-expo';
 import { DataContextProvider } from './hooks/useDataContext';
+import { TicketContextProvider } from './hooks/useTicketContext';
 
 Sentry.init({
-  dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
+  dsn:
+    'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
   enableInExpoDevelopment: true,
   debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
@@ -52,8 +54,10 @@ export default function App(): React.ReactElement | null {
       <RootSiblingParent>
         <SafeAreaProvider>
           <DataContextProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar style="light" />
+            <TicketContextProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar style="light" />
+            </TicketContextProvider>
           </DataContextProvider>
         </SafeAreaProvider>
       </RootSiblingParent>

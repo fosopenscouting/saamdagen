@@ -1,11 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext ,useState,useEffect} from 'react';
 import { FlatList, Image } from 'react-native';
 import NavigationListItem from '../components/NavigationListItem';
 import { Separator, View } from '../components/Themed/Themed';
-import { TicketContext } from '../components/contexts/TicketProvider';
+import { TicketMetadata } from '../models/TicketMetadata';
+import { useDataContext } from '../hooks/useTicketContext';
 
 const MoreScreen: React.FC = () => {
-  const { Ticket } = useContext(TicketContext);
+
+  const { data, refreshContext, refreshing } = useDataContext();
+  const [TicketData, setTicketData] = useState<TicketMetadata>();
+
+  useEffect(() => {
+    if (data) {
+      const filtered = data.filter((x) => x.key === VOLUNTEER_ITEMS)[0];
+      console.log(filtered)
+
+      setTicketData(filtered);
+    }
+  }, [data]);
+
+  const handleRefresh = async () => {
+    await refreshContext();
+  };
+
+  // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
+  useEffect(() => {
+    const refreshAsync = async () => {
+      await refreshContext();
+    };
+    refreshAsync();
+  }, []);
+
+
+
+
+
+
+console.log(TicketData)
+
+
+
+
+
 
   const items = [
     {

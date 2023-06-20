@@ -9,4 +9,4 @@ export const MAP_ITEMS = '@markers';
 export const NORMALLAYER_ITEMS = `${MAP_ITEMS}/Normaal`;
 export const BIGGAMELAYER_ITEMS = `${MAP_ITEMS}/groot_spel`;
 export const ACTIVITIESLAYER_ITEMS = `${MAP_ITEMS}/Activiteiten`;
-export const VOLUNTEER_ITEMS = '@helpendeHand';
+export const VOLUNTEER_ITEMS = '@volunteer';

@@ -7,21 +7,17 @@ import {
   SATURDAY_ITEMS,
   SUNDAY_ITEMS,
   FAQ_ITEMS,
-  // MAP_ITEMS,
-  NORMALLAYER_ITEMS,
-  BIGGAMELAYER_ITEMS,
-  ACTIVITIESLAYER_ITEMS,
-  MAP_ITEMS,
   VOLUNTEER_ITEMS,
+  // MAP_ITEMS,
 } from '../constants/Strings';
 import { createMetadata } from '../models/ContentMetadata';
-import { mapFaq, mapHomeItems, mapProgram } from './contentMapping';
+import { mapFaq, mapHomeItems, mapProgram, volunteerMap } from './contentMapping';
 
 const programPrefix = 'Programma';
 const homePrefix = 'Homepage';
 const faqPrefix = 'Faq';
+const volunteerPrefix = 'Volunteer';
 // const mapPrefix = 'Kaart';
-  const volunteerPrefix = 'helpendeHand';
 
 // Load all content from the API, parse it to the format we want and then save it as one huge array in local storage.
 export const saveContent = async (paths: string[]): Promise<void> => {
@@ -29,8 +25,8 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const homePaths = paths.filter((x) => x.startsWith(homePrefix));
   const programPaths = paths.filter((x) => x.startsWith(programPrefix));
   const faqPaths = paths.filter((x) => x.startsWith(faqPrefix));
-  // const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
   const volunteerPaths = paths.filter((x)=> x.startsWith(volunteerPrefix))
+  // const mapPaths = paths.filter((x) => x.startsWith(mapPrefix));
 
   // HOME - Load and wrap in metadata
   const homeMarkdown = await loadContent(homePaths);
@@ -44,12 +40,15 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   const faqMarkdown = await loadContent(faqPaths);
   const faqContent = createMetadata(mapFaq(faqMarkdown), FAQ_ITEMS);
 
+  // Volunteer - Load and wrap in metadata
+  const volunteerMarkdown = await loadContent(volunteerPaths);
+  const volunteerContent = createMetadata(volunteerMap(volunteerMarkdown), VOLUNTEER_ITEMS);
+
   // MAP - Currently not needed because we use a static image for map
   // const mapMarkdown = await loadContent(mapPaths);
   // const mapContent = createMetadata(mapMap(mapMarkdown), MAP_ITEMS);
 
-  const allData = parsedProgram.concat(homeContent, faqContent);
-
+  const allData = parsedProgram.concat(homeContent, faqContent, volunteerContent);
   await AsyncStorageLib.setItem('DATA', JSON.stringify(allData));
 };
 

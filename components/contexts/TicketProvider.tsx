@@ -5,8 +5,8 @@ import {
   useMemo,
   useCallback,
 } from 'react';
-import { getTicketFromStorage } from '../../services/TicketService';
 import { Ticket } from '../../models/Ticket';
+import { getTicketFromStorage } from '../../services/ticketService';
 
 export const TicketContext = createContext({
   Ticket: {

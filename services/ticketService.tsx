@@ -17,7 +17,7 @@ export const storeTicket = async (
         ? workshopsBeforeNoon['#options'][formValues.workshops_voormiddag]
         : null,
       hash: ticketHash,
-    };
+    };console.log
     await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
     return ticket;
   } catch (e) {

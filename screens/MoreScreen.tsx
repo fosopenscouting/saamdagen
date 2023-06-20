@@ -1,15 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { FlatList, Image } from 'react-native';
 import NavigationListItem from '../components/NavigationListItem';
-import { Separator, View } from '../components/Themed';
-import { getTicketFromStorage } from '../services/TicketService';
-import { Ticket } from '../models/Ticket';
-import { TicketContext } from '../components/contexts/TicketProvider';
 import { Separator, View } from '../components/Themed/Themed';
+import { TicketContext } from '../components/contexts/TicketProvider';
 
 const MoreScreen: React.FC = () => {
-  const { ticketData } =  useContext(TicketContext);
- 
+  const { Ticket } = useContext(TicketContext);
 
   const items = [
     {
@@ -17,21 +13,24 @@ const MoreScreen: React.FC = () => {
       destination: 'ProfileScreen',
       icon: 'heart-outline',
     },
-    /* {
-      title: 'Instellingen',
-      destination: 'SettingsScreen ',
-      icon: 'tune-vertical',
-    },*/
-  ];
-  console.log(ticketData);
-  
-
-  if (ticketData?.ticketType === 'Medewerker')
-    items.push({
+    {
       title: 'Helpende hand',
       destination: 'VolunteerScreen',
       icon: 'heart-outline',
-    });
+    },
+    /* {
+      title: 'Instellingen',
+      destination: 'SettingsScreen',
+      icon: 'tune-vertical',
+    },*/
+  ];
+
+  // if (Ticket?.ticketType === 'Medewerker')
+  //   items.push({
+  //     title: 'Helpende hand',
+  //     destination: 'VolunteerScreen',
+  //     icon: 'heart-outline',
+  //   });
 
   return (
     <View style={{ height: '100%' }}>

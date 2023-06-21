@@ -3,11 +3,8 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 
-import { useOnboardingStatus } from './useOnboardingStatus';
-
 const useCachedResources: () => boolean = () => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
-  const { isFirstLaunch, isLoading } = useOnboardingStatus();
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
@@ -29,7 +26,7 @@ const useCachedResources: () => boolean = () => {
         await SplashScreen.hideAsync();
       }
     }
-  }, [isLoading]);
+  }, []);
 
   return isLoadingComplete;
 };

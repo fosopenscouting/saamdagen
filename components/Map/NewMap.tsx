@@ -1,5 +1,5 @@
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
-import React, { useState, useRef, createRef } from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import Grondplan from '../../assets/grondplan.png';
 import GrondPlanGrootSpel from '../../assets/groot-spel-map.png';

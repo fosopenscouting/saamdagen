@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from './Themed/Themed';
+import { Text } from './Themed/Text';
 import { ThemeIdentifier, themes } from './ContentCard';
 import useColorScheme from '../hooks/useColorScheme';
 import Colors from '../constants/Colors';

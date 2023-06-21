@@ -2,21 +2,18 @@ import React, { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 import Colors from '../constants/Colors';
 
-type PropsWithChildren<P> = P & { children?: ReactNode };
-
 type LoadingProps = {
+  children: ReactNode;
   loading: boolean;
 };
 
-const Loading: React.FC<PropsWithChildren<LoadingProps>> = (
-  props: PropsWithChildren<LoadingProps>,
-) => {
+function Loading(props: LoadingProps): ReactNode {
   if (!props.loading) {
     return props.children;
   }
   return (
     <ActivityIndicator size="large" color={Colors.schemeIndependent.fosBlue} />
   );
-};
+}
 
 export default Loading;

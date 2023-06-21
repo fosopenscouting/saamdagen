@@ -4,6 +4,8 @@ jobs:
   build:
     name: Install and build
     runs-on: ubuntu-latest
+    env:
+      CONTENT_ROOT: Production
     steps:
       - uses: actions/checkout@v2
         with:

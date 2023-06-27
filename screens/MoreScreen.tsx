@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Image } from 'react-native';
+import { FlatList } from 'react-native';
 import NavigationListItem from '../components/NavigationListItem';
 import { Separator, View } from '../components/Themed/Themed';
 

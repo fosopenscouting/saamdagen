@@ -4,8 +4,6 @@ import useColorScheme from '../hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
 import { HeaderText, Markdown } from './Themed/Themed';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
-import { IProps } from 'react-native-easy-markdown';
-// import Markdown from './Markdown/markdown';
 
 const getTextColor = (
   colorScheme: 'light' | 'dark',

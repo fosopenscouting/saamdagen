@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { Camera } from 'expo-camera';
+import { Camera, FlashMode } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -9,8 +9,7 @@ import QRFooterButton from '../components/Profile/QRFooterButton';
 import QrIndicator from '../components/Profile/QrIndicator';
 import { View } from '../components/Themed/Themed';
 import { getTicketFromApi, storeTicket } from '../services/ticketService';
-// TODO: add a cancel button
-// TODO: add a way to turn the flash of the phone on or off
+
 const ScanScreen: React.FC = () => {
   const navigation = useNavigation();
   const [scanned, setScanned] = useState(false);
@@ -18,7 +17,6 @@ const ScanScreen: React.FC = () => {
   const [isLit, setLit] = useState(false);
 
   useEffect(() => {
-    // TODO: move this to a routed screen that gets the ticket from the api and stores it. That way we can enable deep linking from an url as well.
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
         await storeTicket(res, ticketHash);
@@ -48,7 +46,7 @@ const ScanScreen: React.FC = () => {
         }}
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
-        flashMode={isLit ? 'torch' : 'off'}
+        flashMode={isLit ? FlashMode.torch : FlashMode.off}
       />
       <View style={[styles.footer, { bottom: 30 }]}>
         <QRFooterButton

@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -12,8 +12,6 @@ import {
   Quicksand_600SemiBold,
   Quicksand_500Medium,
 } from '@expo-google-fonts/quicksand';
-import { Linking } from 'react-native';
-import useBackgroundRefresh from './hooks/useBackgroundRefresh';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import * as Sentry from 'sentry-expo';
 import { DataContextProvider } from './hooks/useDataContext';
@@ -26,7 +24,6 @@ Sentry.init({
 
 export default function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
-  useBackgroundRefresh();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
     Quicksand_400Regular,
@@ -34,16 +31,6 @@ export default function App(): React.ReactElement | null {
     Quicksand_500Medium,
   });
   const colorScheme = useColorScheme();
-
-  useEffect(() => {
-    Linking.getInitialURL().then(handleUrl);
-  }, []);
-
-  const handleUrl = (url: string | null) => {
-    if (url) {
-      const parsed = new URL(url);
-    }
-  };
 
   if (!isLoadingComplete || !fontsLoaded) {
     return null;

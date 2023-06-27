@@ -10,7 +10,7 @@ type Props = {
   isActive: boolean;
 };
 
-export const ActivityHeader = (props: Props) => {
+export const ActivityHeader: React.FC<Props> = (props: Props) => {
   return (
     <Animatable.View duration={400} transition="backgroundColor">
       <View style={{ flex: 1, flexDirection: 'column' }}>

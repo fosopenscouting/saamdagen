@@ -32,7 +32,7 @@ jobs:
     env:
       SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
-      PUBLIC_CONTENT_ROOT: Staging
+      EXPO_PUBLIC_CONTENT_ROOT: Staging
     environment: Staging
     steps:
       - uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
     env:
       SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
-      PUBLIC_CONTENT_ROOT: Production
+      EXPPO_PUBLIC_CONTENT_ROOT: Production
     environment: Production
     steps:
       - uses: actions/checkout@v2

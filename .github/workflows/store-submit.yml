@@ -5,7 +5,7 @@ jobs:
     name: Install and build
     runs-on: ubuntu-latest
     env:
-      PUBLIC_CONTENT_ROOT: Production
+      EXPO_PUBLIC_CONTENT_ROOT: Production
     steps:
       - uses: actions/checkout@v2
         with:

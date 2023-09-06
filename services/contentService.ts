@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import fm, { FrontMatterResult } from 'front-matter';
 import { getMarkdown } from '../api/api';

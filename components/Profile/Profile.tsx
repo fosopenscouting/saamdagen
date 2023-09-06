@@ -2,7 +2,6 @@ import React from 'react';
 import { View, HeaderText } from '../Themed/Themed';
 import { Text } from '../Themed/Text';
 import { StyleSheet } from 'react-native';
-import useColorScheme from '../../hooks/useColorScheme';
 import ContentCard from '../ContentCard';
 
 interface ProfileProps {
@@ -13,8 +12,6 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
-  const colorScheme = useColorScheme();
-
   return (
     <View style={[styles.container]}>
       <ContentCard palette="seaGreen" containerStyle={{ marginBottom: 16 }}>

@@ -52,7 +52,17 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
       case 'h4':
       case 'h5':
       case 'h6':
-        return <HeaderText key={key}>{children}</HeaderText>;
+        return (
+          <HeaderText
+            style={{
+              fontSize: 18,
+              fontWeight: 'bold',
+            }}
+            key={key}
+          >
+            {children}
+          </HeaderText>
+        );
       case 'strong':
         return (
           <Text

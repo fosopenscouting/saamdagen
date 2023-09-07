@@ -242,7 +242,6 @@ class Markdown extends Component {
   renderBlock(node, key, extras) {
     const { styles } = this.state;
 
-    let style = [styles.block];
     let isBlockQuote;
     if (extras && extras.blockQuote) {
       isBlockQuote = true;

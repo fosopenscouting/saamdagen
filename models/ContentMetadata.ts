@@ -2,6 +2,7 @@ import { IOrderable } from './IOrderable';
 
 export interface ContentMetadata {
   key: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: any;
   lastUpdated: Date;
 }

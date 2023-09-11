@@ -28,7 +28,7 @@ const HomeScreen: React.FC = () => {
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
       >
-        <ScrollView style={{ height: '100%' }}>
+        <ScrollView style={{ height: '100%', paddingVertical: 8 }}>
           <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
           {data
             ?.filter((x) => x.key === HOME_ITEMS)[0]

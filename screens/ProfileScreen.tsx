@@ -64,13 +64,10 @@ const ProfileScreen: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Brightness.requestPermissionsAsync();
-      if (status === 'granted') {
-        if (modalVisible) {
-          const brightness = await Brightness.getSystemBrightnessAsync();
-          setInitialBrightness(brightness);
-          Brightness.setSystemBrightnessAsync(1);
-        }
+      if (modalVisible) {
+        const brightness = await Brightness.getBrightnessAsync();
+        setInitialBrightness(brightness);
+        Brightness.setBrightnessAsync(1);
       }
     })();
   }, [modalVisible]);
@@ -78,10 +75,7 @@ const ProfileScreen: React.FC = () => {
   const resetModal = () => {
     setModalVisible(false);
     (async () => {
-      const { status } = await Brightness.requestPermissionsAsync();
-      if (status === 'granted') {
-        Brightness.setSystemBrightnessAsync(initialBrightness);
-      }
+      Brightness.setBrightnessAsync(initialBrightness);
     })();
   };
 

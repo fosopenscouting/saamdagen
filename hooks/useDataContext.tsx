@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { ContentMetadata } from '../models/ContentMetadata';
-import { IOrderable } from '../models/IOrderable';
 import useRefresh from './useRefresh';
 
 type DataContextType = {

@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saamdagen",
     "slug": "saamdagen",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -31,7 +31,7 @@
       "package": "be.fos.saamdagen",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#2A61A8"
+        "backgroundImage": "./assets/images/adaptive-icon-bg.png"
       },
       "permissions": ["CAMERA"]
     },

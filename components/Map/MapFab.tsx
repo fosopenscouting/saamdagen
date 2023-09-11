@@ -24,12 +24,12 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
           actions={[
             {
               icon: 'alpha-g-box',
-              label: 'Groot spel',
+              label: 'Workshops',
               onPress: () => props.handleLayerSelect('big_game'),
             },
             {
               icon: 'map-marker-outline',
-              label: 'Normaal',
+              label: 'Plattegrond',
               onPress: () => props.handleLayerSelect('normal'),
             },
           ]}

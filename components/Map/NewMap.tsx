@@ -1,8 +1,8 @@
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
-import React, { useState, useRef, createRef } from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
-import Grondplan from '../../assets/grondplan.png';
-import GrondPlanGrootSpel from '../../assets/groot-spel-map.png';
+import Grondplan from '../../assets/grondplan-2023.png';
+import GrondPlanGrootSpel from '../../assets/workshops-2023.png';
 import { MapLayer } from '../../models/MapLayer';
 import { View } from '../Themed/Themed';
 import MapFab from './MapFab';
@@ -25,7 +25,11 @@ const NewMap = () => {
           backgroundColor: '#AEDBC4',
         }}
       >
-        <ReactNativeZoomableView maxZoom={5}>
+        <ReactNativeZoomableView
+          minZoom={1}
+          maxZoom={5}
+          doubleTapZoomToCenter={false}
+        >
           <Image
             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
             source={layer === 'normal' ? Grondplan : GrondPlanGrootSpel}

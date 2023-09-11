@@ -39,7 +39,7 @@ const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
   else
     return (
       <ContentCard
-        containerStyle={[styles.countdown, { marginTop: 8 }]}
+        containerStyle={styles.countdown}
         colorOverlay
         palette="fosBlue"
         backgroundImage={require('../assets/images/banner.jpg')}
@@ -91,7 +91,6 @@ export default CountdownTimer;
 const styles = StyleSheet.create({
   countdown: {
     marginHorizontal: 8,
-    marginTop: 8,
   },
   countdownTitle: {
     color: 'white',

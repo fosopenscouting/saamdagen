@@ -6,6 +6,8 @@ import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { HOME_ITEMS } from '../constants/Strings';
 import { useDataContext } from '../hooks/useDataContext';
+import ContentCard from '../components/ContentCard';
+import { Text } from '../components/Themed/Text';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -30,6 +32,15 @@ const HomeScreen: React.FC = () => {
       >
         <ScrollView style={{ height: '100%', paddingVertical: 8 }}>
           <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
+
+          <ContentCard
+            containerStyle={styles.saamregels}
+            palette="fosBlue"
+            backgroundImage={require('../assets/images/saamregels.png')}
+          >
+            <Text style={styles.countdownTitle}></Text>
+          </ContentCard>
+
           {data
             ?.filter((x) => x.key === HOME_ITEMS)[0]
             .content?.map((item: HomeScreenSection) => (
@@ -86,5 +97,12 @@ const styles = StyleSheet.create({
   eventSeparator: {
     borderBottomWidth: 2,
     marginTop: 10,
+  },
+  saamregels: {
+    marginHorizontal: 8,
+    height: 200,
+  },
+  countdownTitle: {
+    height: '100%',
   },
 });

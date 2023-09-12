@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, RefreshControl, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  Image,
+  ImageBackground,
+  View,
+} from 'react-native';
 import CountdownTimer from '../components/CountDownTimer';
-import ParallaxHeader from '../components/ParallaxHeader';
 import BasicCard from '../components/BasicCard';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { HOME_ITEMS } from '../constants/Strings';
 import { useDataContext } from '../hooks/useDataContext';
+import Colors from '../constants/Colors';
 import ContentCard from '../components/ContentCard';
 import { Text } from '../components/Themed/Text';
+import { RefreshControl } from 'react-native-gesture-handler';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -25,36 +32,55 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <ParallaxHeader
+      <ScrollView
+        style={{ height: '100%' }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
       >
-        <ScrollView style={{ height: '100%', paddingVertical: 8 }}>
-          <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
-
-          <ContentCard
-            containerStyle={styles.saamregels}
-            palette="fosBlue"
-            backgroundImage={require('../assets/images/saamregels.png')}
+        <ImageBackground
+          imageStyle={{ opacity: 0.6 }}
+          source={require('../assets/images/home-banner.png')}
+          style={styles.foregroundImage}
+        >
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
-            <Text style={styles.countdownTitle}></Text>
-          </ContentCard>
-
-          {data
-            ?.filter((x) => x.key === HOME_ITEMS)[0]
-            .content?.map((item: HomeScreenSection) => (
-              <BasicCard
-                key={item.order}
-                containerStyle={styles.basicCard}
-                content={item.content}
-                title={item.title}
-                mode="elevated"
-                palette="fosBlue"
-              />
-            ))}
-        </ScrollView>
-      </ParallaxHeader>
+            <Image
+              style={{
+                marginTop: 26,
+                height: '70%',
+                resizeMode: 'contain',
+              }}
+              source={require('../assets/images/logo.png')}
+            />
+          </View>
+        </ImageBackground>
+        <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
+        <ContentCard
+          containerStyle={styles.saamregels}
+          palette="fosBlue"
+          backgroundImage={require('../assets/images/saamregels.png')}
+        >
+          <Text style={styles.countdownTitle}></Text>
+        </ContentCard>
+        {data
+          ?.filter((x) => x.key === HOME_ITEMS)[0]
+          .content?.map((item: HomeScreenSection) => (
+            <BasicCard
+              key={item.order}
+              containerStyle={styles.basicCard}
+              content={item.content}
+              title={item.title}
+              mode="elevated"
+              palette="fosBlue"
+            />
+          ))}
+      </ScrollView>
     </>
   );
 };
@@ -97,6 +123,12 @@ const styles = StyleSheet.create({
   eventSeparator: {
     borderBottomWidth: 2,
     marginTop: 10,
+  },
+  foregroundImage: {
+    width: '100%',
+    height: 430,
+    backgroundColor: Colors.schemeIndependent.fosBlue,
+    marginBottom: 10,
   },
   saamregels: {
     marginHorizontal: 8,

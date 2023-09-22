@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saamdagen",
     "slug": "saamdagen",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "owner": "fos-open-scouting",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

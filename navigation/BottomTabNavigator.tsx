@@ -28,6 +28,7 @@ import {
 } from '../types';
 import SettingsScreen from '../screens/SettingsScreen';
 import SaamdagenAppbar from '../components/SaamdagenAppbar';
+import VolunteerScreen from '../screens/VolunteerScreen';
 
 const BottomTab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -267,6 +268,19 @@ const MoreScreenNavigator = () => {
         options={{
           headerLeft: () => null,
           headerTitle: 'Instellingen',
+          headerTintColor: Colors[colorScheme].tabTextColor,
+          headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
+          headerTitleStyle: {
+            fontFamily: 'Quicksand_600SemiBold',
+          },
+        }}
+      />
+       <MoreStack.Screen
+        name="VolunteerScreen"
+        component={VolunteerScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: 'Helpende hand',
           headerTintColor: Colors[colorScheme].tabTextColor,
           headerStyle: { backgroundColor: Colors[colorScheme].tabBackground },
           headerTitleStyle: {

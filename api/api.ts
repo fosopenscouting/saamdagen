@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 export const getContentIndex = async (): Promise<string[]> => {
+  //console.log(CONTENT_ROOT);
   console.log(process.env.EXPO_PUBLIC_CONTENT_ROOT!);
   const text = await (
     await fetch(

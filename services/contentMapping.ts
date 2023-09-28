@@ -72,3 +72,16 @@ export const mapMap = (objects: FrontMatterResult<any>[]) => {
     })
     .sort(sortByOrder);
 };
+
+export const volunteerMap =  (objects: FrontMatterResult<any>[]) => {
+  return objects
+    .map((item) => {
+    return {
+      title: item.attributes.titel,
+      order: item.attributes.volgorde,
+      icon: item.attributes.icoon,
+      content: item.body,
+    };
+  }).sort(sortByOrder);
+
+};

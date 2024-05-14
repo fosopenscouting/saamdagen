@@ -60,7 +60,7 @@ const HomeScreen: React.FC = () => {
             />
           </View>
         </ImageBackground>
-        <CountdownTimer targetDate={new Date('2023-09-22T20:00:00+02:00')} />
+        <CountdownTimer targetDate={new Date('2024-09-27T20:00:00+02:00')} />
         <ContentCard
           containerStyle={styles.saamregels}
           palette="fosBlue"

@@ -17,7 +17,7 @@ jobs:
         id: gitversion
       - uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: 20.x
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v7
         with:

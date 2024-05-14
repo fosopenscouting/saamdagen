@@ -75,12 +75,13 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 2. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
 
-    > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je manueel een build te triggeren en je via terminal te authenticeren. Je doet dit in de root folder van de app, met dit commando:
+    > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je lokaal te bouwen en kan je via terminal authenticeren bij apple. Je doet dit in de root folder van de app, met dit commando:
 
     >``bash
     >eas build --platform ios
     >``
-    > Deze build kan je niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action
+    > Hiervoor moet je eerst het eas build commando [installeren](https://docs.expo.dev/build-reference/local-builds/).
+    > Deze build kan je echter niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action (je certificaat is vernieuwd).
 
     De action verhoogt de nodige versienummers (buildNumber en versionCode) in app.json.
 

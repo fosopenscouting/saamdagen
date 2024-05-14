@@ -14,7 +14,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
       projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
     },
   },
-  plugins: ['sentry-expo'],
+  plugins: ['sentry-expo', 'expo-asset', 'expo-font'],
   hooks: {
     postPublish: [
       {

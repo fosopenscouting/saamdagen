@@ -18,6 +18,7 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 - React Native Directory: directory met third party libraries die compatibel zijn met React Native. <https://reactnative.directory/>
 
 ### .env file
+
 Je hebt een .env bestand nodig om een aantal instellingen te kunnen uitlezen. Je kan een aanmaken op basis van `.env.example`
 
 ### Lokaal uitvoeren (development)

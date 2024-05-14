@@ -120,9 +120,9 @@ Deze versie wordt gebruikt bij het publishen naar Expo.
 
 > Tijdens het publishen naar de App of Play Store moet je wel steeds de versie in app.json manueel verhogen. Hou deze in sync met de versie die berekend wordt door GitVersion
 
-### Conventions
+## Conventions
 
-#### 1. Gebruik functionele componenten
+### 1. Gebruik functionele componenten
 
 Gebruik steeds functionele componenten tegenover class componenten. Voor functionele componenten gebruiken we volgende syntax:
 
@@ -140,6 +140,6 @@ const Component = (props: PropType) => {
 export default Component;
 ```
 
-#### 2. .tsx vs .ts
+### 2. .tsx vs .ts
 
 Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` extensie wanneer het om 'pure' TypeScript gaat.

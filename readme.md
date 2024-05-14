@@ -90,9 +90,7 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 ## Content
 
-Content in de app komt uit een andere repository: <https://github.com/fosopenscouting/Saamdagen-App-inhoud>. Er zijn hier 2 omgevingen gedefinieerd: Staging en Production. In je .env file kan je wisselen tussen deze twee. Zo kan content al klaargezet worden zonder dat eindgebruikers deze al te zien krijgen.
-
-Content wordt lokaal opgeslaan zodat gebruikers geen internet nodig hebben om de app te gebruiken.
+Content in de app komt uit een andere repository: <https://github.com/fosopenscouting/Saamdagen-App-inhoud>. Er zijn hier 2 omgevingen gedefinieerd: Staging en Production. In je .env file kan je wisselen tussen deze twee. Zo kan de content al klaargezet worden zonder dat eindgebruikers deze te zien krijgen. Eenmaal in de app kan je naar onder swipen (gebeurt ook automatisch) om een update te triggeren waarna de content lokaal opgeslagen wordt (en beschikbaar blijft zonder internet toegang).
 
 > Afbeeldingen zoals de plattegrond zitten nog hardcoded in de applicatie. Voor deze te wijzigen moet een update gedaan worden aan de app.
 

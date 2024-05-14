@@ -6,7 +6,7 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 ## Setup/Running
 
-### Installatie
+### Installatie algemene tools
 
 - Node.js 14+ (dit installeert ook meteen npm)
 - Yarn ( `npm install -g yarn`)
@@ -21,14 +21,20 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 Je hebt een .env bestand nodig om een aantal instellingen te kunnen uitlezen. Je kan een aanmaken op basis van `.env.example`
 
-### Lokaal uitvoeren (development)
+## Expo account
+Je hebt een account nodig op <https://expo.dev/>. Vervolgens dien je aan iemand van de werkgroep te vragen om je toegang te geven tot het project.
 
+> Op expo.dev kunnen members toegevoegd worden onder de 'members' tab van de organisatie.
+
+### Lokaal uitvoeren (development)
 
 Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 
 - `$ yarn install` (enkel bij de eerste keer starten)
 - `$ npx expo start`
 - Scan de QR code die verschijnt met de Expo app
+
+> De eerste keer dat je de applicatie start zal Expo je vragen om in te loggen met je Expo account dat je eerder aanmaakte.
 
 Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/create-a-new-app/>
 

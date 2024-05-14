@@ -21,7 +21,7 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 Je hebt een .env bestand nodig om een aantal instellingen te kunnen uitlezen. Je kan een aanmaken op basis van `.env.example`
 
-## Expo account
+### Expo account
 Je hebt een account nodig op <https://expo.dev/>. Vervolgens dien je aan iemand van de werkgroep te vragen om je toegang te geven tot het project.
 
 > Op expo.dev kunnen members toegevoegd worden onder de 'members' tab van de organisatie.
@@ -44,7 +44,7 @@ Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/creat
 2. Volg de algemene stappen zoals hierboven beschreven
 3. Kies, in het browserscherm dat opende na `expo start`te draaien, om de app te openen in een emulator naar keuze.
 
-### Branching
+## Branching
 
 **master:** Code zoals ze in productie is. Changes op deze branch triggeren een build en deploy
 
@@ -54,7 +54,7 @@ Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/creat
 
 Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
-### CI/CD
+## CI/CD
 
 Elke push naar master triggert een Expo Publish. Nieuwe versies worden standaard naar een staging release channel gereleased. Om te releasen naar productie is een approval nodig.
 
@@ -63,13 +63,13 @@ Elke push naar master triggert een Expo Publish. Nieuwe versies worden standaard
 - pr-validation.yml: basis validatie om te kijken of de app build en of de linter slaagt. Draait enkel op Pull Requests
 - store-submit.yml: triggert een EAS build
 
-### Expo upgraden
+## Expo upgraden
 Expo brengt regelmatig een nieuwe versie van de SDK uit, het kan gebeuren dat de Expo Go app de Saamdagen app niet meer wil openen.
 
 Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/>
 
 
-### Deployen naar stores
+## Deployen naar stores
 
 1. Verhoog de versie in app.json
 
@@ -88,7 +88,7 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 > Dit kan enkel gedaan worden door een persoon die toegang heeft tot de iOS developer console en Google Play Console.
 
-### Deep-linking
+## Deep-linking
 
 Gebruikers kunnen hun ticket in de app zetten d.m.v. een link. We hanteren hier een 'hack' omdat links met specifieke prefix (saamdagen://) niet altijd werken.
 
@@ -98,7 +98,7 @@ Deze link verwijst door naar saamdagen:///Ticket?hash=${ticketHash}. Op mobiele 
 
 Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/Ticket?hash=${myParam}).
 
-### OTA updates
+## OTA updates
 
 Er zijn 2 manieren om een update tot bij eindgebruikers te krijgen:
 
@@ -109,7 +109,7 @@ Een OTA update wordt uitgevoerd bij elke push/merge naar master. De app wordt vi
 
 > Niet alle wijzigingen aan de app kunnen als OTA update uitgerold worden. Bijv. dependency updates. Bekijk voor de nuances de documentatie van Expo.
 
-### Versioning
+## Versioning
 
 GitVersion wordt gebruikt in Github Actions om automatisch een Semver versie te genereren. Standaard wordt de patch versie met 1 verhoogd per commit naar master. Je kan de minor of major versie verhogen door in een commit message volgende string mee te geven:
 

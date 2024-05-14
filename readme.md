@@ -10,7 +10,6 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 - Node.js 14+ (dit installeert ook meteen npm)
 - Yarn ( `npm install -g yarn`)
-- Expo CLI (`npm install -g expo-cli`)
 - Expo Go (iOS of Android app)
 
 ### Tooling
@@ -27,7 +26,7 @@ Je hebt een .env bestand nodig om een aantal instellingen te kunnen uitlezen. Je
 Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 
 - `$ yarn install` (enkel bij de eerste keer starten)
-- `$ expo start`
+- `$ npx expo start`
 - Scan de QR code die verschijnt met de Expo app
 
 Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/create-a-new-app/>
@@ -52,9 +51,11 @@ Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
 Elke push naar master triggert een Expo Publish. Nieuwe versies worden standaard naar een staging release channel gereleased. Om te releasen naar productie is een approval nodig.
 
-### UI design
 
-<https://xd.adobe.com/view/1cef593f-f39e-4138-a5b5-217d87659aee-49bc/>
+### Expo upgraden
+Expo brengt regelmatig een nieuwe versie van de SDK uit, het kan gebeuren dat de Expo Go app de Saamdagen app niet meer wil openen.
+
+Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/>
 
 ### Conventions
 

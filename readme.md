@@ -68,29 +68,6 @@ Expo brengt regelmatig een nieuwe versie van de SDK uit, het kan gebeuren dat de
 
 Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/>
 
-### Conventions
-
-#### 1. Gebruik functionele componenten
-
-Gebruik steeds functionele componenten tegenover class componenten. Voor functionele componenten gebruiken we volgende syntax:
-
-```JSX
-const Component = (props: PropType) => {
-    const [counter, setCounter] = useState(0);
-
-    return (
-        <View>
-        <Text>Hello World!</Text>
-        </View>
-    )
-};
-
-export default Component;
-```
-
-#### 2. .tsx vs .ts
-
-Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` extensie wanneer het om 'pure' TypeScript gaat.
 
 ### Deployen naar stores
 
@@ -142,3 +119,27 @@ GitVersion wordt gebruikt in Github Actions om automatisch een Semver versie te 
 Deze versie wordt gebruikt bij het publishen naar Expo.
 
 > Tijdens het publishen naar de App of Play Store moet je wel steeds de versie in app.json manueel verhogen. Hou deze in sync met de versie die berekend wordt door GitVersion
+
+### Conventions
+
+#### 1. Gebruik functionele componenten
+
+Gebruik steeds functionele componenten tegenover class componenten. Voor functionele componenten gebruiken we volgende syntax:
+
+```JSX
+const Component = (props: PropType) => {
+    const [counter, setCounter] = useState(0);
+
+    return (
+        <View>
+        <Text>Hello World!</Text>
+        </View>
+    )
+};
+
+export default Component;
+```
+
+#### 2. .tsx vs .ts
+
+Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` extensie wanneer het om 'pure' TypeScript gaat.

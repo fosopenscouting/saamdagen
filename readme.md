@@ -88,6 +88,14 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 > Dit kan enkel gedaan worden door een persoon die toegang heeft tot de iOS developer console en Google Play Console.
 
+## Content
+
+Content in de app komt uit een andere repository: <https://github.com/fosopenscouting/Saamdagen-App-inhoud>. Er zijn hier 2 omgevingen gedefinieerd: Staging en Production. In je .env file kan je wisselen tussen deze twee. Zo kan content al klaargezet worden zonder dat eindgebruikers deze al te zien krijgen.
+
+Content wordt lokaal opgeslaan zodat gebruikers geen internet nodig hebben om de app te gebruiken.
+
+> Afbeeldingen zoals de plattegrond zitten nog hardcoded in de applicatie. Voor deze te wijzigen moet een update gedaan worden aan de app.
+
 ## Deep-linking
 
 Gebruikers kunnen hun ticket in de app zetten d.m.v. een link. We hanteren hier een 'hack' omdat links met specifieke prefix (saamdagen://) niet altijd werken.

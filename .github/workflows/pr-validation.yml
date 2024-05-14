@@ -21,7 +21,7 @@ jobs:
         fetch-depth: 0
     - uses: actions/setup-node@v1
       with:
-        node-version: 20.x
+        node-version: 16.x
     -  uses: gittools/actions/gitversion/setup@v0.9.8
        with:
          versionSpec: '5.x'

@@ -58,6 +58,10 @@ Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
 Elke push naar master triggert een Expo Publish. Nieuwe versies worden standaard naar een staging release channel gereleased. Om te releasen naar productie is een approval nodig.
 
+- codeql-analysis.yml: statische code analyse check van GitHub
+- expo-publish.yml: update de app in Expo. Publiceert de app ook naar een staging kanaal
+- pr-validation.yml: basis validatie om te kijken of de app build en of de linter slaagt. Draait enkel op Pull Requests
+- store-submit.yml: triggert een EAS build
 
 ### Expo upgraden
 Expo brengt regelmatig een nieuwe versie van de SDK uit, het kan gebeuren dat de Expo Go app de Saamdagen app niet meer wil openen.
@@ -101,9 +105,11 @@ Gebruik de `.tsx` extensie wanneer de code JSX syntax bevat. Gebruik de `.ts` ex
     >``
     > Deze build kan je niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action
 
-    De action verhoogt de nodige versienummers in app.json.
+    De action verhoogt de nodige versienummers (buildNumber en versionCode) in app.json.
 
 3. Submit naar de stores. Momenteel doe je dit nog handmatig via de respectievelijke app consoles voor Android en iOS.
+
+> Dit kan enkel gedaan worden door een persoon die toegang heeft tot de iOS developer console en Google Play Console.
 
 ### Deep-linking
 
@@ -114,3 +120,25 @@ URL voor deep-linking: https://ticketing.fos.be/external/app/{ticketHash}
 Deze link verwijst door naar saamdagen:///Ticket?hash=${ticketHash}. Op mobiele devices wordt zo de app geopend.
 
 Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/Ticket?hash=${myParam}).
+
+### OTA updates
+
+Er zijn 2 manieren om een update tot bij eindgebruikers te krijgen:
+
+- Volledige publicatie naar de app stores (zie hierboven)
+- Over The Air (OTA) updates
+
+Een OTA update wordt uitgevoerd bij elke push/merge naar master. De app wordt via Expo geupdatet, zonder dat gebruikers de app moeten updaten in de store.
+
+> Niet alle wijzigingen aan de app kunnen als OTA update uitgerold worden. Bijv. dependency updates. Bekijk voor de nuances de documentatie van Expo.
+
+### Versioning
+
+GitVersion wordt gebruikt in Github Actions om automatisch een Semver versie te genereren. Standaard wordt de patch versie met 1 verhoogd per commit naar master. Je kan de minor of major versie verhogen door in een commit message volgende string mee te geven:
+
+- major: `+semver: major`
+- minor: `+semver: minor`
+
+Deze versie wordt gebruikt bij het publishen naar Expo.
+
+> Tijdens het publishen naar de App of Play Store moet je wel steeds de versie in app.json manueel verhogen. Hou deze in sync met de versie die berekend wordt door GitVersion

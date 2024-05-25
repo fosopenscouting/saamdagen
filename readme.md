@@ -76,12 +76,13 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 2. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
 
-    > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je manueel een build te triggeren en je via terminal te authenticeren. Je doet dit in de root folder van de app, met dit commando:
+    > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je lokaal te bouwen en kan je via terminal authenticeren bij apple. Je doet dit in de root folder van de app, met dit commando:
 
     >``bash
     >eas build --platform ios
     >``
-    > Deze build kan je niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action
+    > Hiervoor moet je eerst het eas build commando [installeren](https://docs.expo.dev/build-reference/local-builds/).
+    > Deze build kan je echter niet gebruiken om te submitten naar de stores, het buildNumber wordt niet verhoogd. Annuleer de build en retrigger de GH action (je certificaat is vernieuwd).
 
     De action verhoogt de nodige versienummers (buildNumber en versionCode) in app.json.
 
@@ -91,9 +92,7 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 ## Content
 
-Content in de app komt uit een andere repository: <https://github.com/fosopenscouting/Saamdagen-App-inhoud>. Er zijn hier 2 omgevingen gedefinieerd: Staging en Production. In je .env file kan je wisselen tussen deze twee. Zo kan content al klaargezet worden zonder dat eindgebruikers deze al te zien krijgen.
-
-Content wordt lokaal opgeslaan zodat gebruikers geen internet nodig hebben om de app te gebruiken.
+Content in de app komt uit een andere repository: <https://github.com/fosopenscouting/Saamdagen-App-inhoud>. Er zijn hier 2 omgevingen gedefinieerd: Staging en Production. In je .env file kan je wisselen tussen deze twee. Zo kan de content al klaargezet worden zonder dat eindgebruikers deze te zien krijgen. Eenmaal in de app kan je naar onder swipen (gebeurt ook automatisch) om een update te triggeren waarna de content lokaal opgeslagen wordt (en beschikbaar blijft zonder internet toegang).
 
 > Afbeeldingen zoals de plattegrond zitten nog hardcoded in de applicatie. Voor deze te wijzigen moet een update gedaan worden aan de app.
 

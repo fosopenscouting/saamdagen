@@ -13,16 +13,15 @@ import {
   Quicksand_500Medium,
 } from '@expo-google-fonts/quicksand';
 import { RootSiblingParent } from 'react-native-root-siblings';
-import * as Sentry from 'sentry-expo';
+import * as Sentry from '@sentry/react-native';
 import { DataContextProvider } from './hooks/useDataContext';
 
 Sentry.init({
   dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
-  enableInExpoDevelopment: true,
   debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
 
-export default function App(): React.ReactElement | null {
+function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
@@ -47,3 +46,5 @@ export default function App(): React.ReactElement | null {
     );
   }
 }
+
+export default Sentry.wrap(App);

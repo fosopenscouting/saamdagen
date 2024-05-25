@@ -10,6 +10,7 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 - Node.js 14+ (dit installeert ook meteen npm)
 - Yarn ( `npm install -g yarn`)
+- eas (enkel als je store builds wil maken) (`npm install -g eas`)
 - Expo Go (iOS of Android app)
 
 ### Tooling

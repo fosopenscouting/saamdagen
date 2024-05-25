@@ -22,7 +22,7 @@ jobs:
         with:
           files: '["app.json"]'
         env:
-          APP_VERSION: ${{gitversion.outputs.semVer}}
+          APP_VERSION: ${{steps.gitversion.outputs.semVer}}
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v7
         with:

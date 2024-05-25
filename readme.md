@@ -72,8 +72,6 @@ Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading
 
 ## Deployen naar stores
 
-1. Verhoog de versie in app.json
-
 2. Trigger de GitHub Action 'EAS build'. Dit start een niet interactieve build voor zowel iOS als Android. Eenmaal de build klaar is kan je de artifacts downloaden vanuit het Expo dashboard en deze submitten naar de store.
 
     > Apple provisioning certificaten kunnen verlopen. Als dit het geval is, dan dien je lokaal te bouwen en kan je via terminal authenticeren bij apple. Je doet dit in de root folder van de app, met dit commando:
@@ -126,7 +124,7 @@ GitVersion wordt gebruikt in Github Actions om automatisch een Semver versie te 
 
 Deze versie wordt gebruikt bij het publishen naar Expo.
 
-> Tijdens het publishen naar de App of Play Store moet je wel steeds de versie in app.json manueel verhogen. Hou deze in sync met de versie die berekend wordt door GitVersion
+> De app versie in de store komt uit het 'version' veld van app.json. Tijdens de GitHub action wordt deze waarde ingevuld. Je hoeft dus niks aan te passen.
 
 ## Conventions
 

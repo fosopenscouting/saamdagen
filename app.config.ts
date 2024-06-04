@@ -14,18 +14,15 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
       projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
     },
   },
-  plugins: ['sentry-expo', 'expo-asset', 'expo-font'],
-  hooks: {
-    postPublish: [
+  plugins: [
+    [
+      '@sentry/react-native/expo',
       {
-        file: 'sentry-expo/upload-sourcemaps',
-        config: {
-          organization: process.env.SENTRY_ORG,
-          project: process.env.SENTRY_PROJECT,
-          setCommits: true,
-          authToken: process.env.SENTRY_AUTH_TOKEN,
-        },
+        organization: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
       },
     ],
-  },
+    'expo-asset',
+    'expo-font',
+  ],
 });

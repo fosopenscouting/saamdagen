@@ -33,7 +33,7 @@ const HomeScreen: React.FC = () => {
   return (
     <>
       <ScrollView
-        style={{ height: '100%' }}
+        style={{ height: '100%', marginBottom: 8 }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }

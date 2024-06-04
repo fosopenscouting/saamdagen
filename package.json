@@ -2,8 +2,8 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
@@ -41,6 +41,7 @@
     "expo-haptics": "~13.0.1",
     "expo-insights": "~0.7.0",
     "expo-linking": "~6.3.1",
+    "expo-notifications": "~0.28.1",
     "expo-splash-screen": "~0.27.4",
     "expo-status-bar": "~1.12.1",
     "expo-updates": "~0.25.12",
@@ -89,5 +90,7 @@
   "dependenciesComments": {
     "@types/react": "Resolution because of this issue: https://github.com/react-navigation/react-navigation/issues/10507"
   },
-  "private": true
+  "private": true,
+  "name": "saamdagen",
+  "version": "1.0.0"
 }

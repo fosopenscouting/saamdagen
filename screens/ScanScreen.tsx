@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
-import { Camera, FlashMode } from 'expo-camera';
+import { CameraView } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -40,21 +39,21 @@ const ScanScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Camera
-        barCodeScannerSettings={{
-          barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr], // Only allow scanning of QR codes, this causes less battery usage and false positives
+      <CameraView
+        barcodeScannerSettings={{
+          barcodeTypes: ['qr'],
         }}
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
+        onBarcodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
-        flashMode={isLit ? FlashMode.torch : FlashMode.off}
+        flash={isLit ? 'on' : 'off'}
       />
       <View style={[styles.footer, { bottom: 30 }]}>
         <QRFooterButton
           onPress={onFlashToggle}
           isActive={isLit}
-          iconName="ios-flashlight"
+          iconName="flash"
         />
-        <QRFooterButton onPress={onCancel} iconName="ios-close" iconSize={48} />
+        <QRFooterButton onPress={onCancel} iconName="close" iconSize={48} />
       </View>
       <QrIndicator />
     </View>

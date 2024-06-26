@@ -45,7 +45,7 @@ const ScanScreen: React.FC = () => {
         }}
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
-        flash={isLit ? 'on' : 'off'}
+        enableTorch={isLit}
       />
       <View style={[styles.footer, { bottom: 30 }]}>
         <QRFooterButton

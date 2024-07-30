@@ -58,7 +58,9 @@ async function registerForPushNotificationsAsync() {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      handleRegistrationError('Permission not granted to get push token for push notification!');
+      handleRegistrationError(
+        'Permission not granted to get push token for push notification!',
+      );
       return;
     }
     const projectId =
@@ -68,7 +70,7 @@ async function registerForPushNotificationsAsync() {
       handleRegistrationError('Project ID not found');
     }
     try {
-    const pushTokenString = (
+      const pushTokenString = (
         await Notifications.getExpoPushTokenAsync({
           projectId,
         })
@@ -82,7 +84,6 @@ async function registerForPushNotificationsAsync() {
     handleRegistrationError('Must use physical device for push notifications');
   }
 }
-
 
 function App(): React.ReactElement | null {
   const isLoadingComplete = useCachedResources();
@@ -126,7 +127,6 @@ function App(): React.ReactElement | null {
         Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
-
 
   if (!isLoadingComplete || !fontsLoaded) {
     return null;

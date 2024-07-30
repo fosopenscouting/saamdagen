@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -15,12 +15,30 @@ import Colors from '../constants/Colors';
 import ContentCard from '../components/ContentCard';
 import { Text } from '../components/Themed/Text';
 import { RefreshControl } from 'react-native-gesture-handler';
+import * as Updates from 'expo-updates';
+import { Snackbar } from 'react-native-paper';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
+  const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
+
   const handleRefresh = async () => {
     await refreshContext();
   };
+
+  //Automatic update in background
+  async function onFetchUpdateAsync() {
+    try {
+      const update = await Updates.checkForUpdateAsync();
+
+      if (update.isAvailable) {
+        await Updates.fetchUpdateAsync();
+        setUpdateSnackbarVisible(true);
+      }
+    } catch (error) {
+      alert(`Error fetching latest Expo update: ${error}`);
+    }
+  }
 
   // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
   useEffect(() => {
@@ -28,7 +46,20 @@ const HomeScreen: React.FC = () => {
       await refreshContext();
     };
     refreshAsync();
+    onFetchUpdateAsync();
   }, []);
+
+  const handleDismissSnackbar = () => {
+    setUpdateSnackbarVisible(false);
+  };
+
+  const handleUpdateApp = async () => {
+    try {
+      await Updates.reloadAsync();
+    } catch (error) {
+      alert(`Error updating the app: ${error}`);
+    }
+  };
 
   return (
     <>
@@ -81,6 +112,17 @@ const HomeScreen: React.FC = () => {
             />
           ))}
       </ScrollView>
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={handleDismissSnackbar}
+        action={{
+          label: 'Update',
+          onPress: handleUpdateApp,
+        }}
+        duration={Snackbar.DURATION_INDEFINITE}
+      >
+        Klik hier om de app te updaten.
+      </Snackbar>
     </>
   );
 };

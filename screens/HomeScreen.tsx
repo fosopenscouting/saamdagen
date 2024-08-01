@@ -17,9 +17,14 @@ import { Text } from '../components/Themed/Text';
 import { RefreshControl } from 'react-native-gesture-handler';
 import * as Updates from 'expo-updates';
 import { Snackbar } from 'react-native-paper';
+import { ExecutionEnvironment } from 'expo-constants';
+import { ContentMetadata } from '../models/ContentMetadata';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
+  const [filteredData, setFilteredData] = useState<
+    ContentMetadata | undefined
+  >();
   const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
 
   const handleRefresh = async () => {
@@ -28,6 +33,9 @@ const HomeScreen: React.FC = () => {
 
   //Automatic update in background
   async function onFetchUpdateAsync() {
+    const isStandalone = ExecutionEnvironment.Standalone === 'standalone';
+    if (isStandalone) return;
+
     try {
       const update = await Updates.checkForUpdateAsync();
 
@@ -49,6 +57,10 @@ const HomeScreen: React.FC = () => {
     onFetchUpdateAsync();
   }, []);
 
+  useEffect(() => {
+    setFilteredData(data?.filter((x) => x.key === HOME_ITEMS)[0]);
+  }, [data]);
+
   const handleDismissSnackbar = () => {
     setUpdateSnackbarVisible(false);
   };
@@ -64,7 +76,7 @@ const HomeScreen: React.FC = () => {
   return (
     <>
       <ScrollView
-        style={{ height: '100%', marginBottom: 8 }}
+        style={{ height: '100%' }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
@@ -99,18 +111,23 @@ const HomeScreen: React.FC = () => {
         >
           <Text style={styles.countdownTitle}></Text>
         </ContentCard>
-        {data
-          ?.filter((x) => x.key === HOME_ITEMS)[0]
-          .content?.map((item: HomeScreenSection) => (
+        {filteredData?.content?.map(
+          (item: HomeScreenSection, index: number) => (
             <BasicCard
               key={item.order}
-              containerStyle={styles.basicCard}
+              containerStyle={[
+                styles.basicCard,
+                index === filteredData?.content.length - 1
+                  ? styles.lastCard
+                  : null,
+              ]}
               content={item.content}
               title={item.title}
               mode="elevated"
               palette="fosBlue"
             />
-          ))}
+          ),
+        )}
       </ScrollView>
       <Snackbar
         visible={snackbarVisible}
@@ -133,6 +150,9 @@ const styles = StyleSheet.create({
   basicCard: {
     marginHorizontal: 8,
     marginTop: 8,
+  },
+  lastCard: {
+    marginBottom: 8,
   },
   logo: {
     padding: 4,

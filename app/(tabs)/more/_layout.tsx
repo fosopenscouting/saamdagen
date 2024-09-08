@@ -6,6 +6,10 @@ import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { setStatusBarStyle } from 'expo-status-bar';
 
+export const unstable_settings = {
+	initialRouteName: 'index'
+}
+
 export default function MoreLayout() {
     const colorScheme = useColorScheme()
 

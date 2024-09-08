@@ -31,6 +31,7 @@ const ProfileScreen: React.FC = () => {
 	const [modalVisible, setModalVisible] = useState(false);
 	const [initialBrightness, setInitialBrightness] = useState<number>(0);
 	const [ticketLoading, setTicketLoading] = useState<boolean>(false);
+	const { hash } = useLocalSearchParams<{ hash: string }>();
 
 	useEffect(() => {
 		(async () => {
@@ -40,7 +41,6 @@ const ProfileScreen: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		const { hash } = useLocalSearchParams<{ hash: string }>();
 		if (hash) {
 			setTicketLoading(true);
 			getTicketFromApi(hash).then(async (res) => {

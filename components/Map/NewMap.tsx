@@ -4,9 +4,10 @@ import { Image, StyleSheet } from 'react-native';
 import getLayerImage, { MapLayer } from '../../models/MapLayer';
 import { View } from '../Themed/Themed';
 import MapFab from './MapFab';
+import { Portal } from 'react-native-paper';
 
 const NewMap = () => {
-  const [layer, setLayer] = useState<MapLayer>('normal');
+	const [layer, setLayer] = useState<MapLayer>('normal');
 
   const handleLayerSelect = (newLayer: MapLayer): void => {
     if (layer !== newLayer) {
@@ -42,22 +43,23 @@ const NewMap = () => {
 export default NewMap;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 0,
-    backgroundColor: '#AEDBC4',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-  },
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: 0,
+		backgroundColor: '#AEDBC4',
+		position: 'relative',
+	},
+	box: {
+		width: 60,
+		height: 60,
+		marginVertical: 20,
+	},
+	fab: {
+		position: 'absolute',
+		margin: 16,
+		right: 0,
+		bottom: 0,
+	},
 });

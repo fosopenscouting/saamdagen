@@ -4,7 +4,8 @@
  */
 
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView } from 'react-native';
+import { View as DefaultView } from 'react-native';
+import { Text as DefaultText } from 'react-native-paper';
 import DefaultMarkdown from '../Markdown/markdown';
 import { Anchor as DefaultAnchor } from '../Anchor';
 import { Text } from './Text';
@@ -117,7 +118,7 @@ export const Separator: React.FC<SeparatorProps> = (props: SeparatorProps) => {
   return (
     <View
       style={{ marginVertical: realMarginVertical, height: 1, width: '100%' }}
-      lightColor={Colors.light.tabBackground}
+      lightColor={Colors.light.tabBarStyle.backgroundColor}
       darkColor="rgb(255,255,255)"
     />
   );

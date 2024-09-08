@@ -1,6 +1,7 @@
 import useColorScheme from '../../hooks/useColorScheme';
-import { Text as DefaultText } from 'react-native';
+import { Text as DefaultText } from 'react-native-paper';
 import Colors from '../../constants/Colors';
+import React from 'react';
 
 export const useThemeColor = (
   props: { light?: string; dark?: string },
@@ -16,7 +17,7 @@ export const useThemeColor = (
   }
 };
 
-export type TextProps = ThemeProps & DefaultText['props'];
+export type TextProps = ThemeProps & React.ComponentProps< typeof DefaultText >;
 
 export type ThemeProps = {
   lightColor?: string;

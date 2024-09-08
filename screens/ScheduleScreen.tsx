@@ -14,9 +14,7 @@ const ScheduleScreen: React.FC = () => {
         tabBarLabelStyle: {
           fontFamily: 'Quicksand_600SemiBold',
         },
-        tabBarIndicatorStyle: {
-          backgroundColor: Colors[colorScheme].tabBackground,
-        },
+        tabBarIndicatorStyle: Colors[colorScheme].tabBarStyle,
       }}
     >
       <Tab.Screen

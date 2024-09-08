@@ -13,14 +13,14 @@ const CollapsibleChevron: React.FC<Props> = (props: Props) => {
   return props.isActive ? (
     <MaterialCommunityIcons
       name="chevron-down"
-      size={26}
-      color={Colors[colorScheme].tabBackground}
+      size={32}
+      color={Colors[colorScheme].tabBarStyle.backgroundColor}
     />
   ) : (
     <MaterialCommunityIcons
       name="chevron-right"
-      size={26}
-      color={Colors[colorScheme].tabBackground}
+      size={32}
+      color={Colors[colorScheme].tabBarStyle.backgroundColor}
     />
   );
 };

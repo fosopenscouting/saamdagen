@@ -34,27 +34,27 @@ type CardTheme = {
 
 export const themes: { [key in ThemeIdentifier]: CardTheme } = {
   warmRed: {
-    backgroundColor: Colors.schemeIndependent.warmRed,
+    backgroundColor: Colors.FOSCOLORS.WARMRED,
     textColor: 'white',
   },
   seaGreen: {
-    backgroundColor: Colors.schemeIndependent.seaGreen,
+    backgroundColor: Colors.FOSCOLORS.SEA_GREEN,
     textColor: 'white',
   },
   coral: {
-    backgroundColor: Colors.schemeIndependent.coral,
+    backgroundColor: Colors.FOSCOLORS.CORAL,
     textColor: 'white',
   },
   brightPink: {
-    backgroundColor: Colors.schemeIndependent.brightPink,
+    backgroundColor: Colors.FOSCOLORS.BRIGHTPINK,
     textColor: 'white',
   },
   brightYellow: {
-    backgroundColor: Colors.schemeIndependent.brightYellow,
+    backgroundColor: Colors.FOSCOLORS.BRIGHTYELLOW,
     textColor: 'white',
   },
   fosBlue: {
-    backgroundColor: Colors.schemeIndependent.fosBlue,
+    backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
     textColor: 'white',
   },
 };

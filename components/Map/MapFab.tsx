@@ -1,17 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { FAB, Portal, Provider } from 'react-native-paper';
+import { FAB, Portal, PaperProvider } from 'react-native-paper';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import { MapLayer } from '../../models/MapLayer';
 
 interface MapFabProps {
-  handleLayerSelect: (layer: MapLayer) => void;
+	handleLayerSelect: (layer: MapLayer) => void;
 }
 
 const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
-  const colorScheme = useColorScheme();
-  const [fabOpen, setFabOpen] = useState(false);
+	const colorScheme = useColorScheme();
+	const [fabOpen, setFabOpen] = useState(false);
 
   return (
     <Provider>

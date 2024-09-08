@@ -5,27 +5,27 @@ import { Markdown } from '../Themed/Themed';
 import { StyleSheet } from 'react-native';
 
 export const ActivityContent = (
-  content: ScheduleData,
-  index: number,
-  isActive: boolean,
+	content: ScheduleData,
+	index: number,
+	isActive: boolean,
 ) => {
-  if (isActive == false) {
-    return;
-  }
+	if (isActive == false) {
+		return;
+	}
 
-  return (
-    <Animatable.View
-      duration={400}
-      style={styles.content}
-      transition="backgroundColor"
-    >
-      <Markdown>{content.description}</Markdown>
-    </Animatable.View>
-  );
+	return (
+		<Animatable.View
+			duration={400}
+			style={styles.content}
+			transition="backgroundColor"
+		>
+			<Markdown>{content.description}</Markdown>
+		</Animatable.View>
+	);
 };
 
 const styles = StyleSheet.create({
-  content: {
-    marginBottom: 5,
-  },
+	content: {
+		marginBottom: 5,
+	},
 });

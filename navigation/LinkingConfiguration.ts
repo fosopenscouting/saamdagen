@@ -7,25 +7,25 @@
 import * as Linking from 'expo-linking';
 
 export default {
-  prefixes: [Linking.createURL('/'), 'saamdagen://'],
-  config: {
-    screens: {
-      Root: {
-        screens: {
-          Meer: {
-            screens: {
-              initialRouteName: 'MoreScreen',
-              ProfileScreen: 'Ticket',
-            },
-          },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
-        },
-      },
-      NotFound: '*',
-    },
-  },
+	prefixes: [Linking.createURL('/'), 'saamdagen://'],
+	config: {
+		screens: {
+			Root: {
+				screens: {
+					Meer: {
+						screens: {
+							initialRouteName: 'MoreScreen',
+							ProfileScreen: 'Ticket',
+						},
+					},
+					TabTwo: {
+						screens: {
+							TabTwoScreen: 'two',
+						},
+					},
+				},
+			},
+			NotFound: '*',
+		},
+	},
 };

@@ -11,7 +11,6 @@ import {
 import NoProfile from '@/components/Profile/NoProfile';
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
 import { Ticket } from '@/models/Ticket';
 import SvgQRCode from 'react-native-qrcode-svg';
 import Colors from '@/constants/Colors';
@@ -25,12 +24,12 @@ import {
 import Loading from '@/components/Loading';
 import { Button } from 'react-native-paper';
 import { Text } from "@/components/Themed/Text"
+import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 
 const ProfileScreen: React.FC = () => {
 	const [ticketData, setTicketData] = useState<Ticket | null>();
 	const [modalVisible, setModalVisible] = useState(false);
 	const [initialBrightness, setInitialBrightness] = useState<number>(0);
-	const navigation = useNavigation();
 	const [ticketLoading, setTicketLoading] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -41,9 +40,7 @@ const ProfileScreen: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		const state = navigation.getState();
-        //@ts-ignore
-		const hash = state?.routes[0]?.params?.hash;
+		const { hash } = useLocalSearchParams<{ hash: string }>();
 		if (hash) {
 			setTicketLoading(true);
 			getTicketFromApi(hash).then(async (res) => {
@@ -54,15 +51,11 @@ const ProfileScreen: React.FC = () => {
 		}
 	}, []);
 
-	useEffect(() => {
-		const unsubscribe = navigation.addListener('focus', () => {
-			getTicketFromStorage().then((res) => {
-				setTicketData(res);
-			});
+	useFocusEffect(() => {
+		getTicketFromStorage().then((res) => {
+			setTicketData(res);
 		});
-
-		return unsubscribe;
-	}, []);
+	})
 
 	useEffect(() => {
 		(async () => {

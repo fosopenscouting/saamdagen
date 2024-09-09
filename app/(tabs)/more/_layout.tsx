@@ -47,9 +47,9 @@ export default function MoreLayout() {
 				}}
 			/>
 			<Stack.Screen
-				name="settings"
+				name="about"
 				options={{
-					headerTitle: 'Instellingen',
+					headerTitle: 'Over',
 				}}
 			/>
 		</Stack>

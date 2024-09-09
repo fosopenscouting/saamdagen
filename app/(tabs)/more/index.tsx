@@ -11,10 +11,15 @@ const MoreScreen: React.FC = () => {
 			destination: '/more/profile',
 			icon: 'heart-outline',
 		},
+		// {
+		// 	title: 'Instellingen',
+		// 	destination: '/more/settings',
+		// 	icon: 'tune-vertical',
+		// },
 		{
-			title: 'Instellingen',
-			destination: '/more/settings',
-			icon: 'tune-vertical',
+			title: 'Over',
+			destination: '/more/about',
+			icon: 'information-outline',
 		},
 	];
 

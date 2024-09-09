@@ -7,11 +7,11 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
 		policy: 'sdkVersion',
 	},
 	updates: {
-		url: 'https://u.expo.dev/3f3b2355-b2f7-45aa-889f-541b41c35209',
+		url: 'https://u.expo.dev/7830594e-890b-4c9e-89cf-b91bf1926f72',
 	},
 	extra: {
 		eas: {
-			projectId: '3f3b2355-b2f7-45aa-889f-541b41c35209',
+			projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
 		},
 	},
 	plugins: [

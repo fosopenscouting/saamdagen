@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import { CameraView } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';

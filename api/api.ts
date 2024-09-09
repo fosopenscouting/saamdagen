@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-const CONTENT_ROOT = process.env.EXPO_PUBLIC_CONTENT_ROOT! ?? 'Staging'
+const CONTENT_ROOT = process.env.EXPO_PUBLIC_CONTENT_ROOT! ?? 'Production'
 
 export const getContentIndex = async (): Promise<string[]> => {
 	console.log(`CONTENT_DIR: ${CONTENT_ROOT}`);

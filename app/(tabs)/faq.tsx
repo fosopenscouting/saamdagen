@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-// import FaqScreen from '@/screens/FaqScreen';
 import {
 	SafeAreaView,
-	useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import { Separator, View } from '@/components/Themed/Themed';

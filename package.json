@@ -38,11 +38,12 @@
     "expo-camera": "~15.0.15",
     "expo-constants": "~16.0.1",
     "expo-device": "~6.0.2",
-    "expo-font": "~12.0.5",
+    "expo-font": "^12.0.10",
     "expo-haptics": "~13.0.1",
     "expo-insights": "~0.7.0",
     "expo-linking": "~6.3.1",
     "expo-notifications": "~0.28.16",
+    "expo-router": "~3.5.23",
     "expo-splash-screen": "~0.27.4",
     "expo-status-bar": "~1.12.1",
     "expo-updates": "~0.25.24",
@@ -65,8 +66,7 @@
     "react-native-svg": "15.2.0",
     "react-native-tab-view": "^3.1.1",
     "react-native-web": "~0.19.10",
-    "simple-markdown": "^0.7.3",
-    "expo-router": "~3.5.23"
+    "simple-markdown": "^0.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.0",

@@ -1,9 +1,9 @@
 {
 	"expo": {
-		"name": "FOS-Saamdagen-devclone",
-		"slug": "fos-saamdagen-devclone",
+		"name": "Saamdagen",
+		"slug": "saamdagen",
 		"version": "#{APP_VERSION}#",
-		"owner": "tijls",
+		"owner": "fos-open-scouting",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"scheme": "saamdagen",
@@ -20,14 +20,14 @@
 		"ios": {
 			"buildNumber": "7",
 			"supportsTablet": true,
-			"bundleIdentifier": "dev.tijls.fossaamdagendev",
+			"bundleIdentifier": "be.fos.saamdagen",
 			"infoPlist": {
 				"NSCameraUsageDescription": "Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.",
 				"UIBackgroundModes": ["fetch"]
 			}
 		},
 		"android": {
-			"package": "dev.tijls.fossaamdagendev",
+			"package": "be.fos.saamdagen",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundImage": "./assets/images/adaptive-icon-bg.png"

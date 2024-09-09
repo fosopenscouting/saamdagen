@@ -35,7 +35,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import useCachedResources from '@/hooks/useCachedResources';
 
 Sentry.init({
-	dsn: 'https://e6974b22a166bbbaea71b4996019d0e5@o4507883031232512.ingest.de.sentry.io/4507885339869264',
+	dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
 	debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
 

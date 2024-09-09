@@ -23,7 +23,6 @@ import {
 } from '@/services/ticketService';
 import Loading from '@/components/Loading';
 import { Button } from 'react-native-paper';
-import { Text } from "@/components/Themed/Text"
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 
 const ProfileScreen: React.FC = () => {

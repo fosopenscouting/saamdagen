@@ -22,10 +22,20 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
           open={fabOpen}
           icon="layers"
           actions={[
-            {
-              icon: 'alpha-g-box',
-              label: 'Workshops',
+             {
+              icon: 'map-marker-outline',
+              label: 'Spelnamiddag',
               onPress: () => props.handleLayerSelect('big_game'),
+            },
+             {
+              icon: 'map-marker-outline',
+              label: 'Vormingen',
+              onPress: () => props.handleLayerSelect('activities'),
+            },
+            {
+              icon: 'map-marker-outline',
+              label: 'Vrijdagavond',
+              onPress: () => props.handleLayerSelect('friday'),
             },
             {
               icon: 'map-marker-outline',

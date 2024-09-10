@@ -1,9 +1,7 @@
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import React, { useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
-import Grondplan from '../../assets/grondplan-2023.png';
-import GrondPlanGrootSpel from '../../assets/workshops-2023.png';
-import { MapLayer } from '../../models/MapLayer';
+import getLayerImage, { MapLayer } from '../../models/MapLayer';
 import { View } from '../Themed/Themed';
 import MapFab from './MapFab';
 
@@ -32,7 +30,7 @@ const NewMap = () => {
         >
           <Image
             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
-            source={layer === 'normal' ? Grondplan : GrondPlanGrootSpel}
+            source={getLayerImage(layer)}
           />
         </ReactNativeZoomableView>
       </View>

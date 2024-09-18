@@ -42,7 +42,7 @@ const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
         containerStyle={styles.countdown}
         colorOverlay
         palette="fosBlue"
-        backgroundImage={require('../assets/images/banner.jpg')}
+        backgroundImage={require('../assets/images/countdown-banner.png')}
       >
         <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
         <ShowCounter

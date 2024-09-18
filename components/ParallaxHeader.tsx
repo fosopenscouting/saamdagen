@@ -22,7 +22,7 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
     <View>
       <ImageBackground
         imageStyle={{ opacity: 0.6 }}
-        source={require('../assets/images/home-banner.png')}
+        source={require('../assets/images/home-banner-2.png')}
         style={styles.foregroundImage}
       >
         <View

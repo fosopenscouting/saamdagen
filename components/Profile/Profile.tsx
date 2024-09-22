@@ -19,7 +19,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 			<View style={styles.introContainer}>
 				<HeaderText lightColor='#fff' variant="headlineLarge">Hey { props.firstName }</HeaderText>
 				<Text lightColor='#fff' variant="titleLarge">
-					Ben jij al klaar voor de Saamdagen? Wij wel!
+					Ben jij al klaar voor Saamdagen? Wij wel!
 				</Text>
 				<Text lightColor='#fff' variant="titleMedium">
 					Hieronder vind je je ticket terug en ook welke workshop je gekozen hebt.

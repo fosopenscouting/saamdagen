@@ -17,6 +17,11 @@ const MoreScreen: React.FC = () => {
 		// 	icon: 'tune-vertical',
 		// },
 		{
+			title: 'Licenties',
+			destination: '/more/licenses',
+			icon: 'scale-balance',
+		},
+		{
 			title: 'Over',
 			destination: '/more/about',
 			icon: 'information-outline',

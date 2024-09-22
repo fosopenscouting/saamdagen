@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from '@/components/Themed/Themed';
-import { Image, StyleSheet } from 'react-native';
+import { Alert, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
@@ -10,6 +10,16 @@ import { Link } from 'expo-router';
 const SettingsScreen: React.FC = () => {
 	const colorScheme = useColorScheme();
 	const versionColor = Colors[colorScheme].muted;
+
+	const [pressesVersion, setPressesVersion] = useState<number>(0);
+	const onPressVersion = () => {
+		setPressesVersion(prev => prev + 1)
+
+		if(pressesVersion == 5){
+			setPressesVersion(0)
+			Alert.alert('Hey', 'Hier is de easter-egg!')
+		}
+	}
 
 	return (
 		<View style={styles.container}>
@@ -34,9 +44,11 @@ const SettingsScreen: React.FC = () => {
 					&copy; FOS Open Scouting - { new Date().getFullYear() }
 				</Text>
 			</View>
-			<Text style={[styles.version, { color: versionColor }]}>
-				v{Constants.expoConfig?.version}
-			</Text>
+			<TouchableOpacity onPress={onPressVersion}>
+				<Text style={[styles.version, { color: versionColor }]}>
+					v{Constants.expoConfig?.version}
+				</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };

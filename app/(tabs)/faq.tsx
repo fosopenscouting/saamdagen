@@ -7,7 +7,6 @@ import { useDataContext } from '@/hooks/useDataContext';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import { FAQ_ITEMS } from '@/constants/Strings';
 import FaqCard from '@/components/FaqCard';
-import { Text } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
 import { setStatusBarStyle } from 'expo-status-bar';
 import useColorScheme from '@/hooks/useColorScheme';

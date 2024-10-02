@@ -131,6 +131,10 @@ Deze versie wordt gebruikt bij het publishen naar Expo.
 
 > De app versie in de store komt uit het 'version' veld van app.json. Tijdens de GitHub action wordt deze waarde ingevuld. Je hoeft dus niks aan te passen.
 
+## Licenses
+
+Het licentiescherm wordt gemaakt op basis van `assets/licenses.json`. Om deze te updaten moet je het volgende commando gebruiker: `npm-license-crawler -onlyDirectDependencies -json assets/licenses.json`
+
 ## Conventions
 
 ### 1. Gebruik functionele componenten

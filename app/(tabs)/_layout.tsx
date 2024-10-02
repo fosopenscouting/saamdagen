@@ -13,6 +13,8 @@ export default function TabsLayout() {
     <>
       <MaterialBottomTabs
         shifting={false}
+        sceneAnimationEnabled={true}
+        sceneAnimationType='shifting'
         activeColor={Colors[colorScheme].tint}
         inactiveColor={Colors[colorScheme].tabIconDefault}
         barStyle={Colors[colorScheme].tabBarStyle}

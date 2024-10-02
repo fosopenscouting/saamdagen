@@ -2,8 +2,7 @@ import React from 'react';
 
 import LicensesData from '@/assets/licenses.json';
 import { Separator, View } from '@/components/Themed/Themed';
-import { FlatList, Image, TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-paper';
+import { FlatList } from 'react-native';
 import LicensesItem from '@/components/Licenses/Item';
 
 const extractNameFromGHUrl = (url: string) => {

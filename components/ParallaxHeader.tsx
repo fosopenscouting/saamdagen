@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import {
 	StyleSheet,
 	View,
-	Image,
 	Animated,
-	ImageBackground,
 } from 'react-native';
+import { Image, ImageBackground } from "expo-image"
 import StickyParallaxHeader from 'react-native-sticky-parallax-header';
 import SaamdagenAppbar from '@/components/SaamdagenAppbar';
 import { StackHeaderProps } from '@react-navigation/stack';

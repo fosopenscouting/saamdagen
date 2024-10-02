@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  ImageBackground,
-  ImageSourcePropType,
   StyleProp,
   StyleSheet,
   ViewStyle,
-} from 'react-native';
+} from 'react-native'
+import { ImageBackground, ImageSource } from "expo-image";
 import Colors from '../constants/Colors';
 import { View } from './Themed/Themed';
 
@@ -14,7 +13,7 @@ type Props = {
   palette: ThemeIdentifier;
   mode?: 'elevated' | 'outlined';
   containerStyle?: StyleProp<ViewStyle>;
-  backgroundImage?: ImageSourcePropType;
+  backgroundImage?: ImageSource;
   colorOverlay?: boolean;
 };
 

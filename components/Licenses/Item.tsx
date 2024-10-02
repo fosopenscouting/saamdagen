@@ -2,13 +2,13 @@ import React from 'react';
 
 import { HeaderText, View } from '../Themed/Themed';
 import {
-  Image,
   Linking,
   StyleProp,
   StyleSheet,
   TextStyle,
   TouchableOpacity,
 } from 'react-native';
+import { Image } from "expo-image"
 import { Text } from '../Themed/Text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 

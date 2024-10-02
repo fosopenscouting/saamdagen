@@ -38,20 +38,35 @@ const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
     return <View></View>;
   else
     return (
+<<<<<<< HEAD
       <ContentCard
         containerStyle={styles.countdown}
         colorOverlay
         palette='coral'
         backgroundImage={require('../assets/images/countdown-banner.png')}
+=======
+      <View
+        style={styles.countdown}
+        // colorOverlay
+        // palette="fosBlue"
+>>>>>>> 4be9c086ef5a3fb8ba91f4be9c3769bee9553c4f
       >
-        <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
-        <ShowCounter
-          days={days}
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-        />
-      </ContentCard>
+        <ImageBackground
+          source={require('../assets/images/banner.jpg')}
+          resizeMode="cover"
+          imageStyle={styles.image}
+        >
+          <View style={{ padding: 8, backgroundColor: 'transparent' }}>
+            <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
+            <ShowCounter
+              days={days}
+              hours={hours}
+              minutes={minutes}
+              seconds={seconds}
+            />
+          </View>
+        </ImageBackground>
+      </View>
     );
 };
 
@@ -89,6 +104,7 @@ const DateTimeDisplay = (props: DateTimeDisplayProps) => {
 export default CountdownTimer;
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
 	countdown: {
 		// marginHorizontal: 8,
 		marginBottom: 8,
@@ -104,4 +120,22 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		opacity: 0.6,
 	},
+=======
+  countdown: {
+    // marginHorizontal: 8,
+    marginBottom: 8,
+    backgroundColor: 'transparent',
+  },
+  countdownTitle: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  image: {
+    width: '100%',
+    justifyContent: 'center',
+    opacity: 0.6,
+  },
+>>>>>>> 4be9c086ef5a3fb8ba91f4be9c3769bee9553c4f
 });

@@ -17,7 +17,11 @@ export const useThemeColor = (
   }
 };
 
+<<<<<<< HEAD
 export type TextProps = ThemeProps & React.ComponentProps< typeof DefaultText >;
+=======
+export type TextProps = ThemeProps & React.ComponentProps<typeof DefaultText>;
+>>>>>>> 4be9c086ef5a3fb8ba91f4be9c3769bee9553c4f
 
 export type ThemeProps = {
   lightColor?: string;

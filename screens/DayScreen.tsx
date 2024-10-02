@@ -47,6 +47,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 		await refreshContext();
 	};
 
+<<<<<<< HEAD
 	return (
 		<View style={styles.container}>
 			<ScrollView
@@ -86,6 +87,38 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 			</ScrollView>
 		</View>
 	);
+=======
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <View style={{ paddingTop: 8, margin: 10 }}>
+          <OpeningHours openingHours={dayGeneralHours} />
+          <View
+            style={[styles.filterBar, Colors[colorScheme].tabBarStyle]}
+          ></View>
+          {dayEvents ? (
+            <Accordion
+              keyExtractor={(item) => item.order}
+              sections={dayEvents}
+              renderHeader={(content, _index, isActive) => (
+                <ActivityHeader content={content} isActive={isActive} />
+              )}
+              renderContent={ActivityContent}
+              renderFooter={() => <ActivityFooter />}
+              activeSections={activeSections}
+              onChange={setActiveSections}
+              underlayColor={Colors[colorScheme].background}
+            />
+          ) : null}
+        </View>
+      </ScrollView>
+    </View>
+  );
+>>>>>>> 4be9c086ef5a3fb8ba91f4be9c3769bee9553c4f
 };
 
 export default DayScreen;

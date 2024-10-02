@@ -33,7 +33,11 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
           }}
         >
           <Image
-            style={{ marginTop: 26, height: '70%', resizeMode: 'contain' }}
+            style={{
+              marginTop: 26,
+              height: '70%',
+              resizeMode: 'contain',
+            }}
             source={require('../assets/images/logo.png')}
           />
         </View>
@@ -107,11 +111,19 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
 };
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
 	foregroundImage: {
 		width: '100%',
 		height: 430,
 		backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
 	},
+=======
+  foregroundImage: {
+    width: '100%',
+    height: 430,
+    backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+  },
+>>>>>>> 4be9c086ef5a3fb8ba91f4be9c3769bee9553c4f
 });
 
 export default ParallaxHeader;

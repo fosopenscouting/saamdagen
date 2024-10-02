@@ -1,16 +1,18 @@
-import { useNavigation } from '@react-navigation/native';
 import { CameraView } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import QRFooterButton from '../components/Profile/QRFooterButton';
-import QrIndicator from '../components/Profile/QrIndicator';
-import { View } from '../components/Themed/Themed';
-import { getTicketFromApi, storeTicket } from '../services/ticketService';
+import { Alert, StyleSheet } from 'react-native';
+import QRFooterButton from '@/components/Profile/QRFooterButton';
+import QrIndicator from '@/components/Profile/QrIndicator';
+import { View } from '@/components/Themed/Themed';
+import { getTicketFromApi, storeTicket } from '@/services/ticketService';
+import { useRouter } from 'expo-router';
+import NetInfo from '@react-native-community/netinfo';
+import * as Haptics from 'expo-haptics';
 
 const ScanScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [scanned, setScanned] = useState(false);
   const [ticketHash, setTicketHash] = useState<string | null>(null);
   const [isLit, setLit] = useState(false);
@@ -19,7 +21,7 @@ const ScanScreen: React.FC = () => {
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
         await storeTicket(res, ticketHash);
-        navigation.navigate('ProfileScreen');
+        router.navigate('/more/profile');
       });
     }
   }, [ticketHash]);
@@ -29,11 +31,36 @@ const ScanScreen: React.FC = () => {
   }, []);
 
   const onCancel = React.useCallback(() => {
-    navigation.goBack();
+    router.back();
   }, []);
 
-  const handleBarCodeScanned = ({ data }: { data: string }): void => {
+  const handleBarCodeScanned = async ({
+    data,
+  }: {
+    data: string;
+  }): Promise<void> => {
     setScanned(true);
+    const info = await NetInfo.refresh();
+
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
+
+    if (!info.isConnected) {
+      Alert.alert(
+        'Geen internet',
+        'Je kan je ticket enkel toevoegen als je verbonden bent met internet',
+        [
+          {
+            text: 'Opnieuw proberen',
+            onPress: () => {
+              setScanned(false);
+            },
+            style: 'default',
+          },
+        ],
+      );
+      return;
+    }
+
     setTicketHash(data);
   };
 

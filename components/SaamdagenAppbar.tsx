@@ -1,11 +1,11 @@
-import { StackHeaderProps } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import { Appbar } from 'react-native-paper';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 
-const SaamdagenAppbar: React.FC<StackHeaderProps> = (
-  props: StackHeaderProps,
+const SaamdagenAppbar: React.FC<NativeStackHeaderProps> = (
+  props: NativeStackHeaderProps,
 ) => {
   const [title, setTitle] = useState('Saamdagen');
 
@@ -18,9 +18,7 @@ const SaamdagenAppbar: React.FC<StackHeaderProps> = (
   }, [props.options]);
 
   return (
-    <Appbar.Header
-      style={{ backgroundColor: Colors[colorScheme].tabBackground }}
-    >
+    <Appbar.Header style={Colors[colorScheme].tabBarStyle}>
       {props.back ? (
         <Appbar.BackAction onPress={props.navigation.goBack} />
       ) : null}

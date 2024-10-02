@@ -1,43 +1,42 @@
 {
-  "expo": {
-    "name": "Saamdagen",
-    "slug": "saamdagen",
-    "version": "#{APP_VERSION}#",
-    "owner": "fos-open-scouting",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "saamdagen",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#00549F"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "buildNumber": "7",
-      "supportsTablet": true,
-      "bundleIdentifier": "be.fos.saamdagen",
-      "infoPlist": {
-        "NSCameraUsageDescription": "Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.",
-        "UIBackgroundModes": ["fetch"]
-      }
-    },
-    "android": {
-      "versionCode": 31,
-      "package": "be.fos.saamdagen",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundImage": "./assets/images/adaptive-icon-bg.png"
-      },
-      "permissions": ["CAMERA"]
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    },
-    "description": ""
-  }
+	"expo": {
+		"name": "Saamdagen",
+		"slug": "saamdagen",
+		"version": "#{APP_VERSION}#",
+		"owner": "fos-open-scouting",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "saamdagen",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/images/splash_new.png",
+			"resizeMode": "cover",
+			"backgroundColor": "#00549F"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"buildNumber": "7",
+			"supportsTablet": true,
+			"bundleIdentifier": "be.fos.saamdagen",
+			"infoPlist": {
+				"NSCameraUsageDescription": "Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.",
+				"UIBackgroundModes": ["fetch"]
+			}
+		},
+		"android": {
+			"package": "be.fos.saamdagen",
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundImage": "./assets/images/adaptive-icon-bg.png"
+			},
+			"permissions": ["CAMERA"]
+		},
+		"web": {
+			"favicon": "./assets/images/favicon.png"
+		},
+		"description": ""
+	}
 }

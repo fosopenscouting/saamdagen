@@ -1,52 +1,79 @@
 import React from 'react';
 import { useState } from 'react';
-import { FAB, Portal, Provider } from 'react-native-paper';
+import { FAB, Portal } from 'react-native-paper';
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import { MapLayer } from '../../models/MapLayer';
 
 interface MapFabProps {
   handleLayerSelect: (layer: MapLayer) => void;
+  currentLayer: MapLayer;
 }
 
 const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
   const colorScheme = useColorScheme();
   const [fabOpen, setFabOpen] = useState(false);
 
+  const getColors = (layer: MapLayer) => {
+    return {
+      icon: Colors.FOSCOLORS.CORAL,
+      bg:
+        layer == props.currentLayer
+          ? Colors.FOSCOLORS.FOS_GREEN
+          : Colors.FOSCOLORS.SEA_GREEN,
+    };
+  };
+
   return (
-    <Provider>
-      <Portal>
-        <FAB.Group
-          visible
-          fabStyle={{ backgroundColor: Colors[colorScheme].tabBackground }}
-          open={fabOpen}
-          icon="layers"
-          actions={[
-             {
-              icon: 'map-marker-outline',
-              label: 'Spelnamiddag',
-              onPress: () => props.handleLayerSelect('big_game'),
+    <Portal>
+      <FAB.Group
+        open={fabOpen}
+        visible
+        fabStyle={Colors[colorScheme].tabBarStyle}
+        color="white"
+        // backdropColor='rgba(0, 0, 0, 0.95)'
+        icon="layers"
+        actions={[
+          {
+            icon: 'forest',
+            label: 'Spelnamiddag',
+            onPress: () => props.handleLayerSelect('big_game'),
+            color: getColors('big_game').icon,
+            style: {
+              backgroundColor: getColors('big_game').bg,
             },
-             {
-              icon: 'map-marker-outline',
-              label: 'Vormingen',
-              onPress: () => props.handleLayerSelect('activities'),
+          },
+          {
+            icon: 'school-outline',
+            label: 'Vormingen',
+            onPress: () => props.handleLayerSelect('activities'),
+            color: getColors('activities').icon,
+            style: {
+              backgroundColor: getColors('activities').bg,
             },
-            {
-              icon: 'map-marker-outline',
-              label: 'Vrijdagavond',
-              onPress: () => props.handleLayerSelect('friday'),
+          },
+          {
+            icon: 'weather-night',
+            label: 'Vrijdagavond',
+            onPress: () => props.handleLayerSelect('friday'),
+            color: getColors('friday').icon,
+            style: {
+              backgroundColor: getColors('friday').bg,
             },
-            {
-              icon: 'map-marker-outline',
-              label: 'Plattegrond',
-              onPress: () => props.handleLayerSelect('normal'),
+          },
+          {
+            icon: 'map-outline',
+            label: 'Plattegrond',
+            onPress: () => props.handleLayerSelect('normal'),
+            color: getColors('normal').icon,
+            style: {
+              backgroundColor: getColors('normal').bg,
             },
-          ]}
-          onStateChange={() => setFabOpen(!fabOpen)}
-        />
-      </Portal>
-    </Provider>
+          },
+        ]}
+        onStateChange={() => setFabOpen(!fabOpen)}
+      />
+    </Portal>
   );
 };
 

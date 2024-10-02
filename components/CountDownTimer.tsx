@@ -41,7 +41,7 @@ const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
       <ContentCard
         containerStyle={styles.countdown}
         colorOverlay
-        palette="fosBlue"
+        palette="coral"
         backgroundImage={require('../assets/images/countdown-banner.png')}
       >
         <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
@@ -90,7 +90,7 @@ export default CountdownTimer;
 
 const styles = StyleSheet.create({
   countdown: {
-    marginHorizontal: 8,
+    // marginHorizontal: 8,
     marginBottom: 8,
   },
   countdownTitle: {
@@ -98,5 +98,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  image: {
+    width: '100%',
+    justifyContent: 'center',
+    opacity: 0.6,
   },
 });

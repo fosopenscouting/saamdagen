@@ -24,5 +24,6 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
     ],
     'expo-asset',
     'expo-font',
+    'expo-router',
   ],
 });

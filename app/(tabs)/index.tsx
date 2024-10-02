@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  Image,
-  ImageBackground,
-  View,
-} from 'react-native';
-import CountdownTimer from '../components/CountDownTimer';
-import BasicCard from '../components/BasicCard';
-import { HomeScreenSection } from '../models/HomeScreenSection';
-import { HOME_ITEMS } from '../constants/Strings';
-import { useDataContext } from '../hooks/useDataContext';
-import Colors from '../constants/Colors';
-import ContentCard from '../components/ContentCard';
-import { Text } from '../components/Themed/Text';
+import { StyleSheet, ScrollView, View } from 'react-native';
+import { Image, ImageBackground } from 'expo-image';
+import CountdownTimer from '@/components/CountDownTimer';
+import BasicCard from '@/components/BasicCard';
+import { HomeScreenSection } from '@/models/HomeScreenSection';
+import { HOME_ITEMS } from '@/constants/Strings';
+import { useDataContext } from '@/hooks/useDataContext';
+import Colors from '@/constants/Colors';
+import ContentCard from '@/components/ContentCard';
+import { Text } from '@/components/Themed/Text';
 import { RefreshControl } from 'react-native-gesture-handler';
 import * as Updates from 'expo-updates';
-import { Snackbar } from 'react-native-paper';
+import { Banner } from 'react-native-paper';
 import { ExecutionEnvironment } from 'expo-constants';
-import { ContentMetadata } from '../models/ContentMetadata';
+import { ContentMetadata } from '@/models/ContentMetadata';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -61,10 +57,6 @@ const HomeScreen: React.FC = () => {
     setFilteredData(data?.filter((x) => x.key === HOME_ITEMS)[0]);
   }, [data]);
 
-  const handleDismissSnackbar = () => {
-    setUpdateSnackbarVisible(false);
-  };
-
   const handleUpdateApp = async () => {
     try {
       await Updates.reloadAsync();
@@ -83,7 +75,7 @@ const HomeScreen: React.FC = () => {
       >
         <ImageBackground
           imageStyle={{ opacity: 0.6 }}
-          source={require('../assets/images/home-banner-2.png')}
+          source={require('@/assets/images/home-banner-2.png')}
           style={styles.foregroundImage}
         >
           <View
@@ -97,18 +89,22 @@ const HomeScreen: React.FC = () => {
               style={{
                 marginTop: 26,
                 height: '70%',
-                resizeMode: 'contain',
+                width: '100%',
               }}
-              source={require('../assets/images/logo.png')}
+              contentFit="contain"
+              source={require('@/assets/images/logo.png')}
             />
           </View>
         </ImageBackground>
-        <CountdownTimer targetDate={new Date('2024-09-27T20:00:00+02:00')} />
+        <CountdownTimer targetDate={new Date('2025-09-26T20:00:00+02:00')} />
         <ContentCard
           containerStyle={styles.saamregels}
           palette="fosBlue"
-          backgroundImage={require('../assets/images/saamregels.png')}
+          backgroundImage={require('@/assets/images/saamregels.png')}
         >
+          {/* @ts-expect-error
+            Text expects children, none are needed
+          */}
           <Text style={styles.countdownTitle}></Text>
         </ContentCard>
         {filteredData?.content?.map(
@@ -129,17 +125,21 @@ const HomeScreen: React.FC = () => {
           ),
         )}
       </ScrollView>
-      <Snackbar
+      <Banner
         visible={snackbarVisible}
-        onDismiss={handleDismissSnackbar}
-        action={{
-          label: 'Update',
-          onPress: handleUpdateApp,
-        }}
-        duration={Snackbar.DURATION_INDEFINITE}
+        actions={[
+          {
+            label: 'Updaten',
+            onPress: handleUpdateApp,
+          },
+        ]}
+        icon={({ size }) => (
+          <MaterialCommunityIcons name="update" color="#fff" size={size} />
+        )}
       >
-        Klik hier om de app te updaten.
-      </Snackbar>
+        Er is een update beschikbaar! Maak je helemaal klaar voor Saamdagen door
+        de nieuwste versie van de app te downloaden.
+      </Banner>
     </>
   );
 };
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
   foregroundImage: {
     width: '100%',
     height: 430,
-    backgroundColor: Colors.schemeIndependent.fosBlue,
-    marginBottom: 10,
+    backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+    marginBottom: 5,
   },
   saamregels: {
     marginHorizontal: 8,

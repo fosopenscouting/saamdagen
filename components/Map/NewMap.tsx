@@ -1,9 +1,11 @@
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import React, { useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
-import getLayerImage, { MapLayer } from '../../models/MapLayer';
-import { View } from '../Themed/Themed';
+import { StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
+import getLayerImage, { MapLayer } from '@/models/MapLayer';
+import { View } from '@/components/Themed/Themed';
 import MapFab from './MapFab';
+import { Portal } from 'react-native-paper';
 
 const NewMap = () => {
   const [layer, setLayer] = useState<MapLayer>('normal');
@@ -14,28 +16,32 @@ const NewMap = () => {
     }
   };
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          flexShrink: 1,
-          height: '100%',
-          width: '100%',
-          backgroundColor: '#AEDBC4',
-        }}
-      >
-        <ReactNativeZoomableView
-          minZoom={1}
-          maxZoom={5}
-          doubleTapZoomToCenter={false}
+    <Portal.Host>
+      <View style={styles.container}>
+        <View
+          style={{
+            flexShrink: 1,
+            height: '100%',
+            width: '100%',
+            backgroundColor: '#AEDBC4',
+          }}
         >
-          <Image
-            style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
-            source={getLayerImage(layer)}
-          />
-        </ReactNativeZoomableView>
+          <ReactNativeZoomableView
+            minZoom={1}
+            maxZoom={5}
+            doubleTapZoomToCenter={false}
+          >
+            <Image
+              style={{ width: '100%', height: '100%' }}
+              contentFit="contain"
+              allowDownscaling={false}
+              source={getLayerImage(layer)}
+            />
+          </ReactNativeZoomableView>
+        </View>
+        <MapFab handleLayerSelect={handleLayerSelect} currentLayer={layer} />
       </View>
-      <MapFab handleLayerSelect={handleLayerSelect} />
-    </View>
+    </Portal.Host>
   );
 };
 
@@ -48,6 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 0,
     backgroundColor: '#AEDBC4',
+    position: 'relative',
   },
   box: {
     width: 60,

@@ -1,19 +1,20 @@
 import React from 'react';
 import { View, Separator, HeaderText } from '../Themed/Themed';
 import { Text } from '../Themed/Text';
-import { Button, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import Colors from '../../constants/Colors';
-import { useNavigation } from '@react-navigation/native';
 import requestCameraPermissionsAsync from '../../utils/requestCameraPermissionsAsync';
+import { useRouter } from 'expo-router';
+import { Button } from 'react-native-paper';
 
 const NoProfile: React.FC = () => {
   const colorScheme = useColorScheme();
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleScanPress = async () => {
     if (await requestCameraPermissionsAsync()) {
-      navigation.navigate('ScanScreen');
+      router.navigate('/more/scan');
     } else {
       // TODO: replace with better alert
       alert(
@@ -25,7 +26,7 @@ const NoProfile: React.FC = () => {
   return (
     <View style={styles.container}>
       <Separator />
-      <HeaderText style={styles.title}>
+      <HeaderText style={styles.title} variant="headlineLarge">
         Naar welke workshop of activiteit ga jij?
       </HeaderText>
       <Text style={styles.text}>
@@ -34,10 +35,14 @@ const NoProfile: React.FC = () => {
       </Text>
       <Separator />
       <Button
-        color={Colors[colorScheme].tabBackground}
-        title="Ticket scannen"
+        buttonColor={Colors[colorScheme].tabBarStyle.backgroundColor}
+        textColor="white"
+        mode="contained"
+        icon="qrcode-scan"
         onPress={handleScanPress}
-      />
+      >
+        Ticket scannen
+      </Button>
     </View>
   );
 };
@@ -50,13 +55,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    paddingHorizontal: '10%',
   },
   text: {
     textAlign: 'center',
   },
   title: {
-    fontSize: 15,
-    fontFamily: 'Quicksand_600SemiBold',
     textAlign: 'center',
+    marginBottom: 5,
   },
 });

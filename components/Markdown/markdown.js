@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -172,19 +171,30 @@ class Markdown extends Component {
 
     let text = null;
 
+    if (this.props.debug) {
+      console.log(textType);
+      console.log(node);
+      console.log(extras);
+      console.log(style);
+    }
+
     if (node && node.props && node.props.children) {
       if (Array.isArray(node.props.children)) {
-        // If we have a custom renderer, we convert the child nodes to elements and pass to the consumer
-        let children = this.renderNodes(node.props.children, key, extras);
-        if (this.props.renderText) {
-          // Text is an array of JSX.Elements
-          return this.props.renderText(textType, children, key);
+        if (node.props.children.length == 1) {
+          text = node.props.children;
         } else {
-          return (
-            <Text key={key} style={style}>
-              {children}
-            </Text>
-          );
+          // If we have a custom renderer, we convert the child nodes to elements and pass to the consumer
+          let children = this.renderNodes(node.props.children, key, extras);
+          if (this.props.renderText) {
+            // Text is an array of JSX.Elements
+            return this.props.renderText(textType, children, key);
+          } else {
+            return (
+              <Text key={key} style={style}>
+                {children}
+              </Text>
+            );
+          }
         }
       } else {
         // Text is a string value
@@ -195,7 +205,9 @@ class Markdown extends Component {
       text = node;
     }
 
+    if (this.props.debug) console.log('Rendering...');
     if (this.props.renderText) {
+      if (this.props.debug) console.log('Custom render');
       return this.props.renderText(textType, text, key);
     }
     return (
@@ -353,6 +365,7 @@ class Markdown extends Component {
       case 'img':
         return this.renderImage(node, key);
       case 'strong':
+        if (this.props.debug) console.log('Node type: strong');
         return this.renderText(
           node,
           key,
@@ -390,6 +403,8 @@ class Markdown extends Component {
       case 'blockquote':
         return this.renderBlockQuote(node, key);
       case undefined:
+        if (this.props.debug) console.log(node);
+        if (this.props.debug) console.log(extras);
         return this.renderText(node, key, extras);
       default:
         if (this.props.debug)
@@ -401,6 +416,7 @@ class Markdown extends Component {
   renderNodes(nodes, key, extras) {
     return nodes.map((node, index) => {
       const newKey = key ? key + '_' + index : index + '';
+      if (this.props.debug) console.log('== RENDERING NEW NODE ==');
       return this.renderNode(node, newKey, index, extras);
     });
   }

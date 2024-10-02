@@ -1,0 +1,320 @@
+{
+    "@expo-google-fonts/quicksand@0.2.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/google-fonts",
+        "licenseUrl": "https://github.com/expo/google-fonts",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@expo/vector-icons@14.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/vector-icons",
+        "licenseUrl": "https://github.com/expo/vector-icons/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@openspacelabs/react-native-zoomable-view@2.1.6": {
+        "licenses": "MIT",
+        "repository": "https://github.com/openspacelabs/react-native-zoomable-view",
+        "licenseUrl": "https://github.com/openspacelabs/react-native-zoomable-view/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-native-async-storage/async-storage@1.23.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-async-storage/async-storage",
+        "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-native-community/netinfo@11.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-netinfo/react-native-netinfo",
+        "licenseUrl": "https://github.com/react-native-netinfo/react-native-netinfo/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-native-masked-view/masked-view@0.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-masked-view/masked-view",
+        "licenseUrl": "https://github.com/react-native-masked-view/masked-view/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-navigation/bottom-tabs@6.6.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-navigation/material-bottom-tabs@6.2.29": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-navigation/material-top-tabs@6.6.14": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-navigation/native@6.1.18": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@react-navigation/stack@6.4.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "@sentry/react-native@5.22.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/getsentry/sentry-react-native",
+        "licenseUrl": "https://github.com/getsentry/sentry-react-native/raw/master/LICENSE.md",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "deepmerge@4.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/TehShrike/deepmerge",
+        "licenseUrl": "https://github.com/TehShrike/deepmerge/raw/master/license.txt",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "dotenv@16.4.5": {
+        "licenses": "BSD-2-Clause",
+        "repository": "https://github.com/motdotla/dotenv",
+        "licenseUrl": "https://github.com/motdotla/dotenv/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-application@5.9.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-asset@10.0.10": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-background-fetch@12.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-barcode-scanner@13.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-blur@13.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-brightness@12.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-camera@15.0.15": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-constants@16.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-device@6.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-font@12.0.9": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-haptics@13.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-insights@0.7.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-linking@6.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-notifications@0.28.16": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-router@3.5.23": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-splash-screen@0.27.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-status-bar@1.12.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-updates@0.25.24": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo-web-browser@13.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "expo@51.0.31": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "front-matter@4.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jxson/front-matter",
+        "licenseUrl": "https://github.com/jxson/front-matter/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-dom@18.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-animatable@1.4.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/oblador/react-native-animatable",
+        "licenseUrl": "https://github.com/oblador/react-native-animatable/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-collapsible@1.6.2": {
+        "licenses": "MIT",
+        "repository": "https://oblador@github.com/oblador/react-native-collapsible",
+        "licenseUrl": "https://oblador@github.com/oblador/react-native-collapsible/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-gesture-handler@2.16.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-gesture-handler",
+        "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-pager-view@6.3.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/callstack/react-native-pager-view",
+        "licenseUrl": "https://github.com/callstack/react-native-pager-view/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-paper@5.12.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/callstack/react-native-paper",
+        "licenseUrl": "https://github.com/callstack/react-native-paper/raw/master/LICENSE.md",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-qrcode-svg@6.3.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/awesomejerry/react-native-qrcode-svg",
+        "licenseUrl": "https://github.com/awesomejerry/react-native-qrcode-svg/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-reanimated@3.10.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-reanimated",
+        "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-root-toast@3.6.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/magicismight/react-native-root-toast",
+        "licenseUrl": "https://github.com/magicismight/react-native-root-toast/raw/master/LICENSE.txt",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-safe-area-context@4.10.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
+        "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-screens@3.31.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-screens",
+        "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-sticky-parallax-header@1.1.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/netguru/sticky-parallax-header",
+        "licenseUrl": "https://github.com/netguru/sticky-parallax-header/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-svg@15.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-community/react-native-svg",
+        "licenseUrl": "https://github.com/react-native-community/react-native-svg/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-tab-view@3.5.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native-web@0.19.12": {
+        "licenses": "MIT",
+        "repository": "https://github.com/necolas/react-native-web",
+        "licenseUrl": "https://github.com/necolas/react-native-web/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react-native@0.74.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react-native",
+        "licenseUrl": "https://github.com/facebook/react-native/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "react@18.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    },
+    "simple-markdown@0.7.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/Khan/simple-markdown",
+        "licenseUrl": "https://github.com/Khan/simple-markdown/raw/master/LICENSE",
+        "parents": "fos-saamdagen-devclone"
+    }
+}

@@ -53,10 +53,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
         <View style={{ paddingTop: 8, margin: 10 }}>
           <OpeningHours openingHours={dayGeneralHours} />
           <View
-            style={[
-              styles.filterBar,
-              { backgroundColor: Colors[colorScheme].tabBackground },
-            ]}
+            style={[styles.filterBar, Colors[colorScheme].tabBarStyle]}
           ></View>
           {dayEvents ? (
             <Accordion

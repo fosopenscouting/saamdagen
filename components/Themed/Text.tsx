@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as DefaultText } from 'react-native';
+import { Text as DefaultText } from 'react-native-paper';
 import { useThemeColor, TextProps } from './Helpers';
 
 export const Text: React.FC<TextProps> = (props: TextProps) => {

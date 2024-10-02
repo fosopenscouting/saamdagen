@@ -1,25 +1,38 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+
 import {
   useFonts,
   Quicksand_300Light,
   Quicksand_400Regular,
-  Quicksand_600SemiBold,
   Quicksand_500Medium,
+  Quicksand_600SemiBold,
 } from '@expo-google-fonts/quicksand';
-import { RootSiblingParent } from 'react-native-root-siblings';
 import * as Sentry from '@sentry/react-native';
-import { DataContextProvider } from './hooks/useDataContext';
 import { useState, useEffect, useRef } from 'react';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
+
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Stack } from 'expo-router';
+import { RootSiblingParent } from 'react-native-root-siblings';
+import { DataContextProvider } from '@/hooks/useDataContext';
+import { StatusBar } from 'expo-status-bar';
+import {
+  DefaultTheme as NavigationDefaultTheme,
+  DarkTheme as NavigationDarkTheme,
+  ThemeProvider,
+} from '@react-navigation/native';
+import {
+  MD3DarkTheme as PaperDarkTheme,
+  MD3LightTheme as PaperDefaultTheme,
+  Provider as PaperProvider,
+  adaptNavigationTheme,
+} from 'react-native-paper';
+import merge from 'deepmerge';
+import useColorScheme from '@/hooks/useColorScheme';
+import useCachedResources from '@/hooks/useCachedResources';
 
 Sentry.init({
   dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
@@ -85,13 +98,67 @@ async function registerForPushNotificationsAsync() {
   }
 }
 
-function App(): React.ReactElement | null {
+const { LightTheme, DarkTheme } = adaptNavigationTheme({
+  reactNavigationLight: NavigationDefaultTheme,
+  reactNavigationDark: NavigationDarkTheme,
+});
+
+const CombinedDefaultTheme = merge(PaperDefaultTheme, LightTheme);
+const CombinedDarkTheme = merge(PaperDarkTheme, DarkTheme);
+
+const CustomDarkTheme = {
+  ...CombinedDarkTheme,
+  fonts: {
+    ...CombinedDarkTheme.fonts,
+    regular: {
+      fontFamily: 'Quicksand_400Regular',
+      fontWeight: '400',
+    },
+    medium: {
+      fontFamily: 'Quicksand_500Medium',
+      fontWeight: '500',
+    },
+    light: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+    thin: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+  },
+};
+
+const CustomDefaultTheme = {
+  ...CombinedDefaultTheme,
+  fonts: {
+    ...CombinedDefaultTheme.fonts,
+    regular: {
+      fontFamily: 'Quicksand_400Regular',
+      fontWeight: '400',
+    },
+    medium: {
+      fontFamily: 'Quicksand_500Medium',
+      fontWeight: '500',
+    },
+    light: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+    thin: {
+      fontFamily: 'Quicksand_300Light',
+      fontWeight: '300',
+    },
+  },
+};
+
+const RootLayout = () => {
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
     Quicksand_400Regular,
-    Quicksand_600SemiBold,
     Quicksand_500Medium,
+    Quicksand_600SemiBold,
   });
   const colorScheme = useColorScheme();
 
@@ -133,15 +200,37 @@ function App(): React.ReactElement | null {
   } else {
     return (
       <RootSiblingParent>
-        <SafeAreaProvider>
-          <DataContextProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar style="light" />
-          </DataContextProvider>
-        </SafeAreaProvider>
+        <DataContextProvider>
+          <GestureHandlerRootView>
+            <PaperProvider
+              theme={
+                colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+              }
+            >
+              <ThemeProvider
+                value={
+                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+                }
+              >
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                >
+                  <Stack.Screen name="(tabs)" />
+                </Stack>
+              </ThemeProvider>
+            </PaperProvider>
+          </GestureHandlerRootView>
+          <StatusBar
+            backgroundColor="transparent"
+            animated={true}
+            style="light"
+          />
+        </DataContextProvider>
       </RootSiblingParent>
     );
   }
-}
+};
 
-export default Sentry.wrap(App);
+export default Sentry.wrap(RootLayout);

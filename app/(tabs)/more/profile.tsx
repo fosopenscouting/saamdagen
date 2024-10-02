@@ -1,36 +1,36 @@
 import React from 'react';
-import { Separator, View } from '../components/Themed/Themed';
+import { Separator, View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
-  Button,
   ScrollView,
   Alert,
   Modal,
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import NoProfile from '../components/Profile/NoProfile';
+import NoProfile from '@/components/Profile/NoProfile';
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
-import { Ticket } from '../models/Ticket';
+import { Ticket } from '@/models/Ticket';
 import SvgQRCode from 'react-native-qrcode-svg';
-import Colors from '../constants/Colors';
-import Profile from '../components/Profile/Profile';
+import Colors from '@/constants/Colors';
+import Profile from '@/components/Profile/Profile';
 import * as Brightness from 'expo-brightness';
 import {
   getTicketFromApi,
   getTicketFromStorage,
   storeTicket,
-} from '../services/ticketService';
-import Loading from '../components/Loading';
+} from '@/services/ticketService';
+import Loading from '@/components/Loading';
+import { Button } from 'react-native-paper';
+import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
   const [initialBrightness, setInitialBrightness] = useState<number>(0);
-  const navigation = useNavigation();
   const [ticketLoading, setTicketLoading] = useState<boolean>(false);
+  const { hash } = useLocalSearchParams<{ hash: string }>();
 
   useEffect(() => {
     (async () => {
@@ -40,8 +40,6 @@ const ProfileScreen: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const state = navigation.getState();
-    const hash = state.routes[0]?.params?.hash;
     if (hash) {
       setTicketLoading(true);
       getTicketFromApi(hash).then(async (res) => {
@@ -52,15 +50,11 @@ const ProfileScreen: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      getTicketFromStorage().then((res) => {
-        setTicketData(res);
-      });
+  useFocusEffect(() => {
+    getTicketFromStorage().then((res) => {
+      setTicketData(res);
     });
-
-    return unsubscribe;
-  }, []);
+  });
 
   useEffect(() => {
     (async () => {
@@ -133,26 +127,33 @@ const ProfileScreen: React.FC = () => {
                 </TouchableOpacity>
               </Modal>
 
-              <Pressable onPress={handleQrPress}>
-                <View style={styles.qrContainer}>
-                  <SvgQRCode size={130} value={ticketData.hash} />
-                </View>
-              </Pressable>
-
-              <Separator />
               <Profile
                 firstName={ticketData.firstName}
                 lastName={ticketData.lastName}
                 beforeNoon={ticketData.workshopBeforeNoon}
                 participantType={ticketData.ticketType}
-              />
-              <Separator />
+              >
+                <Pressable onPress={handleQrPress}>
+                  <View style={styles.qrContainer}>
+                    <SvgQRCode size={130} value={ticketData.hash} />
+                  </View>
+                </Pressable>
+              </Profile>
+
+              <Separator marginVertical={0} />
 
               <Button
-                color="#EB5961"
+                mode="contained"
+                buttonColor={Colors.FOSCOLORS.WARMRED}
+                textColor="white"
+                icon="delete"
+                style={{
+                  margin: 16,
+                }}
                 onPress={showConfirmDialog}
-                title="Verwijder"
-              />
+              >
+                Ticket verwijderen
+              </Button>
             </View>
           ) : (
             <View style={styles.profileContainer}>
@@ -176,14 +177,11 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     flex: 1,
-    marginTop: 32,
-    marginBottom: 32,
-    alignItems: 'center',
-    width: '80%',
+    width: '100%',
   },
   qrContainer: {
     backgroundColor: Colors.light.white,
-    padding: 48,
+    padding: 15,
     alignItems: 'center',
     borderRadius: 8,
   },

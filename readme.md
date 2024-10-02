@@ -105,9 +105,9 @@ Gebruikers kunnen hun ticket in de app zetten d.m.v. een link. We hanteren hier 
 
 URL voor deep-linking: https://ticketing.fos.be/external/app/{ticketHash}
 
-Deze link verwijst door naar saamdagen:///Ticket?hash=${ticketHash}. Op mobiele devices wordt zo de app geopend.
+Deze link verwijst door naar saamdagen://more/profile?hash=${ticketHash}. Op mobiele devices wordt zo de app geopend.
 
-Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/Ticket?hash=${myParam}).
+Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/more/profile?hash=${myParam}).
 
 ## OTA updates
 
@@ -130,6 +130,10 @@ GitVersion wordt gebruikt in Github Actions om automatisch een Semver versie te 
 Deze versie wordt gebruikt bij het publishen naar Expo.
 
 > De app versie in de store komt uit het 'version' veld van app.json. Tijdens de GitHub action wordt deze waarde ingevuld. Je hoeft dus niks aan te passen.
+
+## Licenses
+
+Het licentiescherm wordt gemaakt op basis van `assets/licenses.json`. Om deze te updaten moet je het volgende commando gebruiker: `npm-license-crawler -onlyDirectDependencies -json assets/licenses.json`
 
 ## Conventions
 

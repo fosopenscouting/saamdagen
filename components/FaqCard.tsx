@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { List } from 'react-native-paper';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import { Markdown, View } from './Themed/Themed';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
+import { Markdown, View } from '@/components/Themed/Themed';
 
 type Props = {
   title: string;
@@ -27,12 +27,12 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         title={props.title}
         theme={{
           colors: {
-            primary: Colors.schemeIndependent.fosGreen,
+            primary: Colors.FOSCOLORS.FOS_GREEN,
             background: Colors[colorScheme].background,
           },
         }}
       >
-        <View style={{ marginLeft: -40, marginRight: 8 }}>
+        <View style={{ marginLeft: -20, marginRight: 10, paddingBottom: 10 }}>
           <Markdown>{props.text}</Markdown>
         </View>
       </List.Accordion>

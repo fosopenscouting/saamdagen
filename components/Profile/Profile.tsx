@@ -42,7 +42,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
             Klik op de QR-code om ze te vergroten
           </Text>
         </View>
-          {props.children}
+        {props.children}
       </View>
 
       {props.participantType === 'Deelnemer' ? (

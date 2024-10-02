@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
-import Animated, {	
+import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
@@ -14,6 +14,7 @@ const AnimatedSvg = React.forwardRef(
   (props: SvgProps, ref: React.LegacyRef<Svg>) => {
     return (
       <Svg
+        ref={ref}
         width={278}
         height={278}
         viewBox="0 0 278 278"

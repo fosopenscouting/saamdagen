@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { HeaderText, View } from '../Themed/Themed';
 import {
   Linking,
@@ -8,7 +7,7 @@ import {
   TextStyle,
   TouchableOpacity,
 } from 'react-native';
-import { Image } from "expo-image"
+import { Image } from 'expo-image';
 import { Text } from '../Themed/Text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -40,7 +39,7 @@ export default function LicensesItem({
   licenses,
   repository,
   licenseUrl,
-  parents,
+  // parents, Currently not in use
 }: {
   image: string;
   userUrl: string;
@@ -52,7 +51,7 @@ export default function LicensesItem({
   licenseUrl: string;
   parents: string;
 }) {
-  let title = name;
+  const title = name;
   let by;
   if (username) {
     if (title.toLowerCase() != username.toLowerCase()) {

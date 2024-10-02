@@ -67,6 +67,7 @@ export default [
       'jest/prefer-to-have-length': 'warn',
       'jest/valid-expect': 'error',
       'react/display-name': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
 ];

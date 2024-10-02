@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from '@/components/Themed/Themed';
 import { StyleSheet } from 'react-native';
-import { Image } from "expo-image"
+import { Image } from 'expo-image';
 import Constants from 'expo-constants';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
@@ -30,7 +30,7 @@ const SettingsScreen: React.FC = () => {
           is op GitHub?
         </Text>
         <Text style={styles.text}>
-          Je kan 'm hier terugvinden:{' '}
+          Je kan &apos;m hier terugvinden:{' '}
           <Link
             style={styles.link}
             href="https://github.com/fosopenscouting/saamdagen"

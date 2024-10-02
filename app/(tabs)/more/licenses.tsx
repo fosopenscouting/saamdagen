@@ -29,12 +29,10 @@ const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-let licenses = Object.keys(LicensesData).map((key) => {
-  let { licenses, ...license } = LicensesData[key];
-  let [name, version] = key.split('@');
+const licenses = Object.keys(LicensesData).map((key) => {
+  const { licenses, ...license } = LicensesData[key];
+  const [name, version] = key.split('@');
 
-  const reg =
-    /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_]{1,15})(\/([-a-z]{1,20}))?/i;
   let username =
     extractNameFromGHUrl(license.repository) ||
     extractNameFromGHUrl(license.licenseUrl);
@@ -62,20 +60,20 @@ let licenses = Object.keys(LicensesData).map((key) => {
 sortByDataKey(licenses, 'username');
 
 export default function Licenses() {
-    const renderItem = React.useCallback(
-        ({ item }) => <LicensesItem {...item} />,
-        []
-    )
+  const renderItem = React.useCallback(
+    ({ item }) => <LicensesItem {...item} />,
+    [],
+  );
 
   return (
     <View style={{ height: '100%' }}>
-        <FlatList 
-            data={licenses.filter(l => l.name)}
-            keyExtractor={({ key }) => key}
-            renderItem={renderItem}
-            contentContainerStyle={{ paddingHorizontal: 10 }}
-            ItemSeparatorComponent={() => <Separator marginVertical={1} />}
-        />
+      <FlatList
+        data={licenses.filter((l) => l.name)}
+        keyExtractor={({ key }) => key}
+        renderItem={renderItem}
+        contentContainerStyle={{ paddingHorizontal: 10 }}
+        ItemSeparatorComponent={() => <Separator marginVertical={1} />}
+      />
     </View>
   );
 }

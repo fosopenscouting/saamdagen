@@ -26,7 +26,7 @@ const NoProfile: React.FC = () => {
   return (
     <View style={styles.container}>
       <Separator />
-      <HeaderText style={styles.title} variant='headlineLarge'>
+      <HeaderText style={styles.title} variant="headlineLarge">
         Naar welke workshop of activiteit ga jij?
       </HeaderText>
       <Text style={styles.text}>
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    marginBottom: 5
+    marginBottom: 5,
   },
 });

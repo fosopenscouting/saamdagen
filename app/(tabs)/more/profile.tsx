@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderText, Separator, View } from '@/components/Themed/Themed';
+import { Separator, View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
   ScrollView,

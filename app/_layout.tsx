@@ -5,7 +5,7 @@ import {
   Quicksand_300Light,
   Quicksand_400Regular,
   Quicksand_500Medium,
-  Quicksand_600SemiBold
+  Quicksand_600SemiBold,
 } from '@expo-google-fonts/quicksand';
 import * as Sentry from '@sentry/react-native';
 import { useState, useEffect, useRef } from 'react';

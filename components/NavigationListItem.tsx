@@ -6,39 +6,39 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { useRouter } from 'expo-router';
 
 type Props = {
-	title: string;
-	destination: string;
-	icon: string;
+  title: string;
+  destination: string;
+  icon: string;
 };
 
 const NavigationListItem: React.FC<Props> = (props: Props) => {
-	const colorScheme = useColorScheme();
-	const router = useRouter();
+  const colorScheme = useColorScheme();
+  const router = useRouter();
 
-	const navigate = () => {
-		router.push(props.destination);
-	};
+  const navigate = () => {
+    router.push(props.destination);
+  };
 
-	return (
-		<List.Item
-			onPress={navigate}
-			title={props.title}
-			titleStyle={[styles.text, { color: Colors[colorScheme].text }]}
-			contentStyle={styles.item}
-			left={() => (
-				<List.Icon color={Colors[colorScheme].text} icon={props.icon} />
-			)}
-		/>
-	);
+  return (
+    <List.Item
+      onPress={navigate}
+      title={props.title}
+      titleStyle={[styles.text, { color: Colors[colorScheme].text }]}
+      contentStyle={styles.item}
+      left={() => (
+        <List.Icon color={Colors[colorScheme].text} icon={props.icon} />
+      )}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
-	item: {
-		padding: 10,
-	},
-	text: {
-		textTransform: 'uppercase',
-	},
+  item: {
+    padding: 10,
+  },
+  text: {
+    textTransform: 'uppercase',
+  },
 });
 
 export default NavigationListItem;

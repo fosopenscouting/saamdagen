@@ -1,12 +1,11 @@
-import React from "react"
+import React from 'react';
 
-import { useLocalSearchParams } from "expo-router"
-import DayScreen from "@/screens/DayScreen"
+import { useLocalSearchParams } from 'expo-router';
+import DayScreen from '@/screens/DayScreen';
 
 export default function ScheduleDayScreen() {
-    const { day } : {day: 'Vrijdag' | 'Zaterdag' | 'Zondag'} = useLocalSearchParams()
+  const { day }: { day: 'Vrijdag' | 'Zaterdag' | 'Zondag' } =
+    useLocalSearchParams();
 
-    return (
-       <DayScreen day={day} />
-    )
+  return <DayScreen day={day} />;
 }

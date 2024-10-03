@@ -57,7 +57,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           ></View>
           {dayEvents ? (
             <Accordion
-              keyExtractor={(item) => item.order}
+              // keyExtractor={(item) => item.order}
               sections={dayEvents}
               renderHeader={(content, _index, isActive) => (
                 <ActivityHeader content={content} isActive={isActive} />

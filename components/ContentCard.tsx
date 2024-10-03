@@ -76,7 +76,7 @@ const ContentCard: React.FC<Props> = (props: Props) => {
     >
       {props.backgroundImage ? (
         <ImageBackground
-          resizeMode="cover"
+          contentFit="cover"
           imageStyle={[overlayStyle, styles.borderRadius]}
           style={[styles.image]}
           source={props.backgroundImage}

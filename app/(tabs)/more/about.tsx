@@ -16,6 +16,7 @@ const SettingsScreen: React.FC = () => {
     <View style={styles.container}>
       <Image
         style={styles.FOSlogo}
+        contentFit="contain"
         source={require('@/assets/images/FOS_logo.png')}
       />
       <View style={styles.innerContainer}>
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     height: '40%',
     width: '100%',
-    resizeMode: 'contain',
     alignContent: 'center',
   },
   title: {

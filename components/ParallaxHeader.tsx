@@ -31,8 +31,8 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
             style={{
               marginTop: 26,
               height: '70%',
-              resizeMode: 'contain',
             }}
+            contentFit="contain"
             source={require('../assets/images/logo.png')}
           />
         </View>
@@ -57,8 +57,8 @@ const ParallaxHeader: React.FC<StackHeaderProps> = (
             style={{
               marginTop: 26,
               height: '70%',
-              resizeMode: 'contain',
             }}
+            contentFit="contain"
             source={require('../assets/images/logo.png')}
           />
         </View>

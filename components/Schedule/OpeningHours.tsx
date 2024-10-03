@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const OpeningHours: React.FC<Props> = (props: Props) => {
-  const [hideOverview, setHideOverview] = useState<boolean>(false);
+  const [hideOverview, setHideOverview] = useState<boolean>(true);
 
   const handleHidePress = () => {
     setHideOverview(!hideOverview);

@@ -90,7 +90,7 @@ export default CountdownTimer;
 
 const styles = StyleSheet.create({
   countdown: {
-    // marginHorizontal: 8,
+    marginHorizontal: 8,
     marginBottom: 8,
   },
   countdownTitle: {

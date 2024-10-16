@@ -102,9 +102,7 @@ const HomeScreen: React.FC = () => {
           palette="fosBlue"
           backgroundImage={require('@/assets/images/saamregels.png')}
         >
-          {/* @ts-expect-error
-            Text expects children, none are needed
-          */}
+          {/* @ts-expect-error Text expects children, none are needed */}
           <Text style={styles.countdownTitle}></Text>
         </ContentCard>
         {filteredData?.content?.map(

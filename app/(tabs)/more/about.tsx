@@ -1,16 +1,33 @@
-import React from 'react';
-import { View } from '@/components/Themed/Themed';
-import { StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { HeaderText, View } from '@/components/Themed/Themed';
+import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import Constants from 'expo-constants';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { Text } from 'react-native-paper';
 import { Link } from 'expo-router';
+import { Text } from '@/components/Themed/Text';
 
 const SettingsScreen: React.FC = () => {
   const colorScheme = useColorScheme();
   const versionColor = Colors[colorScheme].muted;
+
+  const [pressesVersion, setPressesVersion] = useState<number>(0);
+  const onPressVersion = () => {
+    setPressesVersion((prev) => prev + 1);
+    if (pressesVersion == 5) {
+      setPressesVersion(0);
+      Alert.alert(
+        'Hey jij!',
+        "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        [
+          {
+            text: 'Sluiten',
+          },
+        ],
+      );
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -20,9 +37,9 @@ const SettingsScreen: React.FC = () => {
         source={require('@/assets/images/FOS_logo.png')}
       />
       <View style={styles.innerContainer}>
-        <Text variant="headlineLarge" style={styles.title}>
-          Dé Saamdagen-App
-        </Text>
+        <HeaderText variant="headlineLarge" style={styles.title}>
+          Dé Saamdagen app
+        </HeaderText>
         <Text style={styles.text}>
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
@@ -41,9 +58,11 @@ const SettingsScreen: React.FC = () => {
         </Text>
         <Text>&copy; FOS Open Scouting - {new Date().getFullYear()}</Text>
       </View>
-      <Text style={[styles.version, { color: versionColor }]}>
-        v{Constants.expoConfig?.version}
-      </Text>
+      <TouchableOpacity onPress={onPressVersion}>
+        <Text style={[styles.version, { color: versionColor }]}>
+          v{Constants.expoConfig?.version}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

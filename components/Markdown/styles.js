@@ -56,6 +56,7 @@ const defaultStyles = {
   },
   strong: {
     fontWeight: 'bold',
+    color: 'white'
   },
   em: {
     fontStyle: 'italic',

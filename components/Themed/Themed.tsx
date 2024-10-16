@@ -71,6 +71,7 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
             style={{
               fontFamily: 'Quicksand_600SemiBold',
               fontWeight: 'bold',
+              ...props.markdownStyles?.text ?? null
             }}
           >
             {children}

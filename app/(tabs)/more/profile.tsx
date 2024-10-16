@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Separator, View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
@@ -51,9 +51,11 @@ const ProfileScreen: React.FC = () => {
   }, []);
 
   useFocusEffect(() => {
+    setTicketLoading(true);
     getTicketFromStorage().then((res) => {
       setTicketData(res);
     });
+    setTicketLoading(false);
   });
 
   useEffect(() => {

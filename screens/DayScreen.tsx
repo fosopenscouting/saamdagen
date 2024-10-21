@@ -3,7 +3,7 @@ import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import { ScheduleData } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { Separator, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import Accordion from 'react-native-collapsible/Accordion';
 import { PROGRAM_ITEMS } from '@/constants/Strings';
 import { OpeningHours } from '@/components/Schedule/OpeningHours';
@@ -11,7 +11,6 @@ import { ActivityHeader } from '@/components/Schedule/ActivityHeader';
 import { ActivityFooter } from '@/components/Schedule/ActivityFooter';
 import { ActivityContent } from '@/components/Schedule/ActivityContent';
 import { useDataContext } from '@/hooks/useDataContext';
-import { Text } from 'react-native-paper';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';

@@ -1,9 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Separator, View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
   ScrollView,
-  Alert,
   Modal,
   Pressable,
   TouchableOpacity,
@@ -24,6 +23,7 @@ import {
 import Loading from '@/components/Loading';
 import { Button } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { ALERT_TYPE, Dialog, Toast } from 'react-native-alert-notification';
 
 const ProfileScreen: React.FC = () => {
   const [ticketData, setTicketData] = useState<Ticket | null>();
@@ -43,9 +43,18 @@ const ProfileScreen: React.FC = () => {
     if (hash) {
       setTicketLoading(true);
       getTicketFromApi(hash).then(async (res) => {
-        const ticket = await storeTicket(res, hash);
-        setTicketData(ticket);
-        setTicketLoading(false);
+        try {
+          const ticket = await storeTicket(res, hash);
+          setTicketData(ticket);
+          setTicketLoading(false);
+        } catch (error) {
+          Toast.show({
+            type: ALERT_TYPE.DANGER,
+            title: 'Er is een fout opgetreden',
+            textBody: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          })
+          setTicketLoading(false);
+        }
       });
     }
   }, []);
@@ -76,26 +85,21 @@ const ProfileScreen: React.FC = () => {
   };
 
   const showConfirmDialog = () => {
-    return Alert.alert(
-      'Ben je zeker',
-      'Ben je zeker dat je je ticket wil verwijderen?',
-      [
-        {
-          text: 'Ja',
-          onPress: () => {
-            deleteTicket();
-          },
-        },
-        {
-          text: 'Nee',
-        },
-      ],
-    );
+    return Dialog.show({
+      type: ALERT_TYPE.DANGER,
+      title: 'Ben je zeker?',
+      textBody: 'Ben je zeker dat je je ticket wilt verwijderen?\nKlik buiten deze melding als je je ticket wilt behouden.',
+      button: 'Verwijderen',
+      onPressButton: () => {
+        deleteTicket()
+      }
+    })
   };
 
   const deleteTicket = async () => {
     await AsyncStorage.removeItem('sd_ticket');
     setTicketData(null);
+    Dialog.hide();
   };
 
   const handleQrPress = () => {
@@ -188,10 +192,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   qrModal: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
   },
   separator: {
     marginVertical: 24,

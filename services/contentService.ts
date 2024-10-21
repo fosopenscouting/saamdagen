@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
 import fm, { FrontMatterResult } from 'front-matter';
-import { getMarkdown } from '../api/api';
+import { getMarkdown } from '@/api/api';
 import {
   FRIDAY_ITEMS,
   HOME_ITEMS,
@@ -9,8 +9,8 @@ import {
   SUNDAY_ITEMS,
   FAQ_ITEMS,
   // MAP_ITEMS,
-} from '../constants/Strings';
-import { createMetadata } from '../models/ContentMetadata';
+} from '@/constants/Strings';
+import { createMetadata } from '@/models/ContentMetadata';
 import { mapFaq, mapHomeItems, mapProgram } from './contentMapping';
 
 const programPrefix = 'Programma';

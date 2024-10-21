@@ -7,7 +7,7 @@ import { Platform, StyleSheet } from 'react-native';
 // @ts-expect-error Error is ignored because the imported component doesn't have Typings available
 import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
 
-import Colors from '../../constants/Colors';
+import Colors from '@/constants/Colors';
 
 const shouldUseHaptics = Platform.OS === 'ios';
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Separator, HeaderText } from '../Themed/Themed';
 import { Text } from '../Themed/Text';
-import { StyleSheet } from 'react-native';
-import useColorScheme from '../../hooks/useColorScheme';
-import Colors from '../../constants/Colors';
-import requestCameraPermissionsAsync from '../../utils/requestCameraPermissionsAsync';
+import { Linking, StyleSheet } from 'react-native';
+import useColorScheme from '@/hooks/useColorScheme';
+import Colors from '@/constants/Colors';
+import requestCameraPermissionsAsync from '@/utils/requestCameraPermissionsAsync';
 import { useRouter } from 'expo-router';
 import { Button } from 'react-native-paper';
+import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
 
 const NoProfile: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -16,10 +17,17 @@ const NoProfile: React.FC = () => {
     if (await requestCameraPermissionsAsync()) {
       router.navigate('/more/scan');
     } else {
-      // TODO: replace with better alert
-      alert(
-        'Om je ticket te kunnen scannen, moet je toegang geven tot je camera. Geef toegang tot je camera via de instellingen van je apparaat',
-      );
+      Dialog.show({
+        title: 'Opgelet',
+        textBody:
+          'Om je ticket te kunnen scannen, moet je toegang geven tot je camera.\n\nGeef toegang tot je camera via de instellingen van je apparaat.',
+        type: ALERT_TYPE.WARNING,
+        button: 'Instellingen',
+        onPressButton: async () => {
+          await Linking.openSettings();
+          Dialog.hide();
+        },
+      });
     }
   };
 

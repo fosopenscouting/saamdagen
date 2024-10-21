@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { HeaderText, View } from '@/components/Themed/Themed';
-import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import Constants from 'expo-constants';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
+import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
 
 const SettingsScreen: React.FC = () => {
   const colorScheme = useColorScheme();
@@ -17,15 +18,13 @@ const SettingsScreen: React.FC = () => {
     setPressesVersion((prev) => prev + 1);
     if (pressesVersion == 5) {
       setPressesVersion(0);
-      Alert.alert(
-        'Hey jij!',
-        "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
-        [
-          {
-            text: 'Sluiten',
-          },
-        ],
-      );
+      Dialog.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'Hey jij!',
+        textBody: "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        button: "Sluiten",
+        closeOnOverlayTap: false
+      });
     }
   };
 

@@ -2,7 +2,7 @@ import { CameraView } from 'expo-camera';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Alert, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import QRFooterButton from '@/components/Profile/QRFooterButton';
 import QrIndicator from '@/components/Profile/QrIndicator';
 import { View } from '@/components/Themed/Themed';
@@ -10,6 +10,9 @@ import { getTicketFromApi, storeTicket } from '@/services/ticketService';
 import { useRouter } from 'expo-router';
 import NetInfo from '@react-native-community/netinfo';
 import * as Haptics from 'expo-haptics';
+import { ALERT_TYPE, Toast } from 'react-native-alert-notification';
+import { ActivityIndicator } from 'react-native-paper';
+import Colors from '@/constants/Colors';
 
 const ScanScreen: React.FC = () => {
   const router = useRouter();
@@ -20,8 +23,22 @@ const ScanScreen: React.FC = () => {
   useEffect(() => {
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
-        await storeTicket(res, ticketHash);
-        router.navigate('/more/profile');
+        try {
+          await storeTicket(res, ticketHash)
+          Toast.show({
+            type: ALERT_TYPE.SUCCESS,
+            title: 'Ticket toegevoegd',
+          })
+          router.navigate('/more/profile');
+        } catch (error) {
+          Toast.show({
+            type: ALERT_TYPE.DANGER,
+            title: 'Er is een fout opgetreden',
+            textBody: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          })
+          setScanned(false)
+          setTicketHash(null)
+        }
       });
     }
   }, [ticketHash]);
@@ -45,18 +62,24 @@ const ScanScreen: React.FC = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
 
     if (!info.isConnected) {
-      Alert.alert(
-        'Geen internet',
-        'Je kan je ticket enkel toevoegen als je verbonden bent met internet',
-        [
-          {
-            text: 'Opnieuw proberen',
-            onPress: () => {
-              setScanned(false);
-            },
-            style: 'default',
-          },
-        ],
+      Toast.show({
+        type: ALERT_TYPE.WARNING,
+        title: 'Geen internet',
+        textBody: 'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
+        // button: 'Opniew proberen',
+        onShow: () => {
+          setScanned(false)
+        }
+      }
+        // [
+        //   {
+        //     text: 'Opnieuw proberen',
+        //     onPress: () => {
+        //       setScanned(false);
+        //     },
+        //     style: 'default',
+        //   },
+        // ],
       );
       return;
     }
@@ -73,6 +96,7 @@ const ScanScreen: React.FC = () => {
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
         enableTorch={isLit}
+        
       />
       <View style={[styles.footer, { bottom: 30 }]}>
         <QRFooterButton
@@ -82,7 +106,9 @@ const ScanScreen: React.FC = () => {
         />
         <QRFooterButton onPress={onCancel} iconName="close" iconSize={48} />
       </View>
-      <QrIndicator />
+      {
+        scanned ? <ActivityIndicator animating={true} size={128} color={Colors.FOSCOLORS.FOS_GREEN} /> : <QrIndicator />
+      }
     </View>
   );
 };

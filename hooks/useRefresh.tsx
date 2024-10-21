@@ -1,8 +1,8 @@
 import NetInfo from '@react-native-community/netinfo';
 import React from 'react';
 import Toast from 'react-native-root-toast';
-import { getContentIndex } from '../api/api';
-import { saveContent } from '../services/contentService';
+import { getContentIndex } from '@/api/api';
+import { saveContent } from '@/services/contentService';
 
 const useRefresh = (): {
   refreshing: boolean;

@@ -10,7 +10,7 @@ import DefaultMarkdown from '../Markdown/markdown';
 import { Anchor as DefaultAnchor } from '../Anchor';
 import { Text } from './Text';
 import { ThemeProps, TextProps, useThemeColor } from './Helpers';
-import Colors from '../../constants/Colors';
+import Colors from '@/constants/Colors';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];

@@ -8,7 +8,8 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "lint": "eslint .",
-    "prettier-format": "yarn prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write"
+    "prettier-format": "yarn prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
+    "generate-licenses": "npx --yes npm-license-crawler -onlyDirectDependencies -json assets/licenses.json"
   },
   "jest": {
     "preset": "jest-expo"
@@ -17,18 +18,18 @@
     "@expo-google-fonts/quicksand": "^0.2.2",
     "@expo/vector-icons": "^14.0.3",
     "@openspacelabs/react-native-zoomable-view": "^2.0.4",
-    "@react-native-async-storage/async-storage": "2.0.0",
-    "@react-native-community/netinfo": "^11.4.1",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/netinfo": "11.3.1",
     "@react-native-masked-view/masked-view": "0.3.1",
     "@react-navigation/bottom-tabs": "6.6.1",
     "@react-navigation/material-bottom-tabs": "^6.2.29",
     "@react-navigation/material-top-tabs": "^6.6.14",
     "@react-navigation/native": "~6.1.18",
     "@react-navigation/stack": "~6.4.1",
-    "@sentry/react-native": "~5.33.2",
+    "@sentry/react-native": "~5.24.3",
     "deepmerge": "^4.2.2",
     "dotenv": "^16.4.5",
-    "expo": "^51.0.36",
+    "expo": "^51.0.38",
     "expo-application": "~5.9.1",
     "expo-asset": "~10.0.6",
     "expo-background-fetch": "~12.0.1",
@@ -47,12 +48,13 @@
     "expo-router": "~3.5.23",
     "expo-splash-screen": "~0.27.6",
     "expo-status-bar": "~1.12.1",
-    "expo-updates": "~0.25.26",
+    "expo-updates": "~0.25.27",
     "expo-web-browser": "~13.0.3",
     "front-matter": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
+    "react-native-alert-notification": "^0.4.0",
     "react-native-animatable": "^1.3.3",
     "react-native-collapsible": "^1.6.2",
     "react-native-gesture-handler": "~2.16.1",
@@ -95,6 +97,6 @@
     "@types/react": "Resolution because of this issue: https://github.com/react-navigation/react-navigation/issues/10507"
   },
   "private": true,
-  "name": "fos-saamdagen-devclone",
+  "name": "saamdagen",
   "version": "1.0.0"
 }

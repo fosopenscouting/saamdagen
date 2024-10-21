@@ -15,6 +15,8 @@ import { Banner } from 'react-native-paper';
 import { ExecutionEnvironment } from 'expo-constants';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useFocusEffect } from 'expo-router';
+import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -26,6 +28,10 @@ const HomeScreen: React.FC = () => {
   const handleRefresh = async () => {
     await refreshContext();
   };
+
+  useFocusEffect(() => {
+    setStatusBarBackgroundColor('transparent', true);
+  });
 
   //Automatic update in background
   async function onFetchUpdateAsync() {

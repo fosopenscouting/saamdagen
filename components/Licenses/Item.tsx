@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderText, View } from '../Themed/Themed';
+import { HeaderText, View } from '@/components/Themed/Themed';
 import {
   Linking,
   StyleProp,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Image } from 'expo-image';
-import { Text } from '../Themed/Text';
+import { Text } from '@/components/Themed/Text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Link = ({

@@ -1,6 +1,6 @@
 import { getTicketFromApi, storeTicket } from '@/services/ticketService';
 import { router } from 'expo-router';
-import { Alert } from 'react-native';
+import { ALERT_TYPE, Dialog, Toast } from 'react-native-alert-notification';
 
 export function redirectSystemPath({
   path,
@@ -19,25 +19,32 @@ export function redirectSystemPath({
       const hash = url.searchParams.get('hash');
       if (hash) {
         return getTicketFromApi(hash).then(async (res) => {
-          await storeTicket(res, hash);
+          try {
+            await storeTicket(res, hash);
 
-          Alert.alert(
-            'Ticket toegevoegd',
-            'Jouw ticket is nu toegevoegd aan de app.',
-            [
-                {
-                    text: 'Top!',
-                    onPress: () => {
-                        router.navigate('/more/profile')
-                    }
-                }
-            ]
-          )
+            Dialog.show({
+              type: ALERT_TYPE.SUCCESS,
+              title: 'Ticket toegevoegd',
+              textBody: 'Jouw ticket is nu toegevoegd aan de app.',
+              button: 'Top!',
+              onPressButton: () => {
+                Dialog.hide();
+                router.navigate('/more/profile');
+              },
+            });
+          } catch (error) {
+            Toast.show({
+              type: ALERT_TYPE.DANGER,
+              title: 'Er is een fout opgetreden',
+              textBody:
+                'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+            });
+          }
 
           return '/more/profile';
         });
-      }else{
-        return 'not-found'
+      } else {
+        return 'not-found';
       }
     }
 

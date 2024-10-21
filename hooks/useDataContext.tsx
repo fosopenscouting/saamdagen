@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContentMetadata } from '../models/ContentMetadata';
+import { ContentMetadata } from '@/models/ContentMetadata';
 import useRefresh from './useRefresh';
 
 type DataContextType = {

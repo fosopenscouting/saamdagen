@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import Collapsible from 'react-native-collapsible';
-import { ScheduleData } from '../../models/ScheduleData';
+import { ScheduleData } from '@/models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
 import { HeaderText, Markdown } from '../Themed/Themed';
 

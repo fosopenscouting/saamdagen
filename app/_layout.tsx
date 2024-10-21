@@ -33,6 +33,8 @@ import {
 import merge from 'deepmerge';
 import useColorScheme from '@/hooks/useColorScheme';
 import useCachedResources from '@/hooks/useCachedResources';
+import { AlertNotificationRoot } from 'react-native-alert-notification';
+import Colors from '@/constants/Colors';
 
 Sentry.init({
   dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
@@ -199,36 +201,38 @@ const RootLayout = () => {
     return null;
   } else {
     return (
-      <RootSiblingParent>
-        <DataContextProvider>
-          <GestureHandlerRootView>
-            <PaperProvider
-              theme={
-                colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-              }
-            >
-              <ThemeProvider
-                value={
+      <AlertNotificationRoot>
+        <RootSiblingParent>
+          <DataContextProvider>
+            <GestureHandlerRootView>
+              <PaperProvider
+                theme={
                   colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
                 }
               >
-                <Stack
-                  screenOptions={{
-                    headerShown: false,
-                  }}
+                <ThemeProvider
+                  value={
+                    colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+                  }
                 >
-                  <Stack.Screen name="(tabs)" />
-                </Stack>
-              </ThemeProvider>
-            </PaperProvider>
-          </GestureHandlerRootView>
-          <StatusBar
-            backgroundColor="transparent"
-            animated={true}
-            style="light"
-          />
-        </DataContextProvider>
-      </RootSiblingParent>
+                  <Stack
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  >
+                    <Stack.Screen name="(tabs)" />
+                  </Stack>
+                </ThemeProvider>
+              </PaperProvider>
+            </GestureHandlerRootView>
+            <StatusBar
+              backgroundColor={Colors[colorScheme].tabBarStyle.backgroundColor}
+              animated={true}
+              style="light"
+            />
+          </DataContextProvider>
+        </RootSiblingParent>
+      </AlertNotificationRoot>
     );
   }
 };

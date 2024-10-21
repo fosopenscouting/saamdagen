@@ -67,4 +67,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - run: yarn install --immutable
-      - run: eas update --branch production --message ${{env.SEMVER}}
+      - run: eas update --branch production --message ${{env.SEMVER}} && npx sentry-expo-upload-sourcemaps dist

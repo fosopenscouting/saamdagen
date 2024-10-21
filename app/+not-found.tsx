@@ -4,6 +4,7 @@ import Colors from '@/constants/Colors';
 import { router } from 'expo-router';
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Button } from 'react-native-paper';
 
 const NotFoundScreen = () => {
   return (

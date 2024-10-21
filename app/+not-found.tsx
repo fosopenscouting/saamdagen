@@ -8,7 +8,8 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 const NotFoundScreen = () => {
   return (
     <View style={styles.container}>
-      <HeaderText variant='displayLarge' style={styles.header}>Ola! Wa is da hier?</HeaderText>
+      <HeaderText variant='displayLarge' style={{...styles.header, marginBottom: 0}}>Ola!</HeaderText>
+      <HeaderText variant='displayLarge' style={styles.header}>Wa is da hier?</HeaderText>
       <Text style={styles.title}>
         De pagina waar je naartoe wou gaan is niet gevonden...
       </Text>

@@ -43,8 +43,7 @@ const SettingsScreen: React.FC = () => {
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
         <Text>
-          Wist je trouwens dat de volledige sourcecode voor deze app te vinden
-          is op GitHub?
+          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub staat?
         </Text>
         <Text style={styles.text}>
           Je kan &apos;m hier terugvinden:{' '}
@@ -85,7 +84,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   link: {
-    color: Colors.FOSCOLORS.FOS_BLUE,
+    // color: Colors.FOSCOLORS.FOS_BLUE,
+    textDecorationLine: 'underline'
   },
   innerContainer: {
     flex: 1,

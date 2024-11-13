@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, RefreshControl, StyleSheet } from 'react-native';
 import { Separator, View } from '@/components/Themed/Themed';
 import { useDataContext } from '@/hooks/useDataContext';
@@ -32,26 +31,20 @@ const FaqScreen: React.FC = () => {
   });
 
   return (
-    <SafeAreaView
-      style={{
-        height: '100%',
-      }}
-    >
-      <View style={styles.container}>
-        <FlatList
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-          }
-          keyExtractor={(item) => item.title}
-          data={faqData?.content}
-          renderItem={({ item }) => (
-            <FaqCard title={item.title} text={item.content} icon={item.icon} />
-          )}
-          ItemSeparatorComponent={() => <Separator marginVertical={0} />}
-          ListFooterComponent={() => <Separator marginVertical={0} />}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
+        keyExtractor={(item) => item.title}
+        data={faqData?.content}
+        renderItem={({ item }) => (
+          <FaqCard title={item.title} text={item.content} icon={item.icon} />
+        )}
+        ItemSeparatorComponent={() => <Separator marginVertical={0} />}
+        ListFooterComponent={() => <Separator marginVertical={0} />}
+      />
+    </View>
   );
 };
 
@@ -60,7 +53,6 @@ export default FaqScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'flex-start',
-    // justifyContent: 'center',
+    height: 'auto',
   },
 });

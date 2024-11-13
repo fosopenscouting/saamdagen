@@ -114,7 +114,7 @@ const HomeScreen: React.FC = () => {
         {filteredData?.content?.map(
           (item: HomeScreenSection, index: number) => (
             <BasicCard
-              key={item.order}
+              key={index}
               containerStyle={[
                 styles.basicCard,
                 index === filteredData?.content.length - 1

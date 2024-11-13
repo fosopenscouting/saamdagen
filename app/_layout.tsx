@@ -226,7 +226,7 @@ const RootLayout = () => {
               </PaperProvider>
             </GestureHandlerRootView>
             <StatusBar
-              backgroundColor={Colors[colorScheme].tabBarStyle.backgroundColor}
+              backgroundColor='transparent'
               animated={true}
               style="light"
             />

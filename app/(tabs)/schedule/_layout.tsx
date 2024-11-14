@@ -41,9 +41,9 @@ export default function SheduleLayout() {
             fontFamily: 'Quicksand_600SemiBold',
             fontWeight: 600,
           },
-        }}
-        sceneContainerStyle={{
-          backgroundColor: useThemeColor({}, 'background'),
+          sceneStyle: {
+            backgroundColor: useThemeColor({}, 'background')
+          }
         }}
       >
         <MaterialTopTabs.Screen

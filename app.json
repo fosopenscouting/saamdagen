@@ -1,5 +1,6 @@
 {
   "expo": {
+	"newArchEnabled": true,
     "name": "Saamdagen",
     "slug": "saamdagen",
     "version": "#{APP_VERSION}#",

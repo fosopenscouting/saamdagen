@@ -6,6 +6,10 @@ import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { useFocusEffect } from 'expo-router';
+import { returnDay } from '@/utils/dates';
+import { useThemeColor } from '@/components/Themed/Helpers';
+
+// const todayIsDay = returnDay(true);
 
 export default function SheduleLayout() {
   const insets = useSafeAreaInsets();
@@ -34,7 +38,15 @@ export default function SheduleLayout() {
           },
           tabBarLabelStyle: {
             color: Colors[colorScheme].white,
+            fontFamily: 'Quicksand_600SemiBold',
+            fontWeight: 600,
           },
+        }}
+        sceneContainerStyle={{
+          backgroundColor: useThemeColor(
+            {},
+            'background',
+          )
         }}
       >
         <MaterialTopTabs.Screen

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeaderText, View } from '@/components/Themed/Themed';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
@@ -14,9 +14,9 @@ const SettingsScreen: React.FC = () => {
   const versionColor = Colors[colorScheme].muted;
 
   const [pressesVersion, setPressesVersion] = useState<number>(0);
-  const onPressVersion = () => {
-    setPressesVersion((prev) => prev + 1);
-    if (pressesVersion == 5) {
+
+  useEffect(() => {
+    if (pressesVersion >= 5) {
       setPressesVersion(0);
       Dialog.show({
         type: ALERT_TYPE.SUCCESS,
@@ -26,6 +26,10 @@ const SettingsScreen: React.FC = () => {
         closeOnOverlayTap: false
       });
     }
+  }, [pressesVersion])
+
+  const onPressVersion = () => {
+    setPressesVersion((prev) => prev + 1);
   };
 
   return (
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   FOSlogo: {
-    marginTop: 8,
+    marginTop: 16,
     height: '40%',
     width: '100%',
     alignContent: 'center',

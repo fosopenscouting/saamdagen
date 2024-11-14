@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textTransform: 'uppercase',
-    fontFamily: 'Quicksand_600SemiBold'
+    fontFamily: 'Quicksand_600SemiBold',
   },
 });
 

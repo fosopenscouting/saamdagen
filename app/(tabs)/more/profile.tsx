@@ -45,14 +45,15 @@ const ProfileScreen: React.FC = () => {
       getTicketFromApi(hash).then(async (res) => {
         try {
           const ticket = await storeTicket(res, hash);
-          setTicketData(ticket);
+          if (ticket) setTicketData(ticket);
           setTicketLoading(false);
         } catch (error) {
           Toast.show({
             type: ALERT_TYPE.DANGER,
             title: 'Er is een fout opgetreden',
-            textBody: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-          })
+            textBody:
+              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          });
           setTicketLoading(false);
         }
       });
@@ -88,12 +89,13 @@ const ProfileScreen: React.FC = () => {
     return Dialog.show({
       type: ALERT_TYPE.DANGER,
       title: 'Ben je zeker?',
-      textBody: 'Ben je zeker dat je je ticket wilt verwijderen?\nKlik buiten deze melding als je je ticket wilt behouden.',
+      textBody:
+        'Ben je zeker dat je je ticket wilt verwijderen?\nKlik buiten deze melding als je je ticket wilt behouden.',
       button: 'Verwijderen',
       onPressButton: () => {
-        deleteTicket()
-      }
-    })
+        deleteTicket();
+      },
+    });
   };
 
   const deleteTicket = async () => {

@@ -21,12 +21,13 @@ const SettingsScreen: React.FC = () => {
       Dialog.show({
         type: ALERT_TYPE.SUCCESS,
         title: 'Hey jij!',
-        textBody: "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
-        button: "Sluiten",
-        closeOnOverlayTap: false
+        textBody:
+          "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        button: 'Sluiten',
+        closeOnOverlayTap: false,
       });
     }
-  }, [pressesVersion])
+  }, [pressesVersion]);
 
   const onPressVersion = () => {
     setPressesVersion((prev) => prev + 1);
@@ -47,7 +48,8 @@ const SettingsScreen: React.FC = () => {
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
         <Text>
-          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub staat?
+          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub
+          staat?
         </Text>
         <Text style={styles.text}>
           Je kan &apos;m hier terugvinden:{' '}
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   },
   link: {
     // color: Colors.FOSCOLORS.FOS_BLUE,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
   },
   innerContainer: {
     flex: 1,

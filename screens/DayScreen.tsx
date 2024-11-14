@@ -1,9 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   RefreshControl,
   ScrollView,
@@ -48,7 +43,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const todayIsDay = checkDay(dayInfo.day);
   const now = new Date();
 
-  const isNow = (timeString: String) => {
+  const isNow = (timeString: string) => {
     if (!todayIsDay) return false;
 
     if (timeString.includes('t.e.m.') && !timeString.includes('...')) {

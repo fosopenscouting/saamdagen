@@ -5,8 +5,8 @@ import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
 export default function Map() {
   useFocusEffect(() => {
-    setStatusBarBackgroundColor("transparent", true)
-  })
+    setStatusBarBackgroundColor('transparent', true);
+  });
 
   return <NewMap />;
 }

@@ -24,20 +24,21 @@ const ScanScreen: React.FC = () => {
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
         try {
-          await storeTicket(res, ticketHash)
+          await storeTicket(res, ticketHash);
           Toast.show({
             type: ALERT_TYPE.SUCCESS,
             title: 'Ticket toegevoegd',
-          })
+          });
           router.navigate('/more/profile');
         } catch (error) {
           Toast.show({
             type: ALERT_TYPE.DANGER,
             title: 'Er is een fout opgetreden',
-            textBody: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-          })
-          setScanned(false)
-          setTicketHash(null)
+            textBody:
+              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          });
+          setScanned(false);
+          setTicketHash(null);
         }
       });
     }
@@ -62,15 +63,17 @@ const ScanScreen: React.FC = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
 
     if (!info.isConnected) {
-      Toast.show({
-        type: ALERT_TYPE.WARNING,
-        title: 'Geen internet',
-        textBody: 'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
-        // button: 'Opniew proberen',
-        onShow: () => {
-          setScanned(false)
-        }
-      }
+      Toast.show(
+        {
+          type: ALERT_TYPE.WARNING,
+          title: 'Geen internet',
+          textBody:
+            'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
+          // button: 'Opniew proberen',
+          onShow: () => {
+            setScanned(false);
+          },
+        },
         // [
         //   {
         //     text: 'Opnieuw proberen',
@@ -96,7 +99,6 @@ const ScanScreen: React.FC = () => {
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
         style={StyleSheet.absoluteFillObject}
         enableTorch={isLit}
-        
       />
       <View style={[styles.footer, { bottom: 30 }]}>
         <QRFooterButton
@@ -106,9 +108,15 @@ const ScanScreen: React.FC = () => {
         />
         <QRFooterButton onPress={onCancel} iconName="close" iconSize={48} />
       </View>
-      {
-        scanned ? <ActivityIndicator animating={true} size={128} color={Colors.FOSCOLORS.FOS_GREEN} /> : <QrIndicator />
-      }
+      {scanned ? (
+        <ActivityIndicator
+          animating={true}
+          size={128}
+          color={Colors.FOSCOLORS.FOS_GREEN}
+        />
+      ) : (
+        <QrIndicator />
+      )}
     </View>
   );
 };

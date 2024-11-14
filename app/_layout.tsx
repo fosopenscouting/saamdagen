@@ -37,17 +37,17 @@ import { AlertNotificationRoot } from 'react-native-alert-notification';
 import Colors from '@/constants/Colors';
 import { isRunningInExpoGo } from 'expo';
 
-const routingInstrumentation = new Sentry.ReactNavigationInstrumentation()
+const routingInstrumentation = new Sentry.ReactNavigationInstrumentation();
 
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
   debug: false,
   integrations: [
     new Sentry.ReactNativeTracing({
-      routingInstrumentation ,
-      enableNativeFramesTracking: !isRunningInExpoGo()
-    })
-  ]
+      routingInstrumentation,
+      enableNativeFramesTracking: !isRunningInExpoGo(),
+    }),
+  ],
 });
 
 Notifications.setNotificationHandler({
@@ -176,10 +176,10 @@ const RootLayout = () => {
   const ref = useNavigationContainerRef();
 
   useEffect(() => {
-    if(ref) {
-      routingInstrumentation.registerNavigationContainer(ref)
+    if (ref) {
+      routingInstrumentation.registerNavigationContainer(ref);
     }
-  }, [ref])
+  }, [ref]);
 
   //Notificaties
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -243,7 +243,7 @@ const RootLayout = () => {
               </PaperProvider>
             </GestureHandlerRootView>
             <StatusBar
-              backgroundColor='transparent'
+              backgroundColor="transparent"
               animated={true}
               style="light"
             />

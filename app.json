@@ -37,6 +37,19 @@
 		"web": {
 			"favicon": "./assets/images/favicon.png"
 		},
-		"description": ""
+		"description": "",
+		"plugins": [
+			[
+			  "@sentry/react-native/expo",
+			  {
+				"organization": "fosopenscouting",
+				"project": "saamdagen-app",
+				 "url": "https://sentry.io/"
+			  }
+			],
+			"expo-asset",
+			"expo-font",
+			"expo-router"
+		  ]
 	}
 }

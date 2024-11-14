@@ -14,16 +14,4 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => ({
       projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
     },
   },
-  plugins: [
-    [
-      '@sentry/react-native/expo',
-      {
-        organization: process.env.SENTRY_ORG,
-        project: process.env.SENTRY_PROJECT,
-      },
-    ],
-    'expo-asset',
-    'expo-font',
-    'expo-router',
-  ],
 });

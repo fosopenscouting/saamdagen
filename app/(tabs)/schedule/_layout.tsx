@@ -42,8 +42,8 @@ export default function SheduleLayout() {
             fontWeight: 600,
           },
           sceneStyle: {
-            backgroundColor: useThemeColor({}, 'background')
-          }
+            backgroundColor: useThemeColor({}, 'background'),
+          },
         }}
       >
         <MaterialTopTabs.Screen

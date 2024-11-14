@@ -37,16 +37,14 @@ import { AlertNotificationRoot } from 'react-native-alert-notification';
 import { isRunningInExpoGo } from 'expo';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
-  enableTimeToInitialDisplay: !isRunningInExpoGo()
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
 });
 
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
   debug: false,
-  integrations: [
-    navigationIntegration
-  ],
-  enableNativeFramesTracking: !isRunningInExpoGo()
+  integrations: [navigationIntegration],
+  enableNativeFramesTracking: !isRunningInExpoGo(),
 });
 
 Notifications.setNotificationHandler({

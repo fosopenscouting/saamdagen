@@ -2,7 +2,7 @@ import {
   createMaterialBottomTabNavigator,
   MaterialBottomTabNavigationOptions,
   MaterialBottomTabNavigationEventMap,
-} from '@react-navigation/material-bottom-tabs';
+} from 'react-native-paper/react-navigation';
 import { ParamListBase, TabNavigationState } from '@react-navigation/native';
 
 import { withLayoutContext } from 'expo-router';

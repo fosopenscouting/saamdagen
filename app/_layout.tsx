@@ -34,20 +34,19 @@ import merge from 'deepmerge';
 import useColorScheme from '@/hooks/useColorScheme';
 import useCachedResources from '@/hooks/useCachedResources';
 import { AlertNotificationRoot } from 'react-native-alert-notification';
-import Colors from '@/constants/Colors';
 import { isRunningInExpoGo } from 'expo';
 
-const routingInstrumentation = new Sentry.ReactNavigationInstrumentation();
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo()
+});
 
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
   debug: false,
   integrations: [
-    new Sentry.ReactNativeTracing({
-      routingInstrumentation,
-      enableNativeFramesTracking: !isRunningInExpoGo(),
-    }),
+    navigationIntegration
   ],
+  enableNativeFramesTracking: !isRunningInExpoGo()
 });
 
 Notifications.setNotificationHandler({
@@ -177,7 +176,7 @@ const RootLayout = () => {
 
   useEffect(() => {
     if (ref) {
-      routingInstrumentation.registerNavigationContainer(ref);
+      navigationIntegration.registerNavigationContainer(ref);
     }
   }, [ref]);
 

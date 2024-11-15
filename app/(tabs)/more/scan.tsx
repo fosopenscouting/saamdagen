@@ -10,9 +10,9 @@ import { getTicketFromApi, storeTicket } from '@/services/ticketService';
 import { useRouter } from 'expo-router';
 import NetInfo from '@react-native-community/netinfo';
 import * as Haptics from 'expo-haptics';
-import { ALERT_TYPE, Toast } from 'react-native-alert-notification';
 import { ActivityIndicator } from 'react-native-paper';
 import Colors from '@/constants/Colors';
+import { useToast } from 'react-native-paper-toast';
 
 const ScanScreen: React.FC = () => {
   const router = useRouter();
@@ -20,23 +20,27 @@ const ScanScreen: React.FC = () => {
   const [ticketHash, setTicketHash] = useState<string | null>(null);
   const [isLit, setLit] = useState(false);
 
+  const toaster = useToast()
+
   useEffect(() => {
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
         try {
           await storeTicket(res, ticketHash);
-          Toast.show({
-            type: ALERT_TYPE.SUCCESS,
-            title: 'Ticket toegevoegd',
-          });
+
+          toaster.show({
+            position: 'top',
+            type: 'success',
+            message: 'Ticket toegevoegd'
+          })
           router.navigate('/more/profile');
         } catch (error) {
-          Toast.show({
-            type: ALERT_TYPE.DANGER,
-            title: 'Er is een fout opgetreden',
-            textBody:
-              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-          });
+
+          toaster.show({
+            position: 'top',
+            type: 'error',
+            message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          })
           setScanned(false);
           setTicketHash(null);
         }
@@ -63,27 +67,17 @@ const ScanScreen: React.FC = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
 
     if (!info.isConnected) {
-      Toast.show(
-        {
-          type: ALERT_TYPE.WARNING,
-          title: 'Geen internet',
-          textBody:
-            'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
-          // button: 'Opniew proberen',
-          onShow: () => {
-            setScanned(false);
-          },
-        },
-        // [
-        //   {
-        //     text: 'Opnieuw proberen',
-        //     onPress: () => {
-        //       setScanned(false);
-        //     },
-        //     style: 'default',
-        //   },
-        // ],
-      );
+
+      toaster.show({
+        type: 'warning',
+        message: 'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
+        actionLabel: 'Opnieuw',
+        position: 'top',
+        duration: undefined,
+        action: () => {
+          setScanned(false)
+        }
+      })
       return;
     }
 

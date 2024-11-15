@@ -1,6 +1,7 @@
 import { getTicketFromApi, storeTicket } from '@/services/ticketService';
 import { router } from 'expo-router';
-import { ALERT_TYPE, Dialog, Toast } from 'react-native-alert-notification';
+import { useAlerts } from 'react-native-paper-alerts';
+import { useToast } from 'react-native-paper-toast';
 
 export function redirectSystemPath({
   path,
@@ -9,6 +10,9 @@ export function redirectSystemPath({
   path: string;
   initial: boolean;
 }) {
+  const alerts = useAlerts()
+  const toaster = useToast()
+
   try {
     const url = new URL(path);
 
@@ -22,23 +26,25 @@ export function redirectSystemPath({
           try {
             await storeTicket(res, hash);
 
-            Dialog.show({
-              type: ALERT_TYPE.SUCCESS,
-              title: 'Ticket toegevoegd',
-              textBody: 'Jouw ticket is nu toegevoegd aan de app.',
-              button: 'Top!',
-              onPressButton: () => {
-                Dialog.hide();
-                router.navigate('/more/profile');
-              },
-            });
+            alerts.alert(
+              'Ticket toegevoegd!',
+              'Jouw ticket is nu toegevoegd aan de app.',
+              [
+                {
+                  text: 'Top!',
+                  style: 'cancel',
+                  onPress() {
+                    router.navigate('/more/profile')
+                  },
+                }
+              ]
+            )
           } catch (error) {
-            Toast.show({
-              type: ALERT_TYPE.DANGER,
-              title: 'Er is een fout opgetreden',
-              textBody:
-                'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-            });
+            toaster.show({
+              position: 'top',
+              type: 'error',
+              message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.'
+            })
           }
 
           return '/more/profile';

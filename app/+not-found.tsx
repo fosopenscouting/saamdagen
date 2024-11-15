@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   linkText: {
-    // fontSize: 14,
     color: Colors.FOSCOLORS.FOS_GREEN,
   },
 });

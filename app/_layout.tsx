@@ -33,8 +33,9 @@ import {
 import merge from 'deepmerge';
 import useColorScheme from '@/hooks/useColorScheme';
 import useCachedResources from '@/hooks/useCachedResources';
-import { AlertNotificationRoot } from 'react-native-alert-notification';
 import { isRunningInExpoGo } from 'expo';
+import { AlertsProvider } from 'react-native-paper-alerts';
+import { ToastProvider } from 'react-native-paper-toast';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -215,7 +216,6 @@ const RootLayout = () => {
     return null;
   } else {
     return (
-      <AlertNotificationRoot>
         <RootSiblingParent>
           <DataContextProvider>
             <GestureHandlerRootView>
@@ -224,19 +224,23 @@ const RootLayout = () => {
                   colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
                 }
               >
-                <ThemeProvider
-                  value={
-                    colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-                  }
-                >
-                  <Stack
-                    screenOptions={{
-                      headerShown: false,
-                    }}
-                  >
-                    <Stack.Screen name="(tabs)" />
-                  </Stack>
-                </ThemeProvider>
+                <AlertsProvider>
+                  <ToastProvider>
+                    <ThemeProvider
+                      value={
+                        colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+                      }
+                    >
+                      <Stack
+                        screenOptions={{
+                          headerShown: false,
+                        }}
+                      >
+                        <Stack.Screen name="(tabs)" />
+                      </Stack>
+                    </ThemeProvider>
+                  </ToastProvider>
+                </AlertsProvider>
               </PaperProvider>
             </GestureHandlerRootView>
             <StatusBar
@@ -246,7 +250,6 @@ const RootLayout = () => {
             />
           </DataContextProvider>
         </RootSiblingParent>
-      </AlertNotificationRoot>
     );
   }
 };

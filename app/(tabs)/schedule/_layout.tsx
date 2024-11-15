@@ -6,10 +6,7 @@ import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { useFocusEffect } from 'expo-router';
-// import { returnDay } from '@/utils/dates';
 import { useThemeColor } from '@/components/Themed/Helpers';
-
-// const todayIsDay = returnDay(true);
 
 export default function SheduleLayout() {
   const insets = useSafeAreaInsets();

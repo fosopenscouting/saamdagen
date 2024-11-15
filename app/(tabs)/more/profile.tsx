@@ -23,9 +23,14 @@ import {
 import Loading from '@/components/Loading';
 import { Button } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { ALERT_TYPE, Dialog, Toast } from 'react-native-alert-notification';
+import { setStatusBarHidden } from 'expo-status-bar';
+import { useAlerts } from 'react-native-paper-alerts';
+import { useToast } from 'react-native-paper-toast';
 
 const ProfileScreen: React.FC = () => {
+  const alerts = useAlerts()
+  const toaster = useToast()
+
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
   const [initialBrightness, setInitialBrightness] = useState<number>(0);
@@ -48,12 +53,12 @@ const ProfileScreen: React.FC = () => {
           if (ticket) setTicketData(ticket);
           setTicketLoading(false);
         } catch (error) {
-          Toast.show({
-            type: ALERT_TYPE.DANGER,
-            title: 'Er is een fout opgetreden',
-            textBody:
-              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-          });
+
+          toaster.show({
+            position: 'top',
+            type: 'error',
+            message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.'
+          })
           setTicketLoading(false);
         }
       });
@@ -80,32 +85,40 @@ const ProfileScreen: React.FC = () => {
 
   const resetModal = () => {
     setModalVisible(false);
+    setStatusBarHidden(false, 'slide');
     (async () => {
       Brightness.setBrightnessAsync(initialBrightness);
     })();
   };
 
   const showConfirmDialog = () => {
-    return Dialog.show({
-      type: ALERT_TYPE.DANGER,
-      title: 'Ben je zeker?',
-      textBody:
-        'Ben je zeker dat je je ticket wilt verwijderen?\nKlik buiten deze melding als je je ticket wilt behouden.',
-      button: 'Verwijderen',
-      onPressButton: () => {
-        deleteTicket();
-      },
-    });
+    alerts.alert(
+      'Ben je zeker?',
+      'Ben je zeker dat je je ticket wilt verwijderen?',
+      [
+        {
+          text: 'Sluiten',
+          style: 'cancel'
+        },
+        {
+          text: 'Verwijderen',
+          onPress() {
+              deleteTicket()
+          },
+        }
+      ]
+    )
   };
 
   const deleteTicket = async () => {
     await AsyncStorage.removeItem('sd_ticket');
     setTicketData(null);
-    Dialog.hide();
   };
 
   const handleQrPress = () => {
     setModalVisible(!modalVisible);
+
+    setStatusBarHidden(true, 'slide');
   };
 
   return (

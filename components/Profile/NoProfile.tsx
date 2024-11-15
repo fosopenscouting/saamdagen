@@ -7,9 +7,11 @@ import Colors from '@/constants/Colors';
 import requestCameraPermissionsAsync from '@/utils/requestCameraPermissionsAsync';
 import { useRouter } from 'expo-router';
 import { Button } from 'react-native-paper';
-import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
+import { useAlerts } from 'react-native-paper-alerts';
 
 const NoProfile: React.FC = () => {
+  const alerts = useAlerts()
+  
   const colorScheme = useColorScheme();
   const router = useRouter();
 
@@ -17,17 +19,18 @@ const NoProfile: React.FC = () => {
     if (await requestCameraPermissionsAsync()) {
       router.navigate('/more/scan');
     } else {
-      Dialog.show({
-        title: 'Opgelet',
-        textBody:
-          'Om je ticket te kunnen scannen, moet je toegang geven tot je camera.\n\nGeef toegang tot je camera via de instellingen van je apparaat.',
-        type: ALERT_TYPE.WARNING,
-        button: 'Instellingen',
-        onPressButton: async () => {
-          await Linking.openSettings();
-          Dialog.hide();
-        },
-      });
+      alerts.alert(
+        'Opgelet!',
+        'Om je ticket te kunnen scannen, moet je toegang geven tot je camera.\n\nGeef toegang tot je camera via de instellingen van je apparaat.',
+        [
+          {
+            text: 'Instellingen',
+            onPress: async () => {
+              await Linking.openSettings();
+            },
+          }
+        ]
+      )
     }
   };
 

@@ -138,7 +138,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   }, [data]);
 
   return (
-    <>
+    <View style={styles.container}>
       <ScrollView
         ref={scrollViewRef}
         refreshControl={
@@ -243,7 +243,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           }}
         />
       ) : null}
-    </>
+    </View>
   );
 };
 
@@ -256,8 +256,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: 'auto',
-    // alignItems: 'flex-start',
-    // justifyContent: 'center',
   },
   collapsibleIndicator: {
     flex: 1,
@@ -282,9 +280,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     textAlign: 'left',
   },
-
   filterBar: {
-    // height: 100,
     height: 5,
     marginTop: 10,
     marginBottom: 10,

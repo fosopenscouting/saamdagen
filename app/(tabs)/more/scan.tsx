@@ -20,7 +20,7 @@ const ScanScreen: React.FC = () => {
   const [ticketHash, setTicketHash] = useState<string | null>(null);
   const [isLit, setLit] = useState(false);
 
-  const toaster = useToast()
+  const toaster = useToast();
 
   useEffect(() => {
     if (ticketHash) {
@@ -31,16 +31,16 @@ const ScanScreen: React.FC = () => {
           toaster.show({
             position: 'top',
             type: 'success',
-            message: 'Ticket toegevoegd'
-          })
+            message: 'Ticket toegevoegd',
+          });
           router.navigate('/more/profile');
         } catch (error) {
-
           toaster.show({
             position: 'top',
             type: 'error',
-            message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
-          })
+            message:
+              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          });
           setScanned(false);
           setTicketHash(null);
         }
@@ -67,17 +67,17 @@ const ScanScreen: React.FC = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
 
     if (!info.isConnected) {
-
       toaster.show({
         type: 'warning',
-        message: 'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
+        message:
+          'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
         actionLabel: 'Opnieuw',
         position: 'top',
         duration: undefined,
         action: () => {
-          setScanned(false)
-        }
-      })
+          setScanned(false);
+        },
+      });
       return;
     }
 

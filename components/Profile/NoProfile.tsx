@@ -10,8 +10,8 @@ import { Button } from 'react-native-paper';
 import { useAlerts } from 'react-native-paper-alerts';
 
 const NoProfile: React.FC = () => {
-  const alerts = useAlerts()
-  
+  const alerts = useAlerts();
+
   const colorScheme = useColorScheme();
   const router = useRouter();
 
@@ -28,9 +28,9 @@ const NoProfile: React.FC = () => {
             onPress: async () => {
               await Linking.openSettings();
             },
-          }
-        ]
-      )
+          },
+        ],
+      );
     }
   };
 

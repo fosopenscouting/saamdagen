@@ -10,7 +10,7 @@ import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
 
 const SettingsScreen: React.FC = () => {
-  const alerts = useAlerts()
+  const alerts = useAlerts();
 
   const colorScheme = useColorScheme();
   const versionColor = Colors[colorScheme].muted;
@@ -27,14 +27,13 @@ const SettingsScreen: React.FC = () => {
         [
           {
             text: 'Sluiten',
-            style: 'cancel'
-          }
+            style: 'cancel',
+          },
         ],
         {
           cancelable: false,
-
-        }
-      )
+        },
+      );
     }
   }, [pressesVersion]);
 

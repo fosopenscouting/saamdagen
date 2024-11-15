@@ -36,7 +36,11 @@ export default function MoreLayout() {
           }}
         />
       </Stack>
-      <StatusBar backgroundColor={Colors[colorScheme].tabBarStyle.backgroundColor} animated={true} style="light" />
+      <StatusBar
+        backgroundColor={Colors[colorScheme].tabBarStyle.backgroundColor}
+        animated={true}
+        style="light"
+      />
     </>
   );
 }

@@ -28,8 +28,8 @@ import { useAlerts } from 'react-native-paper-alerts';
 import { useToast } from 'react-native-paper-toast';
 
 const ProfileScreen: React.FC = () => {
-  const alerts = useAlerts()
-  const toaster = useToast()
+  const alerts = useAlerts();
+  const toaster = useToast();
 
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
@@ -53,12 +53,12 @@ const ProfileScreen: React.FC = () => {
           if (ticket) setTicketData(ticket);
           setTicketLoading(false);
         } catch (error) {
-
           toaster.show({
             position: 'top',
             type: 'error',
-            message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.'
-          })
+            message:
+              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          });
           setTicketLoading(false);
         }
       });
@@ -98,16 +98,16 @@ const ProfileScreen: React.FC = () => {
       [
         {
           text: 'Sluiten',
-          style: 'cancel'
+          style: 'cancel',
         },
         {
           text: 'Verwijderen',
           onPress() {
-              deleteTicket()
+            deleteTicket();
           },
-        }
-      ]
-    )
+        },
+      ],
+    );
   };
 
   const deleteTicket = async () => {

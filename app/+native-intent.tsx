@@ -10,8 +10,8 @@ export function redirectSystemPath({
   path: string;
   initial: boolean;
 }) {
-  const alerts = useAlerts()
-  const toaster = useToast()
+  const alerts = useAlerts();
+  const toaster = useToast();
 
   try {
     const url = new URL(path);
@@ -34,17 +34,18 @@ export function redirectSystemPath({
                   text: 'Top!',
                   style: 'cancel',
                   onPress() {
-                    router.navigate('/more/profile')
+                    router.navigate('/more/profile');
                   },
-                }
-              ]
-            )
+                },
+              ],
+            );
           } catch (error) {
             toaster.show({
               position: 'top',
               type: 'error',
-              message: 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.'
-            })
+              message:
+                'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+            });
           }
 
           return '/more/profile';

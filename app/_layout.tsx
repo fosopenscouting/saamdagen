@@ -216,40 +216,42 @@ const RootLayout = () => {
     return null;
   } else {
     return (
-        <RootSiblingParent>
-          <DataContextProvider>
-            <GestureHandlerRootView>
-              <PaperProvider
-                theme={
-                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-                }
-              >
-                <AlertsProvider>
-                  <ToastProvider>
-                    <ThemeProvider
-                      value={
-                        colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-                      }
+      <RootSiblingParent>
+        <DataContextProvider>
+          <GestureHandlerRootView>
+            <PaperProvider
+              theme={
+                colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+              }
+            >
+              <AlertsProvider>
+                <ToastProvider>
+                  <ThemeProvider
+                    value={
+                      colorScheme == 'dark'
+                        ? CustomDarkTheme
+                        : CustomDefaultTheme
+                    }
+                  >
+                    <Stack
+                      screenOptions={{
+                        headerShown: false,
+                      }}
                     >
-                      <Stack
-                        screenOptions={{
-                          headerShown: false,
-                        }}
-                      >
-                        <Stack.Screen name="(tabs)" />
-                      </Stack>
-                    </ThemeProvider>
-                  </ToastProvider>
-                </AlertsProvider>
-              </PaperProvider>
-            </GestureHandlerRootView>
-            <StatusBar
-              backgroundColor="transparent"
-              animated={true}
-              style="light"
-            />
-          </DataContextProvider>
-        </RootSiblingParent>
+                      <Stack.Screen name="(tabs)" />
+                    </Stack>
+                  </ThemeProvider>
+                </ToastProvider>
+              </AlertsProvider>
+            </PaperProvider>
+          </GestureHandlerRootView>
+          <StatusBar
+            backgroundColor="transparent"
+            animated={true}
+            style="light"
+          />
+        </DataContextProvider>
+      </RootSiblingParent>
     );
   }
 };

@@ -31,5 +31,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Generate licenses.json
+        run: yarn generate-licenses
       - name: Build on EAS
         run: eas build --platform all --non-interactive

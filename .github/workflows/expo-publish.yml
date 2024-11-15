@@ -45,6 +45,8 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - run: yarn install --immutable
+      - name: Generate licenses.json
+        run: yarn generate-licenses
       - run: eas update --branch staging --message ${{env.SEMVER}}
   production:
     name: Build and deploy
@@ -67,4 +69,6 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - run: yarn install --immutable
+      - name: Generate licenses.json
+        run: yarn generate-licenses
       - run: eas update --branch production --message ${{env.SEMVER}} && npx sentry-expo-upload-sourcemaps dist

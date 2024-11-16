@@ -6,14 +6,10 @@ import { useDataContext } from '@/hooks/useDataContext';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import { FAQ_ITEMS } from '@/constants/Strings';
 import FaqCard from '@/components/FaqCard';
-import { useFocusEffect } from 'expo-router';
-import { setStatusBarStyle } from 'expo-status-bar';
-import useColorScheme from '@/hooks/useColorScheme';
 
 const FaqScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
   const [faqData, setFaqData] = useState<ContentMetadata>();
-  const colorScheme = useColorScheme();
 
   useEffect(() => {
     if (data) {
@@ -25,10 +21,6 @@ const FaqScreen: React.FC = () => {
   const handleRefresh = async () => {
     await refreshContext();
   };
-
-  useFocusEffect(() => {
-    setStatusBarStyle(colorScheme == 'light' ? 'dark' : 'light');
-  });
 
   return (
     <View style={styles.container}>

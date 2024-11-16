@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { Stack, useFocusEffect } from 'expo-router';
+import { Stack } from 'expo-router';
 import SaamdagenAppbar from '@/components/SaamdagenAppbar';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { setStatusBarStyle } from 'expo-status-bar';
 
 export const unstable_settings = {
   initialRouteName: 'index',
@@ -12,10 +11,6 @@ export const unstable_settings = {
 
 export default function MoreLayout() {
   const colorScheme = useColorScheme();
-
-  useFocusEffect(() => {
-    setStatusBarStyle(colorScheme == 'light' ? 'dark' : 'light');
-  });
 
   return (
     <Stack

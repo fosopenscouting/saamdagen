@@ -1,13 +1,10 @@
 import React from 'react';
-
 import { MaterialTopTabs } from '@/layout/material-top-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { useFocusEffect } from 'expo-router';
-import { useThemeColor } from '@/components/Themed/Helpers';
-
 export default function SheduleLayout() {
   const insets = useSafeAreaInsets();
   const colorScheme = useColorScheme();
@@ -25,8 +22,8 @@ export default function SheduleLayout() {
         style={{
           paddingTop: insets.top,
           paddingRight: insets.right,
-          paddingBottom: insets.bottom,
           paddingLeft: insets.left,
+          backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
         }}
         screenOptions={{
           tabBarStyle: Colors[colorScheme].tabBarStyle,
@@ -39,7 +36,7 @@ export default function SheduleLayout() {
             fontWeight: 600,
           },
           sceneStyle: {
-            backgroundColor: useThemeColor({}, 'background'),
+            backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
           },
         }}
       >

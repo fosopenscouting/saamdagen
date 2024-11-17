@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { FAB, Portal } from 'react-native-paper';
-import Colors from '../../constants/Colors';
-import useColorScheme from '../../hooks/useColorScheme';
-import { MapLayer } from '../../models/MapLayer';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
+import { MapLayer } from '@/models/MapLayer';
 
 interface MapFabProps {
   handleLayerSelect: (layer: MapLayer) => void;

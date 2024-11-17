@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Appbar } from 'react-native-paper';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 
 const SaamdagenAppbar: React.FC<NativeStackHeaderProps> = (
@@ -22,7 +22,10 @@ const SaamdagenAppbar: React.FC<NativeStackHeaderProps> = (
       {props.back ? (
         <Appbar.BackAction onPress={props.navigation.goBack} />
       ) : null}
-      <Appbar.Content title={title} />
+      <Appbar.Content
+        titleStyle={{ color: Colors[colorScheme].tabTextColor }}
+        title={title}
+      />
     </Appbar.Header>
   );
 };

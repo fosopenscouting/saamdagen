@@ -1,6 +1,6 @@
 import React from 'react';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
 import { HeaderText, Markdown } from './Themed/Themed';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';

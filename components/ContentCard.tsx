@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { ImageBackground, ImageSource } from 'expo-image';
-import Colors from '../constants/Colors';
+import Colors from '@/constants/Colors';
 import { View } from './Themed/Themed';
 
 type Props = {
@@ -76,7 +76,7 @@ const ContentCard: React.FC<Props> = (props: Props) => {
     >
       {props.backgroundImage ? (
         <ImageBackground
-          resizeMode="cover"
+          contentFit="cover"
           imageStyle={[overlayStyle, styles.borderRadius]}
           style={[styles.image]}
           source={props.backgroundImage}

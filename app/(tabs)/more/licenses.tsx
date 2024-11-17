@@ -2,7 +2,7 @@ import React from 'react';
 
 import LicensesData from '@/assets/licenses.json';
 import { Separator, View } from '@/components/Themed/Themed';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import LicensesItem from '@/components/Licenses/Item';
 
 const extractNameFromGHUrl = (url: string) => {
@@ -66,7 +66,7 @@ export default function Licenses() {
   );
 
   return (
-    <View style={{ height: '100%' }}>
+    <View style={styles.container}>
       <FlatList
         data={licenses.filter((l) => l.name)}
         keyExtractor={({ key }) => key}
@@ -77,3 +77,10 @@ export default function Licenses() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: 'auto',
+  },
+});

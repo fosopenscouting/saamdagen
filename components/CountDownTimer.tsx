@@ -1,8 +1,8 @@
 import React from 'react';
-import { useCountdown } from '../hooks/useCountdown';
+import { useCountdown } from '@/hooks/useCountdown';
 import { View } from './Themed/Themed';
 import { Text } from './Themed/Text';
-import ContentCard from '../components/ContentCard';
+import ContentCard from '@/components/ContentCard';
 import { StyleSheet } from 'react-native';
 
 type CounterProps = {
@@ -42,7 +42,7 @@ const CountdownTimer = (props: CountdownTimerProps): JSX.Element => {
         containerStyle={styles.countdown}
         colorOverlay
         palette="coral"
-        backgroundImage={require('../assets/images/countdown-banner.png')}
+        backgroundImage={require('@/assets/images/countdown-banner.png')}
       >
         <Text style={styles.countdownTitle}>SAAMDAGEEEN</Text>
         <ShowCounter
@@ -90,7 +90,7 @@ export default CountdownTimer;
 
 const styles = StyleSheet.create({
   countdown: {
-    // marginHorizontal: 8,
+    marginHorizontal: 8,
     marginBottom: 8,
   },
   countdownTitle: {

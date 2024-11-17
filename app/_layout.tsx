@@ -15,7 +15,7 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Stack } from 'expo-router';
+import { Stack, useNavigationContainerRef } from 'expo-router';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
@@ -33,10 +33,19 @@ import {
 import merge from 'deepmerge';
 import useColorScheme from '@/hooks/useColorScheme';
 import useCachedResources from '@/hooks/useCachedResources';
+import { isRunningInExpoGo } from 'expo';
+import { AlertsProvider } from 'react-native-paper-alerts';
+import { ToastProvider } from 'react-native-paper-toast';
+
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
+});
 
 Sentry.init({
-  dsn: 'https://b852c07fe977471c96a3fb2dc1e10a49@o446803.ingest.sentry.io/4505356514426880',
-  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+  dsn: process.env.EXPO_SENTRY_DSN,
+  debug: false,
+  integrations: [navigationIntegration],
+  enableNativeFramesTracking: !isRunningInExpoGo(),
 });
 
 Notifications.setNotificationHandler({
@@ -162,6 +171,14 @@ const RootLayout = () => {
   });
   const colorScheme = useColorScheme();
 
+  const ref = useNavigationContainerRef();
+
+  useEffect(() => {
+    if (ref) {
+      navigationIntegration.registerNavigationContainer(ref);
+    }
+  }, [ref]);
+
   //Notificaties
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState<
@@ -207,19 +224,25 @@ const RootLayout = () => {
                 colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
               }
             >
-              <ThemeProvider
-                value={
-                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-                }
-              >
-                <Stack
-                  screenOptions={{
-                    headerShown: false,
-                  }}
-                >
-                  <Stack.Screen name="(tabs)" />
-                </Stack>
-              </ThemeProvider>
+              <AlertsProvider>
+                <ToastProvider>
+                  <ThemeProvider
+                    value={
+                      colorScheme == 'dark'
+                        ? CustomDarkTheme
+                        : CustomDefaultTheme
+                    }
+                  >
+                    <Stack
+                      screenOptions={{
+                        headerShown: false,
+                      }}
+                    >
+                      <Stack.Screen name="(tabs)" />
+                    </Stack>
+                  </ThemeProvider>
+                </ToastProvider>
+              </AlertsProvider>
             </PaperProvider>
           </GestureHandlerRootView>
           <StatusBar

@@ -20,7 +20,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           Hey {props.firstName}
         </HeaderText>
         <Text lightColor="#fff" variant="titleLarge">
-          Ben jij al klaar voor de Saamdagen? Wij wel!
+          Ben jij al klaar voor Saamdagen? Wij alvast wel!
         </Text>
         <Text lightColor="#fff" variant="titleMedium">
           Hieronder vind je je ticket terug en ook welke workshop je gekozen
@@ -32,7 +32,11 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 
       <View style={styles.headerContainer}>
         <View style={styles.profileInfo}>
-          <HeaderText lightColor="#fff" variant="headlineMedium">
+          <HeaderText
+            style={styles.profileInfoName}
+            lightColor="#fff"
+            variant="headlineMedium"
+          >
             {props.firstName} {props.lastName}
           </HeaderText>
           <Text lightColor="#fff" variant="titleMedium">
@@ -89,6 +93,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     maxWidth: '55%',
     backgroundColor: Colors.FOSCOLORS.SEA_GREEN,
+  },
+  profileInfoName: {
+    marginBottom: 5,
   },
   workshopContainer: {
     padding: 16,

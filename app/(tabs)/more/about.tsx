@@ -1,33 +1,63 @@
-import React from 'react';
-import { View } from '@/components/Themed/Themed';
-import { StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { HeaderText, View } from '@/components/Themed/Themed';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import Constants from 'expo-constants';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { Text } from 'react-native-paper';
 import { Link } from 'expo-router';
+import { Text } from '@/components/Themed/Text';
+import { useAlerts } from 'react-native-paper-alerts';
 
 const SettingsScreen: React.FC = () => {
+  const alerts = useAlerts();
+
   const colorScheme = useColorScheme();
   const versionColor = Colors[colorScheme].muted;
+
+  const [pressesVersion, setPressesVersion] = useState<number>(0);
+
+  useEffect(() => {
+    if (pressesVersion >= 5) {
+      setPressesVersion(0);
+
+      alerts.alert(
+        'Hey jij!',
+        "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        [
+          {
+            text: 'Sluiten',
+            style: 'cancel',
+          },
+        ],
+        {
+          cancelable: false,
+        },
+      );
+    }
+  }, [pressesVersion]);
+
+  const onPressVersion = () => {
+    setPressesVersion((prev) => prev + 1);
+  };
 
   return (
     <View style={styles.container}>
       <Image
         style={styles.FOSlogo}
+        contentFit="contain"
         source={require('@/assets/images/FOS_logo.png')}
       />
       <View style={styles.innerContainer}>
-        <Text variant="headlineLarge" style={styles.title}>
-          Dé Saamdagen-App
-        </Text>
+        <HeaderText variant="headlineLarge" style={styles.title}>
+          Dé Saamdagen app
+        </HeaderText>
         <Text style={styles.text}>
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
         <Text>
-          Wist je trouwens dat de volledige sourcecode voor deze app te vinden
-          is op GitHub?
+          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub
+          staat?
         </Text>
         <Text style={styles.text}>
           Je kan &apos;m hier terugvinden:{' '}
@@ -40,9 +70,11 @@ const SettingsScreen: React.FC = () => {
         </Text>
         <Text>&copy; FOS Open Scouting - {new Date().getFullYear()}</Text>
       </View>
-      <Text style={[styles.version, { color: versionColor }]}>
-        v{Constants.expoConfig?.version}
-      </Text>
+      <TouchableOpacity onPress={onPressVersion}>
+        <Text style={[styles.version, { color: versionColor }]}>
+          v{Constants.expoConfig?.version}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -53,10 +85,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   FOSlogo: {
-    marginTop: 8,
+    marginTop: 16,
     height: '40%',
     width: '100%',
-    resizeMode: 'contain',
     alignContent: 'center',
   },
   title: {
@@ -67,7 +98,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   link: {
-    color: Colors.FOSCOLORS.FOS_BLUE,
+    // color: Colors.FOSCOLORS.FOS_BLUE,
+    textDecorationLine: 'underline',
   },
   innerContainer: {
     flex: 1,

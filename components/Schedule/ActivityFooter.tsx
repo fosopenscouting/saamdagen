@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import useColorScheme from '../../hooks/useColorScheme';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
 import { View } from '../Themed/Themed';
 
 export const ActivityFooter: React.FC = () => {

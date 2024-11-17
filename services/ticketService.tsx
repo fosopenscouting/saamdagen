@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ticket } from '../models/Ticket';
+import { Ticket } from '@/models/Ticket';
 
 export const storeTicket = async (
   data: any,
   ticketHash: string,
-): Promise<Ticket> => {
+): Promise<Ticket | Error> => {
   try {
     const formValues = data.data.submissionData.data.formValues;
     const workshopsBeforeNoon =
@@ -23,8 +23,8 @@ export const storeTicket = async (
     return ticket;
   } catch (e) {
     console.error(e);
+    throw new Error(e);
   }
-  return null;
 };
 
 export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {

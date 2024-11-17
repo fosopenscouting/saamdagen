@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from './Themed/Text';
 import { ThemeIdentifier, themes } from './ContentCard';
-import useColorScheme from '../hooks/useColorScheme';
-import Colors from '../constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
+import Colors from '@/constants/Colors';
 import { StyleProp, TextStyle } from 'react-native';
 
 type Props = {

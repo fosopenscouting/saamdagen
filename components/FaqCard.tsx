@@ -19,7 +19,7 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         left={(innerProps) => (
           <List.Icon
             {...innerProps}
-            color={Colors[colorScheme].text}
+            color={Colors[colorScheme].headerColor}
             icon={props.icon}
           />
         )}

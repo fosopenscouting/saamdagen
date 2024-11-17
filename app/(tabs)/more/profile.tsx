@@ -3,7 +3,6 @@ import { Separator, View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
   ScrollView,
-  Alert,
   Modal,
   Pressable,
   TouchableOpacity,
@@ -24,8 +23,14 @@ import {
 import Loading from '@/components/Loading';
 import { Button } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { setStatusBarHidden } from 'expo-status-bar';
+import { useAlerts } from 'react-native-paper-alerts';
+import { useToast } from 'react-native-paper-toast';
 
 const ProfileScreen: React.FC = () => {
+  const alerts = useAlerts();
+  const toaster = useToast();
+
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
   const [initialBrightness, setInitialBrightness] = useState<number>(0);
@@ -43,17 +48,29 @@ const ProfileScreen: React.FC = () => {
     if (hash) {
       setTicketLoading(true);
       getTicketFromApi(hash).then(async (res) => {
-        const ticket = await storeTicket(res, hash);
-        setTicketData(ticket);
-        setTicketLoading(false);
+        try {
+          const ticket = await storeTicket(res, hash);
+          if (ticket) setTicketData(ticket);
+          setTicketLoading(false);
+        } catch (error) {
+          toaster.show({
+            position: 'top',
+            type: 'error',
+            message:
+              'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
+          });
+          setTicketLoading(false);
+        }
       });
     }
   }, []);
 
   useFocusEffect(() => {
+    setTicketLoading(true);
     getTicketFromStorage().then((res) => {
       setTicketData(res);
     });
+    setTicketLoading(false);
   });
 
   useEffect(() => {
@@ -68,24 +85,26 @@ const ProfileScreen: React.FC = () => {
 
   const resetModal = () => {
     setModalVisible(false);
+    setStatusBarHidden(false, 'slide');
     (async () => {
       Brightness.setBrightnessAsync(initialBrightness);
     })();
   };
 
   const showConfirmDialog = () => {
-    return Alert.alert(
-      'Ben je zeker',
-      'Ben je zeker dat je je ticket wil verwijderen?',
+    alerts.alert(
+      'Ben je zeker?',
+      'Ben je zeker dat je je ticket wilt verwijderen?',
       [
         {
-          text: 'Ja',
-          onPress: () => {
-            deleteTicket();
-          },
+          text: 'Sluiten',
+          style: 'cancel',
         },
         {
-          text: 'Nee',
+          text: 'Verwijderen',
+          onPress() {
+            deleteTicket();
+          },
         },
       ],
     );
@@ -98,6 +117,8 @@ const ProfileScreen: React.FC = () => {
 
   const handleQrPress = () => {
     setModalVisible(!modalVisible);
+
+    setStatusBarHidden(true, 'slide');
   };
 
   return (
@@ -186,10 +207,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   qrModal: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
   },
   separator: {
     marginVertical: 24,

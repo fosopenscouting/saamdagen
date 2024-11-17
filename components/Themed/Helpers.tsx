@@ -1,6 +1,6 @@
-import useColorScheme from '../../hooks/useColorScheme';
+import useColorScheme from '@/hooks/useColorScheme';
 import { Text as DefaultText } from 'react-native-paper';
-import Colors from '../../constants/Colors';
+import Colors from '@/constants/Colors';
 import React from 'react';
 
 export const useThemeColor = (

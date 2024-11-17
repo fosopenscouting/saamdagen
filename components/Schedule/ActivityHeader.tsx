@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { ScheduleData } from '../../models/ScheduleData';
+import { ScheduleData } from '@/models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
 import { HeaderText, View } from '../Themed/Themed';
 

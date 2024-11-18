@@ -24,7 +24,7 @@ const useCachedResources: () => boolean = () => {
         SplashScreen.hide();
       }
     }
-    
+
     loadResourcesAndDataAsync();
   }, []);
 

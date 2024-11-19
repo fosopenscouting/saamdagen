@@ -1,6 +1,6 @@
 {
   "expo": {
-	"newArchEnabled": true,
+    "newArchEnabled": true,
     "name": "Saamdagen",
     "slug": "saamdagen",
     "version": "#{APP_VERSION}#",
@@ -9,11 +9,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "saamdagen",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash_new.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#00549F"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -39,6 +34,18 @@
       "favicon": "./assets/images/favicon.png"
     },
     "description": "",
-    "plugins": ["expo-asset", "expo-font", "expo-router"]
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#00549F",
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200
+        }
+      ],
+      "expo-asset",
+      "expo-font",
+      "expo-router"
+    ]
   }
 }

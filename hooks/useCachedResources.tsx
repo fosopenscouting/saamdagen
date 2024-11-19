@@ -3,16 +3,15 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 
+SplashScreen.preventAutoHideAsync();
+
 const useCachedResources: () => boolean = () => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
-    loadResourcesAndDataAsync();
-
     async function loadResourcesAndDataAsync() {
       try {
-        SplashScreen.preventAutoHideAsync();
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
@@ -22,9 +21,11 @@ const useCachedResources: () => boolean = () => {
         console.warn(e);
       } finally {
         setLoadingComplete(true);
-        await SplashScreen.hideAsync();
+        SplashScreen.hide();
       }
     }
+
+    loadResourcesAndDataAsync();
   }, []);
 
   return isLoadingComplete;

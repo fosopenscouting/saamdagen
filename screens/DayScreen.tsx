@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View as NativeView,
 } from 'react-native';
-import { ScheduleData } from '@/models/ScheduleData';
+import { ScheduleData, TimeRange } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { HeaderText, View } from '@/components/Themed/Themed';
@@ -23,8 +23,13 @@ export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
 }
 
+export interface GroupedEvents {
+  [key: string]: { time: string; events: ScheduleData[] };
+}
+
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
+  const [dayEventsGrouped, setDayEventsGrouped] = useState<GroupedEvents>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
 
   const currentTimelineItemRef = useRef<NativeView | undefined>();
@@ -43,37 +48,69 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const todayIsDay = checkDay(dayInfo.day);
   const now = new Date();
 
-  const isNow = (timeString: string) => {
+  const isNow = (timeString: TimeRange | string) => {
     if (!todayIsDay) return false;
 
-    if (timeString.includes('t.e.m.') && !timeString.includes('...')) {
-      const split = timeString.split('t.e.m. ');
-      const startTime = split[0].split(':');
-      const endTime = split[1].split(':');
-      //Create dummy dates
-      const start = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        parseInt(startTime[0]),
-        parseInt(startTime[1]),
-        0,
-      );
-      const end = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        parseInt(endTime[0]),
-        parseInt(endTime[1]),
-        0,
-      );
+    //Backwards compatibility
+    if (timeString instanceof String) {
+      if (timeString.includes('t.e.m.') && !timeString.includes('...')) {
+        const split = timeString.split('t.e.m. ');
+        const startTime = split[0].split(':');
+        const endTime = split[1].split(':');
+        //Create dummy dates
+        const start = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          parseInt(startTime[0]),
+          parseInt(startTime[1]),
+          0,
+        );
+        const end = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          parseInt(endTime[0]),
+          parseInt(endTime[1]),
+          0,
+        );
 
-      return now >= start && now <= end;
+        return now >= start && now <= end;
+      } else {
+        return (
+          parseInt(timeString.split(':')[0]) == now.getHours() &&
+          parseInt(timeString.split(':')[1]) == now.getMinutes()
+        );
+      }
     } else {
-      return (
-        parseInt(timeString.split(':')[0]) == now.getHours() &&
-        parseInt(timeString.split(':')[1]) == now.getMinutes()
-      );
+      if (timeString.eind && timeString.eind !== '...') {
+        const startTime = timeString.start.split(':');
+        const endTime = timeString.eind.split(':');
+        //Create dummy dates
+        const start = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          parseInt(startTime[0]),
+          parseInt(startTime[1]),
+          0,
+        );
+        const end = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          parseInt(endTime[0]),
+          parseInt(endTime[1]),
+          0,
+        );
+
+        return now >= start && now <= end;
+      } else {
+        return (
+          parseInt(timeString.start) == now.getHours() &&
+          parseInt(timeString.start) == now.getMinutes()
+        );
+      }
     }
   };
 
@@ -127,11 +164,28 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     const content = data?.filter(
       (x) => x.key === `${PROGRAM_ITEMS}/${dayInfo.day}`,
     )[0].content;
-    const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
+    const events: ScheduleData[] = content?.filter(
+      (x) => x.type !== 'algemene_openingsuren',
+    );
     const openingHours = content?.filter(
       (x) => x.type === 'algemene_openingsuren',
     );
     setDayEvents(events);
+
+    const grouped: GroupedEvents = {};
+    events.forEach((evt) => {
+      if (grouped[evt.time.start]) {
+        grouped[evt.time.start].events.push(evt);
+      } else {
+        grouped[evt.time.start] = {
+          time: evt.time.start,
+          events: [evt],
+        };
+      }
+    });
+
+    setDayEventsGrouped(grouped);
+
     if (openingHours) {
       setDayGeneralHours(openingHours[0]);
     }
@@ -150,11 +204,13 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           <View
             style={[styles.filterBar, Colors[colorScheme].tabBarStyle]}
           ></View>
-          {dayEvents ? (
+          {dayEventsGrouped ? (
             <Timeline
               key="test"
-              data={dayEvents.map((evt, index) => {
-                const active = isNow(evt.time);
+              data={Object.values(dayEventsGrouped).sort((a, b) => {
+                return parseInt(a.time.split(':')[0]) - parseInt(b.time.split(':')[0])
+              }).map((evts, index) => {
+                const active = isNow(evts.time);
 
                 const ref =
                   active && !currentTimelineItemRef.current
@@ -163,29 +219,82 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                       }
                     : {};
 
-                return {
-                  time: evt.time.split(' ')[0],
-                  title: evt.name,
-                  description: [
+                if (evts.events?.length == 1) {
+                  return {
+                    time: evts.events[0].time.start,
+                    title: evts.events[0].name,
+                    description: [
+                      <NativeView
+                        collapsable={false}
+                        {...ref}
+                        style={{
+                          margin: 0,
+                        }}
+                        key={`timeline_${index}_rootview`}
+                      >
+                        <HeaderText
+                          variant="bodyMedium"
+                          key={`timeline_${index}_header`}
+                        >
+                          {evts.events[0].time.start}{' '}
+                          {evts.events[0].time.eind
+                            ? `t.e.m. ${evts.events[0].time.eind}`
+                            : ''}
+                        </HeaderText>
+                        <Text key={`timeline_${index}_description`}>
+                          {evts.events[0].description}
+                        </Text>
+                      </NativeView>,
+                    ],
+                    circleColor: active
+                      ? Colors.FOSCOLORS.BRIGHTPINK
+                      : Colors.FOSCOLORS.FOS_BLUE,
+                    lineColor: active
+                      ? Colors.FOSCOLORS.BRIGHTPINK
+                      : Colors.FOSCOLORS.FOS_BLUE,
+                  };
+                }
+
+                const description = evts.events.map((evt, i) => {
+                  return (
                     <NativeView
                       collapsable={false}
                       {...ref}
                       style={{
                         margin: 0,
+                        marginBottom: 10
                       }}
-                      key={`timeline_${index}_rootview`}
+                      key={`timeline_${index}_${i}_rootview`}
                     >
                       <HeaderText
-                        variant="bodyMedium"
-                        key={`timeline_${index}_header`}
+                        variant="bodyLarge"
+                        key={`timeline_${index}_${i}_name`}
                       >
-                        {evt.time}
+                        - { evt.name }
                       </HeaderText>
-                      <Text key={`timeline_${index}_description`}>
+                      <HeaderText
+                        variant="bodyMedium"
+                        key={`timeline_${index}_${i}_header`}
+                        style={{
+                          marginLeft: 10
+                        }}
+                      >
+                        {evt.time.start}{' '}
+                        {evt.time.eind ? `t.e.m. ${evt.time.eind}` : ''}
+                      </HeaderText>
+                      <Text key={`timeline_${index}_${i}_description`} style={{
+                          marginLeft: 10
+                        }}>
                         {evt.description}
                       </Text>
-                    </NativeView>,
-                  ],
+                    </NativeView>
+                  );
+                });
+
+                return {
+                  time: evts.time,
+                  title: 'Volgende activiteiten:',
+                  description: description,
                   circleColor: active
                     ? Colors.FOSCOLORS.BRIGHTPINK
                     : Colors.FOSCOLORS.FOS_BLUE,
@@ -200,6 +309,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               titleStyle={{
                 color: Colors[colorScheme].text,
                 fontFamily: 'Quicksand_600SemiBold',
+              }}
+              eventDetailStyle={{
+                paddingTop: 0,
+                paddingBottom: 20
               }}
               timeStyle={{
                 textAlign: 'center',

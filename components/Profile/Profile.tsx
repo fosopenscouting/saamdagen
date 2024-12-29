@@ -101,12 +101,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 50,
     backgroundColor: Colors.FOSCOLORS.CORAL,
-  },
-
-  greetingHeader: {
-    fontSize: 17,
-    fontFamily: 'Quicksand_600SemiBold',
-  },
+  }
 });
 
 export default Profile;

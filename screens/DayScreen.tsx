@@ -28,7 +28,6 @@ export interface GroupedEvents {
 }
 
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
-  const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
   const [dayEventsGrouped, setDayEventsGrouped] = useState<GroupedEvents>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
 
@@ -170,7 +169,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     const openingHours = content?.filter(
       (x) => x.type === 'algemene_openingsuren',
     );
-    setDayEvents(events);
 
     const grouped: GroupedEvents = {};
     events.forEach((evt) => {
@@ -207,45 +205,102 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           {dayEventsGrouped ? (
             <Timeline
               key="test"
-              data={Object.values(dayEventsGrouped).sort((a, b) => {
-                return parseInt(a.time.split(':')[0]) - parseInt(b.time.split(':')[0])
-              }).map((evts, index) => {
-                const active = isNow(evts.time);
+              data={Object.values(dayEventsGrouped)
+                .sort((a, b) => {
+                  return (
+                    parseInt(a.time.split(':')[0]) -
+                    parseInt(b.time.split(':')[0])
+                  );
+                })
+                .map((evts, index) => {
+                  const active = isNow(evts.time);
 
-                const ref =
-                  active && !currentTimelineItemRef.current
-                    ? {
-                        ref: currentTimelineItemRef,
-                      }
-                    : {};
+                  const ref =
+                    active && !currentTimelineItemRef.current
+                      ? {
+                          ref: currentTimelineItemRef,
+                        }
+                      : {};
 
-                if (evts.events?.length == 1) {
-                  return {
-                    time: evts.events[0].time.start,
-                    title: evts.events[0].name,
-                    description: [
+                  if (evts.events?.length == 1) {
+                    return {
+                      time: evts.events[0].time.start,
+                      title: evts.events[0].name,
+                      description: [
+                        <NativeView
+                          collapsable={false}
+                          {...ref}
+                          style={{
+                            margin: 0,
+                          }}
+                          key={`timeline_${index}_rootview`}
+                        >
+                          <HeaderText
+                            variant="bodyMedium"
+                            key={`timeline_${index}_header`}
+                          >
+                            {evts.events[0].time.start}{' '}
+                            {evts.events[0].time.eind
+                              ? `t.e.m. ${evts.events[0].time.eind}`
+                              : ''}
+                          </HeaderText>
+                          <Text key={`timeline_${index}_description`}>
+                            {evts.events[0].description}
+                          </Text>
+                        </NativeView>,
+                      ],
+                      circleColor: active
+                        ? Colors.FOSCOLORS.BRIGHTPINK
+                        : Colors.FOSCOLORS.FOS_BLUE,
+                      lineColor: active
+                        ? Colors.FOSCOLORS.BRIGHTPINK
+                        : Colors.FOSCOLORS.FOS_BLUE,
+                    };
+                  }
+
+                  const description = evts.events.map((evt, i) => {
+                    return (
                       <NativeView
                         collapsable={false}
                         {...ref}
                         style={{
                           margin: 0,
+                          marginBottom: 10,
                         }}
-                        key={`timeline_${index}_rootview`}
+                        key={`timeline_${index}_${i}_rootview`}
                       >
                         <HeaderText
-                          variant="bodyMedium"
-                          key={`timeline_${index}_header`}
+                          variant="bodyLarge"
+                          key={`timeline_${index}_${i}_name`}
                         >
-                          {evts.events[0].time.start}{' '}
-                          {evts.events[0].time.eind
-                            ? `t.e.m. ${evts.events[0].time.eind}`
-                            : ''}
+                          - {evt.name}
                         </HeaderText>
-                        <Text key={`timeline_${index}_description`}>
-                          {evts.events[0].description}
+                        <HeaderText
+                          variant="bodyMedium"
+                          key={`timeline_${index}_${i}_header`}
+                          style={{
+                            marginLeft: 10,
+                          }}
+                        >
+                          {evt.time.start}{' '}
+                          {evt.time.eind ? `t.e.m. ${evt.time.eind}` : ''}
+                        </HeaderText>
+                        <Text
+                          key={`timeline_${index}_${i}_description`}
+                          style={{
+                            marginLeft: 10,
+                          }}
+                        >
+                          {evt.description}
                         </Text>
-                      </NativeView>,
-                    ],
+                      </NativeView>
+                    );
+                  });
+
+                  return {
+                    time: evts.time,
+                    title: 'Volgende activiteiten:',
+                    description: description,
                     circleColor: active
                       ? Colors.FOSCOLORS.BRIGHTPINK
                       : Colors.FOSCOLORS.FOS_BLUE,
@@ -253,56 +308,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                       ? Colors.FOSCOLORS.BRIGHTPINK
                       : Colors.FOSCOLORS.FOS_BLUE,
                   };
-                }
-
-                const description = evts.events.map((evt, i) => {
-                  return (
-                    <NativeView
-                      collapsable={false}
-                      {...ref}
-                      style={{
-                        margin: 0,
-                        marginBottom: 10
-                      }}
-                      key={`timeline_${index}_${i}_rootview`}
-                    >
-                      <HeaderText
-                        variant="bodyLarge"
-                        key={`timeline_${index}_${i}_name`}
-                      >
-                        - { evt.name }
-                      </HeaderText>
-                      <HeaderText
-                        variant="bodyMedium"
-                        key={`timeline_${index}_${i}_header`}
-                        style={{
-                          marginLeft: 10
-                        }}
-                      >
-                        {evt.time.start}{' '}
-                        {evt.time.eind ? `t.e.m. ${evt.time.eind}` : ''}
-                      </HeaderText>
-                      <Text key={`timeline_${index}_${i}_description`} style={{
-                          marginLeft: 10
-                        }}>
-                        {evt.description}
-                      </Text>
-                    </NativeView>
-                  );
-                });
-
-                return {
-                  time: evts.time,
-                  title: 'Volgende activiteiten:',
-                  description: description,
-                  circleColor: active
-                    ? Colors.FOSCOLORS.BRIGHTPINK
-                    : Colors.FOSCOLORS.FOS_BLUE,
-                  lineColor: active
-                    ? Colors.FOSCOLORS.BRIGHTPINK
-                    : Colors.FOSCOLORS.FOS_BLUE,
-                };
-              })}
+                })}
               descriptionStyle={{
                 color: Colors[colorScheme].text,
               }}
@@ -312,7 +318,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               }}
               eventDetailStyle={{
                 paddingTop: 0,
-                paddingBottom: 20
+                paddingBottom: 20,
               }}
               timeStyle={{
                 textAlign: 'center',

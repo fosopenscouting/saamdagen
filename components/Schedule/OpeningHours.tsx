@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import Collapsible from 'react-native-collapsible';
+import { View, StyleSheet } from 'react-native';
 import { ScheduleData } from '@/models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
-import { HeaderText, Markdown } from '../Themed/Themed';
+import { Markdown } from '../Themed/Themed';
+import { List } from 'react-native-paper';
+import Colors from '@/constants/Colors';
+import useColorScheme from '@/hooks/useColorScheme';
 
 type Props = {
   openingHours: ScheduleData | undefined;
@@ -15,43 +17,35 @@ export const OpeningHours: React.FC<Props> = (props: Props) => {
   const handleHidePress = () => {
     setHideOverview(!hideOverview);
   };
+  const colorScheme = useColorScheme();
 
   return (
-    <>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity onPress={handleHidePress}>
-            <HeaderText style={styles.eventH2}>
-              ALGEMENE OPENINGSUREN
-            </HeaderText>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity onPress={handleHidePress}>
-            <CollapsibleChevron isActive={!hideOverview} />
-          </TouchableOpacity>
-        </View>
+    <List.Accordion
+      style={{
+        backgroundColor: Colors[colorScheme].background,
+        paddingVertical: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+      }}
+      titleStyle={{
+        fontFamily: 'Quicksand_600SemiBold',
+        fontSize: 24,
+        textTransform: 'uppercase',
+        textAlign: 'center'
+      }}
+      right={props => <CollapsibleChevron isActive={props.isExpanded} />}
+      title="ALGEMENE OPENINGSUREN"
+    >
+      <View style={styles.container}>
+        <Markdown>{props.openingHours?.description}</Markdown>
       </View>
-      <Collapsible collapsed={hideOverview}>
-        <View style={styles.container}>
-          <Markdown>{props.openingHours?.description}</Markdown>
-        </View>
-      </Collapsible>
-    </>
+    </List.Accordion>
   );
 };
 
 const styles = StyleSheet.create({
-  eventH2: {
-    fontSize: 24,
-    fontWeight: 'normal',
-    fontFamily: 'Quicksand_300Light',
-    textTransform: 'uppercase',
-    textAlign: 'left',
-  },
   container: {
     flex: 1,
-    // alignItems: 'flex-start',
-    // justifyContent: 'center',
+    paddingHorizontal: 16
   },
 });

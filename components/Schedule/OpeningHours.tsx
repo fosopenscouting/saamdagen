@@ -31,9 +31,9 @@ export const OpeningHours: React.FC<Props> = (props: Props) => {
         fontFamily: 'Quicksand_600SemiBold',
         fontSize: 24,
         textTransform: 'uppercase',
-        textAlign: 'center'
+        textAlign: 'center',
       }}
-      right={props => <CollapsibleChevron isActive={props.isExpanded} />}
+      right={(props) => <CollapsibleChevron isActive={props.isExpanded} />}
       title="ALGEMENE OPENINGSUREN"
     >
       <View style={styles.container}>
@@ -46,6 +46,6 @@ export const OpeningHours: React.FC<Props> = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16
+    paddingHorizontal: 16,
   },
 });

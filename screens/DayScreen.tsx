@@ -157,7 +157,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <View style={{ paddingTop: 8, margin: 10 }}>
+        <View style={{ margin: 10 }}>
           <OpeningHours openingHours={dayGeneralHours} />
           <View
             style={[styles.filterBar, Colors[colorScheme].tabBarStyle]}

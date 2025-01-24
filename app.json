@@ -6,7 +6,7 @@
     "version": "#{APP_VERSION}#",
     "owner": "fos-open-scouting",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "saamdagen",
     "userInterfaceStyle": "automatic",
     "updates": {
@@ -20,13 +20,18 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.",
         "UIBackgroundModes": ["fetch"]
+      },
+      "icon": {
+        "dark": "./assets/images/icon/ios_dark.png",
+        "tinted": "./assets/images/icon/ios_tinted.png"
       }
     },
     "android": {
       "package": "be.fos.saamdagen",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundImage": "./assets/images/adaptive-icon-bg.png"
+        "foregroundImage": "./assets/images/icon/adaptive-icon.png",
+        "backgroundImage": "./assets/images/icon/adaptive-icon-bg.png",
+        "monochromeImage": "./assets/images/icon/monochrome.png"
       },
       "permissions": ["CAMERA"]
     },

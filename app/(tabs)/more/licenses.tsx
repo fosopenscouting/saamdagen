@@ -3,7 +3,7 @@ import React from 'react';
 import LicensesData from '@/assets/licenses.json';
 import { Separator, View } from '@/components/Themed/Themed';
 import { FlatList, StyleSheet } from 'react-native';
-import LicensesItem from '@/components/Licenses/Item';
+import LicensesItem, { LicenseItem } from '@/components/Licenses/Item';
 
 const extractNameFromGHUrl = (url: string) => {
   if (!url) {
@@ -19,17 +19,20 @@ const extractNameFromGHUrl = (url: string) => {
   }
   return null;
 };
+
 const sortByDataKey = (data: [], key: string) => {
   data.sort(function (a, b) {
     return a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0;
   });
   return data;
 };
+
 const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const licenses = Object.keys(LicensesData).map((key) => {
+const licenses: LicenseItem[] = Object.keys(LicensesData).map((key) => {
+  //@ts-expect-error Stupid typescript, the key is a string!
   const { licenses, ...license } = LicensesData[key];
   const [name, version] = key.split('@');
 
@@ -37,19 +40,11 @@ const licenses = Object.keys(LicensesData).map((key) => {
     extractNameFromGHUrl(license.repository) ||
     extractNameFromGHUrl(license.licenseUrl);
 
-  let userUrl;
-  let image;
-  if (username) {
-    username = capitalizeFirstLetter(username);
-    image = `http://github.com/${username}.png`;
-    userUrl = `http://github.com/${username}`;
-  }
+  if (username) username = capitalizeFirstLetter(username);
 
   return {
     key,
     name,
-    image,
-    userUrl,
     username,
     licenses: licenses.slice(0, 405),
     version,
@@ -57,11 +52,12 @@ const licenses = Object.keys(LicensesData).map((key) => {
   };
 });
 
+//@ts-expect-error I don't want to do this anymore
 sortByDataKey(licenses, 'username');
 
 export default function Licenses() {
   const renderItem = React.useCallback(
-    ({ item }) => <LicensesItem {...item} />,
+    ({ item }: { item: LicenseItem }) => <LicensesItem {...item} />,
     [],
   );
 
@@ -69,7 +65,7 @@ export default function Licenses() {
     <View style={styles.container}>
       <FlatList
         data={licenses.filter((l) => l.name)}
-        keyExtractor={({ key }) => key}
+        keyExtractor={({ name }, index) => `${index}_${name}`}
         renderItem={renderItem}
         contentContainerStyle={{ paddingHorizontal: 10 }}
         ItemSeparatorComponent={() => <Separator marginVertical={1} />}

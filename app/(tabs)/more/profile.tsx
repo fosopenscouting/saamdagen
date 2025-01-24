@@ -210,11 +210,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  separator: {
-    marginVertical: 24,
-    height: 1,
-    width: '100%',
-  },
 });
 
 export default ProfileScreen;

@@ -7,9 +7,18 @@ import {
   TextStyle,
   TouchableOpacity,
 } from 'react-native';
-import { Image } from 'expo-image';
 import { Text } from '@/components/Themed/Text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+export interface LicenseItem {
+  userUrl: string;
+  username: string;
+  name: string;
+  version: string;
+  licenses: string;
+  repository: string;
+  licenseUrl: string;
+}
 
 const Link = ({
   url,
@@ -31,26 +40,13 @@ const Link = ({
 );
 
 export default function LicensesItem({
-  image,
-  userUrl,
   username,
   name,
   version,
   licenses,
   repository,
   licenseUrl,
-  // parents, Currently not in use
-}: {
-  image: string;
-  userUrl: string;
-  username: string;
-  name: string;
-  version: string;
-  licenses: string;
-  repository: string;
-  licenseUrl: string;
-  parents: string;
-}) {
+}: LicenseItem) {
   const title = name;
   let by;
   if (username) {
@@ -61,15 +57,8 @@ export default function LicensesItem({
 
   return (
     <View>
-      <View style={styles.cardShadow}>
         <View style={styles.card}>
-          {image && (
-            <TouchableOpacity onPress={() => Linking.openURL(userUrl)}>
-              <Image source={{ uri: image }} style={styles.image} />
-            </TouchableOpacity>
-          )}
           <TouchableOpacity
-            // underlayColor={'#eeeeee'}
             onPress={() => Linking.openURL(repository)}
             style={styles.item}
           >
@@ -90,7 +79,6 @@ export default function LicensesItem({
             />
           </TouchableOpacity>
         </View>
-      </View>
     </View>
   );
 }
@@ -101,14 +89,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'stretch',
   },
-  cardShadow: {
-    marginHorizontal: 12,
-    marginVertical: 6,
-    shadowColor: 'black',
-    shadowOpacity: 0.4,
-    shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 2,
-  },
   item: {
     paddingVertical: 16,
     paddingLeft: 12,
@@ -118,13 +98,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     maxWidth: '100%',
   },
-  image: {
-    width: 96,
-    maxWidth: 96,
-    flex: 1,
-    borderRadius: 0,
-  },
-
   text: {
     marginTop: 3,
   },

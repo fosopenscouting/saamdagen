@@ -2,12 +2,14 @@ import { TimeRange } from '@/models/ScheduleData';
 
 type Day = 'Vrijdag' | 'Zaterdag' | 'Zondag';
 
-const DAYS = {
-  Vrijdag: new Date(2024, 8, 27).setHours(0, 0, 0, 0),
-  Zaterdag: new Date(2024, 11, 29).setHours(0, 0, 0, 0),
-  Zondag: new Date(2024, 8, 29).setHours(0, 0, 0, 0),
+//TODO: Maybe a better way to store the dates?
+//WARNING: months are 0-indexed, so september = 8!
+const DAYS: { [key: string]: number } = {
+  Vrijdag: new Date(2025, 8, 26).setHours(0, 0, 0, 0),
+  Zaterdag: new Date(2025, 8, 27).setHours(0, 0, 0, 0),
+  Zondag: new Date(2025, 8, 28).setHours(0, 0, 0, 0),
 };
-const DAYS_ENG = {
+const DAYS_ENG: { [key: string]: string } = {
   Vrijdag: 'friday',
   Zaterdag: 'saturday',
   Zondag: 'sunday',
@@ -24,7 +26,7 @@ export const returnDay = (eng = false) => {
   let output;
 
   if (eng) {
-    const day = Object.keys(DAYS).find((key) => {
+    const day = Object.keys(DAYS).find((key: string) => {
       DAYS[key] == TODAY;
     });
     output = day ? DAYS_ENG[day] : undefined;
@@ -96,8 +98,8 @@ export const isNow = (timeString: TimeRange | string, day: Day) => {
     const end = createDummyDate(endTime[0], endTime[1], now);
 
     return now >= start && now <= end;
-  } 
-  
+  }
+
   return false;
 };
 
@@ -108,4 +110,4 @@ export const isLater = (first: string, second: string) => {
   const end = createDummyDate(second.split(':')[0], second.split(':')[1], now);
 
   return start >= end;
-}
+};

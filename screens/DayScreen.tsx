@@ -8,14 +8,13 @@ import {
 import { ScheduleData, TimeRange } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { HeaderText, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import { PROGRAM_ITEMS } from '@/constants/Strings';
 import { OpeningHours } from '@/components/Schedule/OpeningHours';
 import { useDataContext } from '@/hooks/useDataContext';
 import Timeline from 'react-native-timeline-flatlist';
-import { Text } from '@/components/Themed/Text';
 import { useFocusEffect } from 'expo-router';
-import { checkDay, isLater, isNow } from '@/utils/dates';
+import { isLater, isNow } from '@/utils/dates';
 import { FAB } from 'react-native-paper';
 import Constants from 'expo-constants';
 import SingleActivity from '@/components/Schedule/SingleActivity';
@@ -102,9 +101,11 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
       (x) => x.key === `${PROGRAM_ITEMS}/${dayInfo.day}`,
     )[0].content;
     const events: ScheduleData[] = content?.filter(
+      //@ts-expect-error Cant give fixed type for content
       (x) => x.type !== 'algemene_openingsuren',
     );
     const openingHours = content?.filter(
+      //@ts-expect-error Cant give fixed type for content
       (x) => x.type === 'algemene_openingsuren',
     );
 
@@ -259,6 +260,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               circleColor={Colors.FOSCOLORS.FOS_BLUE}
               circleSize={20}
               innerCircle={'dot'}
+              //@ts-expect-error It works, so ignore the error (please)
               options={{
                 style: {
                   paddingTop: 5,

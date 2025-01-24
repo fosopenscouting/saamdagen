@@ -23,7 +23,9 @@ export default function TabsLayout() {
           backgroundColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
         }}
         theme={{
-          fonts: configureFonts({ config: { fontFamily: 'Quicksand_600SemiBold' } })
+          fonts: configureFonts({
+            config: { fontFamily: 'Quicksand_600SemiBold' },
+          }),
         }}
       >
         <MaterialBottomTabs.Screen

@@ -57,28 +57,28 @@ export default function LicensesItem({
 
   return (
     <View>
-        <View style={styles.card}>
-          <TouchableOpacity
-            onPress={() => Linking.openURL(repository)}
-            style={styles.item}
-          >
-            <View style={{ maxWidth: '90%' }}>
-              <HeaderText variant="titleMedium">
-                {title}@{version}
-              </HeaderText>
-              <Link style={styles.text} url={licenseUrl}>
-                {licenses}
-              </Link>
-              <Text style={styles.text}>{by}</Text>
-            </View>
-            <MaterialCommunityIcons
-              name="chevron-right"
-              size={32}
-              color={'white'}
-              style={{ alignSelf: 'center', marginLeft: 'auto' }}
-            />
-          </TouchableOpacity>
-        </View>
+      <View style={styles.card}>
+        <TouchableOpacity
+          onPress={() => Linking.openURL(repository)}
+          style={styles.item}
+        >
+          <View style={{ maxWidth: '90%' }}>
+            <HeaderText variant="titleMedium">
+              {title}@{version}
+            </HeaderText>
+            <Link style={styles.text} url={licenseUrl}>
+              {licenses}
+            </Link>
+            <Text style={styles.text}>{by}</Text>
+          </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={32}
+            color={'white'}
+            style={{ alignSelf: 'center', marginLeft: 'auto' }}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

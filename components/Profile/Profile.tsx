@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 50,
     backgroundColor: Colors.FOSCOLORS.CORAL,
-  }
+  },
 });
 
 export default Profile;

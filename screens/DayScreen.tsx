@@ -192,7 +192,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 
                   if (evts.events?.length == 1) {
                     return {
-                      time: evts.events[0].time.start,
+                      time: evts.time,
                       title: evts.events[0].name,
                       description: [
                         <SingleActivity

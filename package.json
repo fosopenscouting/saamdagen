@@ -36,6 +36,7 @@
     "expo-brightness": "~13.0.2",
     "expo-camera": "~16.0.10",
     "expo-constants": "~17.0.3",
+    "expo-dev-client": "^5.0.10",
     "expo-device": "~7.0.1",
     "expo-font": "~13.0.2",
     "expo-haptics": "~14.0.0",

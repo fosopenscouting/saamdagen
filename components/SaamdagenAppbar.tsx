@@ -23,7 +23,7 @@ const SaamdagenAppbar: React.FC<NativeStackHeaderProps> = (
         <Appbar.BackAction onPress={props.navigation.goBack} />
       ) : null}
       <Appbar.Content
-        titleStyle={{ color: Colors[colorScheme].tabTextColor }}
+        titleStyle={[{ color: Colors[colorScheme].tabTextColor}, props.options.headerTitleStyle ]}
         title={title}
       />
     </Appbar.Header>

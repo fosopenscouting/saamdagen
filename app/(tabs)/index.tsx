@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, View } from 'react-native';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import { Image, ImageBackground } from 'expo-image';
 import CountdownTimer from '@/components/CountDownTimer';
 import BasicCard from '@/components/BasicCard';
@@ -15,8 +21,9 @@ import { Banner } from 'react-native-paper';
 import { ExecutionEnvironment } from 'expo-constants';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import { HeaderText } from '@/components/Themed/Themed';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -80,7 +87,7 @@ const HomeScreen: React.FC = () => {
         }
       >
         <ImageBackground
-          imageStyle={{ opacity: 0.6 }}
+          imageStyle={{ opacity: 0.7 }}
           source={require('@/assets/images/home-banner-2.png')}
           style={styles.foregroundImage}
         >
@@ -113,19 +120,31 @@ const HomeScreen: React.FC = () => {
         </ContentCard>
         {filteredData?.content?.map(
           (item: HomeScreenSection, index: number) => (
-            <BasicCard
+            <TouchableOpacity
               key={index}
-              containerStyle={[
-                styles.basicCard,
-                index === filteredData?.content.length - 1
-                  ? styles.lastCard
-                  : null,
-              ]}
-              content={item.content}
-              title={item.title}
-              mode="elevated"
-              palette="fosBlue"
-            />
+              onPress={() => {
+                if (item.link) {
+                  router.push(item.link, {
+                    withAnchor: true,
+                  });
+                }
+              }}
+              activeOpacity={item.link ? 0.7 : 1}
+            >
+              <BasicCard
+                containerStyle={[
+                  styles.basicCard,
+                  index === filteredData?.content.length - 1
+                    ? styles.lastCard
+                    : null,
+                ]}
+                content={item.content}
+                title={item.title}
+                mode="elevated"
+                palette="fosBlue"
+                hasLink={item.link ? true : false}
+              />
+            </TouchableOpacity>
           ),
         )}
       </ScrollView>
@@ -141,8 +160,24 @@ const HomeScreen: React.FC = () => {
           <MaterialCommunityIcons name="update" color="#fff" size={size} />
         )}
       >
-        Er is een update beschikbaar! Maak je helemaal klaar voor Saamdagen door
-        de nieuwste versie van de app te downloaden.
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+          }}
+        >
+          <HeaderText variant="bodyLarge">
+            Er is een update beschikbaar!
+          </HeaderText>
+          <Text>
+            Maak je helemaal klaar voor Saamdagen door de nieuwste versie van de
+            app te downloaden.
+          </Text>
+          <Text>
+            Zo kun je nóg meer genieten van Saamdagen!
+          </Text>
+        </View>
       </Banner>
     </>
   );
@@ -165,36 +200,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 16,
   },
-  content: {
-    marginBottom: 5,
-    textAlign: 'justify',
-  },
-  container: {
-    flex: 1,
-  },
-  regularTitle: {
-    color: 'white',
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  eventH3: {
-    fontSize: 16,
-    flex: 1,
-  },
-  eventSeparator: {
-    borderBottomWidth: 2,
-    marginTop: 10,
-  },
   foregroundImage: {
     width: '100%',
     height: 430,
     backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
-    marginBottom: 5,
+    marginBottom: 8,
   },
   saamregels: {
     marginHorizontal: 8,

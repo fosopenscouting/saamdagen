@@ -19,6 +19,7 @@ export const mapHomeItems = (
         title: item.attributes.titel,
         order: item.attributes.volgorde,
         content: item.body,
+        link: item.attributes.link
       };
     })
     .sort(sortByOrder);

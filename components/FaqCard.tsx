@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import { List } from 'react-native-paper';
 import Colors from '@/constants/Colors';
@@ -13,18 +13,27 @@ type Props = {
 
 const FaqCard: React.FC<Props> = (props: Props) => {
   const colorScheme = useColorScheme();
+
+  const [expanded, setExpanded] = useState(false);
+  const handlePress = () => setExpanded(!expanded)
+  
   return (
     <>
       <List.Accordion
         left={(innerProps) => (
           <List.Icon
             {...innerProps}
-            color={Colors[colorScheme].headerColor}
+            color={expanded ? Colors.FOSCOLORS.FOS_GREEN : Colors[colorScheme].headerColor}
             icon={props.icon}
           />
         )}
+        expanded={expanded}
+        onPress={handlePress}
         titleNumberOfLines={10}
         title={props.title}
+        titleStyle={{
+          fontFamily: 'Quicksand_500Medium'
+        }}
         theme={{
           colors: {
             primary: Colors.FOSCOLORS.FOS_GREEN,

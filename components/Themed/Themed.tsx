@@ -11,6 +11,7 @@ import { Anchor as DefaultAnchor } from '../Anchor';
 import { Text } from './Text';
 import { ThemeProps, TextProps, useThemeColor } from './Helpers';
 import Colors from '@/constants/Colors';
+import { Image } from 'expo-image';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
@@ -20,7 +21,7 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
   const color = useThemeColor(
     { light: lightColor, dark: darkColor },
     'headerColor',
-  );
+  ).toString();
   const fontFamily = 'Quicksand_600SemiBold';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
@@ -31,7 +32,7 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
   const color = useThemeColor(
     { light: lightColor, dark: darkColor },
     'linkColor',
-  );
+  ).toString();
 
   return <DefaultAnchor style={[{ color }, style]} {...otherProps} />;
 };
@@ -97,7 +98,21 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
     }
   };
 
-  return <DefaultMarkdown renderText={renderText} {...otherProps} />;
+  const local_images: {
+    [key: string]: string
+  } = {
+    '@saamregels': require('@/assets/images/saamregels.png'),
+  };
+
+  const renderImage = (src: string, alt: string, title: string, key: string) => {
+    if(src && src.startsWith('@') && local_images[src]) {
+      return <Image key={key} source={local_images[src]} style={{ minWidth: 200, height: 200, flex: 1 }} />;
+    }
+
+    return <Image key={key} source={{ uri: src }} style={{ minWidth: 200, height: 200, flex: 1 }} />;
+  };
+
+  return <DefaultMarkdown renderText={renderText} renderImage={renderImage} {...otherProps} />;
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {
@@ -105,7 +120,7 @@ export const View: React.FC<ViewProps> = (props: ViewProps) => {
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },
     'background',
-  );
+  ).toString();
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 };

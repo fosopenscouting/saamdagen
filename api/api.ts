@@ -1,10 +1,11 @@
 const CONTENT_ROOT = process.env.EXPO_PUBLIC_CONTENT_ROOT! ?? 'Production';
+const API_URL = process.env.EXPO_PUBLIC_API_URL! ?? "https://fosopenscouting.github.io/Saamdagen-App-inhoud";
 
 export const getContentIndex = async (): Promise<string[]> => {
   console.log(`CONTENT_DIR: ${CONTENT_ROOT}`);
   const text = await (
     await fetch(
-      'https://fosopenscouting.github.io/Saamdagen-App-inhoud/content.txt',
+      `${API_URL}/content.txt`,
       { cache: 'no-store' },
     )
   ).text();
@@ -19,7 +20,7 @@ export const getContentIndex = async (): Promise<string[]> => {
 
 export const getMarkdown = async (path: string): Promise<string> => {
   const text = await fetch(
-    `https://fosopenscouting.github.io/Saamdagen-App-inhoud/${CONTENT_ROOT}/${path}`,
+    `${API_URL}/${CONTENT_ROOT}/${path}`,
     { cache: 'no-store' },
   );
   return await text.text();

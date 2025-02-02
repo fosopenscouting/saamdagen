@@ -49,7 +49,11 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   let prefetchedImages = await AsyncStorageLib.getItem('IMAGES');
   prefetchedImages = prefetchedImages ? JSON.parse(prefetchedImages) : [];
 
-  const images = await listAllImages([...homeMarkdown, ...programMarkdown, ...faqMarkdown]);
+  const images = await listAllImages([
+    ...homeMarkdown,
+    ...programMarkdown,
+    ...faqMarkdown,
+  ]);
   const filteredImages = images.filter(
     (img) => !prefetchedImages?.includes(img),
   );

@@ -15,15 +15,19 @@ const FaqCard: React.FC<Props> = (props: Props) => {
   const colorScheme = useColorScheme();
 
   const [expanded, setExpanded] = useState(false);
-  const handlePress = () => setExpanded(!expanded)
-  
+  const handlePress = () => setExpanded(!expanded);
+
   return (
     <>
       <List.Accordion
         left={(innerProps) => (
           <List.Icon
             {...innerProps}
-            color={expanded ? Colors.FOSCOLORS.FOS_GREEN : Colors[colorScheme].headerColor}
+            color={
+              expanded
+                ? Colors.FOSCOLORS.FOS_GREEN
+                : Colors[colorScheme].headerColor
+            }
             icon={props.icon}
           />
         )}
@@ -32,7 +36,7 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         titleNumberOfLines={10}
         title={props.title}
         titleStyle={{
-          fontFamily: 'Quicksand_500Medium'
+          fontFamily: 'Quicksand_500Medium',
         }}
         theme={{
           colors: {

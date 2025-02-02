@@ -47,7 +47,11 @@ const BasicCard: React.FC<Props> = (props: Props) => {
           {props.title}
         </HeaderText>
         {props.hasLink ? (
-          <MaterialCommunityIcons style={styles.linkArrow} name="arrow-right" color={'white'} />
+          <MaterialCommunityIcons
+            style={styles.linkArrow}
+            name="arrow-right"
+            color={'white'}
+          />
         ) : null}
       </View>
       <Markdown markdownStyles={{ text: { color: textColor } }}>
@@ -66,12 +70,12 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    maxWidth: '90%'
+    maxWidth: '90%',
   },
   linkArrow: {
     marginLeft: 'auto',
-    fontSize: 22
-  }
+    fontSize: 22,
+  },
 });
 
 export default BasicCard;

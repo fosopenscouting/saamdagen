@@ -174,9 +174,7 @@ const HomeScreen: React.FC = () => {
             Maak je helemaal klaar voor Saamdagen door de nieuwste versie van de
             app te downloaden.
           </Text>
-          <Text>
-            Zo kun je nóg meer genieten van Saamdagen!
-          </Text>
+          <Text>Zo kun je nóg meer genieten van Saamdagen!</Text>
         </View>
       </Banner>
     </>

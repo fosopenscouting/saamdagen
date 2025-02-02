@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
   linkText: {
     padding: 15,
     fontFamily: 'Quicksand_500Medium',
-    color: Colors.FOSCOLORS.FOS_GREEN
+    color: Colors.FOSCOLORS.FOS_GREEN,
   },
 });

@@ -99,20 +99,43 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
   };
 
   const local_images: {
-    [key: string]: string
+    [key: string]: string;
   } = {
     '@saamregels': require('@/assets/images/saamregels.png'),
   };
 
-  const renderImage = (src: string, alt: string, title: string, key: string) => {
-    if(src && src.startsWith('@') && local_images[src]) {
-      return <Image key={key} source={local_images[src]} style={{ minWidth: 200, height: 200, flex: 1 }} />;
+  const renderImage = (
+    src: string,
+    alt: string,
+    title: string,
+    key: string,
+  ) => {
+    if (src && src.startsWith('@') && local_images[src]) {
+      return (
+        <Image
+          key={key}
+          source={local_images[src]}
+          style={{ minWidth: 200, height: 200, flex: 1 }}
+        />
+      );
     }
 
-    return <Image key={key} source={{ uri: src }} style={{ minWidth: 200, height: 200, flex: 1 }} />;
+    return (
+      <Image
+        key={key}
+        source={{ uri: src }}
+        style={{ minWidth: 200, height: 200, flex: 1 }}
+      />
+    );
   };
 
-  return <DefaultMarkdown renderText={renderText} renderImage={renderImage} {...otherProps} />;
+  return (
+    <DefaultMarkdown
+      renderText={renderText}
+      renderImage={renderImage}
+      {...otherProps}
+    />
+  );
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {

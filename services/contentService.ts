@@ -49,7 +49,7 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   let prefetchedImages = await AsyncStorageLib.getItem('IMAGES');
   prefetchedImages = prefetchedImages ? JSON.parse(prefetchedImages) : [];
 
-  const images = await listAllImages(paths);
+  const images = await listAllImages([...homeMarkdown, ...programMarkdown, ...faqMarkdown]);
   const filteredImages = images.filter(
     (img) => !prefetchedImages?.includes(img),
   );
@@ -88,11 +88,10 @@ const parseProgramContent = async (objects: FrontMatterResult<any>[]) => {
   return [fridayParsed, saturDayParsed, sundayParsed];
 };
 
-const listAllImages = async (paths: string[]) => {
-  const everything = await loadContent(paths);
+const listAllImages = async (content: FrontMatterResult<any>[]) => {
   const imageList: string[] = [];
 
-  everything.forEach((item) => {
+  content.forEach((item) => {
     if (IMAGE_PATTERN.test(item.body)) {
       const bodySplit = item.body.split(/\r?\n/);
 

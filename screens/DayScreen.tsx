@@ -5,26 +5,36 @@ import {
   StyleSheet,
   View as NativeView,
 } from 'react-native';
-import { ScheduleData } from '@/models/ScheduleData';
+import { ScheduleData, TimeRange } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { HeaderText, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import { PROGRAM_ITEMS } from '@/constants/Strings';
 import { OpeningHours } from '@/components/Schedule/OpeningHours';
 import { useDataContext } from '@/hooks/useDataContext';
 import Timeline from 'react-native-timeline-flatlist';
-import { Text } from '@/components/Themed/Text';
 import { useFocusEffect } from 'expo-router';
-import { checkDay } from '@/utils/dates';
+import { isLater, isNow } from '@/utils/dates';
 import { FAB } from 'react-native-paper';
 import Constants from 'expo-constants';
+import SingleActivity from '@/components/Schedule/SingleActivity';
+import MultipleActivities from '@/components/Schedule/MultipleActivities';
 
 export interface DayInfo {
   day: 'Vrijdag' | 'Zaterdag' | 'Zondag';
 }
 
+export interface GroupedEventsList {
+  [key: string]: GroupedEvents;
+}
+export interface GroupedEvents {
+  time: string;
+  events: ScheduleData[];
+  globalTimes: { start: string; end: string };
+}
+
 const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
-  const [dayEvents, setDayEvents] = useState<ScheduleData[]>();
+  const [dayEventsGrouped, setDayEventsGrouped] = useState<GroupedEventsList>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
 
   const currentTimelineItemRef = useRef<NativeView | undefined>();
@@ -38,43 +48,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const { data, refreshContext, refreshing } = useDataContext();
   const onRefresh = async () => {
     await refreshContext();
-  };
-
-  const todayIsDay = checkDay(dayInfo.day);
-  const now = new Date();
-
-  const isNow = (timeString: string) => {
-    if (!todayIsDay) return false;
-
-    if (timeString.includes('t.e.m.') && !timeString.includes('...')) {
-      const split = timeString.split('t.e.m. ');
-      const startTime = split[0].split(':');
-      const endTime = split[1].split(':');
-      //Create dummy dates
-      const start = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        parseInt(startTime[0]),
-        parseInt(startTime[1]),
-        0,
-      );
-      const end = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        parseInt(endTime[0]),
-        parseInt(endTime[1]),
-        0,
-      );
-
-      return now >= start && now <= end;
-    } else {
-      return (
-        parseInt(timeString.split(':')[0]) == now.getHours() &&
-        parseInt(timeString.split(':')[1]) == now.getMinutes()
-      );
-    }
   };
 
   const scrollToItem = (
@@ -127,11 +100,50 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     const content = data?.filter(
       (x) => x.key === `${PROGRAM_ITEMS}/${dayInfo.day}`,
     )[0].content;
-    const events = content?.filter((x) => x.type !== 'algemene_openingsuren');
+    const events: ScheduleData[] = content?.filter(
+      //@ts-expect-error Cant give fixed type for content
+      (x) => x.type !== 'algemene_openingsuren',
+    );
     const openingHours = content?.filter(
+      //@ts-expect-error Cant give fixed type for content
       (x) => x.type === 'algemene_openingsuren',
     );
-    setDayEvents(events);
+
+    const grouped: GroupedEventsList = {};
+    events.forEach((evt) => {
+      if (typeof evt.time == 'string') {
+        grouped[evt.time] = {
+          time: evt.time,
+          globalTimes: {
+            start: evt.time,
+            end: '00:00',
+          },
+          events: [evt],
+        };
+      } else {
+        if (grouped[evt.time.start]) {
+          grouped[evt.time.start].events.push(evt);
+
+          if (
+            evt.time.eind &&
+            isLater(evt.time.eind, grouped[evt.time.start].globalTimes.end)
+          )
+            grouped[evt.time.start].globalTimes.end = evt.time.eind;
+        } else {
+          grouped[evt.time.start] = {
+            time: evt.time.start,
+            globalTimes: {
+              start: evt.time.start,
+              end: evt.time.eind ?? '00:00',
+            },
+            events: [evt],
+          };
+        }
+      }
+    });
+
+    setDayEventsGrouped(grouped);
+
     if (openingHours) {
       setDayGeneralHours(openingHours[0]);
     }
@@ -140,66 +152,97 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   return (
     <View style={styles.container}>
       <ScrollView
+        //@ts-expect-error scrollViewRef is undefined before it's set
         ref={scrollViewRef}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <View style={{ paddingTop: 8, margin: 10 }}>
+        <View style={{ margin: 10 }}>
           <OpeningHours openingHours={dayGeneralHours} />
           <View
             style={[styles.filterBar, Colors[colorScheme].tabBarStyle]}
           ></View>
-          {dayEvents ? (
+          {dayEventsGrouped ? (
             <Timeline
               key="test"
-              data={dayEvents.map((evt, index) => {
-                const active = isNow(evt.time);
+              data={Object.values(dayEventsGrouped)
+                .sort((a, b) => {
+                  return (
+                    parseInt(a.time.split(':')[0]) -
+                    parseInt(b.time.split(':')[0])
+                  );
+                })
+                .map((evts, index) => {
+                  const active = isNow(
+                    {
+                      start: evts.globalTimes.start,
+                      eind: evts.globalTimes.end,
+                    },
+                    dayInfo.day,
+                  );
+                  if (active) console.log('HIT');
 
-                const ref =
-                  active && !currentTimelineItemRef.current
-                    ? {
-                        ref: currentTimelineItemRef,
-                      }
-                    : {};
+                  const ref =
+                    active && !currentTimelineItemRef.current
+                      ? {
+                          ref: currentTimelineItemRef,
+                        }
+                      : {};
 
-                return {
-                  time: evt.time.split(' ')[0],
-                  title: evt.name,
-                  description: [
-                    <NativeView
-                      collapsable={false}
-                      {...ref}
-                      style={{
-                        margin: 0,
-                      }}
-                      key={`timeline_${index}_rootview`}
-                    >
-                      <HeaderText
-                        variant="bodyMedium"
-                        key={`timeline_${index}_header`}
-                      >
-                        {evt.time}
-                      </HeaderText>
-                      <Text key={`timeline_${index}_description`}>
-                        {evt.description}
-                      </Text>
-                    </NativeView>,
-                  ],
-                  circleColor: active
-                    ? Colors.FOSCOLORS.BRIGHTPINK
-                    : Colors.FOSCOLORS.FOS_BLUE,
-                  lineColor: active
-                    ? Colors.FOSCOLORS.BRIGHTPINK
-                    : Colors.FOSCOLORS.FOS_BLUE,
-                };
-              })}
+                  if (evts.events?.length == 1) {
+                    return {
+                      time: evts.time,
+                      title: evts.events[0].name,
+                      description: [
+                        <SingleActivity
+                          evts={evts}
+                          passedRef={ref}
+                          index={index}
+                        />,
+                      ],
+                      circleColor: active
+                        ? Colors.FOSCOLORS.BRIGHTPINK
+                        : Colors.FOSCOLORS.FOS_BLUE,
+                      lineColor: active
+                        ? Colors.FOSCOLORS.BRIGHTPINK
+                        : Colors.FOSCOLORS.FOS_BLUE,
+                    };
+                  }
+
+                  const description = evts.events.map((evt, i) => {
+                    return (
+                      <MultipleActivities
+                        i={i}
+                        index={i}
+                        evt={evt}
+                        passedRef={ref}
+                      />
+                    );
+                  });
+
+                  return {
+                    time: evts.time,
+                    title: 'Volgende activiteiten:',
+                    description: description,
+                    circleColor: active
+                      ? Colors.FOSCOLORS.BRIGHTPINK
+                      : Colors.FOSCOLORS.FOS_BLUE,
+                    lineColor: active
+                      ? Colors.FOSCOLORS.BRIGHTPINK
+                      : Colors.FOSCOLORS.FOS_BLUE,
+                  };
+                })}
               descriptionStyle={{
                 color: Colors[colorScheme].text,
               }}
               titleStyle={{
                 color: Colors[colorScheme].text,
                 fontFamily: 'Quicksand_600SemiBold',
+              }}
+              eventDetailStyle={{
+                paddingTop: 0,
+                paddingBottom: 20,
               }}
               timeStyle={{
                 textAlign: 'center',
@@ -217,6 +260,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               circleColor={Colors.FOSCOLORS.FOS_BLUE}
               circleSize={20}
               innerCircle={'dot'}
+              //@ts-expect-error It works, so ignore the error (please)
               options={{
                 style: {
                   paddingTop: 5,

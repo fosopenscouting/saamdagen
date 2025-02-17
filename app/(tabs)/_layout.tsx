@@ -5,6 +5,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { StatusBar } from 'expo-status-bar';
+import { configureFonts } from 'react-native-paper';
 
 export default function TabsLayout() {
   const colorScheme = useColorScheme();
@@ -20,6 +21,11 @@ export default function TabsLayout() {
         barStyle={Colors[colorScheme].tabBarStyle}
         activeIndicatorStyle={{
           backgroundColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
+        }}
+        theme={{
+          fonts: configureFonts({
+            config: { fontFamily: 'Quicksand_600SemiBold' },
+          }),
         }}
       >
         <MaterialBottomTabs.Screen

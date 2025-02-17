@@ -36,6 +36,7 @@ import useCachedResources from '@/hooks/useCachedResources';
 import { isRunningInExpoGo } from 'expo';
 import { AlertsProvider } from 'react-native-paper-alerts';
 import { ToastProvider } from 'react-native-paper-toast';
+import { darkTheme, lightTheme } from '@/constants/PaperTheme';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -117,6 +118,7 @@ const CombinedDarkTheme = merge(PaperDarkTheme, DarkTheme);
 
 const CustomDarkTheme = {
   ...CombinedDarkTheme,
+  colors: darkTheme.colors,
   fonts: {
     ...CombinedDarkTheme.fonts,
     regular: {
@@ -140,6 +142,7 @@ const CustomDarkTheme = {
 
 const CustomDefaultTheme = {
   ...CombinedDefaultTheme,
+  colors: lightTheme.colors,
   fonts: {
     ...CombinedDefaultTheme.fonts,
     regular: {

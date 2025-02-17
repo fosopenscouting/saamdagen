@@ -33,7 +33,7 @@ export const mapProgram = (
         name: item.attributes.titel,
         order: item.attributes.volgorde,
         location: item.attributes.locatie,
-        time: item.attributes.uren,
+        time: item.attributes.tijd ?? item.attributes.uren,
         description: item.body,
         day: item.attributes.dag,
         type: item.attributes.type,

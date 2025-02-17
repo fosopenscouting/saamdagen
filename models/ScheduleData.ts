@@ -2,12 +2,12 @@ import { IOrderable } from './IOrderable';
 import { PointOfInterest } from './PointOfInterest';
 
 export interface TimeRange {
-  startTime: Date;
-  endTime?: Date;
+  start: string;
+  eind?: string;
 }
 
 export interface ScheduleData extends IOrderable {
-  time: string;
+  time: TimeRange | string;
   location?: PointOfInterest;
   name: string;
   description?: string;

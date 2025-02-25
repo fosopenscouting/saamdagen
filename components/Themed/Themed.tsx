@@ -12,6 +12,7 @@ import { Text } from './Text';
 import { ThemeProps, TextProps, useThemeColor } from './Helpers';
 import Colors from '@/constants/Colors';
 import { Image } from 'expo-image';
+import { LOCAL_IMAGES } from '@/constants/Images';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
@@ -98,11 +99,7 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
     }
   };
 
-  const local_images: {
-    [key: string]: string;
-  } = {
-    '@saamregels': require('@/assets/images/saamregels.png'),
-  };
+  
 
   const renderImage = (
     src: string,
@@ -110,11 +107,11 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
     title: string,
     key: string,
   ) => {
-    if (src && src.startsWith('@') && local_images[src]) {
+    if (src && src.startsWith('@') && LOCAL_IMAGES[src]) {
       return (
         <Image
           key={key}
-          source={local_images[src]}
+          source={LOCAL_IMAGES[src]}
           style={{ minWidth: 200, height: 200, flex: 1 }}
         />
       );

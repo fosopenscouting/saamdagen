@@ -1,5 +1,5 @@
 import NetInfo from '@react-native-community/netinfo';
-import React from 'react';
+import { useState, useCallback } from 'react';
 import Toast from 'react-native-root-toast';
 import { getContentIndex } from '@/api/api';
 import { saveContent } from '@/services/contentService';
@@ -8,9 +8,9 @@ const useRefresh = (): {
   refreshing: boolean;
   refresh: () => Promise<void>;
 } => {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const refresh = React.useCallback(async () => {
+  const refresh = useCallback(async () => {
     try {
       const info = await NetInfo.fetch();
       setRefreshing(true);
@@ -24,7 +24,6 @@ const useRefresh = (): {
         Toast.show('Je bent niet verbonden met het internet.', {
           duration: Toast.durations.SHORT,
         });
-        console.log('not connected');
       }
     } catch (e) {
       Toast.show('Er ging iets fout bij het ophalen van de inhoud.', {
@@ -32,7 +31,6 @@ const useRefresh = (): {
       });
       console.error(e);
     } finally {
-      console.log('done');
       setRefreshing(false);
     }
   }, []);

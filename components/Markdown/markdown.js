@@ -11,11 +11,11 @@ import {
   Appearance,
 } from 'react-native';
 
-import { Text } from '../Themed/Text';
+import { Text } from '@/components/Themed/Text';
 
 import styles from './styles';
 import Utils from './Utils';
-import Colors from '../../constants/Colors';
+import Colors from '@/constants/Colors';
 
 class Markdown extends Component {
   constructor(props) {

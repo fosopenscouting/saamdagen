@@ -12,11 +12,13 @@ import {
 } from '@/constants/Strings';
 import { createMetadata } from '@/models/ContentMetadata';
 import { mapFaq, mapHomeItems, mapProgram } from './contentMapping';
+import { Image } from 'expo-image';
 
 const programPrefix = 'Programma';
 const homePrefix = 'Homepage';
 const faqPrefix = 'Faq';
 // const mapPrefix = 'Kaart';
+const IMAGE_PATTERN = new RegExp(/!\[.*\]\(.*\)/gim); // Images in markdown are ![alt](link)
 
 // Load all content from the API, parse it to the format we want and then save it as one huge array in local storage.
 export const saveContent = async (paths: string[]): Promise<void> => {
@@ -42,9 +44,26 @@ export const saveContent = async (paths: string[]): Promise<void> => {
   // const mapMarkdown = await loadContent(mapPaths);
   // const mapContent = createMetadata(mapMap(mapMarkdown), MAP_ITEMS);
 
-  const allData = parsedProgram.concat(homeContent, faqContent);
+  const allData = [homeContent, ...parsedProgram, faqContent];
+
+  let prefetchedImages = await AsyncStorageLib.getItem('IMAGES');
+  prefetchedImages = prefetchedImages ? JSON.parse(prefetchedImages) : [];
+
+  const images = await listAllImages([
+    ...homeMarkdown,
+    ...programMarkdown,
+    ...faqMarkdown,
+  ]);
+  const filteredImages = images.filter(
+    (img) => !prefetchedImages?.includes(img),
+  );
+
+  if (filteredImages.length > 0) {
+    await Image.prefetch(filteredImages);
+  }
 
   await AsyncStorageLib.setItem('DATA', JSON.stringify(allData));
+  await AsyncStorageLib.setItem('IMAGES', JSON.stringify(images));
 };
 
 // Load all provided paths into async storage
@@ -71,4 +90,23 @@ const parseProgramContent = async (objects: FrontMatterResult<any>[]) => {
   const sundayParsed = createMetadata(sunday, SUNDAY_ITEMS);
 
   return [fridayParsed, saturDayParsed, sundayParsed];
+};
+
+const listAllImages = async (content: FrontMatterResult<any>[]) => {
+  const imageList: string[] = [];
+
+  content.forEach((item) => {
+    if (IMAGE_PATTERN.test(item.body)) {
+      const bodySplit = item.body.split(/\r?\n/);
+
+      bodySplit.forEach((line) => {
+        if (IMAGE_PATTERN.test(line)) {
+          const url = line.split('](')[1].split(')')[0];
+          imageList.push(url);
+        }
+      });
+    }
+  });
+
+  return imageList.filter((u) => !u.startsWith('@'));
 };

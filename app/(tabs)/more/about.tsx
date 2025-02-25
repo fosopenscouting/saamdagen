@@ -23,7 +23,7 @@ const SettingsScreen: React.FC = () => {
 
       alerts.alert(
         'Hey jij!',
-        "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        "Jij hebt de easter-egg gevonden!\n\nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
         [
           {
             text: 'Sluiten',

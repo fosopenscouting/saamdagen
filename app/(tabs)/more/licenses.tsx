@@ -43,7 +43,6 @@ const licenses: LicenseItem[] = Object.keys(LicensesData).map((key) => {
   if (username) username = capitalizeFirstLetter(username);
 
   return {
-    key,
     name,
     username,
     licenses: licenses.slice(0, 405),
@@ -56,17 +55,12 @@ const licenses: LicenseItem[] = Object.keys(LicensesData).map((key) => {
 sortByDataKey(licenses, 'username');
 
 export default function Licenses() {
-  const renderItem = React.useCallback(
-    ({ item }: { item: LicenseItem }) => <LicensesItem {...item} />,
-    [],
-  );
-
   return (
     <View style={styles.container}>
       <FlatList
         data={licenses.filter((l) => l.name)}
         keyExtractor={({ name }, index) => `${index}_${name}`}
-        renderItem={renderItem}
+        renderItem={({ item }) => <LicensesItem {...item} />}
         contentContainerStyle={{ paddingHorizontal: 10 }}
         ItemSeparatorComponent={() => <Separator marginVertical={1} />}
       />

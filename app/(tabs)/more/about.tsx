@@ -9,7 +9,7 @@ import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
 
-const SettingsScreen: React.FC = () => {
+const AboutScreen: React.FC = () => {
   const alerts = useAlerts();
 
   const colorScheme = useColorScheme();
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen;
+export default AboutScreen;

@@ -58,13 +58,10 @@ const createDummyDate = (
 };
 
 export const parseTime = (time: string) => {
-  
   if (typeof time !== 'string') return {};
-  
+
   if (time.includes('t.e.m.')) {
     const split = time.split('t.e.m. ');
-    console.log(split)
-
     return {
       start: split[0],
       end: split[1],

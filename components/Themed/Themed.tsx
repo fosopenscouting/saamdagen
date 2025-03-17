@@ -13,6 +13,7 @@ import { ThemeProps, TextProps, useThemeColor } from './Helpers';
 import Colors from '@/constants/Colors';
 import { Image } from 'expo-image';
 import { LOCAL_IMAGES } from '@/constants/Images';
+import defaultStyles from '../Markdown/styles';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
@@ -57,49 +58,29 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
       case 'h6':
         return (
           <HeaderText
-            style={{
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}
+            style={[
+              defaultStyles[textType],
+              props.markdownStyles?.text ?? null,
+            ]}
             key={key}
           >
             {children}
           </HeaderText>
         );
-      case 'strong':
-        return (
-          <Text
-            key={key}
-            style={{
-              fontFamily: 'Quicksand_600SemiBold',
-              fontWeight: 'bold',
-              ...(props.markdownStyles?.text ?? null),
-            }}
-          >
-            {children}
-          </Text>
-        );
-      case 'em':
-        return (
-          <Text
-            key={key}
-            style={{
-              fontStyle: 'italic',
-            }}
-          >
-            {children}
-          </Text>
-        );
       default:
         return (
-          <Text style={props.markdownStyles?.text ?? null} key={key}>
+          <Text
+            style={[
+              defaultStyles[textType],
+              props.markdownStyles?.text ?? null,
+            ]}
+            key={key}
+          >
             {children}
           </Text>
         );
     }
   };
-
-  
 
   const renderImage = (
     src: string,

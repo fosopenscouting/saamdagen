@@ -1,4 +1,13 @@
-const defaultStyles = {
+import Colors from '@/constants/Colors';
+import { StyleSheet } from 'react-native';
+
+const defaultHeaderStyles = (size: number) => ({
+  fontFamily: 'Quicksand_600SemiBold',
+  fontSize: size,
+  marginBottom: 4,
+});
+
+const defaultStyles: StyleSheet.NamedStyles<any> = {
   block: {
     marginBottom: 10,
     flexWrap: 'wrap',
@@ -11,34 +20,22 @@ const defaultStyles = {
     paddingLeft: 10,
   },
   h1: {
-    fontSize: 30,
-    marginTop: 20,
-    marginBottom: 8,
+    ...defaultHeaderStyles(21),
   },
   h2: {
-    fontSize: 20,
-    marginTop: 16,
-    marginBottom: 8,
+    ...defaultHeaderStyles(20),
   },
   h3: {
-    fontSize: 20,
-    marginTop: 16,
-    marginBottom: 8,
+    ...defaultHeaderStyles(19),
   },
   h4: {
-    fontSize: 20,
-    marginTop: 16,
-    marginBottom: 8,
+    ...defaultHeaderStyles(18),
   },
   h5: {
-    fontSize: 20,
-    marginTop: 12,
-    marginBottom: 6,
+    ...defaultHeaderStyles(17),
   },
   h6: {
-    fontSize: 20,
-    marginTop: 12,
-    marginBottom: 6,
+    ...defaultHeaderStyles(16),
   },
   hr: {
     alignSelf: 'stretch',
@@ -46,17 +43,22 @@ const defaultStyles = {
     backgroundColor: '#333333',
     marginVertical: 8,
   },
+  pre: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
   code: {
     backgroundColor: '#333333',
     color: 'orange',
   },
   text: {
+    color: 'red',
     alignSelf: 'flex-start',
     textAlign: 'justify',
   },
   strong: {
+    fontFamily: 'Quicksand_600SemiBold',
     fontWeight: 'bold',
-    color: 'white',
   },
   em: {
     fontStyle: 'italic',
@@ -108,6 +110,35 @@ const defaultStyles = {
     flex: 1,
     minWidth: 200,
     height: 200,
+  },
+
+  // Tables
+  table: {
+    borderWidth: 1,
+    borderColor: Colors.light.muted,
+    marginVertical: 4,
+    borderRadius: 3,
+  },
+  thead: {
+    borderTopLeftRadius: 2,
+    borderTopRightRadius: 2,
+    backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+  },
+  tbody: {},
+  th: {
+    flex: 1,
+    padding: 5,
+    fontFamily: 'Quicksand_600SemiBold',
+    color: 'white'
+  },
+  tr: {
+    borderBottomWidth: 1,
+    borderColor: Colors.light.muted,
+    flexDirection: 'row',
+  },
+  td: {
+    flex: 1,
+    padding: 5,
   },
 };
 

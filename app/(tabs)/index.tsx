@@ -3,7 +3,6 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import { Image, ImageBackground } from 'expo-image';

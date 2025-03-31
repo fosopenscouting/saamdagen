@@ -57,6 +57,22 @@ const createDummyDate = (
   );
 };
 
+export const parseTime = (time: string) => {
+  if (typeof time !== 'string') return {};
+
+  if (time.includes('t.e.m.')) {
+    const split = time.split('t.e.m. ');
+    return {
+      start: split[0],
+      end: split[1],
+    };
+  } else {
+    return {
+      start: time,
+    };
+  }
+};
+
 export const isNow = (timeString: TimeRange | string, day: Day) => {
   const todayIsDay = checkDay(day);
   const now = new Date();

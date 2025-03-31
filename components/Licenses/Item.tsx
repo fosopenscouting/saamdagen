@@ -18,6 +18,7 @@ export interface LicenseItem {
   licenses: string;
   repository: string;
   licenseUrl: string;
+  key?: string;
 }
 
 const Link = ({

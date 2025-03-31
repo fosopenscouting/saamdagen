@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -11,11 +9,11 @@ import {
   Appearance,
 } from 'react-native';
 
-import { Text } from '../Themed/Text';
+import { Text } from '@/components/Themed/Text';
 
 import styles from './styles';
 import Utils from './Utils';
-import Colors from '../../constants/Colors';
+import Colors from '@/constants/Colors';
 
 class Markdown extends Component {
   constructor(props) {
@@ -274,7 +272,7 @@ class Markdown extends Component {
           key={'blockQuote_' + key}
           style={[styles.block, styles.blockQuote]}
         >
-          <Text>{children}</Text>
+          <Text lightColor='#fff' darkColor='#fff' style={styles.blockQuoteText}>{children}</Text>
         </View>
       );
     } else if (Utils.isTextOnly(children)) {
@@ -296,6 +294,48 @@ class Markdown extends Component {
         </View>
       );
     }
+  }
+
+  renderTable(node, key, extras, element) {
+    const { styles } = this.state;
+    let children;
+
+    switch (element) {
+      case 'table':
+      case 'tbody':
+      case 'tr':
+      case 'th':
+      case 'td':
+        children = this.renderNodes(node.props.children, key, extras);
+        let style = [styles[element]];
+        if (node.props?.style) style.push(node.props.style);
+        return (
+          <View key={key} style={style}>
+            {children}
+          </View>
+        );
+      case 'thead':
+        children = this.renderNodes([node.props.children], key, extras);
+        return (
+          <View style={styles.thead} key={key}>
+            {children}
+          </View>
+        );
+    }
+  }
+
+  renderPre(node, key, extras) {
+    const { styles } = this.state;
+    let style = [styles.pre];
+    if (extras?.style) style.push(...extras.style);
+
+    const children = this.renderNodes([node.props.children], key, extras);
+
+    return (
+      <View style={style} key={key}>
+        {children}
+      </View>
+    );
   }
 
   renderNode(node, key, index, extras) {
@@ -393,6 +433,12 @@ class Markdown extends Component {
           Utils.concatStyles(extras, styles.u),
           'u',
         );
+      case 'pre':
+        return this.renderPre(
+          node,
+          key,
+          Utils.concatStyles(extras, styles.code),
+        );
       case 'code':
         return this.renderText(
           node,
@@ -402,6 +448,23 @@ class Markdown extends Component {
         );
       case 'blockquote':
         return this.renderBlockQuote(node, key);
+      case 'table':
+        return this.renderTable(node, key, extras, 'table');
+      case 'thead':
+        return this.renderTable(node, key, extras, 'thead');
+      case 'tbody':
+        return this.renderTable(node, key, extras, 'tbody');
+      case 'tr':
+        return this.renderTable(node, key, extras, 'tr');
+      case 'th':
+        return this.renderText(
+          node,
+          key,
+          Utils.concatStyles(extras, styles.th),
+          'th',
+        );
+      case 'td':
+        return this.renderText(node, key, extras, 'td');
       case undefined:
         if (this.props.debug) console.log(node);
         if (this.props.debug) console.log(extras);

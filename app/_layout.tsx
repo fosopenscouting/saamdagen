@@ -59,6 +59,7 @@ Notifications.setNotificationHandler({
 
 function handleRegistrationError(errorMessage: string) {
   //alert(errorMessage);
+  console.error(errorMessage);
   throw new Error(errorMessage);
 }
 
@@ -187,8 +188,8 @@ const RootLayout = () => {
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
-  const notificationListener = useRef<Notifications.Subscription>();
-  const responseListener = useRef<Notifications.Subscription>();
+  const notificationListener = useRef<Notifications.EventSubscription>();
+  const responseListener = useRef<Notifications.EventSubscription>();
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -230,6 +231,7 @@ const RootLayout = () => {
               <AlertsProvider>
                 <ToastProvider>
                   <ThemeProvider
+                    //@ts-expect-error Shut up please
                     value={
                       colorScheme == 'dark'
                         ? CustomDarkTheme

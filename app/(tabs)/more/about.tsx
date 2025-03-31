@@ -9,7 +9,7 @@ import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
 
-const SettingsScreen: React.FC = () => {
+const AboutScreen: React.FC = () => {
   const alerts = useAlerts();
 
   const colorScheme = useColorScheme();
@@ -23,7 +23,7 @@ const SettingsScreen: React.FC = () => {
 
       alerts.alert(
         'Hey jij!',
-        "Jij hebt de easter-egg gevonden! \nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
+        "Jij hebt de easter-egg gevonden!\n\nBen je ook zo'n fan van technologie? Misschien kan je de ICT-werkgroep wel versterken!",
         [
           {
             text: 'Sluiten',
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen;
+export default AboutScreen;

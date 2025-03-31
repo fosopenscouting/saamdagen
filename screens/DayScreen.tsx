@@ -14,7 +14,7 @@ import { OpeningHours } from '@/components/Schedule/OpeningHours';
 import { useDataContext } from '@/hooks/useDataContext';
 import Timeline from 'react-native-timeline-flatlist';
 import { useFocusEffect } from 'expo-router';
-import { isLater, isNow } from '@/utils/dates';
+import { isLater, isNow, parseTime } from '@/utils/dates';
 import { FAB } from 'react-native-paper';
 import Constants from 'expo-constants';
 import SingleActivity from '@/components/Schedule/SingleActivity';
@@ -113,7 +113,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     events.forEach((evt) => {
       if (typeof evt.time == 'string') {
         grouped[evt.time] = {
-          time: evt.time,
+          time: parseTime(evt.time).start ?? evt.time,
           globalTimes: {
             start: evt.time,
             end: '00:00',

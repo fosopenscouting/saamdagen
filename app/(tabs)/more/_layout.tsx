@@ -47,6 +47,12 @@ export default function MoreLayout() {
           headerTitle: 'Over',
         }}
       />
+      <Stack.Screen
+        name="licenses"
+        options={{
+          headerTitle: 'Licenties',
+        }}
+      />
     </Stack>
   );
 }

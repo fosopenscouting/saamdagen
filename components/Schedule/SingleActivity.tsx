@@ -20,9 +20,8 @@ const SingleActivity: React.FC<SingleActivityProps> = (
       style={{
         margin: 0,
       }}
-      key={`timeline_${props.index}_rootview`}
     >
-      <HeaderText variant="bodyMedium" key={`timeline_${props.index}_header`}>
+      <HeaderText variant="bodyMedium">
         {typeof props.evts.events[0].time == 'string' ? (
           <>{props.evts.events[0].time}</>
         ) : (
@@ -34,7 +33,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
           </>
         )}
       </HeaderText>
-      <Text key={`timeline_${props.index}_description`}>
+      <Text>
         {props.evts.events[0].description}
       </Text>
     </View>

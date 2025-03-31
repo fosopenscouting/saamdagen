@@ -8,21 +8,17 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 const NotFoundScreen = () => {
   return (
     <View style={styles.container}>
-      <HeaderText
-        variant="displayLarge"
-        style={{ ...styles.header, marginBottom: 0 }}
-      >
-        Ola!
-      </HeaderText>
-      <HeaderText variant="displayLarge" style={styles.header}>
-        Wa is da hier?
+      <HeaderText variant="displayMedium" style={styles.header}>
+        Elaba! {'\n'}
+        Wa doet gij hier?
       </HeaderText>
       <Text style={styles.title}>
-        De pagina waar je naartoe wou gaan is niet gevonden...
+        De pagina die je zocht is niet gevonden. {'\n'}
+        Weer iets aan het uitspoken zeker?
       </Text>
-      <TouchableOpacity onPress={() => router.replace('/')} style={styles.link}>
+      <TouchableOpacity onPress={() => router.back()} style={styles.link}>
         <Text variant="titleLarge" style={styles.linkText}>
-          Terug naar start!
+          Alee, terug dan maar?
         </Text>
       </TouchableOpacity>
     </View>
@@ -45,14 +41,18 @@ const styles = StyleSheet.create({
   },
   header: {
     textAlign: 'center',
+    marginStart: 0,
     marginBottom: 50,
     color: '#fff',
+    width: '100%',
   },
   link: {
     marginTop: 15,
-    paddingVertical: 15,
+    borderRadius: 24,
   },
   linkText: {
+    padding: 15,
+    fontFamily: 'Quicksand_500Medium',
     color: Colors.FOSCOLORS.FOS_GREEN,
   },
 });

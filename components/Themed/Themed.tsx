@@ -11,6 +11,9 @@ import { Anchor as DefaultAnchor } from '../Anchor';
 import { Text } from './Text';
 import { ThemeProps, TextProps, useThemeColor } from './Helpers';
 import Colors from '@/constants/Colors';
+import { Image } from 'expo-image';
+import { LOCAL_IMAGES } from '@/constants/Images';
+import defaultStyles from '../Markdown/styles';
 
 export type MarkdownProps = ThemeProps & DefaultMarkdown['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
@@ -20,7 +23,7 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
   const color = useThemeColor(
     { light: lightColor, dark: darkColor },
     'headerColor',
-  );
+  ).toString();
   const fontFamily = 'Quicksand_600SemiBold';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
@@ -31,7 +34,7 @@ export const Anchor: React.FC<TextProps> = (props: TextProps) => {
   const color = useThemeColor(
     { light: lightColor, dark: darkColor },
     'linkColor',
-  );
+  ).toString();
 
   return <DefaultAnchor style={[{ color }, style]} {...otherProps} />;
 };
@@ -55,49 +58,62 @@ export const Markdown: React.FC<MarkdownProps> = (props: MarkdownProps) => {
       case 'h6':
         return (
           <HeaderText
-            style={{
-              fontSize: 18,
-              fontWeight: 'bold',
-            }}
+            style={[
+              defaultStyles[textType],
+              props.markdownStyles?.text ?? null,
+            ]}
             key={key}
           >
             {children}
           </HeaderText>
         );
-      case 'strong':
-        return (
-          <Text
-            key={key}
-            style={{
-              fontFamily: 'Quicksand_600SemiBold',
-              fontWeight: 'bold',
-              ...(props.markdownStyles?.text ?? null),
-            }}
-          >
-            {children}
-          </Text>
-        );
-      case 'em':
-        return (
-          <Text
-            key={key}
-            style={{
-              fontStyle: 'italic',
-            }}
-          >
-            {children}
-          </Text>
-        );
       default:
         return (
-          <Text style={props.markdownStyles?.text ?? null} key={key}>
+          <Text
+            style={[
+              defaultStyles[textType],
+              props.markdownStyles?.text ?? null,
+            ]}
+            key={key}
+          >
             {children}
           </Text>
         );
     }
   };
 
-  return <DefaultMarkdown renderText={renderText} {...otherProps} />;
+  const renderImage = (
+    src: string,
+    alt: string,
+    title: string,
+    key: string,
+  ) => {
+    if (src && src.startsWith('@') && LOCAL_IMAGES[src]) {
+      return (
+        <Image
+          key={key}
+          source={LOCAL_IMAGES[src]}
+          style={{ minWidth: 200, height: 200, flex: 1 }}
+        />
+      );
+    }
+
+    return (
+      <Image
+        key={key}
+        source={{ uri: src }}
+        style={{ minWidth: 200, height: 200, flex: 1 }}
+      />
+    );
+  };
+
+  return (
+    <DefaultMarkdown
+      renderText={renderText}
+      renderImage={renderImage}
+      {...otherProps}
+    />
+  );
 };
 
 export const View: React.FC<ViewProps> = (props: ViewProps) => {
@@ -105,7 +121,7 @@ export const View: React.FC<ViewProps> = (props: ViewProps) => {
   const backgroundColor = useThemeColor(
     { light: lightColor, dark: darkColor },
     'background',
-  );
+  ).toString();
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 };

@@ -6,6 +6,10 @@ const defaultHeaderStyles = (size: number) => ({
   fontSize: size,
   marginBottom: 4,
 });
+const debugBorder = (color = 'red') => ({
+  borderWidth: 1,
+  borderColor: color
+})
 
 const defaultStyles: StyleSheet.NamedStyles<any> = {
   block: {
@@ -15,9 +19,12 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
   },
   blockQuote: {
     borderLeftWidth: 5,
-    borderLeftColor: '#aaaaaa',
-    backgroundColor: '#cccccc',
+    borderLeftColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
+    backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
     paddingLeft: 10,
+  },
+  blockQuoteText: {
+    color: '#ffffff'
   },
   h1: {
     ...defaultHeaderStyles(21),
@@ -77,25 +84,22 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
     textDecorationLine: 'underline',
     alignSelf: 'flex-start',
   },
-  list: {
-    marginBottom: 20,
-  },
+  list: {},
   listItem: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
     marginVertical: 5,
   },
   listItemContent: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexShrink: 1,
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
   listItemBullet: {
     width: 4,
     height: 4,
     borderRadius: 2,
+    marginTop: 8,
     marginRight: 10,
   },
   listItemNumber: {

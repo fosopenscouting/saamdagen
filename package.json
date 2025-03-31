@@ -67,7 +67,7 @@
     "react-native-sticky-parallax-header": "^1.1.1",
     "react-native-svg": "15.8.0",
     "react-native-tab-view": "^3.1.1",
-    "react-native-timeline-flatlist": "^0.8.0",
+    "react-native-timeline-flatlist": "git+https://github.com/TijlS/react-native-timeline-flatlist.git",
     "react-native-web": "~0.19.10",
     "simple-markdown": "^0.7.3"
   },

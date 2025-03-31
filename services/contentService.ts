@@ -155,7 +155,7 @@ const scheduleNotifications = async (
   notifs: ContentMetadata<Notification[]>,
 ) => {
   const settings = await getSettings()
-  if(settings.FIREBASE_MESSAGING) {
+  if(settings.MESSAGING) {
     await Notifications.cancelAllScheduledNotificationsAsync();
     for (const notification of notifs.content) {
       const date = new Date()

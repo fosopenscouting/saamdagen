@@ -23,6 +23,7 @@ import {
 import { Image } from 'expo-image';
 import * as Notifications from 'expo-notifications';
 import { Notification } from '@/models/Notification';
+import { getSettings } from './settingsService';
 
 const programPrefix = 'Programma';
 const homePrefix = 'Homepage';
@@ -73,6 +74,7 @@ export const saveContent = async (paths: string[]): Promise<void> => {
     mapNotfication(notificationsMarkdown),
     NOTIFICATIONS_ITEMS,
   );
+
   scheduleNotifications(notificationsContent);
 
   const allData = [
@@ -152,36 +154,33 @@ const listAllImages = async (content: FrontMatterResult<any>[]) => {
 const scheduleNotifications = async (
   notifs: ContentMetadata<Notification[]>,
 ) => {
-  await Notifications.cancelAllScheduledNotificationsAsync();
-  for (const notification of notifs.content) {
-    const date = new Date("2025-05-01T12:41:00.000")
+  const settings = await getSettings()
+  if(settings.FIREBASE_MESSAGING) {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    for (const notification of notifs.content) {
+      const date = new Date()
+      const dateParsed = notification.time.date.split('/')
+  
+      date.setDate(parseInt(dateParsed[0]))
+      date.setMonth(parseInt(dateParsed[1]) - 1)
+      date.setFullYear(parseInt(dateParsed[2]))
+  
+      date.setHours(parseInt(notification.time.hour.split(':')[0]))
+      date.setMinutes(parseInt(notification.time.hour.split(':')[1]))
+  
+      if(date < new Date()) continue;
 
-    const dateParsed = notification.time.date.split('/')
-
-    date.setDate(parseInt(dateParsed[0]))
-    date.setMonth(parseInt(dateParsed[1]) - 1)
-    date.setFullYear(parseInt(dateParsed[2]))
-
-    date.setHours(parseInt(notification.time.hour.split(':')[0]))
-    date.setMinutes(parseInt(notification.time.hour.split(':')[1]))
-
-    console.log(date)
-    console.log(date.getTimezoneOffset())
-
-    Notifications.scheduleNotificationAsync({
-      content: {
-        title: notification.title,
-        subtitle: notification.subtitle,
-        body: notification.content,
-      },
-      trigger: {
-        type: Notifications.SchedulableTriggerInputTypes.DATE,
-        date
-      },
-    });
-    // console.log(notification);
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: notification.title,
+          subtitle: notification.subtitle,
+          body: notification.content,
+        },
+        trigger: {
+          type: Notifications.SchedulableTriggerInputTypes.DATE,
+          date
+        },
+      });
+    }
   }
-
-  const n = await Notifications.getAllScheduledNotificationsAsync()
-  console.log(n)
 };

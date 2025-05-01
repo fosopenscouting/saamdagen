@@ -53,6 +53,18 @@ export default function MoreLayout() {
           headerTitle: 'Licenties',
         }}
       />
+      <Stack.Screen
+        name="settings"
+        options={{
+          headerTitle: 'Instellingen',
+        }}
+      />
+      <Stack.Screen
+        name="volunteer"
+        options={{
+          headerTitle: 'Medewerker',
+        }}
+      />
     </Stack>
   );
 }

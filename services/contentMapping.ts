@@ -4,6 +4,7 @@ import { FaqItem } from '../models/FaqItem';
 import { HomeScreenSection } from '../models/HomeScreenSection';
 import { ScheduleData } from '../models/ScheduleData';
 import { MapMarker } from '../models/MapMarker';
+import { Notification } from '../models/Notification';
 import { IOrderable } from '../models/IOrderable';
 
 const sortByOrder = (x: IOrderable, y: IOrderable) => {
@@ -73,3 +74,30 @@ export const mapMap = (objects: FrontMatterResult<any>[]) => {
     })
     .sort(sortByOrder);
 };
+
+export const mapVolunteer = (objects: FrontMatterResult<any>[]): FaqItem[] => {
+  return objects
+    .map((item) => {
+      return {
+        title: item.attributes.titel,
+        order: item.attributes.volgorde,
+        icon: item.attributes.icoon,
+        content: item.body,
+      };
+    })
+    .sort(sortByOrder);
+}; 
+
+export const mapNotfication = (objects: FrontMatterResult<any>[]): Notification[] => {
+  return objects.map(item => {
+    return {
+      title: item.attributes.titel,
+      subtitle: item.attributes.subtitle ?? null,
+      content: item.body,
+      time: {
+        date: item.attributes.time.date,
+        hour: item.attributes.time.hour,
+      }
+    }
+  })
+}

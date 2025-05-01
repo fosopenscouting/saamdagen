@@ -196,6 +196,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                       title: evts.events[0].name,
                       description: [
                         <SingleActivity
+                          key={`tl_${index}_singleactivity`}
                           evts={evts}
                           passedRef={ref}
                           index={index}
@@ -213,6 +214,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                   const description = evts.events.map((evt, i) => {
                     return (
                       <MultipleActivities
+                        key={`tl_${index}_multipleactivities_${i}`}
                         i={i}
                         index={i}
                         evt={evt}
@@ -260,11 +262,8 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               circleColor={Colors.FOSCOLORS.FOS_BLUE}
               circleSize={20}
               innerCircle={'dot'}
-              //@ts-expect-error It works, so ignore the error (please)
-              options={{
-                style: {
-                  paddingTop: 5,
-                },
+              style={{
+                paddingTop: 5,
               }}
               isUsingFlatlist={false}
             />

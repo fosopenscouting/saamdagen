@@ -15,7 +15,13 @@ import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Stack, useNavigationContainerRef } from 'expo-router';
+import {
+  useRouter,
+  Stack,
+  useNavigationContainerRef,
+  useFocusEffect,
+  router,
+} from 'expo-router';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
@@ -37,6 +43,7 @@ import { isRunningInExpoGo } from 'expo';
 import { AlertsProvider } from 'react-native-paper-alerts';
 import { ToastProvider } from 'react-native-paper-toast';
 import { darkTheme, lightTheme } from '@/constants/PaperTheme';
+import { getSettings } from '@/services/settingsService';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -45,6 +52,7 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
   debug: false,
+  tracesSampleRate: 1.0,
   integrations: [navigationIntegration],
   enableNativeFramesTracking: !isRunningInExpoGo(),
 });
@@ -109,6 +117,33 @@ async function registerForPushNotificationsAsync() {
   }
 }
 
+function useNotificationObserver() {
+  useEffect(() => {
+    let isMounted = true;
+
+    function redirect(notification: Notifications.Notification) {
+      const url = notification.request.content.data?.url;
+      if(url) router.push(url)
+    }
+
+    Notifications.getLastNotificationResponseAsync()
+      .then(response => {
+        if(!isMounted || !response?.notification) return
+
+        redirect(response.notification)
+      })
+
+    const subscriber = Notifications.addNotificationResponseReceivedListener(response => {
+      redirect(response.notification)
+    })
+
+    return () => {
+      isMounted = false;
+      subscriber.remove()
+    }
+  }, [])
+}
+
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
   reactNavigationLight: NavigationDefaultTheme,
   reactNavigationDark: NavigationDarkTheme,
@@ -166,6 +201,8 @@ const CustomDefaultTheme = {
 };
 
 const RootLayout = () => {
+  useNotificationObserver()
+
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
@@ -216,6 +253,18 @@ const RootLayout = () => {
     };
   }, []);
 
+  const router = useRouter();
+  useFocusEffect(() => {
+    const checkOnboarding = async () => {
+      const settings = await getSettings();
+
+      if (!settings.SHOWN_ONBOARDING || settings.SHOWN_ONBOARDING == undefined)
+        router.replace('/onboarding');
+    };
+
+    checkOnboarding();
+  });
+
   if (!isLoadingComplete || !fontsLoaded) {
     return null;
   } else {
@@ -244,6 +293,7 @@ const RootLayout = () => {
                       }}
                     >
                       <Stack.Screen name="(tabs)" />
+                      <Stack.Screen name="onboarding" />
                     </Stack>
                   </ThemeProvider>
                 </ToastProvider>

@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { FlatList } from 'react-native';
-import NavigationListItem from '@/components/NavigationListItem';
+import NavigationListItem, {
+  NavigationListItemProps,
+} from '@/components/NavigationListItem';
 import { Separator, View } from '@/components/Themed/Themed';
+import { getTicketFromStorage } from '@/services/ticketService';
+import { Ticket } from '@/models/Ticket';
+import { useFocusEffect } from 'expo-router';
+import Colors from '@/constants/Colors';
 
 const MoreScreen: React.FC = () => {
-  const items = [
+  const [items, setItems] = useState<NavigationListItemProps[]>([
     {
       title: 'Mijn Saamdagen',
       destination: '/more/profile',
       icon: 'heart-outline',
+      description: 'Hier kan je je ticket scannen',
     },
-    // {
-    // 	title: 'Instellingen',
-    // 	destination: '/more/settings',
-    // 	icon: 'tune-vertical',
-    // },
     {
       title: 'Over',
       destination: '/more/about',
@@ -26,7 +28,57 @@ const MoreScreen: React.FC = () => {
       destination: '/more/licenses',
       icon: 'scale-balance',
     },
-  ];
+    {
+      title: 'Instellingen',
+      destination: '/more/settings',
+      icon: 'cogs',
+    },
+  ]);
+  const [ticketData, setTicketData] = useState<Ticket | null>();
+
+  useFocusEffect(
+    useCallback(() => {
+      getTicketFromStorage().then((res) => {
+        setTicketData(res);
+      });
+    }, []),
+  );
+
+  const addItem = (item: NavigationListItemProps) => {
+    if (items.find((i) => i.title == item.title)) return;
+
+    setItems((prev) => [...prev, item]);
+  };
+
+  const changeItem = (title: string, newItem: NavigationListItemProps) => {
+    if (!items.find((i) => i.title == title)) return;
+    if (items.includes(newItem)) return;
+
+    const currentIndex = items.findIndex((i) => i.title == title);
+
+    setItems((prev) => {
+      prev[currentIndex] = newItem;
+      return prev;
+    });
+  };
+
+  useEffect(() => {
+    changeItem('Mijn Saamdagen', {
+      title: 'Mijn Saamdagen',
+      destination: '/more/profile',
+      icon: ticketData ? 'heart' : 'heart-outline',
+      iconColor: ticketData ? Colors.FOSCOLORS.WARMRED : undefined,
+      description: `Hier kan je je ticket ${ticketData ? 'terugvinden' : 'sannen'}`,
+    });
+
+    if (ticketData?.ticketType == 'Deelnemer')
+      addItem({
+        title: 'Info voor deelnemers',
+        description: ticketData.ticketType,
+        icon: 'calendar',
+        destination: '/more/volunteer',
+      });
+  }, [ticketData]);
 
   return (
     <View style={{ height: '100%' }}>
@@ -36,13 +88,7 @@ const MoreScreen: React.FC = () => {
         keyExtractor={(item) => item.title}
         ItemSeparatorComponent={() => <Separator marginVertical={1} />}
         ListFooterComponent={() => <Separator marginVertical={1} />}
-        renderItem={(item) => (
-          <NavigationListItem
-            title={item.item.title}
-            destination={item.item.destination}
-            icon={item.item.icon}
-          />
-        )}
+        renderItem={({ item }) => <NavigationListItem {...item} />}
       />
     </View>
   );

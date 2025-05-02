@@ -50,30 +50,10 @@ const MoreScreen: React.FC = () => {
     setItems((prev) => [...prev, item]);
   };
 
-  const changeItem = (title: string, newItem: NavigationListItemProps) => {
-    if (!items.find((i) => i.title == title)) return;
-    if (items.includes(newItem)) return;
-
-    const currentIndex = items.findIndex((i) => i.title == title);
-
-    setItems((prev) => {
-      prev[currentIndex] = newItem;
-      return prev;
-    });
-  };
-
   useEffect(() => {
-    changeItem('Mijn Saamdagen', {
-      title: 'Mijn Saamdagen',
-      destination: '/more/profile',
-      icon: ticketData ? 'heart' : 'heart-outline',
-      iconColor: ticketData ? Colors.FOSCOLORS.WARMRED : undefined,
-      description: `Hier kan je je ticket ${ticketData ? 'terugvinden' : 'sannen'}`,
-    });
-
-    if (ticketData?.ticketType == 'Deelnemer')
+    if (ticketData?.ticketType == 'Medewerker')
       addItem({
-        title: 'Info voor deelnemers',
+        title: 'Info voor medewerkers',
         description: ticketData.ticketType,
         icon: 'calendar',
         destination: '/more/volunteer',

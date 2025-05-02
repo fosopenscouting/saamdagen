@@ -56,7 +56,7 @@ const AboutScreen: React.FC = () => {
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
         <Text>
-          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub
+          Wist je trouwens dat de volledige broncode van deze app op GitHub
           staat?
         </Text>
         <Text style={styles.text}>

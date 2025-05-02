@@ -8,7 +8,6 @@ import { Separator, View } from '@/components/Themed/Themed';
 import { getTicketFromStorage } from '@/services/ticketService';
 import { Ticket } from '@/models/Ticket';
 import { useFocusEffect } from 'expo-router';
-import Colors from '@/constants/Colors';
 
 const MoreScreen: React.FC = () => {
   const [items, setItems] = useState<NavigationListItemProps[]>([

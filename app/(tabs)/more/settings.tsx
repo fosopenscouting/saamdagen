@@ -61,14 +61,10 @@ const SettingsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-        <Pressable onPress={onPressVersion}>
-          <HeaderText style={styles.title} variant="headlineLarge">
-            Instellingen
-          </HeaderText>
-        </Pressable>
-
         <List.Section>
-          <List.Subheader>Toestemmingen</List.Subheader>
+          <Pressable onPress={onPressVersion}>
+            <List.Subheader>Toestemmingen</List.Subheader>
+          </Pressable>
 
           <SettingItem
             title="Analytics"

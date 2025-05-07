@@ -9,6 +9,7 @@ import {
   Settings,
 } from '@/services/settingsService';
 import { router } from 'expo-router';
+import { updateNotificationSettings } from '@/services/notificationTokenService';
 
 const SettingItem: React.FC<{
   title: string;
@@ -80,12 +81,13 @@ const SettingsScreen: React.FC = () => {
           <SettingItem
             title="Meldingen"
             description="Mogen we jou meldingen sturen?"
-            value={settings[SettingKeys.FIREBASE_MESSAGING]}
+            value={settings[SettingKeys.MESSAGING]}
             onChange={async () => {
               await changeSetting(
-                SettingKeys.FIREBASE_MESSAGING,
-                !settings[SettingKeys.FIREBASE_MESSAGING],
+                SettingKeys.MESSAGING,
+                !settings[SettingKeys.MESSAGING],
               );
+              await updateNotificationSettings()
             }}
           />
         </List.Section>

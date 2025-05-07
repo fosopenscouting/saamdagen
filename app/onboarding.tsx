@@ -109,7 +109,7 @@ const OnboardingScreen = () => {
                 onPress={() => {
                   onboardingRef.current?.goNext();
                 }}
-                storageKey={SettingKeys.FIREBASE_MESSAGING}
+                storageKey={SettingKeys.MESSAGING}
               />
             </View>
           ),

@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export enum SettingKeys {
   FIREBASE_ANALYTICS = 'FIREBASE_ANALYTICS',
-  FIREBASE_MESSAGING = 'FIREBASE_MESSAGING',
+  MESSAGING = 'MESSAGING',
   SHOWN_ONBOARDING = 'SHOWN_ONBOARDING',
 }
 export type Settings = {

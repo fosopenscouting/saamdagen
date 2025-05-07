@@ -15,7 +15,6 @@ const MoreScreen: React.FC = () => {
       title: 'Mijn Saamdagen',
       destination: '/more/profile',
       icon: 'heart-outline',
-      description: 'Hier kan je je ticket scannen',
     },
     {
       title: 'Over',
@@ -50,7 +49,7 @@ const MoreScreen: React.FC = () => {
   };
 
   useEffect(() => {
-    if (ticketData?.ticketType == 'Medewerker')
+    if (ticketData?.ticketType == 'Deelnemer')
       addItem({
         title: 'Info voor medewerkers',
         description: ticketData.ticketType,

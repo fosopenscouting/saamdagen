@@ -44,6 +44,7 @@ import { AlertsProvider } from 'react-native-paper-alerts';
 import { ToastProvider } from 'react-native-paper-toast';
 import { darkTheme, lightTheme } from '@/constants/PaperTheme';
 import { getSettings } from '@/services/settingsService';
+import { registerToken } from '@/services/notificationTokenService';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -108,6 +109,7 @@ async function registerForPushNotificationsAsync() {
         })
       ).data;
       console.log(pushTokenString);
+      await registerToken(pushTokenString)
       return pushTokenString;
     } catch (e: unknown) {
       handleRegistrationError(`${e}`);

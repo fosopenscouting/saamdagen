@@ -3,10 +3,10 @@ import { getSettings } from './settingsService';
 
 const NOTIFICATION_SERVER = process.env.EXPO_PUBLIC_NOTIFICATION_SERVER!;
 
-export const registerToken = async (token: string) => {
+export const registerToken = async (token: string, localOnly: boolean = false) => {
   await AsyncStorage.setItem('PUSH_TOKEN', token);
 
-  await fetch(`${NOTIFICATION_SERVER}/api/pushToken`, {
+  if(!localOnly) await fetch(`${NOTIFICATION_SERVER}/api/pushToken`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

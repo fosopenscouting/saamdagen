@@ -109,7 +109,7 @@ async function registerForPushNotificationsAsync() {
         })
       ).data;
       console.log(pushTokenString);
-      await registerToken(pushTokenString)
+      await registerToken(pushTokenString, true)
       return pushTokenString;
     } catch (e: unknown) {
       handleRegistrationError(`${e}`);

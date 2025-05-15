@@ -12,6 +12,7 @@ import {
   NextPageButton,
   RedirectButton,
 } from '@/components/Onboarding/Buttons';
+import { updateNotificationSettings } from '@/services/notificationTokenService';
 
 const OnboardingScreen = () => {
   const onboardingRef = useRef<Onboarding>(null);
@@ -106,7 +107,8 @@ const OnboardingScreen = () => {
               </Text>
 
               <GiveConsentButtons
-                onPress={() => {
+                onPress={async () => {
+                  await updateNotificationSettings()
                   onboardingRef.current?.goNext();
                 }}
                 storageKey={SettingKeys.MESSAGING}

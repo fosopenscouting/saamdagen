@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { MaterialBottomTabs } from '@/layout/material-bottom-tabs';
+import { MaterialBottomTabs, MaterialBottomTabsNavigator } from '@/layout/material-bottom-tabs';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { StatusBar } from 'expo-status-bar';
-import { configureFonts } from 'react-native-paper';
 
 export default function TabsLayout() {
   const colorScheme = useColorScheme();
@@ -13,20 +12,14 @@ export default function TabsLayout() {
   return (
     <>
       <MaterialBottomTabs
-        shifting={false}
-        sceneAnimationEnabled={true}
-        sceneAnimationType="shifting"
-        activeColor={Colors[colorScheme].tint}
-        inactiveColor={Colors[colorScheme].tabIconDefault}
-        barStyle={Colors[colorScheme].tabBarStyle}
-        activeIndicatorStyle={{
-          backgroundColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
+        screenOptions={{
+          tabBarActiveBackgroundColor: Colors[colorScheme].tint,
+          tabBarInactiveBackgroundColor: Colors[colorScheme].tabIconDefault,
+          tabBarStyle: Colors[colorScheme].tabBarStyle,
+          animation: 'shift',
+          headerShown: false
         }}
-        theme={{
-          fonts: configureFonts({
-            config: { fontFamily: 'Quicksand_600SemiBold' },
-          }),
-        }}
+        tabBar={MaterialBottomTabsNavigator}
       >
         <MaterialBottomTabs.Screen
           name="index"

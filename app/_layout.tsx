@@ -157,7 +157,8 @@ const CombinedDefaultTheme = merge(PaperDefaultTheme, LightTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, DarkTheme);
 
 const CustomDarkTheme = {
-  ...CombinedDarkTheme,
+  ...PaperDarkTheme,
+  mode: 'exact',
   colors: darkTheme.colors,
   fonts: {
     ...CombinedDarkTheme.fonts,
@@ -278,27 +279,22 @@ const RootLayout = () => {
                 colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
               }
             >
-              <AlertsProvider>
-                <ToastProvider>
-                  <ThemeProvider
-                    //@ts-expect-error Shut up please
-                    value={
-                      colorScheme == 'dark'
-                        ? CustomDarkTheme
-                        : CustomDefaultTheme
-                    }
-                  >
+              <ThemeProvider
+                //@ts-expect-error Shut up please
+                value={
+                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+                }
+              >
+                <AlertsProvider>
+                  <ToastProvider>
                     <Stack
                       screenOptions={{
                         headerShown: false,
                       }}
-                    >
-                      <Stack.Screen name="(tabs)" />
-                      <Stack.Screen name="onboarding" />
-                    </Stack>
-                  </ThemeProvider>
-                </ToastProvider>
-              </AlertsProvider>
+                    />
+                  </ToastProvider>
+                </AlertsProvider>
+              </ThemeProvider>
             </PaperProvider>
           </GestureHandlerRootView>
           <StatusBar

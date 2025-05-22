@@ -110,7 +110,7 @@ async function registerForPushNotificationsAsync() {
         })
       ).data;
       console.log(pushTokenString);
-      await registerToken(pushTokenString, true)
+      await registerToken(pushTokenString, true);
       return pushTokenString;
     } catch (e: unknown) {
       handleRegistrationError(`${e}`);
@@ -126,25 +126,26 @@ function useNotificationObserver() {
 
     function redirect(notification: Notifications.Notification) {
       const url = notification.request.content.data?.url as string;
-      if(url) router.push(url)
+      if (url) router.push(url);
     }
 
-    Notifications.getLastNotificationResponseAsync()
-      .then(response => {
-        if(!isMounted || !response?.notification) return
+    Notifications.getLastNotificationResponseAsync().then((response) => {
+      if (!isMounted || !response?.notification) return;
 
-        redirect(response.notification)
-      })
+      redirect(response.notification);
+    });
 
-    const subscriber = Notifications.addNotificationResponseReceivedListener(response => {
-      redirect(response.notification)
-    })
+    const subscriber = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        redirect(response.notification);
+      },
+    );
 
     return () => {
       isMounted = false;
-      subscriber.remove()
-    }
-  }, [])
+      subscriber.remove();
+    };
+  }, []);
 }
 
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
@@ -204,7 +205,7 @@ const CustomDefaultTheme = {
 };
 
 const RootLayout = () => {
-  useNotificationObserver()
+  useNotificationObserver();
 
   const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
@@ -228,7 +229,8 @@ const RootLayout = () => {
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
-  const notificationListener = useRef<Notifications.EventSubscription>(undefined);
+  const notificationListener =
+    useRef<Notifications.EventSubscription>(undefined);
   const responseListener = useRef<Notifications.EventSubscription>(undefined);
 
   useEffect(() => {
@@ -247,12 +249,8 @@ const RootLayout = () => {
       });
 
     return () => {
-      notificationListener.current &&
-        Notifications.removeNotificationSubscription(
-          notificationListener.current,
-        );
-      responseListener.current &&
-        Notifications.removeNotificationSubscription(responseListener.current);
+      notificationListener.current && notificationListener.current.remove();
+      responseListener.current && responseListener.current.remove();
     };
   }, []);
 

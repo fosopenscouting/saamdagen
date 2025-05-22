@@ -51,7 +51,8 @@ Sentry.init({
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true,
+    shouldShowBanner: true,
+    shouldShowList: true,
     shouldPlaySound: false,
     shouldSetBadge: false,
   }),
@@ -118,7 +119,8 @@ const CombinedDefaultTheme = merge(PaperDefaultTheme, LightTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, DarkTheme);
 
 const CustomDarkTheme = {
-  ...CombinedDarkTheme,
+  ...PaperDarkTheme,
+  mode: 'exact',
   colors: darkTheme.colors,
   fonts: {
     ...CombinedDarkTheme.fonts,
@@ -188,8 +190,9 @@ const RootLayout = () => {
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
-  const notificationListener = useRef<Notifications.EventSubscription>();
-  const responseListener = useRef<Notifications.EventSubscription>();
+  const notificationListener =
+    useRef<Notifications.EventSubscription>(undefined);
+  const responseListener = useRef<Notifications.EventSubscription>(undefined);
 
   useEffect(() => {
     registerForPushNotificationsAsync()
@@ -207,12 +210,8 @@ const RootLayout = () => {
       });
 
     return () => {
-      notificationListener.current &&
-        Notifications.removeNotificationSubscription(
-          notificationListener.current,
-        );
-      responseListener.current &&
-        Notifications.removeNotificationSubscription(responseListener.current);
+      notificationListener.current && notificationListener.current.remove();
+      responseListener.current && responseListener.current.remove();
     };
   }, []);
 
@@ -224,30 +223,27 @@ const RootLayout = () => {
         <DataContextProvider>
           <GestureHandlerRootView>
             <PaperProvider
+              //@ts-expect-error Bug in react-native-paper with mode-option
               theme={
                 colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
               }
             >
-              <AlertsProvider>
-                <ToastProvider>
-                  <ThemeProvider
-                    //@ts-expect-error Shut up please
-                    value={
-                      colorScheme == 'dark'
-                        ? CustomDarkTheme
-                        : CustomDefaultTheme
-                    }
-                  >
+              <ThemeProvider
+              //@ts-expect-error Shut up please
+                value={
+                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
+                }
+              >
+                <AlertsProvider>
+                  <ToastProvider>
                     <Stack
                       screenOptions={{
                         headerShown: false,
                       }}
-                    >
-                      <Stack.Screen name="(tabs)" />
-                    </Stack>
-                  </ThemeProvider>
-                </ToastProvider>
-              </AlertsProvider>
+                    />
+                  </ToastProvider>
+                </AlertsProvider>
+              </ThemeProvider>
             </PaperProvider>
           </GestureHandlerRootView>
           <StatusBar

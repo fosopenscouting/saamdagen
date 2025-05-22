@@ -275,12 +275,13 @@ const RootLayout = () => {
         <DataContextProvider>
           <GestureHandlerRootView>
             <PaperProvider
+              //@ts-expect-error Bug in react-native-paper with mode-option
               theme={
                 colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
               }
             >
               <ThemeProvider
-                //@ts-expect-error Shut up please
+              //@ts-expect-error Shut up please
                 value={
                   colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
                 }

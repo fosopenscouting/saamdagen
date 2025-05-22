@@ -60,7 +60,8 @@ Sentry.init({
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true,
+    shouldShowBanner: true,
+    shouldShowList: true,
     shouldPlaySound: false,
     shouldSetBadge: false,
   }),
@@ -124,7 +125,7 @@ function useNotificationObserver() {
     let isMounted = true;
 
     function redirect(notification: Notifications.Notification) {
-      const url = notification.request.content.data?.url;
+      const url = notification.request.content.data?.url as string;
       if(url) router.push(url)
     }
 
@@ -227,8 +228,8 @@ const RootLayout = () => {
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
-  const notificationListener = useRef<Notifications.EventSubscription>();
-  const responseListener = useRef<Notifications.EventSubscription>();
+  const notificationListener = useRef<Notifications.EventSubscription>(undefined);
+  const responseListener = useRef<Notifications.EventSubscription>(undefined);
 
   useEffect(() => {
     registerForPushNotificationsAsync()

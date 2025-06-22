@@ -5,7 +5,7 @@ import { Ticket } from '@/models/Ticket';
 export const storeTicket = async (
   data: any,
   ticketHash: string,
-): Promise<Ticket | Error> => {
+): Promise<Ticket | never> => {
   try {
     const formValues = data.data.submissionData.data.formValues;
     const workshopsBeforeNoon =

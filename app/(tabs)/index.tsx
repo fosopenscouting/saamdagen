@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
 import { Image, ImageBackground } from 'expo-image';
 import CountdownTimer from '@/components/CountDownTimer';
 import BasicCard from '@/components/BasicCard';

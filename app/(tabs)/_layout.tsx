@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { MaterialBottomTabs, MaterialBottomTabsNavigator } from '@/layout/material-bottom-tabs';
+import {
+  MaterialBottomTabs,
+  MaterialBottomTabsNavigator,
+} from '@/layout/material-bottom-tabs';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
@@ -17,7 +20,7 @@ export default function TabsLayout() {
           tabBarInactiveBackgroundColor: Colors[colorScheme].tabIconDefault,
           tabBarStyle: Colors[colorScheme].tabBarStyle,
           animation: 'shift',
-          headerShown: false
+          headerShown: false,
         }}
         tabBar={MaterialBottomTabsNavigator}
       >

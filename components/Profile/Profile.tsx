@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
 import { View, HeaderText, Separator } from '@/components/Themed/Themed';
 import { Text } from '@/components/Themed/Text';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import Colors from '@/constants/Colors';
+import { Button, Icon } from 'react-native-paper';
 
 interface ProfileProps {
   firstName: string;
@@ -10,17 +11,18 @@ interface ProfileProps {
   participantType: string;
   beforeNoon: string;
   children: ReactElement;
+  onDeleteTicketPress: () => void;
 }
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
   return (
-    <>
+    <ScrollView>
       <View style={styles.introContainer}>
         <HeaderText lightColor="#fff" variant="headlineLarge">
           Hey {props.firstName}
         </HeaderText>
         <Text lightColor="#fff" variant="titleLarge">
-          Ben jij al klaar voor Saamdagen? Wij alvast wel!
+          Ben jij klaar voor Saamdagen? Wij alvast wel!
         </Text>
         <Text lightColor="#fff" variant="titleMedium">
           Hieronder vind je je ticket terug en ook welke workshop je gekozen
@@ -37,7 +39,8 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
             lightColor="#fff"
             variant="headlineMedium"
           >
-            {props.firstName} {props.lastName}
+            <Icon source="ticket-confirmation" size={32} />
+            &ensp;{props.firstName} {props.lastName}
           </HeaderText>
           <Text lightColor="#fff" variant="titleMedium">
             {props.participantType}
@@ -64,7 +67,32 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           </View>
         </>
       ) : null}
-    </>
+
+      <Separator marginVertical={0} />
+
+      <View style={styles.dangerContainer}>
+        <HeaderText
+          style={styles.profileInfoName}
+          lightColor="#fff"
+          variant="headlineMedium"
+        >
+          <Icon source="alert-circle" size={32} />
+          &ensp;Dangerzone
+        </HeaderText>
+        <Button
+          mode="outlined"
+          buttonColor={Colors.FOSCOLORS.WARMRED}
+          textColor="white"
+          icon="delete"
+          style={{
+            margin: 16,
+          }}
+          onPress={props.onDeleteTicketPress}
+        >
+          Ticket verwijderen
+        </Button>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -78,6 +106,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 25,
     backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+    gap: 2,
   },
   headerContainer: {
     display: 'flex',
@@ -101,6 +130,11 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 50,
     backgroundColor: Colors.FOSCOLORS.CORAL,
+  },
+  dangerContainer: {
+    padding: 16,
+    paddingVertical: 25,
+    backgroundColor: Colors.FOSCOLORS.WARMRED,
   },
 });
 

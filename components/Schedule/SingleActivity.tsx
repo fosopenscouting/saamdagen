@@ -33,9 +33,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
           </>
         )}
       </HeaderText>
-      <Text>
-        {props.evts.events[0].description}
-      </Text>
+      <Text>{props.evts.events[0].description}</Text>
     </View>
   );
 };

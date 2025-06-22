@@ -89,10 +89,19 @@ export const NextPageButton = ({
   </Button>
 );
 
-export const RedirectButton = ({ text, to }: { text: string; to: string }) => (
+export const RedirectButton = ({
+  text,
+  to,
+  icon = '',
+}: {
+  text: string;
+  to: string;
+  icon?: string;
+}) => (
   <Button
     mode="elevated"
     buttonColor={Colors.FOSCOLORS.FOS_GREEN}
+    icon={icon}
     onPress={async () => {
       await setSetting(SettingKeys.SHOWN_ONBOARDING, true);
 

@@ -103,12 +103,13 @@ const OnboardingScreen = () => {
             >
               <Text>
                 Mogen we jou meldingen sturen?{'\n'}
-                Zo kunnen we je sneller op de hoogte brengen als er iets te doen is.
+                Zo kunnen we je sneller op de hoogte brengen als er iets te doen
+                is.
               </Text>
 
               <GiveConsentButtons
                 onPress={async () => {
-                  await updateNotificationSettings()
+                  await updateNotificationSettings();
                   onboardingRef.current?.goNext();
                 }}
                 storageKey={SettingKeys.MESSAGING}

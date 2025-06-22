@@ -86,10 +86,12 @@ export const mapVolunteer = (objects: FrontMatterResult<any>[]): FaqItem[] => {
       };
     })
     .sort(sortByOrder);
-}; 
+};
 
-export const mapNotfication = (objects: FrontMatterResult<any>[]): Notification[] => {
-  return objects.map(item => {
+export const mapNotfication = (
+  objects: FrontMatterResult<any>[],
+): Notification[] => {
+  return objects.map((item) => {
     return {
       title: item.attributes.titel,
       subtitle: item.attributes.subtitle ?? null,
@@ -97,7 +99,7 @@ export const mapNotfication = (objects: FrontMatterResult<any>[]): Notification[
       time: {
         date: item.attributes.time.date,
         hour: item.attributes.time.hour,
-      }
-    }
-  })
-}
+      },
+    };
+  });
+};

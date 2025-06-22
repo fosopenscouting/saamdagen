@@ -3,7 +3,7 @@ import { Notification } from './Notification';
 
 export interface ContentMetadata<T = any> {
   key: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   content: T;
   lastUpdated: Date;
 }

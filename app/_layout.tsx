@@ -281,7 +281,7 @@ const RootLayout = () => {
               }
             >
               <ThemeProvider
-              //@ts-expect-error Shut up please
+                //@ts-expect-error Shut up please
                 value={
                   colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
                 }

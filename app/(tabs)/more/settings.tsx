@@ -87,7 +87,7 @@ const SettingsScreen: React.FC = () => {
                 SettingKeys.MESSAGING,
                 !settings[SettingKeys.MESSAGING],
               );
-              await updateNotificationSettings()
+              await updateNotificationSettings();
             }}
           />
         </List.Section>

@@ -8,8 +8,8 @@ const defaultHeaderStyles = (size: number) => ({
 });
 const debugBorder = (color = 'red') => ({
   borderWidth: 1,
-  borderColor: color
-})
+  borderColor: color,
+});
 
 const defaultStyles: StyleSheet.NamedStyles<any> = {
   block: {
@@ -24,7 +24,7 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
     paddingLeft: 10,
   },
   blockQuoteText: {
-    color: '#ffffff'
+    color: '#ffffff',
   },
   h1: {
     ...defaultHeaderStyles(21),
@@ -133,7 +133,7 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
     flex: 1,
     padding: 5,
     fontFamily: 'Quicksand_600SemiBold',
-    color: 'white'
+    color: 'white',
   },
   tr: {
     borderBottomWidth: 1,

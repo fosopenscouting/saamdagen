@@ -89,7 +89,15 @@ export const NextPageButton = ({
   </Button>
 );
 
-export const RedirectButton = ({ text, to, icon = "" }: { text: string; to: string, icon?: string }) => (
+export const RedirectButton = ({
+  text,
+  to,
+  icon = '',
+}: {
+  text: string;
+  to: string;
+  icon?: string;
+}) => (
   <Button
     mode="elevated"
     buttonColor={Colors.FOSCOLORS.FOS_GREEN}

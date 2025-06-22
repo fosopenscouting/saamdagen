@@ -151,25 +151,24 @@ const listAllImages = async (content: FrontMatterResult<any>[]) => {
   return imageList.filter((u) => !u.startsWith('@'));
 };
 
-
 const scheduleNotifications = async (
   notifs: ContentMetadata<Notification[]>,
 ) => {
-  const settings = await getSettings()
-  if(settings.MESSAGING) {
+  const settings = await getSettings();
+  if (settings.MESSAGING) {
     await Notifications.cancelAllScheduledNotificationsAsync();
     for (const notification of notifs.content) {
-      const date = new Date()
-      const dateParsed = notification.time.date.split('/')
-  
-      date.setDate(parseInt(dateParsed[0]))
-      date.setMonth(parseInt(dateParsed[1]) - 1)
-      date.setFullYear(parseInt(dateParsed[2]))
-  
-      date.setHours(parseInt(notification.time.hour.split(':')[0]))
-      date.setMinutes(parseInt(notification.time.hour.split(':')[1]))
-  
-      if(date < new Date()) continue;
+      const date = new Date();
+      const dateParsed = notification.time.date.split('/');
+
+      date.setDate(parseInt(dateParsed[0]));
+      date.setMonth(parseInt(dateParsed[1]) - 1);
+      date.setFullYear(parseInt(dateParsed[2]));
+
+      date.setHours(parseInt(notification.time.hour.split(':')[0]));
+      date.setMinutes(parseInt(notification.time.hour.split(':')[1]));
+
+      if (date < new Date()) continue;
 
       Notifications.scheduleNotificationAsync({
         content: {
@@ -179,7 +178,7 @@ const scheduleNotifications = async (
         },
         trigger: {
           type: Notifications.SchedulableTriggerInputTypes.DATE,
-          date
+          date,
         },
       });
     }

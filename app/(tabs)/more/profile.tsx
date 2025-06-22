@@ -22,7 +22,7 @@ import {
   storeTicket,
 } from '@/services/ticketService';
 import Loading from '@/components/Loading';
-import {  Icon } from 'react-native-paper';
+import { Icon } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { setStatusBarHidden } from 'expo-status-bar';
 import { useAlerts } from 'react-native-paper-alerts';
@@ -151,7 +151,6 @@ const ProfileScreen: React.FC = () => {
                       color={Colors.FOSCOLORS.FOS_BLUE}
                       source="ticket-confirmation"
                       size={64}
-                      
                     />
                     <HeaderText
                       variant="displaySmall"
@@ -163,10 +162,15 @@ const ProfileScreen: React.FC = () => {
                       Mijn ticket
                     </HeaderText>
                     <SvgQRCode size={300} value={ticketData.hash} />
-                    <Text variant='bodySmall' style={{
-                      marginTop: 5,
-                      color: "#ccc"
-                    }}>Klik om af te sluiten</Text>
+                    <Text
+                      variant="bodySmall"
+                      style={{
+                        marginTop: 5,
+                        color: '#ccc',
+                      }}
+                    >
+                      Klik om af te sluiten
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </Modal>

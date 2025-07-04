@@ -2,6 +2,7 @@ export interface Ticket {
   firstName: string;
   lastName: string;
   ticketType: string;
-  workshopBeforeNoon: string;
-  hash: string;
+  workshop: string;
+  secret: string;
+  url: string;
 }

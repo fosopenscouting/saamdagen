@@ -38,9 +38,6 @@ export const getTicketFromApi = async (ticketUrl: string): Promise<any> => {
 
   const url = `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`
 
-
-  console.log(url)
-
   const res = await fetch(
     url,
     {

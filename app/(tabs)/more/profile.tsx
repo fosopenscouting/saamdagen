@@ -147,30 +147,7 @@ const ProfileScreen: React.FC = () => {
                   onPressOut={resetModal}
                 >
                   <View style={[styles.qrModal, styles.qrContainer]}>
-                    <Icon
-                      color={Colors.FOSCOLORS.FOS_BLUE}
-                      source="ticket-confirmation"
-                      size={64}
-                    />
-                    <HeaderText
-                      variant="displaySmall"
-                      style={{
-                        color: Colors.FOSCOLORS.FOS_BLUE,
-                        marginBottom: 32,
-                      }}
-                    >
-                      Mijn ticket
-                    </HeaderText>
-                    <SvgQRCode size={300} value={ticketData.hash} />
-                    <Text
-                      variant="bodySmall"
-                      style={{
-                        marginTop: 5,
-                        color: '#ccc',
-                      }}
-                    >
-                      Klik om af te sluiten
-                    </Text>
+                    <SvgQRCode size={300} value={ticketData.url} />
                   </View>
                 </TouchableOpacity>
               </Modal>
@@ -178,13 +155,13 @@ const ProfileScreen: React.FC = () => {
               <Profile
                 firstName={ticketData.firstName}
                 lastName={ticketData.lastName}
-                beforeNoon={ticketData.workshopBeforeNoon}
+                beforeNoon={ticketData.workshop}
                 participantType={ticketData.ticketType}
                 onDeleteTicketPress={showConfirmDialog}
               >
                 <Pressable onPress={handleQrPress}>
                   <View style={styles.qrContainer}>
-                    <SvgQRCode size={130} value={ticketData.hash} />
+                    <SvgQRCode size={130} value={ticketData.url} />
                   </View>
                 </Pressable>
               </Profile>

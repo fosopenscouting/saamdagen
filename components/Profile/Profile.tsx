@@ -52,7 +52,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         {props.children}
       </View>
 
-      {props.participantType === 'Deelnemer' ? (
+      {props.participantType === 'deelnemer' ? (
         <>
           <Separator marginVertical={0} />
 

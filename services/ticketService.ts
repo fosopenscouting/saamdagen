@@ -31,9 +31,18 @@ export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {
   }
 };
 
-export const getTicketFromApi = async (secret: string): Promise<any> => {
+export const getTicketFromApi = async (ticketUrl: string): Promise<any> => {
+  //Provided ticketUrl is the full url, we only need the last bit
+  const ticketUrlSplit = ticketUrl.split(/\//g)
+  const secret = ticketUrlSplit[ticketUrlSplit.length - 1]
+
+  const url = `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`
+
+
+  console.log(url)
+
   const res = await fetch(
-    `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`,
+    url,
     {
       method: 'GET',
     },

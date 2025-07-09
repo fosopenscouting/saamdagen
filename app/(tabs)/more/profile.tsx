@@ -143,7 +143,7 @@ const ProfileScreen: React.FC = () => {
                   onPressOut={resetModal}
                 >
                   <View style={[styles.qrModal, styles.qrContainer]}>
-                    <SvgQRCode size={300} value={ticketData.hash} />
+                    <SvgQRCode size={300} value={ticketData.url} />
                   </View>
                 </TouchableOpacity>
               </Modal>
@@ -151,12 +151,12 @@ const ProfileScreen: React.FC = () => {
               <Profile
                 firstName={ticketData.firstName}
                 lastName={ticketData.lastName}
-                beforeNoon={ticketData.workshopBeforeNoon}
+                beforeNoon={ticketData.workshop}
                 participantType={ticketData.ticketType}
               >
                 <Pressable onPress={handleQrPress}>
                   <View style={styles.qrContainer}>
-                    <SvgQRCode size={130} value={ticketData.hash} />
+                    <SvgQRCode size={130} value={ticketData.url} />
                   </View>
                 </Pressable>
               </Profile>

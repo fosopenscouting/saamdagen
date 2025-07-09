@@ -4,20 +4,16 @@ import { Ticket } from '@/models/Ticket';
 
 export const storeTicket = async (
   data: any,
-  ticketHash: string,
-): Promise<Ticket | Error> => {
+  secret: string,
+): Promise<Ticket> => {
   try {
-    const formValues = data.data.submissionData.data.formValues;
-    const workshopsBeforeNoon =
-      data.data.submissionData.formElements.workshops_voormiddag;
     const ticket: Ticket = {
-      firstName: data.data.firstName,
-      lastName: data.data.lastName,
-      ticketType: formValues.type_deelnemer_keuze,
-      workshopBeforeNoon: formValues.workshops_voormiddag
-        ? workshopsBeforeNoon['#options'][formValues.workshops_voormiddag]
-        : null,
-      hash: ticketHash,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      ticketType: data.type,
+      workshop: data.workshop ?? null,
+      secret,
+      url: data.url
     };
     await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
     return ticket;
@@ -35,9 +31,15 @@ export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {
   }
 };
 
-export const getTicketFromApi = async (ticketHash: string): Promise<any> => {
+export const getTicketFromApi = async (ticketUrl: string): Promise<any> => {
+  //Provided ticketUrl is the full url, we only need the last bit
+  const ticketUrlSplit = ticketUrl.split(/\//g)
+  const secret = ticketUrlSplit[ticketUrlSplit.length - 1]
+
+  const url = `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`
+
   const res = await fetch(
-    `https://ticketing.fos.be/api/ticket?hash=${ticketHash}`,
+    url,
     {
       method: 'GET',
     },

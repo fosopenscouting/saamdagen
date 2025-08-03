@@ -67,7 +67,7 @@ const SettingsScreen: React.FC = () => {
             <List.Subheader>Toestemmingen</List.Subheader>
           </Pressable>
 
-          <SettingItem
+          {/* <SettingItem
             title="Analytics"
             description="Mogen we anonieme statistieken versturen om de app te verbeteren?"
             value={settings[SettingKeys.FIREBASE_ANALYTICS]}
@@ -77,7 +77,7 @@ const SettingsScreen: React.FC = () => {
                 !settings[SettingKeys.FIREBASE_ANALYTICS],
               );
             }}
-          />
+          /> */}
           <SettingItem
             title="Meldingen"
             description="Mogen we jou meldingen sturen?"

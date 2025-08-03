@@ -54,40 +54,40 @@ const OnboardingScreen = () => {
             />
           ),
         },
-        {
-          title: 'Optionele gegevens',
-          subtitle: (
-            <View
-              style={{
-                paddingHorizontal: 16,
-                gap: 16,
-                width: '100%',
-                alignItems: 'center',
-              }}
-            >
-              <Text>
-                Help de Saamdagen-app te verbeteren door anonieme
-                gebruiksgegevens te versturen. {'\n'}
-                Zo kunnen we nóg sneller de fouten eruit halen!
-              </Text>
+        // {
+        //   title: 'Optionele gegevens',
+        //   subtitle: (
+        //     <View
+        //       style={{
+        //         paddingHorizontal: 16,
+        //         gap: 16,
+        //         width: '100%',
+        //         alignItems: 'center',
+        //       }}
+        //     >
+        //       <Text>
+        //         Help de Saamdagen-app te verbeteren door anonieme
+        //         gebruiksgegevens te versturen. {'\n'}
+        //         Zo kunnen we nóg sneller de fouten eruit halen!
+        //       </Text>
 
-              <GiveConsentButtons
-                onPress={() => {
-                  onboardingRef.current?.goNext();
-                }}
-                storageKey={SettingKeys.FIREBASE_ANALYTICS}
-              />
-            </View>
-          ),
-          backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
-          image: (
-            <MaterialCommunityIcons
-              name="chart-arc"
-              size={100}
-              color={'white'}
-            />
-          ),
-        },
+        //       <GiveConsentButtons
+        //         onPress={() => {
+        //           onboardingRef.current?.goNext();
+        //         }}
+        //         storageKey={SettingKeys.FIREBASE_ANALYTICS}
+        //       />
+        //     </View>
+        //   ),
+        //   backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+        //   image: (
+        //     <MaterialCommunityIcons
+        //       name="chart-arc"
+        //       size={100}
+        //       color={'white'}
+        //     />
+        //   ),
+        // },
         {
           title: 'Meldingen',
           subtitle: (

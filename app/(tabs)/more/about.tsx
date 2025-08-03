@@ -8,6 +8,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AboutScreen: React.FC = () => {
   const alerts = useAlerts();
@@ -60,11 +61,16 @@ const AboutScreen: React.FC = () => {
           staat?
         </Text>
         <Text style={styles.text}>
-          Je kan &apos;m hier terugvinden:{' '}
+          Je kan &apos;m hier terugvinden: {'\n'}
           <Link
             style={styles.link}
             href="https://github.com/fosopenscouting/saamdagen"
           >
+            <MaterialCommunityIcons
+              name="github"
+              size={16}
+              style={{ textDecorationLine: 'none' }}
+            />
             @fosopenscouting/saamdagen
           </Link>
         </Text>

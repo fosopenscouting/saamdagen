@@ -27,7 +27,7 @@ const Link = ({
   children,
 }: {
   url: string;
-  style: StyleProp<TextStyle>;
+  style?: StyleProp<TextStyle>;
   children: React.ReactNode;
 }) => (
   <Text
@@ -63,14 +63,14 @@ export default function LicensesItem({
           onPress={() => Linking.openURL(repository)}
           style={styles.item}
         >
-          <View style={{ maxWidth: '90%' }}>
+          <View style={{ maxWidth: '85%' }}>
             <HeaderText variant="titleMedium">
               {title}@{version}
             </HeaderText>
-            <Link style={styles.text} url={licenseUrl}>
+            <Link url={licenseUrl}>
               {licenses}
             </Link>
-            <Text style={styles.text}>{by}</Text>
+            <Text>{by}</Text>
           </View>
           <MaterialCommunityIcons
             name="chevron-right"
@@ -91,15 +91,12 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   item: {
-    paddingVertical: 16,
+    paddingVertical: 8,
     paddingLeft: 12,
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
     backgroundColor: 'transparent',
     maxWidth: '100%',
-  },
-  text: {
-    marginTop: 3,
   },
 });

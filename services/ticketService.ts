@@ -7,6 +7,9 @@ export const storeTicket = async (
   secret: string,
 ): Promise<Ticket> => {
   try {
+    //Sanity check on data
+    if(!Object.hasOwn(data, "secret")) throw new Error('Not a valid ticket!')
+
     const ticket: Ticket = {
       firstName: data.firstName,
       lastName: data.lastName,

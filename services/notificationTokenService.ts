@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getSettings } from './settingsService';
 
-const NOTIFICATION_SERVER = process.env.EXPO_PUBLIC_NOTIFICATION_SERVER!;
+const NOTIFICATION_SERVER = process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER!;
 
 export const registerToken = async (
   token: string,
@@ -9,17 +9,23 @@ export const registerToken = async (
 ) => {
   await AsyncStorage.setItem('PUSH_TOKEN', token);
 
-  if (!localOnly)
-    await fetch(`${NOTIFICATION_SERVER}/api/pushToken`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: token,
-      }),
-    });
+  if (!localOnly) {
+    try {
+      await fetch(`${NOTIFICATION_SERVER}/api/pushToken`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: token,
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
 };
 
 export const unregisterToken = async (token: string | null) => {
@@ -42,7 +48,9 @@ export const updateNotificationSettings = async () => {
   const token = await AsyncStorage.getItem('PUSH_TOKEN');
 
   if (settings.MESSAGING) {
-    if (token === null) return;
+    if (token === null) {
+      return;
+    }
 
     await registerToken(token);
   } else {

@@ -18,13 +18,11 @@ const OnboardingScreen = () => {
   const onboardingRef = useRef<Onboarding>(null);
 
   return (
-    //@ts-expect-error Conflict with @types/react
     <Onboarding
       ref={onboardingRef}
       showSkip={false}
       showDone={false}
       showNext={false}
-      //@ts-expect-error Not all properties need to be passed
       flatlistProps={{
         scrollEnabled: false,
       }}

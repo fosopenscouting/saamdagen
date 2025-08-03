@@ -26,7 +26,7 @@ const HomeScreen: React.FC = () => {
     ContentMetadata | undefined
   >();
   const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
-  const [showOnboading, setShowOnboarding] = useState(false)
+  const [showOnboading, setShowOnboarding] = useState(false);
 
   const handleRefresh = async () => {
     await refreshContext();
@@ -57,18 +57,17 @@ const HomeScreen: React.FC = () => {
   useEffect(() => {
     const checkOnboarding = async () => {
       const settings = await getSettings();
-  
+
       if (
         !settings.SHOWN_ONBOARDING ||
         settings.SHOWN_ONBOARDING == undefined
       ) {
-        setShowOnboarding(true)
+        setShowOnboarding(true);
       }
     };
-  
-    checkOnboarding();
 
-  }, [])
+    checkOnboarding();
+  }, []);
 
   // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
   useEffect(() => {
@@ -91,8 +90,8 @@ const HomeScreen: React.FC = () => {
     }
   };
 
-  if(showOnboading) {
-    return <Redirect href={"/onboarding"} />
+  if (showOnboading) {
+    return <Redirect href={'/onboarding'} />;
   }
 
   return (

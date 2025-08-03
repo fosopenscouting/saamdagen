@@ -12,22 +12,13 @@ import * as Sentry from '@sentry/react-native';
 import { useState, useEffect, useRef } from 'react';
 import * as Notifications from 'expo-notifications';
 
-
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import {
-  Stack,
-  useNavigationContainerRef,
-  SplashScreen,
-} from 'expo-router';
+import { Stack, useNavigationContainerRef, SplashScreen } from 'expo-router';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
-import {
-  ThemeProvider,
-} from '@react-navigation/native';
-import {
-  Provider as PaperProvider,
-} from 'react-native-paper';
+import { ThemeProvider } from '@react-navigation/native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import useColorScheme from '@/hooks/useColorScheme';
 import { isRunningInExpoGo } from 'expo';
 import { AlertsProvider } from 'react-native-paper-alerts';
@@ -70,7 +61,7 @@ const RootLayout = () => {
     Quicksand_400Regular,
     Quicksand_500Medium,
     Quicksand_600SemiBold,
-    Quicksand_700Bold
+    Quicksand_700Bold,
   });
   const colorScheme = useColorScheme();
 
@@ -83,7 +74,10 @@ const RootLayout = () => {
   }, [ref]);
 
   //Notificaties
-  const [expoPushToken, setExpoPushToken] = useState('');
+
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [expoPushToken, setExpoPushToken] = useState<string>('');
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
@@ -93,7 +87,8 @@ const RootLayout = () => {
 
   useEffect(() => {
     registerForPushNotificationsAsync()
-      .then((token) => setExpoPushToken(token ?? ''))
+      .then((token: string | undefined) => setExpoPushToken(token ?? ''))
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => setExpoPushToken(`${error}`));
 
     notificationListener.current =
@@ -107,7 +102,9 @@ const RootLayout = () => {
       });
 
     return () => {
+      //eslint-disable-next-line @typescript-eslint/no-unused-expressions
       notificationListener.current && notificationListener.current.remove();
+      //eslint-disable-next-line @typescript-eslint/no-unused-expressions
       responseListener.current && responseListener.current.remove();
     };
   }, []);

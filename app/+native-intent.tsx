@@ -2,6 +2,7 @@ import { getTicketFromApi, storeTicket } from '@/services/ticketService';
 import { router } from 'expo-router';
 import { useAlerts } from 'react-native-paper-alerts';
 import { useToast } from 'react-native-paper-toast';
+import * as Sentry from '@sentry/react-native';
 
 export function redirectSystemPath({
   path,
@@ -46,6 +47,12 @@ export function redirectSystemPath({
               message:
                 'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
             });
+
+            //Log error naar Sentry
+            Sentry.captureMessage(
+              `Ticket kon niet gescand worden: ${error}`,
+              'error',
+            );
           }
 
           return '/more/profile';
@@ -60,6 +67,8 @@ export function redirectSystemPath({
     }
 
     return path;
+
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return 'not-found';
   }

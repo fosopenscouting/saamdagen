@@ -8,15 +8,15 @@ export const storeTicket = async (
 ): Promise<Ticket> => {
   try {
     //Sanity check on data
-    if(!Object.hasOwn(data, "secret")) throw new Error('Not a valid ticket!')
-    
+    if (!Object.hasOwn(data, 'secret')) throw new Error('Not a valid ticket!');
+
     const ticket: Ticket = {
       firstName: data.firstName,
       lastName: data.lastName,
       ticketType: data.type,
       workshop: data.workshop ?? null,
       secret,
-      url: data.url
+      url: data.url,
     };
     await AsyncStorage.setItem('sd_ticket', JSON.stringify(ticket));
     return ticket;
@@ -36,16 +36,13 @@ export const getTicketFromStorage = async (): Promise<Ticket | undefined> => {
 
 export const getTicketFromApi = async (ticketUrl: string): Promise<any> => {
   //Provided ticketUrl is the full url, we only need the last bit
-  const ticketUrlSplit = ticketUrl.split(/\//g)
-  const secret = ticketUrlSplit[ticketUrlSplit.length - 1]
+  const ticketUrlSplit = ticketUrl.split(/\//g);
+  const secret = ticketUrlSplit[ticketUrlSplit.length - 1];
 
-  const url = `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`
+  const url = `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/ticket/${secret}`;
 
-  const res = await fetch(
-    url,
-    {
-      method: 'GET',
-    },
-  );
+  const res = await fetch(url, {
+    method: 'GET',
+  });
   return await res.json();
 };

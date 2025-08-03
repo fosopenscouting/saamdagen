@@ -18,7 +18,7 @@ export const Anchor: React.FC<Props> = (props: Props) => {
   const handlePress = (event: GestureResponderEvent) => {
     if (props.href) {
       Linking.openURL(props.href);
-      props.onPress && props.onPress(event);
+      if (props.onPress) props.onPress(event);
     }
   };
 

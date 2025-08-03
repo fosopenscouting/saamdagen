@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ScheduleData } from '@/models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
@@ -28,6 +28,7 @@ export const OpeningHours: React.FC<Props> = (props: Props) => {
         textTransform: 'uppercase',
         textAlign: 'center',
       }}
+      //eslint-disable-next-line react/prop-types
       right={(props) => <CollapsibleChevron isActive={props.isExpanded} />}
       title="ALGEMENE OPENINGSUREN"
     >

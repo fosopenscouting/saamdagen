@@ -8,7 +8,6 @@ import {
 } from '@react-navigation/bottom-tabs';
 import {
   CommonActions,
-  NavigationState,
   ParamListBase,
   TabNavigationState,
 } from '@react-navigation/native';

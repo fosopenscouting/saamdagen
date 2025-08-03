@@ -7,6 +7,8 @@ import { Text } from '../Themed/Text';
 interface SingleActivityProps {
   index: number;
   evts: GroupedEvents;
+
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   passedRef: any;
 }
 

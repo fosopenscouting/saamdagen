@@ -67,9 +67,7 @@ export default function LicensesItem({
             <HeaderText variant="titleMedium">
               {title}@{version}
             </HeaderText>
-            <Link url={licenseUrl}>
-              {licenses}
-            </Link>
+            <Link url={licenseUrl}>{licenses}</Link>
             <Text>{by}</Text>
           </View>
           <MaterialCommunityIcons

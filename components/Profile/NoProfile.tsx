@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Separator, HeaderText } from '../Themed/Themed';
 import { Text } from '../Themed/Text';
 import { Linking, StyleSheet } from 'react-native';
@@ -6,7 +6,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import Colors from '@/constants/Colors';
 import requestCameraPermissionsAsync from '@/utils/requestCameraPermissionsAsync';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { Button, Icon } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { useAlerts } from 'react-native-paper-alerts';
 import NetInfo from '@react-native-community/netinfo';
 
@@ -50,8 +50,8 @@ const NoProfile: React.FC = () => {
         Helemaal klaar voor Saamdagen?
       </HeaderText>
       <Text style={styles.text}>
-        Scan jouw ticket om je workshops hier te zien. Doe dit
-        op voorhand: je hebt een werkende internetconnectie nodig!
+        Scan jouw ticket om je workshops hier te zien. Doe dit op voorhand: je
+        hebt een werkende internetconnectie nodig!
       </Text>
       <Separator />
       {!isConnected ? (

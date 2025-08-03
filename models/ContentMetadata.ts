@@ -1,6 +1,8 @@
 import { IOrderable } from './IOrderable';
 import { Notification } from './Notification';
 
+// If nothing is passed, the content can be anything
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ContentMetadata<T = any> {
   key: string;
 

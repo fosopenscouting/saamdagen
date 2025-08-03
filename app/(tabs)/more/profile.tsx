@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderText, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
   ScrollView,
@@ -22,12 +22,11 @@ import {
   storeTicket,
 } from '@/services/ticketService';
 import Loading from '@/components/Loading';
-import { Icon } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { setStatusBarHidden } from 'expo-status-bar';
 import { useAlerts } from 'react-native-paper-alerts';
 import { useToast } from 'react-native-paper-toast';
-import { Text } from '@/components/Themed/Text';
+import * as Sentry from '@sentry/react-native';
 
 const ProfileScreen: React.FC = () => {
   const alerts = useAlerts();
@@ -61,6 +60,13 @@ const ProfileScreen: React.FC = () => {
             message:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
+
+          //Log error naar Sentry
+          Sentry.captureMessage(
+            `Ticket kon niet gescand worden: ${error}`,
+            'error',
+          );
+
           setTicketLoading(false);
         }
       });

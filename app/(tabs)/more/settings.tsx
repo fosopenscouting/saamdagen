@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HeaderText, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import { Pressable, StyleSheet } from 'react-native';
 import { List, Switch } from 'react-native-paper';
 import {
@@ -15,6 +15,7 @@ const SettingItem: React.FC<{
   title: string;
   description: string;
   value: boolean | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: any;
 }> = ({ title, description, value, onChange }) => {
   return (

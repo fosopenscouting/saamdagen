@@ -15,9 +15,10 @@ import { Banner } from 'react-native-paper';
 import { ExecutionEnvironment } from 'expo-constants';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { router, useFocusEffect } from 'expo-router';
+import { Redirect, router, useFocusEffect } from 'expo-router';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { HeaderText } from '@/components/Themed/Themed';
+import { getSettings } from '@/services/settingsService';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -25,6 +26,7 @@ const HomeScreen: React.FC = () => {
     ContentMetadata | undefined
   >();
   const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
+  const [showOnboading, setShowOnboarding] = useState(false)
 
   const handleRefresh = async () => {
     await refreshContext();
@@ -51,6 +53,23 @@ const HomeScreen: React.FC = () => {
     }
   }
 
+  //Onboarding logic
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      const settings = await getSettings();
+  
+      if (
+        !settings.SHOWN_ONBOARDING ||
+        settings.SHOWN_ONBOARDING == undefined
+      ) {
+        setShowOnboarding(true)
+      }
+    };
+  
+    checkOnboarding();
+
+  }, [])
+
   // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
   useEffect(() => {
     const refreshAsync = async () => {
@@ -71,6 +90,10 @@ const HomeScreen: React.FC = () => {
       alert(`Error updating the app: ${error}`);
     }
   };
+
+  if(showOnboading) {
+    return <Redirect href={"/onboarding"} />
+  }
 
   return (
     <>

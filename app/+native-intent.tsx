@@ -1,8 +1,4 @@
 import { getTicketFromApi, storeTicket } from '@/services/ticketService';
-import { router } from 'expo-router';
-import { useAlerts } from 'react-native-paper-alerts';
-import { useToast } from 'react-native-paper-toast';
-import * as Sentry from '@sentry/react-native';
 
 export function redirectSystemPath({
   path,

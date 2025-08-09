@@ -1,7 +1,4 @@
 import { getTicketFromApi, storeTicket } from '@/services/ticketService';
-import { router } from 'expo-router';
-import { useAlerts } from 'react-native-paper-alerts';
-import { useToast } from 'react-native-paper-toast';
 
 export function redirectSystemPath({
   path,

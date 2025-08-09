@@ -19,10 +19,10 @@ export function redirectSystemPath({
         return getTicketFromApi(hash).then(async (res) => {
           try {
             await storeTicket(res, hash);
-            
-            return '/more/profile'
+
+            return '/more/profile';
           } catch (error) {
-            console.log(error)
+            console.log(error);
           }
 
           return '/more/profile';

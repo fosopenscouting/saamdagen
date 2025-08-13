@@ -1861,6 +1861,7 @@
     "@sentry/cli-win32-arm64" "2.45.0"
     "@sentry/cli-win32-i686" "2.45.0"
     "@sentry/cli-win32-x64" "2.45.0"
+
 "@sentry/core@8.54.0":
   version "8.54.0"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-8.54.0.tgz#a2ebec965cadcb6de89e116689feeef79d5862a6"
@@ -6773,9 +6774,9 @@ react-native-tab-view@^4.1.0:
   dependencies:
     use-latest-callback "^0.2.3"
 
-"react-native-timeline-flatlist@git+https://github.com/TijlS/react-native-timeline-flatlist.git":
+"react-native-timeline-flatlist@git+https://github.com/TijlS/react-native-timeline-flatlist.git#v1.0.0":
   version "1.0.1"
-  resolved "git+https://github.com/TijlS/react-native-timeline-flatlist.git#e52bf84137e5ffb807174973a3540af157cda797"
+  resolved "git+https://github.com/TijlS/react-native-timeline-flatlist.git#546640437f7035876d434b9b575aa07502fb91b7"
 
 react-native-web@^0.20.0:
   version "0.20.0"
@@ -6984,11 +6985,6 @@ resolve-workspace-root@^2.0.0:
   integrity sha512-IsaBUZETJD5WsI11Wt8PKHwaIe45or6pwNc8yflvLJ4DWtImK9kuLoH5kUva/2Mmx/RdIyr4aONNSa2v9LTJsw==
 
 resolve.exports@^2.0.0, resolve.exports@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-2.0.3.tgz#41955e6f1b4013b7586f873749a635dea07ebe3f"
-  integrity sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==
-
-resolve.exports@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/resolve.exports/-/resolve.exports-2.0.3.tgz#41955e6f1b4013b7586f873749a635dea07ebe3f"
   integrity sha512-OcXjMsGdhL4XnbShKpAcSqPMzQoYkYyhbEaeSko47MjRP9NfEQMhZkXL1DoFlt9LWQn4YttrdnV6X2OiyzBi+A==

@@ -26,14 +26,10 @@ export const returnDay = (eng = false) => {
   let output;
 
   if (eng) {
-    const day = Object.keys(DAYS).find((key: string) => {
-      DAYS[key] == TODAY;
-    });
+    const day = Object.keys(DAYS).find((key: string) => DAYS[key] == TODAY);
     output = day ? DAYS_ENG[day] : undefined;
   } else {
-    output = Object.keys(DAYS).find((key) => {
-      DAYS[key] == TODAY;
-    });
+    output = Object.keys(DAYS).find((key) => DAYS[key] == TODAY);
   }
 
   return output;

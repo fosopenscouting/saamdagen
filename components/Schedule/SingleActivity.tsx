@@ -7,6 +7,8 @@ import { Text } from '../Themed/Text';
 interface SingleActivityProps {
   index: number;
   evts: GroupedEvents;
+
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   passedRef: any;
 }
 
@@ -33,9 +35,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
           </>
         )}
       </HeaderText>
-      <Text>
-        {props.evts.events[0].description}
-      </Text>
+      <Text>{props.evts.events[0].description}</Text>
     </View>
   );
 };

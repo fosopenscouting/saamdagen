@@ -61,7 +61,6 @@ export default function Licenses() {
         data={licenses.filter((l) => l.name)}
         keyExtractor={({ name }, index) => `${index}_${name}`}
         renderItem={({ item }) => <LicensesItem {...item} />}
-        contentContainerStyle={{ paddingHorizontal: 10 }}
         ItemSeparatorComponent={() => <Separator marginVertical={1} />}
       />
     </View>

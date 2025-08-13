@@ -50,7 +50,14 @@
       ],
       "expo-asset",
       "expo-font",
-      "expo-router"
+      "expo-router",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon/notification.png",
+          "color": "#00549F"
+        }
+      ]
     ]
   }
 }

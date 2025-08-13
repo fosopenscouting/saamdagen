@@ -17,6 +17,11 @@ export default withSentry(
         projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
       },
     },
+    android: {
+      ...config.android,
+      googleServicesFile:
+        process.env.GOOGLE_SERVICES_JSON ?? './google-services.json',
+    },
   }),
   {
     organization: 'fosopenscouting',

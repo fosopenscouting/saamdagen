@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import Animated, {
   useAnimatedStyle,
@@ -37,7 +37,6 @@ const AnimatedScanner = Animated.createAnimatedComponent(AnimatedSvg);
  */
 const QrIndicator: React.FC = () => {
   const duration = 1000;
-  const ref = useRef<Svg | null>(null);
 
   const scale = useSharedValue(1);
   const animatedStyles = useAnimatedStyle(() => ({

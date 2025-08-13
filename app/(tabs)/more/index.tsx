@@ -49,7 +49,7 @@ const MoreScreen: React.FC = () => {
   };
 
   useEffect(() => {
-    if (ticketData?.ticketType == 'Deelnemer')
+    if (ticketData?.ticketType == 'medewerker')
       addItem({
         title: 'Info voor medewerkers',
         description: ticketData.ticketType,

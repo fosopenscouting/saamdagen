@@ -26,7 +26,7 @@ const HomeScreen: React.FC = () => {
     ContentMetadata | undefined
   >();
   const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
-  const [showOnboading, setShowOnboarding] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   const handleRefresh = async () => {
     await refreshContext();
@@ -90,7 +90,7 @@ const HomeScreen: React.FC = () => {
     }
   };
 
-  if (showOnboading) {
+  if (showOnboarding) {
     return <Redirect href={'/onboarding'} />;
   }
 

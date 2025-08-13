@@ -50,7 +50,7 @@ const NoProfile: React.FC = () => {
         Helemaal klaar voor Saamdagen?
       </HeaderText>
       <Text style={styles.text}>
-        Scan jouw ticket om je workshops hier te zien. Doe dit op voorhand: je
+        Scan jouw ticket om je workshops hier te zien. Doe dit op voorhand want je
         hebt een werkende internetconnectie nodig!
       </Text>
       <Separator />

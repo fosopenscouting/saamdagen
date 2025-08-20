@@ -23,7 +23,7 @@ const OnboardingScreen = () => {
       showSkip={false}
       showDone={false}
       showNext={false}
-      bottomBarHighlight={false} 
+      bottomBarHighlight={false}
       flatlistProps={{
         scrollEnabled: false,
       }}

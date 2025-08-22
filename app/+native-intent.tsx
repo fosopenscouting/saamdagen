@@ -37,6 +37,8 @@ export function redirectSystemPath({
     }
 
     return path;
+
+    //eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return 'not-found';
   }

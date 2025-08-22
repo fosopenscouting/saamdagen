@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View as NativeView,
 } from 'react-native';
-import { ScheduleData, TimeRange } from '@/models/ScheduleData';
+import { ScheduleData } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { View } from '@/components/Themed/Themed';
@@ -37,8 +37,8 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   const [dayEventsGrouped, setDayEventsGrouped] = useState<GroupedEventsList>();
   const [dayGeneralHours, setDayGeneralHours] = useState<ScheduleData>();
 
-  const currentTimelineItemRef = useRef<NativeView | undefined>();
-  const scrollViewRef = useRef<ScrollView>();
+  const currentTimelineItemRef = useRef<NativeView | undefined>(null);
+  const scrollViewRef = useRef<ScrollView>(null);
   const [currentTimelineItemPosition, setCurrentTimelineItemPosition] =
     useState<number>(0);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
@@ -152,7 +152,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
   return (
     <View style={styles.container}>
       <ScrollView
-        //@ts-expect-error scrollViewRef is undefined before it's set
         ref={scrollViewRef}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -196,6 +195,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                       title: evts.events[0].name,
                       description: [
                         <SingleActivity
+                          key={`tl_${index}_singleactivity`}
                           evts={evts}
                           passedRef={ref}
                           index={index}
@@ -213,6 +213,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                   const description = evts.events.map((evt, i) => {
                     return (
                       <MultipleActivities
+                        key={`tl_${index}_multipleactivities_${i}`}
                         i={i}
                         index={i}
                         evt={evt}
@@ -260,11 +261,8 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               circleColor={Colors.FOSCOLORS.FOS_BLUE}
               circleSize={20}
               innerCircle={'dot'}
-              //@ts-expect-error It works, so ignore the error (please)
-              options={{
-                style: {
-                  paddingTop: 5,
-                },
+              style={{
+                paddingTop: 5,
               }}
               isUsingFlatlist={false}
             />

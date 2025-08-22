@@ -8,6 +8,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AboutScreen: React.FC = () => {
   const alerts = useAlerts();
@@ -56,15 +57,20 @@ const AboutScreen: React.FC = () => {
           Met veel liefde gemaakt door de ICT-werkgroep.
         </Text>
         <Text>
-          Wist je trouwens dat de volledige sourcecode voor deze app op GitHub
+          Wist je trouwens dat de volledige broncode van deze app op GitHub
           staat?
         </Text>
         <Text style={styles.text}>
-          Je kan &apos;m hier terugvinden:{' '}
+          Je kan &apos;m hier terugvinden: {'\n'}
           <Link
             style={styles.link}
             href="https://github.com/fosopenscouting/saamdagen"
           >
+            <MaterialCommunityIcons
+              name="github"
+              size={16}
+              style={{ textDecorationLine: 'none' }}
+            />
             @fosopenscouting/saamdagen
           </Link>
         </Text>

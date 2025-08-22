@@ -1,11 +1,12 @@
 import React from 'react';
-import { Separator, View } from '@/components/Themed/Themed';
+import { View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
   ScrollView,
   Modal,
   Pressable,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import NoProfile from '@/components/Profile/NoProfile';
 import { useState, useEffect } from 'react';
@@ -21,11 +22,11 @@ import {
   storeTicket,
 } from '@/services/ticketService';
 import Loading from '@/components/Loading';
-import { Button } from 'react-native-paper';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { setStatusBarHidden } from 'expo-status-bar';
 import { useAlerts } from 'react-native-paper-alerts';
 import { useToast } from 'react-native-paper-toast';
+import * as Sentry from '@sentry/react-native';
 
 const ProfileScreen: React.FC = () => {
   const alerts = useAlerts();
@@ -59,6 +60,13 @@ const ProfileScreen: React.FC = () => {
             message:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
+
+          //Log error naar Sentry
+          Sentry.captureMessage(
+            `Ticket kon niet gescand worden: ${error}`,
+            'error',
+          );
+
           setTicketLoading(false);
         }
       });
@@ -87,7 +95,9 @@ const ProfileScreen: React.FC = () => {
     setModalVisible(false);
     setStatusBarHidden(false, 'slide');
     (async () => {
-      Brightness.setBrightnessAsync(initialBrightness);
+      Brightness.restoreSystemBrightnessAsync();
+      if (Platform.OS == 'ios')
+        Brightness.setBrightnessAsync(initialBrightness);
     })();
   };
 
@@ -153,6 +163,7 @@ const ProfileScreen: React.FC = () => {
                 lastName={ticketData.lastName}
                 beforeNoon={ticketData.workshop}
                 participantType={ticketData.ticketType}
+                onDeleteTicketPress={showConfirmDialog}
               >
                 <Pressable onPress={handleQrPress}>
                   <View style={styles.qrContainer}>
@@ -160,21 +171,6 @@ const ProfileScreen: React.FC = () => {
                   </View>
                 </Pressable>
               </Profile>
-
-              <Separator marginVertical={0} />
-
-              <Button
-                mode="contained"
-                buttonColor={Colors.FOSCOLORS.WARMRED}
-                textColor="white"
-                icon="delete"
-                style={{
-                  margin: 16,
-                }}
-                onPress={showConfirmDialog}
-              >
-                Ticket verwijderen
-              </Button>
             </View>
           ) : (
             <View style={styles.profileContainer}>

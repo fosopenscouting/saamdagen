@@ -6,37 +6,28 @@ import {
   Quicksand_400Regular,
   Quicksand_500Medium,
   Quicksand_600SemiBold,
+  Quicksand_700Bold,
 } from '@expo-google-fonts/quicksand';
 import * as Sentry from '@sentry/react-native';
 import { useState, useEffect, useRef } from 'react';
-import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import Constants from 'expo-constants';
-import { Platform } from 'react-native';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Stack, useNavigationContainerRef } from 'expo-router';
+import { Stack, useNavigationContainerRef, SplashScreen } from 'expo-router';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
-import {
-  DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
-import {
-  MD3DarkTheme as PaperDarkTheme,
-  MD3LightTheme as PaperDefaultTheme,
-  Provider as PaperProvider,
-  adaptNavigationTheme,
-} from 'react-native-paper';
-import merge from 'deepmerge';
+import { ThemeProvider } from '@react-navigation/native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import useColorScheme from '@/hooks/useColorScheme';
-import useCachedResources from '@/hooks/useCachedResources';
 import { isRunningInExpoGo } from 'expo';
 import { AlertsProvider } from 'react-native-paper-alerts';
 import { ToastProvider } from 'react-native-paper-toast';
-import { darkTheme, lightTheme } from '@/constants/PaperTheme';
+import {
+  registerForPushNotificationsAsync,
+  useNotificationObserver,
+} from '@/utils/notifications';
+import { CustomDarkTheme, CustomDefaultTheme } from '@/utils/theme';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -45,6 +36,7 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
   debug: false,
+  tracesSampleRate: 1.0,
   integrations: [navigationIntegration],
   enableNativeFramesTracking: !isRunningInExpoGo(),
 });
@@ -58,122 +50,18 @@ Notifications.setNotificationHandler({
   }),
 });
 
-function handleRegistrationError(errorMessage: string) {
-  //alert(errorMessage);
-  console.error(errorMessage);
-  throw new Error(errorMessage);
-}
-
-async function registerForPushNotificationsAsync() {
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
-    });
-  }
-
-  if (Device.isDevice) {
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
-    if (finalStatus !== 'granted') {
-      handleRegistrationError(
-        'Permission not granted to get push token for push notification!',
-      );
-      return;
-    }
-    const projectId =
-      Constants?.expoConfig?.extra?.eas?.projectId ??
-      Constants?.easConfig?.projectId;
-    if (!projectId) {
-      handleRegistrationError('Project ID not found');
-    }
-    try {
-      const pushTokenString = (
-        await Notifications.getExpoPushTokenAsync({
-          projectId,
-        })
-      ).data;
-      console.log(pushTokenString);
-      return pushTokenString;
-    } catch (e: unknown) {
-      handleRegistrationError(`${e}`);
-    }
-  } else {
-    handleRegistrationError('Must use physical device for push notifications');
-  }
-}
-
-const { LightTheme, DarkTheme } = adaptNavigationTheme({
-  reactNavigationLight: NavigationDefaultTheme,
-  reactNavigationDark: NavigationDarkTheme,
-});
-
-const CombinedDefaultTheme = merge(PaperDefaultTheme, LightTheme);
-const CombinedDarkTheme = merge(PaperDarkTheme, DarkTheme);
-
-const CustomDarkTheme = {
-  ...PaperDarkTheme,
-  mode: 'exact',
-  colors: darkTheme.colors,
-  fonts: {
-    ...CombinedDarkTheme.fonts,
-    regular: {
-      fontFamily: 'Quicksand_400Regular',
-      fontWeight: '400',
-    },
-    medium: {
-      fontFamily: 'Quicksand_500Medium',
-      fontWeight: '500',
-    },
-    light: {
-      fontFamily: 'Quicksand_300Light',
-      fontWeight: '300',
-    },
-    thin: {
-      fontFamily: 'Quicksand_300Light',
-      fontWeight: '300',
-    },
-  },
-};
-
-const CustomDefaultTheme = {
-  ...CombinedDefaultTheme,
-  colors: lightTheme.colors,
-  fonts: {
-    ...CombinedDefaultTheme.fonts,
-    regular: {
-      fontFamily: 'Quicksand_400Regular',
-      fontWeight: '400',
-    },
-    medium: {
-      fontFamily: 'Quicksand_500Medium',
-      fontWeight: '500',
-    },
-    light: {
-      fontFamily: 'Quicksand_300Light',
-      fontWeight: '300',
-    },
-    thin: {
-      fontFamily: 'Quicksand_300Light',
-      fontWeight: '300',
-    },
-  },
-};
+SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
-  const isLoadingComplete = useCachedResources();
+  useNotificationObserver();
+
+  // const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
     Quicksand_400Regular,
     Quicksand_500Medium,
     Quicksand_600SemiBold,
+    Quicksand_700Bold,
   });
   const colorScheme = useColorScheme();
 
@@ -186,7 +74,10 @@ const RootLayout = () => {
   }, [ref]);
 
   //Notificaties
-  const [expoPushToken, setExpoPushToken] = useState('');
+
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [expoPushToken, setExpoPushToken] = useState<string>('');
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [notification, setNotification] = useState<
     Notifications.Notification | undefined
   >(undefined);
@@ -196,7 +87,8 @@ const RootLayout = () => {
 
   useEffect(() => {
     registerForPushNotificationsAsync()
-      .then((token) => setExpoPushToken(token ?? ''))
+      .then((token: string | undefined) => setExpoPushToken(token ?? ''))
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
       .catch((error: any) => setExpoPushToken(`${error}`));
 
     notificationListener.current =
@@ -210,51 +102,60 @@ const RootLayout = () => {
       });
 
     return () => {
+      //eslint-disable-next-line @typescript-eslint/no-unused-expressions
       notificationListener.current && notificationListener.current.remove();
+      //eslint-disable-next-line @typescript-eslint/no-unused-expressions
       responseListener.current && responseListener.current.remove();
     };
   }, []);
 
-  if (!isLoadingComplete || !fontsLoaded) {
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  // if (!isLoadingComplete || !fontsLoaded) {
+  //   return null;
+  // }
+  if (!fontsLoaded) {
     return null;
-  } else {
-    return (
-      <RootSiblingParent>
-        <DataContextProvider>
-          <GestureHandlerRootView>
-            <PaperProvider
-              //@ts-expect-error Bug in react-native-paper with mode-option
-              theme={
+  }
+
+  return (
+    <RootSiblingParent>
+      <DataContextProvider>
+        <GestureHandlerRootView>
+          <PaperProvider
+            //@ts-expect-error Bug in react-native-paper with mode-option
+            theme={colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme}
+          >
+            <ThemeProvider
+              //@ts-expect-error Shut up please
+              value={
                 colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
               }
             >
-              <ThemeProvider
-              //@ts-expect-error Shut up please
-                value={
-                  colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-                }
-              >
-                <AlertsProvider>
-                  <ToastProvider>
-                    <Stack
-                      screenOptions={{
-                        headerShown: false,
-                      }}
-                    />
-                  </ToastProvider>
-                </AlertsProvider>
-              </ThemeProvider>
-            </PaperProvider>
-          </GestureHandlerRootView>
-          <StatusBar
-            backgroundColor="transparent"
-            animated={true}
-            style="light"
-          />
-        </DataContextProvider>
-      </RootSiblingParent>
-    );
-  }
+              <AlertsProvider>
+                <ToastProvider>
+                  <Stack
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  />
+                </ToastProvider>
+              </AlertsProvider>
+            </ThemeProvider>
+          </PaperProvider>
+        </GestureHandlerRootView>
+        <StatusBar
+          backgroundColor="transparent"
+          animated={true}
+          style="light"
+        />
+      </DataContextProvider>
+    </RootSiblingParent>
+  );
 };
 
 export default Sentry.wrap(RootLayout);

@@ -8,7 +8,6 @@ import {
 } from '@react-navigation/bottom-tabs';
 import {
   CommonActions,
-  NavigationState,
   ParamListBase,
   TabNavigationState,
 } from '@react-navigation/native';
@@ -70,7 +69,7 @@ export const MaterialBottomTabsNavigator = ({
         return label;
       }}
       activeColor={Colors.FOSCOLORS.FOS_GREEN}
-      inactiveColor={"#ccc"}
+      inactiveColor={'#ccc'}
       activeIndicatorStyle={{
         backgroundColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
       }}
@@ -79,10 +78,9 @@ export const MaterialBottomTabsNavigator = ({
           config: { fontFamily: 'Quicksand_600SemiBold' },
         }),
       }}
-
       // Fix bug in react-native-paper
       style={{
-        backgroundColor: Colors.FOSCOLORS.FOS_BLUE
+        backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
       }}
     />
   );

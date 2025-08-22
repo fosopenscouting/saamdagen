@@ -6,11 +6,8 @@ const defaultHeaderStyles = (size: number) => ({
   fontSize: size,
   marginBottom: 4,
 });
-const debugBorder = (color = 'red') => ({
-  borderWidth: 1,
-  borderColor: color
-})
 
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultStyles: StyleSheet.NamedStyles<any> = {
   block: {
     marginBottom: 10,
@@ -24,7 +21,7 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
     paddingLeft: 10,
   },
   blockQuoteText: {
-    color: '#ffffff'
+    color: '#ffffff',
   },
   h1: {
     ...defaultHeaderStyles(21),
@@ -133,7 +130,7 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
     flex: 1,
     padding: 5,
     fontFamily: 'Quicksand_600SemiBold',
-    color: 'white'
+    color: 'white',
   },
   tr: {
     borderBottomWidth: 1,

@@ -8,6 +8,8 @@ interface MultipleActivitiesProps {
   index: number;
   i: number;
   evt: ScheduleData;
+
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   passedRef: any;
 }
 

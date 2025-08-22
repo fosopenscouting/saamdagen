@@ -1,14 +1,17 @@
 import { IOrderable } from './IOrderable';
+import { Notification } from './Notification';
 
-export interface ContentMetadata {
+// If nothing is passed, the content can be anything
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ContentMetadata<T = any> {
   key: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  content: any;
+
+  content: T;
   lastUpdated: Date;
 }
 
 export const createMetadata = (
-  content: IOrderable[] | IOrderable,
+  content: IOrderable[] | IOrderable | Notification[],
   key: string,
 ): ContentMetadata => {
   return {

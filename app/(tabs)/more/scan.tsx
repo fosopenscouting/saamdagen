@@ -13,6 +13,7 @@ import * as Haptics from 'expo-haptics';
 import { ActivityIndicator } from 'react-native-paper';
 import Colors from '@/constants/Colors';
 import { useToast } from 'react-native-paper-toast';
+import * as Sentry from '@sentry/react-native';
 
 const ScanScreen: React.FC = () => {
   const router = useRouter();
@@ -41,6 +42,13 @@ const ScanScreen: React.FC = () => {
             message:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
+
+          //Log error naar Sentry
+          Sentry.captureMessage(
+            `Ticket kon niet gescand worden: ${error}`,
+            'error',
+          );
+
           setScanned(false);
           setTicketHash(null);
         }

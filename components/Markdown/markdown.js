@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -272,7 +274,13 @@ class Markdown extends Component {
           key={'blockQuote_' + key}
           style={[styles.block, styles.blockQuote]}
         >
-          <Text lightColor='#fff' darkColor='#fff' style={styles.blockQuoteText}>{children}</Text>
+          <Text
+            lightColor="#fff"
+            darkColor="#fff"
+            style={styles.blockQuoteText}
+          >
+            {children}
+          </Text>
         </View>
       );
     } else if (Utils.isTextOnly(children)) {

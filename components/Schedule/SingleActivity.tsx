@@ -1,8 +1,7 @@
 import { GroupedEvents } from '@/screens/DayScreen';
 import React from 'react';
 import { View } from 'react-native';
-import { HeaderText } from '../Themed/Themed';
-import { Text } from '../Themed/Text';
+import { HeaderText, Markdown } from '../Themed/Themed';
 
 interface SingleActivityProps {
   index: number;
@@ -35,7 +34,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
           </>
         )}
       </HeaderText>
-      <Text>{props.evts.events[0].description}</Text>
+      <Markdown>{props.evts.events[0].description}</Markdown>
     </View>
   );
 };

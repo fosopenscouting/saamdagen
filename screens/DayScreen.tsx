@@ -191,7 +191,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 
                   if (evts.events?.length == 1) {
                     return {
-                      time: evts.time,
+                      time: evts.time.trim(),
                       title: evts.events[0].name,
                       description: [
                         <SingleActivity
@@ -223,7 +223,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                   });
 
                   return {
-                    time: evts.time,
+                    time: evts.time.trim(),
                     title: 'Volgende activiteiten:',
                     description: description,
                     circleColor: active

@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { HeaderText } from '../Themed/Themed';
+import { HeaderText, Markdown } from '../Themed/Themed';
 import { ScheduleData } from '@/models/ScheduleData';
-import { Text } from '../Themed/Text';
 
 interface MultipleActivitiesProps {
   index: number;
@@ -48,14 +47,14 @@ const MultipleActivities: React.FC<MultipleActivitiesProps> = (
           </>
         )}
       </HeaderText>
-      <Text
+      <Markdown
         key={`timeline_${props.index}_${props.i}_description`}
         style={{
           marginLeft: 10,
         }}
       >
         {props.evt.description}
-      </Text>
+      </Markdown>
     </View>
   );
 };

@@ -2,9 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 import { HeaderText, Markdown } from '../Themed/Themed';
 import { ScheduleData } from '@/models/ScheduleData';
-import { Text } from '../Themed/Text';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Colors from '@/constants/Colors';
 import ActivityLocation from './ActivityLocation';
 
 interface MultipleActivitiesProps {

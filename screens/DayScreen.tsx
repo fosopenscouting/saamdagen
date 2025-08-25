@@ -130,14 +130,14 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             events: [evt],
           };
         }
-      }
+      };
 
       if (typeof evt.time == 'string') {
-        const parsedTime = parseTime(evt.time)
+        const parsedTime = parseTime(evt.time);
 
         createWithParsedTime(parsedTime);
       } else {
-        createWithParsedTime(evt.time)
+        createWithParsedTime(evt.time);
       }
     });
 
@@ -239,7 +239,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               titleStyle={{
                 color: Colors[colorScheme].text,
                 fontFamily: 'Quicksand_600SemiBold',
-                fontWeight: "normal"
+                fontWeight: 'normal',
               }}
               eventDetailStyle={{
                 paddingTop: 0,

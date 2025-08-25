@@ -2,8 +2,6 @@ import { GroupedEvents } from '@/screens/DayScreen';
 import React from 'react';
 import { View } from 'react-native';
 import { HeaderText, Markdown } from '../Themed/Themed';
-import { Text } from '../Themed/Text';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import ActivityLocation from './ActivityLocation';
 
 interface SingleActivityProps {

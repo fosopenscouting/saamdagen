@@ -128,6 +128,7 @@ export const View: React.FC<ViewProps> = (props: ViewProps) => {
 
 type SeparatorProps = {
   marginVertical?: number;
+  lightColor?: string;
 };
 
 export const Separator: React.FC<SeparatorProps> = (props: SeparatorProps) => {
@@ -135,7 +136,7 @@ export const Separator: React.FC<SeparatorProps> = (props: SeparatorProps) => {
   return (
     <View
       style={{ marginVertical: realMarginVertical, height: 1, width: '100%' }}
-      lightColor={Colors.light.tabBarStyle.backgroundColor}
+      lightColor={props.lightColor ?? Colors.light.tabBarStyle.backgroundColor}
       darkColor="rgb(255,255,255)"
     />
   );

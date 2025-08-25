@@ -30,7 +30,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         </Text>
       </View>
 
-      <Separator lightColor='#fff' marginVertical={0} />
+      <Separator lightColor="#fff" marginVertical={0} />
 
       <View style={styles.headerContainer}>
         <View style={styles.profileInfo}>
@@ -39,7 +39,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
             lightColor="#fff"
             variant="headlineMedium"
           >
-            <Icon color='#fff' source="ticket-confirmation" size={32} />
+            <Icon color="#fff" source="ticket-confirmation" size={32} />
             &ensp;{props.firstName} {props.lastName}
           </HeaderText>
           <Text lightColor="#fff" variant="titleMedium">
@@ -54,7 +54,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 
       {props.participantType === 'deelnemer' ? (
         <>
-          <Separator lightColor='#fff' marginVertical={0} />
+          <Separator lightColor="#fff" marginVertical={0} />
 
           <View style={styles.workshopContainer}>
             <HeaderText lightColor="#fff" variant="headlineLarge">
@@ -63,12 +63,14 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
             <Text lightColor="#fff" variant="titleMedium">
               {props.firstName}, jij hebt voor de volgende workshop gekozen:
             </Text>
-            <HeaderText lightColor='#fff' variant="titleMedium">{props.beforeNoon}</HeaderText>
+            <HeaderText lightColor="#fff" variant="titleMedium">
+              {props.beforeNoon}
+            </HeaderText>
           </View>
         </>
       ) : null}
 
-      <Separator lightColor='#fff' marginVertical={0} />
+      <Separator lightColor="#fff" marginVertical={0} />
 
       <View style={styles.dangerContainer}>
         <HeaderText
@@ -76,7 +78,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           lightColor="#fff"
           variant="headlineMedium"
         >
-          <Icon color='#fff' source="alert-circle" size={32} />
+          <Icon color="#fff" source="alert-circle" size={32} />
           &ensp;Dangerzone
         </HeaderText>
         <Button

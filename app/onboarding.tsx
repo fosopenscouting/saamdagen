@@ -32,8 +32,8 @@ const OnboardingScreen = () => {
           title: 'Hey!',
           subtitle: (
             <View>
-              <Text lightColor='#fff'>Welkom bij de Saamdagen app!</Text>
-              <Text lightColor='#fff'>
+              <Text lightColor="#fff">Welkom bij de Saamdagen app!</Text>
+              <Text lightColor="#fff">
                 Voor je kan beginnen, gaan we eerst samen de app instellen.
               </Text>
               <NextPageButton
@@ -100,7 +100,7 @@ const OnboardingScreen = () => {
                 alignItems: 'center',
               }}
             >
-              <Text lightColor='#fff'>
+              <Text lightColor="#fff">
                 Mogen we jou meldingen sturen?{'\n'}
                 Zo kunnen we je sneller op de hoogte brengen als er iets te doen
                 is.
@@ -135,7 +135,7 @@ const OnboardingScreen = () => {
                 alignItems: 'center',
               }}
             >
-              <Text lightColor='#fff'>Wat wil je nu doen?</Text>
+              <Text lightColor="#fff">Wat wil je nu doen?</Text>
 
               <View
                 style={{

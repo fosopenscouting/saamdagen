@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View as NativeView,
 } from 'react-native';
-import { ScheduleData } from '@/models/ScheduleData';
+import { ScheduleData, TimeRange } from '@/models/ScheduleData';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { View } from '@/components/Themed/Themed';
@@ -111,34 +111,33 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
 
     const grouped: GroupedEventsList = {};
     events.forEach((evt) => {
-      if (typeof evt.time == 'string') {
-        grouped[evt.time] = {
-          time: parseTime(evt.time).start ?? evt.time,
-          globalTimes: {
-            start: evt.time,
-            end: '00:00',
-          },
-          events: [evt],
-        };
-      } else {
-        if (grouped[evt.time.start]) {
-          grouped[evt.time.start].events.push(evt);
+      const createWithParsedTime = (time: TimeRange) => {
+        if (grouped[time.start]) {
+          grouped[time.start].events.push(evt);
 
           if (
-            evt.time.eind &&
-            isLater(evt.time.eind, grouped[evt.time.start].globalTimes.end)
+            time.eind &&
+            isLater(time.eind, grouped[time.start].globalTimes.end)
           )
-            grouped[evt.time.start].globalTimes.end = evt.time.eind;
+            grouped[time.start].globalTimes.end = time.eind;
         } else {
-          grouped[evt.time.start] = {
-            time: evt.time.start,
+          grouped[time.start] = {
+            time: time.start,
             globalTimes: {
-              start: evt.time.start,
-              end: evt.time.eind ?? '00:00',
+              start: time.start,
+              end: time.eind ?? '00:00',
             },
             events: [evt],
           };
         }
+      }
+
+      if (typeof evt.time == 'string') {
+        const parsedTime = parseTime(evt.time)
+
+        createWithParsedTime(parsedTime);
+      } else {
+        createWithParsedTime(evt.time)
       }
     });
 
@@ -240,6 +239,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
               titleStyle={{
                 color: Colors[colorScheme].text,
                 fontFamily: 'Quicksand_600SemiBold',
+                fontWeight: "normal"
               }}
               eventDetailStyle={{
                 paddingTop: 0,

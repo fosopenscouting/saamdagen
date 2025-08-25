@@ -2,6 +2,9 @@ import { GroupedEvents } from '@/screens/DayScreen';
 import React from 'react';
 import { View } from 'react-native';
 import { HeaderText, Markdown } from '../Themed/Themed';
+import { Text } from '../Themed/Text';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import ActivityLocation from './ActivityLocation';
 
 interface SingleActivityProps {
   index: number;
@@ -24,7 +27,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
     >
       <HeaderText variant="bodyMedium">
         {typeof props.evts.events[0].time == 'string' ? (
-          <>{props.evts.events[0].time}</>
+          props.evts.events[0].time
         ) : (
           <>
             {props.evts.events[0].time.start}{' '}
@@ -33,6 +36,7 @@ const SingleActivity: React.FC<SingleActivityProps> = (
               : ''}
           </>
         )}
+        <ActivityLocation location={props.evts.events[0].location} />
       </HeaderText>
       <Markdown>{props.evts.events[0].description}</Markdown>
     </View>

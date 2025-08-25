@@ -62,7 +62,7 @@ const defaultStyles: StyleSheet.NamedStyles<any> = {
   },
   strong: {
     fontFamily: 'Quicksand_600SemiBold',
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   em: {
     fontStyle: 'italic',

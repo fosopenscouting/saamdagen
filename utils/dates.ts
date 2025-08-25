@@ -53,14 +53,12 @@ const createDummyDate = (
   );
 };
 
-export const parseTime = (time: string) => {
-  if (typeof time !== 'string') return {};
-
+export const parseTime = (time: string): TimeRange => {
   if (time.includes('t.e.m.')) {
     const split = time.split('t.e.m. ');
     return {
-      start: split[0],
-      end: split[1],
+      start: split[0].trim(),
+      eind: split[1].trim(),
     };
   } else {
     return {

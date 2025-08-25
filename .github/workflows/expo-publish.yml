@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-concurrency: 
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -23,8 +23,8 @@ jobs:
         id: gitversion
       - uses: rickstaa/action-create-tag@v1
         with:
-          tag: "v${{steps.gitversion.outputs.semVer}}"
-          message: "v${{steps.gitversion.outputs.semVer}}"
+          tag: 'v${{steps.gitversion.outputs.semVer}}'
+          message: 'v${{steps.gitversion.outputs.semVer}}'
   staging:
     name: Build and deploy
     runs-on: ubuntu-latest
@@ -39,6 +39,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 20.x
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: '["app.config.ts"]'
+        env:
+          APP_VERSION: ${{env.SEMVER}}
       - uses: expo/expo-github-action@v6
         with:
           expo-version: latest
@@ -63,6 +68,11 @@ jobs:
         with:
           node-version: 20.x
 
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: '["app.config.ts"]'
+        env:
+          APP_VERSION: ${{env.SEMVER}}
       - uses: expo/expo-github-action@v6
         with:
           expo-version: latest

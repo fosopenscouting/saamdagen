@@ -1,7 +1,6 @@
-import { ExpoConfig, ConfigContext } from '@expo/config';
 import 'dotenv/config';
 
-export default ({ config }: ConfigContext): ExpoConfig => ({
+export default {
   newArchEnabled: true,
   name: 'Saamdagen',
   slug: 'saamdagen',
@@ -81,4 +80,4 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       projectId: '7830594e-890b-4c9e-89cf-b91bf1926f72',
     },
   },
-});
+};

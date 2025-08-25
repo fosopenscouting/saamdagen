@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { HeaderText, Markdown } from '../Themed/Themed';
 import { ScheduleData } from '@/models/ScheduleData';
+import ActivityLocation from './ActivityLocation';
 
 interface MultipleActivitiesProps {
   index: number;
@@ -39,13 +40,14 @@ const MultipleActivities: React.FC<MultipleActivitiesProps> = (
         }}
       >
         {typeof props.evt.time == 'string' ? (
-          <>{props.evt.time}</>
+          props.evt.time
         ) : (
           <>
             {props.evt.time.start}{' '}
             {props.evt.time.eind ? `t.e.m. ${props.evt.time.eind}` : ''}
           </>
         )}
+        <ActivityLocation location={props.evt.location} />
       </HeaderText>
       <Markdown
         key={`timeline_${props.index}_${props.i}_description`}

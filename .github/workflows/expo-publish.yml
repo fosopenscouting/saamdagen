@@ -61,6 +61,7 @@ jobs:
       SEMVER: ${{needs.version.outputs.semVer}}
       CI: 1
       EXPPO_PUBLIC_CONTENT_ROOT: Production
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     environment: Production
     steps:
       - uses: actions/checkout@v4

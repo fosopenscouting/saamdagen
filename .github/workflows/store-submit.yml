@@ -20,7 +20,7 @@ jobs:
           node-version: 20.x
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: '["app.json"]'
+          files: '["app.config.ts"]'
         env:
           APP_VERSION: ${{steps.gitversion.outputs.semVer}}
       - name: Setup Expo and EAS

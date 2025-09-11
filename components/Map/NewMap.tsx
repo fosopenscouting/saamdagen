@@ -23,7 +23,6 @@ const NewMap = () => {
             flexShrink: 1,
             height: '100%',
             width: '100%',
-            backgroundColor: '#AEDBC4',
           }}
         >
           <ReactNativeZoomableView
@@ -53,18 +52,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,
-    backgroundColor: '#AEDBC4',
-    position: 'relative',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
   },
 });

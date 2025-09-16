@@ -19,6 +19,7 @@ export const registerToken = async (
         },
         body: JSON.stringify({
           token: token,
+          development: __DEV__ ? true : false
         }),
       });
     } catch (error) {
@@ -39,6 +40,7 @@ export const unregisterToken = async (token: string | null) => {
     },
     body: JSON.stringify({
       token: token,
+      development: __DEV__ ? true : false
     }),
   });
 };

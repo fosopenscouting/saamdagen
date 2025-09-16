@@ -1,8 +1,19 @@
 import 'dotenv/config';
 
+const IS_DEV = process.env.APP_VARIANT === 'development';
+const getUID = () => (IS_DEV ? 'be.fos.saamdagen.dev' : 'be.fos.saamdagen');
+const getAppName = () => (IS_DEV ? 'Saamdagen (DEV)' : 'Saamdagen');
+const getGoogleServiceFile = () => {
+  if (IS_DEV)
+    return process.env.GOOGLE_SERVICES_JSON_DEV ?? './google-services.dev.json';
+
+  return process.env.GOOGLE_SERVICES_JSON ?? './google-services.json';
+};
+const getIconUrl = (icon: string) => `./assets/images/icon/${IS_DEV ? 'DEV/' : ''}${icon}`
+
 export default {
   newArchEnabled: true,
-  name: 'Saamdagen',
+  name: getAppName(),
   slug: 'saamdagen',
   version: '#{APP_VERSION}#',
   owner: 'fos-open-scouting',
@@ -18,27 +29,26 @@ export default {
   ios: {
     buildNumber: '7',
     supportsTablet: true,
-    bundleIdentifier: 'be.fos.saamdagen',
+    bundleIdentifier: getUID(),
     infoPlist: {
       NSCameraUsageDescription:
         'Je camera wordt gebruikt om je ticket te scannen en zo persoonlijke info te krijgen zoals bijvoorbeeld de workshops waarvoor je bent ingeschreven.',
       UIBackgroundModes: ['fetch'],
     },
     icon: {
-      dark: './assets/images/icon/ios_dark.png',
-      tinted: './assets/images/icon/ios_tinted.png',
+      dark: getIconUrl('ios_dark.png'),
+      tinted: getIconUrl('ios_tinted.png'),
     },
   },
   android: {
-    package: 'be.fos.saamdagen',
+    package: getUID(),
     adaptiveIcon: {
       foregroundImage: './assets/images/icon/adaptive-icon.png',
-      backgroundImage: './assets/images/icon/adaptive-icon-bg.png',
-      monochromeImage: './assets/images/icon/monochrome.png',
+      backgroundImage: getIconUrl('adaptive-icon-bg.png'),
+      monochromeImage: getIconUrl('monochrome.png'),
     },
     permissions: ['CAMERA'],
-    googleServicesFile:
-      process.env.GOOGLE_SERVICES_JSON ?? './google-services.json',
+    googleServicesFile: getGoogleServiceFile(),
   },
   web: {
     favicon: './assets/images/favicon.png',

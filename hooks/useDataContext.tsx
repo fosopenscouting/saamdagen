@@ -2,9 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { ContentMetadata } from '@/models/ContentMetadata';
 import useRefresh from './useRefresh';
+import { DatabaseNotification } from '@/models/Notification';
 
 type DataContextType = {
   data: ContentMetadata[] | undefined;
+  recentNotifications: DatabaseNotification[];
   refreshing: boolean;
   refreshContext: () => Promise<void>;
 };
@@ -19,6 +21,9 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
   children,
 }: DataContextProviderProps) => {
   const [data, setData] = useState<ContentMetadata[]>();
+  const [recentNotifications, setRecentNotifications] = useState<
+    DatabaseNotification[]
+  >([]);
 
   const { refresh, refreshing } = useRefresh();
 
@@ -27,6 +32,13 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
     if (dataFromStorage) {
       const parsedData: ContentMetadata[] = JSON.parse(dataFromStorage);
       setData(parsedData);
+    }
+
+    const notificationsFromStorage =
+      await AsyncStorage.getItem('NOTIFICATIONS');
+    if (notificationsFromStorage) {
+      const parsed = JSON.parse(notificationsFromStorage);
+      setRecentNotifications(parsed);
     }
   };
 
@@ -46,6 +58,7 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
     <DataContext.Provider
       value={{
         data,
+        recentNotifications,
         refreshing,
         refreshContext,
       }}

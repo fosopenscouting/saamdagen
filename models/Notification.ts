@@ -7,3 +7,12 @@ export interface Notification {
     hour: string;
   };
 }
+
+export interface DatabaseNotification {
+  id: string;
+  title: string;
+  message: string;
+  channel: 'Production' | 'Staging';
+  sentBy: string;
+  sentAt: Date;
+}

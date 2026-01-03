@@ -3,7 +3,7 @@ import * as Notifications from 'expo-notifications';
 import { useEffect } from 'react';
 import * as Device from 'expo-device';
 import Constants from 'expo-constants';
-import { registerToken } from '@/services/notificationTokenService';
+import { registerToken } from '@/services/notificationService';
 import { router } from 'expo-router';
 
 export function handleRegistrationError(errorMessage: string) {
@@ -64,15 +64,21 @@ export function useNotificationObserver() {
     let isMounted = true;
 
     function redirect(notification: Notifications.Notification) {
+      if (!isMounted) return;
+
       const url = notification.request.content.data?.url as string;
-      if (url) router.push(url);
+
+      setTimeout(() => {
+        if (url) router.push(url);
+        else router.navigate('/more/notifications');
+      }, 1000);
     }
 
-    Notifications.getLastNotificationResponseAsync().then((response) => {
-      if (!isMounted || !response?.notification) return;
-
+    const response = Notifications.getLastNotificationResponse();
+    if (response) {
+      if (!response?.notification) return;
       redirect(response.notification);
-    });
+    }
 
     const subscriber = Notifications.addNotificationResponseReceivedListener(
       (response) => {

@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getSettings } from './settingsService';
+import { DatabaseNotification } from '@/models/Notification';
 
 const NOTIFICATION_SERVER = process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER!;
 
@@ -19,7 +20,7 @@ export const registerToken = async (
         },
         body: JSON.stringify({
           token: token,
-          development: __DEV__ ? true : false
+          development: __DEV__ ? true : false,
         }),
       });
     } catch (error) {
@@ -40,7 +41,7 @@ export const unregisterToken = async (token: string | null) => {
     },
     body: JSON.stringify({
       token: token,
-      development: __DEV__ ? true : false
+      development: __DEV__ ? true : false,
     }),
   });
 };
@@ -58,4 +59,22 @@ export const updateNotificationSettings = async () => {
   } else {
     await unregisterToken(token);
   }
+};
+
+export const getRecentNotifications = async (): Promise<
+  DatabaseNotification[]
+> => {
+  const url = new URL(
+    `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/notifications/recent`,
+  );
+
+  url.searchParams.set('limit', '15');
+
+  if (__DEV__) url.searchParams.set('channel', 'Staging');
+  else url.searchParams.set('channel', 'Production');
+
+  const response = await fetch(url.toString());
+  const data = await response.json();
+
+  return data;
 };

@@ -31,6 +31,11 @@ const MoreScreen: React.FC = () => {
       destination: '/more/settings',
       icon: 'cogs',
     },
+    {
+      title: 'Recente meldingen',
+      destination: '/more/notifications',
+      icon: 'message-badge-outline',
+    },
   ]);
   const [ticketData, setTicketData] = useState<Ticket | null>();
 

@@ -12,7 +12,7 @@ import {
   NextPageButton,
   RedirectButton,
 } from '@/components/Onboarding/Buttons';
-import { updateNotificationSettings } from '@/services/notificationTokenService';
+import { updateNotificationSettings } from '@/services/notificationService';
 
 const OnboardingScreen = () => {
   const onboardingRef = useRef<Onboarding>(null);

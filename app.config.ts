@@ -9,7 +9,8 @@ const getGoogleServiceFile = () => {
 
   return process.env.GOOGLE_SERVICES_JSON ?? './google-services.json';
 };
-const getIconUrl = (icon: string) => `./assets/images/icon/${IS_DEV ? 'DEV/' : ''}${icon}`
+const getIconUrl = (icon: string) =>
+  `./assets/images/icon/${IS_DEV ? 'DEV/' : ''}${icon}`;
 
 export default {
   newArchEnabled: true,
@@ -74,7 +75,7 @@ export default {
       },
     ],
     [
-      '@sentry/react-native/expo',
+      '@sentry/react-native',
       {
         url: 'https://sentry.io/',
         project: 'saamdagen-app',

@@ -78,7 +78,7 @@ const AboutScreen: React.FC = () => {
       </View>
       <TouchableOpacity onPress={onPressVersion}>
         <Text style={[styles.version, { color: versionColor }]}>
-          v{Constants.expoConfig?.version} 
+          v{Constants.expoConfig?.version}
         </Text>
       </TouchableOpacity>
     </View>

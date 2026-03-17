@@ -17,7 +17,10 @@ const DenyOrAcceptButton = ({
 }) => {
   const colors: Partial<ButtonProps> = {};
 
-  if (type == 'deny') colors.textColor = Colors.FOSCOLORS.WARMRED;
+  if (type == 'deny') {
+    colors.textColor = Colors.FOSCOLORS.WARMRED;
+    colors.buttonColor = Colors.FOSCOLORS.FOS_BLUE_DARKENED;
+  }
   if (type == 'accept') colors.buttonColor = Colors.FOSCOLORS.FOS_GREEN;
 
   return (

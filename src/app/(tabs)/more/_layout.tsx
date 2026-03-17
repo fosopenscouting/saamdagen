@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { Stack } from 'expo-router';
-import SaamdagenAppbar from '@/components/SaamdagenAppbar';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
+import SaamdagenAppbar from '@/components/SaamdagenAppbar';
+import { Appbar } from 'react-native-paper';
+import { useDataContext } from '@/hooks/useDataContext';
 
 export const unstable_settings = {
   initialRouteName: 'index',
@@ -11,6 +13,7 @@ export const unstable_settings = {
 
 export default function MoreLayout() {
   const colorScheme = useColorScheme();
+  const { refreshContext } = useDataContext();
 
   return (
     <Stack
@@ -63,6 +66,15 @@ export default function MoreLayout() {
         name="notifications"
         options={{
           headerTitle: 'Recente meldingen',
+          headerRight: () => (
+            <Appbar.Action
+              icon="refresh"
+              color="#fff"
+              onPress={async () => {
+                await refreshContext();
+              }}
+            />
+          ),
         }}
       />
       <Stack.Screen

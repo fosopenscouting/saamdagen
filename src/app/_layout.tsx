@@ -14,7 +14,6 @@ import * as Notifications from 'expo-notifications';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Stack, useNavigationContainerRef, SplashScreen } from 'expo-router';
-import { RootSiblingParent } from 'react-native-root-siblings';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from '@react-navigation/native';
@@ -123,38 +122,30 @@ const RootLayout = () => {
   }
 
   return (
-    <RootSiblingParent>
-      <DataContextProvider>
-        <GestureHandlerRootView>
-          <PaperProvider
-            //@ts-expect-error Bug in react-native-paper with mode-option
-            theme={colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme}
+    <DataContextProvider>
+      <GestureHandlerRootView>
+        <PaperProvider
+          //@ts-expect-error Bug in react-native-paper with mode-option
+          theme={colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme}
+        >
+          <ThemeProvider
+            //@ts-expect-error Shut up please
+            value={colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme}
           >
-            <ThemeProvider
-              //@ts-expect-error Shut up please
-              value={
-                colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme
-              }
-            >
-              <AlertsProvider>
-                <ToastProvider>
-                  <Stack
-                    screenOptions={{
-                      headerShown: false,
-                    }}
-                  />
-                </ToastProvider>
-              </AlertsProvider>
-            </ThemeProvider>
-          </PaperProvider>
-        </GestureHandlerRootView>
-        <StatusBar
-          backgroundColor="transparent"
-          animated={true}
-          style="light"
-        />
-      </DataContextProvider>
-    </RootSiblingParent>
+            <AlertsProvider>
+              <ToastProvider>
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                />
+              </ToastProvider>
+            </AlertsProvider>
+          </ThemeProvider>
+        </PaperProvider>
+      </GestureHandlerRootView>
+      <StatusBar backgroundColor="transparent" animated={true} style="light" />
+    </DataContextProvider>
   );
 };
 

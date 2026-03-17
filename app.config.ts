@@ -13,7 +13,6 @@ const getIconUrl = (icon: string) =>
   `./assets/images/icon/${IS_DEV ? 'DEV/' : ''}${icon}`;
 
 export default {
-  newArchEnabled: true,
   name: getAppName(),
   slug: 'saamdagen',
   version: '#{APP_VERSION}#',
@@ -50,6 +49,7 @@ export default {
     },
     permissions: ['CAMERA'],
     googleServicesFile: getGoogleServiceFile(),
+    predictiveBackGestureEnabled: true,
   },
   web: {
     favicon: './assets/images/favicon.png',

@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
   TouchableOpacity,
   View,
@@ -505,20 +504,20 @@ class Markdown extends Component {
 }
 
 Markdown.propTypes = {
-  debug: PropTypes.bool,
-  parseInline: PropTypes.bool,
-  markdownStyles: PropTypes.object,
-  useDefaultStyles: PropTypes.bool,
-  renderImage: PropTypes.func,
-  renderLink: PropTypes.func,
-  renderListBullet: PropTypes.func,
-  renderLine: PropTypes.func,
-  renderList: PropTypes.func,
-  renderListItem: PropTypes.func,
-  renderText: PropTypes.func,
-  renderBlockQuote: PropTypes.func,
-  renderBlockText: PropTypes.func,
-  renderBlock: PropTypes.func,
+  debug: Boolean,
+  parseInline: Boolean,
+  markdownStyles: Object,
+  useDefaultStyles: Boolean,
+  renderImage: Function,
+  renderLink: Function,
+  renderListBullet: Function,
+  renderLine: Function,
+  renderList: Function,
+  renderListItem: Function,
+  renderText: Function,
+  renderBlockQuote: Function,
+  renderBlockText: Function,
+  renderBlock: Function,
 };
 
 Markdown.defaultProps = {

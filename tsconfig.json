@@ -5,7 +5,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["./src/*"],
+      "@/assets/*": ["./assets/*"]
     }
   }
 }

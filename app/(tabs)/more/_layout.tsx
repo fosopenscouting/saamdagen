@@ -60,6 +60,12 @@ export default function MoreLayout() {
         }}
       />
       <Stack.Screen
+        name="notifications"
+        options={{
+          headerTitle: 'Recente meldingen',
+        }}
+      />
+      <Stack.Screen
         name="volunteer"
         options={{
           headerTitle: 'Medewerker',

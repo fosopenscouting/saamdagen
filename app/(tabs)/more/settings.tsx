@@ -9,7 +9,7 @@ import {
   Settings,
 } from '@/services/settingsService';
 import { router } from 'expo-router';
-import { updateNotificationSettings } from '@/services/notificationTokenService';
+import { updateNotificationSettings } from '@/services/notificationService';
 
 const SettingItem: React.FC<{
   title: string;

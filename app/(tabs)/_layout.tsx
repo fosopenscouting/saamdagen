@@ -4,7 +4,8 @@ import {
   MaterialBottomTabs,
   MaterialBottomTabsNavigator,
 } from '@/layout/material-bottom-tabs';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { StatusBar } from 'expo-status-bar';

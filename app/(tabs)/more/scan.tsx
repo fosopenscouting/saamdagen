@@ -99,7 +99,7 @@ const ScanScreen: React.FC = () => {
           barcodeTypes: ['qr'],
         }}
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned} // Prevents repeated scanning of the same code
-        style={StyleSheet.absoluteFillObject}
+        style={styles.camera}
         enableTorch={isLit}
       />
       <View style={[styles.footer, { bottom: 30 }]}>
@@ -130,6 +130,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
+  },
+  camera: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1,
   },
   footer: {
     position: 'absolute',

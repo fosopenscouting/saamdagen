@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Separator, HeaderText } from '../Themed/Themed';
 import { Text } from '../Themed/Text';
-import { Linking, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import useColorScheme from '@/hooks/useColorScheme';
 import Colors from '@/constants/Colors';
-import requestCameraPermissionsAsync from '@/utils/requestCameraPermissionsAsync';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { Button } from 'react-native-paper';
 import { useAlerts } from 'react-native-paper-alerts';
 import NetInfo from '@react-native-community/netinfo';
+import { useCameraPermissions } from 'expo-camera';
 
 const NoProfile: React.FC = () => {
   const alerts = useAlerts();
@@ -16,6 +16,7 @@ const NoProfile: React.FC = () => {
   const colorScheme = useColorScheme();
   const router = useRouter();
   const [isConnected, setIsConnected] = useState(false);
+  const [permission, requestPermission] = useCameraPermissions();
 
   useFocusEffect(() => {
     (async () => {
@@ -25,7 +26,7 @@ const NoProfile: React.FC = () => {
   });
 
   const handleScanPress = async () => {
-    if (await requestCameraPermissionsAsync()) {
+    if (permission?.granted) {
       router.navigate('/more/scan');
     } else {
       alerts.alert(
@@ -35,7 +36,7 @@ const NoProfile: React.FC = () => {
           {
             text: 'Instellingen',
             onPress: async () => {
-              await Linking.openSettings();
+              await requestPermission();
             },
           },
         ],

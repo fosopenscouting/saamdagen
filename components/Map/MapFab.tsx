@@ -35,7 +35,7 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
         icon="layers"
         actions={[
           {
-            icon: 'forest',
+            icon: 'forest-outline',
             label: 'Spelnamiddag',
             onPress: () => props.handleLayerSelect('big_game'),
             color: getColors('big_game').icon,
@@ -53,7 +53,7 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
             },
           },
           {
-            icon: 'weather-night',
+            icon: 'campfire',
             label: 'Vrijdagavond',
             onPress: () => props.handleLayerSelect('friday'),
             color: getColors('friday').icon,

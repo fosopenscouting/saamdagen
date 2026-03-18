@@ -24,6 +24,7 @@ import { Image } from 'expo-image';
 import * as Notifications from 'expo-notifications';
 import { Notification } from '@/models/Notification';
 import { getSettings } from './settingsService';
+import { getRecentNotifications } from './notificationService';
 
 const programPrefix = 'Programma';
 const homePrefix = 'Homepage';
@@ -77,6 +78,8 @@ export const saveContent = async (paths: string[]): Promise<void> => {
 
   scheduleNotifications(notificationsContent);
 
+  const recentNotifications = await getRecentNotifications();
+
   const allData = [
     homeContent,
     ...parsedProgram,
@@ -104,6 +107,10 @@ export const saveContent = async (paths: string[]): Promise<void> => {
 
   await AsyncStorageLib.setItem('DATA', JSON.stringify(allData));
   await AsyncStorageLib.setItem('IMAGES', JSON.stringify(images));
+  await AsyncStorageLib.setItem(
+    'NOTIFICATIONS',
+    JSON.stringify(recentNotifications),
+  );
 };
 
 // Load all provided paths into async storage

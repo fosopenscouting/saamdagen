@@ -16,4 +16,4 @@ web-build/
 .env.local
 
 google-service-account-key.json
-google-services.json
+google-services*.json

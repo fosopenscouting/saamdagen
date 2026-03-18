@@ -110,7 +110,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     );
 
     const grouped: GroupedEventsList = {};
-    events.forEach((evt) => {
+    events?.forEach((evt) => {
       const createWithParsedTime = (time: TimeRange) => {
         if (grouped[time.start]) {
           grouped[time.start].events.push(evt);

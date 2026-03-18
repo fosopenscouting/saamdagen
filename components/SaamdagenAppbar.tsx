@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Appbar } from 'react-native-paper';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
+import { getHeaderTitle } from '@react-navigation/elements';
 
 const SaamdagenAppbar: React.FC<NativeStackHeaderProps> = (
   props: NativeStackHeaderProps,
 ) => {
-  const [title, setTitle] = useState('Saamdagen');
-
   const colorScheme = useColorScheme();
-
-  useEffect(() => {
-    if (props.options && props.options.headerTitle) {
-      setTitle(props.options.headerTitle);
-    }
-  }, [props.options]);
+  const title = getHeaderTitle(props.options, props.route.name);
 
   return (
     <Appbar.Header style={Colors[colorScheme].tabBarStyle}>

@@ -56,6 +56,25 @@ export default {
   },
   description: '',
   plugins: [
+    'expo-asset',
+    [
+      'expo-camera',
+      {
+        recordAudioAndroid: false,
+      },
+    ],
+    'expo-dev-client',
+    'expo-font',
+    'expo-image',
+    [
+      'expo-notifications',
+      {
+        icon: './assets/images/icon/notification.png',
+        color: '#00549F',
+        enableBackgroundRemoteNotifications: true,
+      },
+    ],
+    'expo-router',
     [
       'expo-splash-screen',
       {
@@ -64,14 +83,11 @@ export default {
         imageWidth: 200,
       },
     ],
-    'expo-asset',
-    'expo-font',
-    'expo-router',
     [
-      'expo-notifications',
+      'expo-status-bar',
       {
-        icon: './assets/images/icon/notification.png',
-        color: '#00549F',
+        hidden: false,
+        style: 'light',
       },
     ],
     [

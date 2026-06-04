@@ -2,7 +2,7 @@ import React from 'react';
 import { HeaderText, View } from '@/components/Themed/Themed';
 import { StyleSheet } from 'react-native';
 import { Text } from '@/components/Themed/Text';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import useColorScheme from '@/hooks/useColorScheme';
 import Colors from '@/constants/Colors';
 import { DatabaseNotification } from '@/models/Notification';
@@ -28,7 +28,7 @@ export default function NotificationsItem({
       <View style={styles.titleBar}>
         <HeaderText variant="titleMedium">{title}</HeaderText>
         <View style={styles.sentAt}>
-          <MaterialCommunityIcons
+          <MaterialDesignIcons
             name="send-clock-outline"
             size={16}
             color={Colors[colorScheme].muted}

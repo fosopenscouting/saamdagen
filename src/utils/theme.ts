@@ -1,7 +1,7 @@
 import {
   DefaultTheme as NavigationDefaultTheme,
   DarkTheme as NavigationDarkTheme,
-} from '@react-navigation/native';
+} from 'expo-router/react-navigation';
 import {
   MD3DarkTheme as PaperDarkTheme,
   MD3LightTheme as PaperDefaultTheme,
@@ -10,10 +10,11 @@ import {
 } from 'react-native-paper';
 import merge from 'deepmerge';
 import { darkTheme, lightTheme } from '@/constants/PaperTheme';
+import { NavigationTheme } from 'react-native-paper/lib/typescript/types';
 
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
-  reactNavigationLight: NavigationDefaultTheme,
-  reactNavigationDark: NavigationDarkTheme,
+  reactNavigationLight: NavigationDefaultTheme as NavigationTheme,
+  reactNavigationDark: NavigationDarkTheme as NavigationTheme,
 });
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, LightTheme);

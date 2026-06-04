@@ -3,18 +3,9 @@ import { MaterialTopTabs } from '@/layout/material-top-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { setStatusBarBackgroundColor } from 'expo-status-bar';
-import { useFocusEffect } from 'expo-router';
 export default function SheduleLayout() {
   const insets = useSafeAreaInsets();
   const colorScheme = useColorScheme();
-
-  useFocusEffect(() => {
-    setStatusBarBackgroundColor(
-      Colors[colorScheme].tabBarStyle.backgroundColor,
-      true,
-    );
-  });
 
   return (
     <>

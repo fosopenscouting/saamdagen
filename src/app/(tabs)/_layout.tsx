@@ -4,8 +4,7 @@ import {
   MaterialBottomTabs,
   MaterialBottomTabsNavigator,
 } from '@/layout/material-bottom-tabs';
-import { MaterialIcons } from '@expo/vector-icons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
 import { StatusBar } from 'expo-status-bar';
@@ -30,7 +29,7 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+              <MaterialDesignIcons name="home" color={color} size={26} />
             ),
           }}
         />
@@ -39,7 +38,7 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Programma',
             tabBarIcon: ({ color }) => (
-              <MaterialIcons name="calendar-view-day" color={color} size={26} />
+              <MaterialDesignIcons name="timeline-text" color={color} size={26} />
             ),
           }}
         />
@@ -48,7 +47,7 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Plattegrond',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="map" color={color} size={26} />
+              <MaterialDesignIcons name="map" color={color} size={26} />
             ),
           }}
         />
@@ -57,7 +56,7 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Info',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
+              <MaterialDesignIcons
                 name="frequently-asked-questions"
                 color={color}
                 size={26}
@@ -70,7 +69,7 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Meer',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
+              <MaterialDesignIcons
                 name="dots-horizontal"
                 color={color}
                 size={26}
@@ -79,7 +78,7 @@ export default function TabsLayout() {
           }}
         />
       </MaterialBottomTabs>
-      <StatusBar backgroundColor="transparent" animated={true} style="light" />
+      <StatusBar animated={true} style="light" />
     </>
   );
 }

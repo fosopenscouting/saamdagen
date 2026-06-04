@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View } from '@/components/Themed/Themed';
 import { Pressable, StyleSheet } from 'react-native';
-import { List, Switch } from 'react-native-paper';
+import { List } from 'react-native-paper';
 import {
   getSettings,
   setSetting,
@@ -10,11 +10,13 @@ import {
 } from '@/services/settingsService';
 import { router } from 'expo-router';
 import { updateNotificationSettings } from '@/services/notificationService';
+import { changeChannel, Channel, useChannel } from '@/utils/useChannel';
+import { Host, Switch, Picker } from '@expo/ui';
 
 const SettingItem: React.FC<{
   title: string;
   description: string;
-  value: boolean | undefined;
+  value: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: any;
 }> = ({ title, description, value, onChange }) => {
@@ -23,7 +25,11 @@ const SettingItem: React.FC<{
       title={title}
       description={description}
       onPress={onChange}
-      right={() => <Switch value={value} onValueChange={onChange} />}
+      right={() => (
+        <Host matchContents>
+          <Switch value={value} onValueChange={onChange} />
+        </Host>
+      )}
     />
   );
 };
@@ -31,11 +37,18 @@ const SettingItem: React.FC<{
 const SettingsScreen: React.FC = () => {
   const [settings, setSettings] = useState<Settings>({});
   const [pressesVersion, setPressesVersion] = useState<number>(0);
+  const [channel, setChannel] = useState<Channel>('Production');
 
   const loadSettings = async () => {
     const settings = await getSettings();
+    const c = await useChannel();
 
     setSettings(settings);
+    setChannel(c);
+  };
+  const updateChannel = async (c: Channel) => {
+    await changeChannel(c);
+    setChannel(c);
   };
 
   useEffect(() => {
@@ -82,13 +95,39 @@ const SettingsScreen: React.FC = () => {
           <SettingItem
             title="Meldingen"
             description="Mogen we jou meldingen sturen?"
-            value={settings[SettingKeys.MESSAGING]}
+            value={settings[SettingKeys.MESSAGING]!}
             onChange={async () => {
               await changeSetting(
                 SettingKeys.MESSAGING,
                 !settings[SettingKeys.MESSAGING],
               );
               await updateNotificationSettings();
+            }}
+          />
+          <List.Item
+            title="Kanaal"
+            description={channel}
+            right={() => {
+              if (__DEV__)
+                return (
+                  <Host style={{flex: 1}}>
+                    <Picker
+                      selectedValue={channel}
+                      onValueChange={(value) => updateChannel(value)}
+                    >
+                      <Picker.Item
+                        key={'Production'}
+                        label="Production"
+                        value={'Production'}
+                      />
+                      <Picker.Item
+                        key={'Staging'}
+                        label="Staging"
+                        value={'Staging'}
+                      />
+                    </Picker>
+                  </Host>
+                );
             }}
           />
         </List.Section>

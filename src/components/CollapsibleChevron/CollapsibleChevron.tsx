@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import React, { useEffect } from 'react';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
@@ -38,7 +38,7 @@ const CollapsibleChevron: React.FC<Props> = (props: Props) => {
         },
       ]}
     >
-      <MaterialCommunityIcons
+      <MaterialDesignIcons
         name="chevron-right"
         size={32}
         color={Colors[colorScheme].tabBarStyle.backgroundColor}

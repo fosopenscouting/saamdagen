@@ -16,7 +16,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Stack, useNavigationContainerRef, SplashScreen } from 'expo-router';
 import { DataContextProvider } from '@/hooks/useDataContext';
 import { StatusBar } from 'expo-status-bar';
-import { ThemeProvider } from '@react-navigation/native';
+import { ThemeProvider } from 'expo-router/react-navigation';
 import { Provider as PaperProvider } from 'react-native-paper';
 import useColorScheme from '@/hooks/useColorScheme';
 import { isRunningInExpoGo } from 'expo';
@@ -34,7 +34,7 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
 
 Sentry.init({
   dsn: process.env.EXPO_SENTRY_DSN,
-  debug: false,
+  sendDefaultPii: true,
   tracesSampleRate: 1.0,
   integrations: [navigationIntegration],
   enableNativeFramesTracking: !isRunningInExpoGo(),
@@ -122,7 +122,7 @@ const RootLayout = () => {
   }
 
   return (
-    <DataContextProvider>
+    <>
       <GestureHandlerRootView>
         <PaperProvider
           //@ts-expect-error Bug in react-native-paper with mode-option
@@ -134,18 +134,20 @@ const RootLayout = () => {
           >
             <AlertsProvider>
               <ToastProvider>
-                <Stack
-                  screenOptions={{
-                    headerShown: false,
-                  }}
-                />
+                <DataContextProvider>
+                  <Stack
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  />
+                </DataContextProvider>
               </ToastProvider>
             </AlertsProvider>
           </ThemeProvider>
         </PaperProvider>
       </GestureHandlerRootView>
-      <StatusBar backgroundColor="transparent" animated={true} style="light" />
-    </DataContextProvider>
+      <StatusBar animated={true} style="light" />
+    </>
   );
 };
 

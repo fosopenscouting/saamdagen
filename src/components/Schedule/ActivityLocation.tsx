@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '../Themed/Text';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import useColorScheme from '@/hooks/useColorScheme';
 import Colors from '@/constants/Colors';
 
@@ -14,7 +14,7 @@ const ActivityLocation: React.FC<{
   return (
     <Text>
       &ensp;-{' '}
-      <MaterialCommunityIcons
+      <MaterialDesignIcons
         color={Colors[colorScheme].muted}
         name="map-marker"
       />{' '}

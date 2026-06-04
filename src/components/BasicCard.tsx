@@ -4,7 +4,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import ContentCard, { ThemeIdentifier, themes } from './ContentCard';
 import { HeaderText, Markdown } from './Themed/Themed';
 import { StyleProp, StyleSheet, ViewStyle, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 const getTextColor = (
   colorScheme: 'light' | 'dark',
@@ -47,7 +47,7 @@ const BasicCard: React.FC<Props> = (props: Props) => {
           {props.title}
         </HeaderText>
         {props.hasLink ? (
-          <MaterialCommunityIcons
+          <MaterialDesignIcons
             style={styles.linkArrow}
             name="arrow-right"
             color={'white'}

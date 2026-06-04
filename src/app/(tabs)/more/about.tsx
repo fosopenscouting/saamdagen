@@ -8,7 +8,7 @@ import useColorScheme from '@/hooks/useColorScheme';
 import { Link } from 'expo-router';
 import { Text } from '@/components/Themed/Text';
 import { useAlerts } from 'react-native-paper-alerts';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 const AboutScreen: React.FC = () => {
   const alerts = useAlerts();
@@ -66,7 +66,7 @@ const AboutScreen: React.FC = () => {
             style={styles.link}
             href="https://github.com/fosopenscouting/saamdagen"
           >
-            <MaterialCommunityIcons
+            <MaterialDesignIcons
               name="github"
               size={16}
               style={{ textDecorationLine: 'none' }}

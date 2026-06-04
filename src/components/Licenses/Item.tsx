@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Text } from '@/components/Themed/Text';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 export interface LicenseItem {
   userUrl: string;
@@ -70,7 +70,7 @@ export default function LicensesItem({
             <Link url={licenseUrl}>{licenses}</Link>
             <Text>{by}</Text>
           </View>
-          <MaterialCommunityIcons
+          <MaterialDesignIcons
             name="chevron-right"
             size={32}
             color={'white'}

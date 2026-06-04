@@ -1,10 +1,11 @@
-const CONTENT_ROOT = process.env.EXPO_PUBLIC_CONTENT_ROOT! ?? 'Production';
+import { useChannel } from "@/utils/useChannel";
+
 const API_URL =
   process.env.EXPO_PUBLIC_API_URL! ??
   'https://fosopenscouting.github.io/Saamdagen-App-inhoud';
 
 export const getContentIndex = async (): Promise<string[]> => {
-  console.log(`CONTENT_DIR: ${CONTENT_ROOT}`);
+  const channel = await useChannel();
   const text = await (
     await fetch(`${API_URL}/content.txt`, { cache: 'no-store' })
   ).text();
@@ -13,12 +14,13 @@ export const getContentIndex = async (): Promise<string[]> => {
   array = array
     .filter((x) => x !== 'README.md')
     .filter((x) => x !== '')
-    .filter((x) => x.startsWith(CONTENT_ROOT));
-  return array.map((x) => x.split(`${CONTENT_ROOT}/`)[1]);
+    .filter((x) => x.startsWith(channel));
+  return array.map((x) => x.split(`${channel}/`)[1]);
 };
 
 export const getMarkdown = async (path: string): Promise<string> => {
-  const text = await fetch(`${API_URL}/${CONTENT_ROOT}/${path}`, {
+  const channel = await useChannel();
+  const text = await fetch(`${API_URL}/${channel}/${path}`, {
     cache: 'no-store',
   });
   return await text.text();

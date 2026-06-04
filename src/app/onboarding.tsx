@@ -5,7 +5,7 @@ import { Image } from 'expo-image';
 import Colors from '@/constants/Colors';
 import { Text } from '@/components/Themed/Text';
 import { View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { SettingKeys } from '@/services/settingsService';
 import {
   GiveConsentButtons,
@@ -116,13 +116,7 @@ const OnboardingScreen = () => {
             </View>
           ),
           backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
-          image: (
-            <MaterialCommunityIcons
-              name="bell-ring"
-              size={100}
-              color={'white'}
-            />
-          ),
+          image: <MaterialDesignIcons name="bell" size={100} color={'white'} />,
         },
         {
           title: 'Helemaal klaar!',
@@ -154,11 +148,7 @@ const OnboardingScreen = () => {
           ),
           backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
           image: (
-            <MaterialCommunityIcons
-              name="check-all"
-              size={100}
-              color={'white'}
-            />
+            <MaterialDesignIcons name="check-all" size={100} color={'white'} />
           ),
         },
       ]}

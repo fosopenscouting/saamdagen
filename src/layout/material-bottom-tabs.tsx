@@ -5,12 +5,12 @@ import {
   BottomTabNavigationOptions,
   BottomTabNavigationEventMap,
   BottomTabBarProps,
-} from '@react-navigation/bottom-tabs';
+} from 'expo-router/js-tabs';
 import {
   CommonActions,
   ParamListBase,
   TabNavigationState,
-} from '@react-navigation/native';
+} from 'expo-router/react-navigation';
 
 import { withLayoutContext } from 'expo-router';
 import { BottomNavigation, configureFonts } from 'react-native-paper';

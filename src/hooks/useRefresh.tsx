@@ -1,6 +1,6 @@
 import NetInfo from '@react-native-community/netinfo';
 import { useState, useCallback } from 'react';
-import Toast from 'react-native-root-toast';
+import { useToast } from 'react-native-paper-toast';
 import { getContentIndex } from '@/api/api';
 import { saveContent } from '@/services/contentService';
 
@@ -9,6 +9,7 @@ const useRefresh = (): {
   refresh: () => Promise<void>;
 } => {
   const [refreshing, setRefreshing] = useState(false);
+  const toaster = useToast();
 
   const refresh = useCallback(async () => {
     try {
@@ -17,17 +18,23 @@ const useRefresh = (): {
       if (info.isConnected) {
         const index = await getContentIndex();
         await saveContent(index);
-        Toast.show('Inhoud werd vernieuwd!', {
-          duration: Toast.durations.SHORT,
+        toaster.show({
+          message: 'Inhoud werd vernieuwd!',
+          duration: 1000,
+          type: 'info',
         });
       } else {
-        Toast.show('Je bent niet verbonden met het internet.', {
-          duration: Toast.durations.SHORT,
+        toaster.show({
+          message: 'Je bent niet verbonden met het internet.',
+          duration: 1000,
+          type: 'warning',
         });
       }
     } catch (e) {
-      Toast.show('Er ging iets fout bij het ophalen van de inhoud.', {
-        duration: Toast.durations.SHORT,
+      toaster.show({
+        message: 'Er ging iets fout bij het ophalen van de inhoud.',
+        duration: 1000,
+        type: 'error',
       });
       console.error(e);
     } finally {

@@ -1,5 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
-import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 
@@ -13,9 +11,9 @@ const useCachedResources: () => boolean = () => {
     async function loadResourcesAndDataAsync() {
       try {
         // Load fonts
-        await Font.loadAsync({
-          ...Ionicons.font,
-        });
+        // await Font.loadAsync({
+        //   ...MaterialDesignIcons.,
+        // });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);

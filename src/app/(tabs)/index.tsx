@@ -14,11 +14,12 @@ import * as Updates from 'expo-updates';
 import { Banner } from 'react-native-paper';
 import { ExecutionEnvironment } from 'expo-constants';
 import { ContentMetadata } from '@/models/ContentMetadata';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Redirect, router, useFocusEffect } from 'expo-router';
-import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import { Redirect, router } from 'expo-router';
 import { HeaderText } from '@/components/Themed/Themed';
 import { getSettings } from '@/services/settingsService';
+import { Ticket } from '@/models/Ticket';
+import { getTicketFromStorage } from '@/services/ticketService';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -27,14 +28,11 @@ const HomeScreen: React.FC = () => {
   >();
   const [snackbarVisible, setUpdateSnackbarVisible] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [ticket, setTicket] = useState<Ticket | null>(null);
 
   const handleRefresh = async () => {
     await refreshContext();
   };
-
-  useFocusEffect(() => {
-    setStatusBarBackgroundColor('transparent', true);
-  });
 
   //Automatic update in background
   async function onFetchUpdateAsync() {
@@ -53,8 +51,15 @@ const HomeScreen: React.FC = () => {
     }
   }
 
-  //Onboarding logic
+  // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
   useEffect(() => {
+    const refreshAsync = async () => {
+      await refreshContext();
+      const t = await getTicketFromStorage();
+
+      if (t) setTicket(t);
+      else setTicket(null);
+    };
     const checkOnboarding = async () => {
       const settings = await getSettings();
 
@@ -67,13 +72,6 @@ const HomeScreen: React.FC = () => {
     };
 
     checkOnboarding();
-  }, []);
-
-  // Always try to refresh data on load. We can do it here because the screen is never unmounted in the bottom tab.
-  useEffect(() => {
-    const refreshAsync = async () => {
-      await refreshContext();
-    };
     refreshAsync();
     onFetchUpdateAsync();
   }, []);
@@ -104,7 +102,7 @@ const HomeScreen: React.FC = () => {
       >
         <ImageBackground
           imageStyle={{ opacity: 0.7 }}
-          source={require('@/assets/images/home-banner-2.png')}
+          source={require('@/assets/images/home-banner-2026.png')}
           style={styles.foregroundImage}
         >
           <View
@@ -125,7 +123,30 @@ const HomeScreen: React.FC = () => {
             />
           </View>
         </ImageBackground>
-        <CountdownTimer targetDate={new Date('2025-09-26T20:00:00+02:00')} />
+        {ticket !== null ? (
+          <TouchableOpacity
+            key={'ticket'}
+            onPress={() => {
+              router.push('/more/profile', {
+                withAnchor: true,
+              });
+            }}
+            activeOpacity={0.7}
+          >
+            <BasicCard
+              containerStyle={[
+                styles.basicCard,
+                styles.lastCard
+              ]}
+              title={`Welkom ${ticket.firstName}`}
+              mode="elevated"
+              palette="seaGreen"
+              content="Klik hier om je ticket te tonen!"
+              hasLink
+            />
+          </TouchableOpacity>
+        ) : null}
+        <CountdownTimer targetDate={new Date('2026-09-25T20:00:00+02:00')} />
         <ContentCard
           containerStyle={styles.saamregels}
           palette="fosBlue"
@@ -173,7 +194,7 @@ const HomeScreen: React.FC = () => {
           },
         ]}
         icon={({ size }) => (
-          <MaterialCommunityIcons name="update" color="#fff" size={size} />
+          <MaterialDesignIcons name="update" color="#fff" size={size} />
         )}
       >
         <View

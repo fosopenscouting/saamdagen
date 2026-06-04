@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getSettings } from './settingsService';
 import { DatabaseNotification } from '@/models/Notification';
+import { useChannel } from '@/utils/useChannel';
 
 const NOTIFICATION_SERVER = process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER!;
 
@@ -67,11 +68,10 @@ export const getRecentNotifications = async (): Promise<
   const url = new URL(
     `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/notifications/recent`,
   );
+  const channel = await useChannel()
 
   url.searchParams.set('limit', '15');
-
-  if (__DEV__) url.searchParams.set('channel', 'Staging');
-  else url.searchParams.set('channel', 'Production');
+  url.searchParams.set('channel', channel);
 
   const response = await fetch(url.toString());
   const data = await response.json();

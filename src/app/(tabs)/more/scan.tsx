@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   camera: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     flex: 1,
   },
   footer: {

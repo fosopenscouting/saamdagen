@@ -2,9 +2,10 @@ import React from 'react';
 import { Appbar } from 'react-native-paper';
 import Colors from '@/constants/Colors';
 import useColorScheme from '@/hooks/useColorScheme';
-import { getHeaderTitle } from '@react-navigation/elements';
+import { getHeaderTitle } from 'expo-router/react-navigation';
+import { NativeStackHeaderProps } from 'expo-router';
 
-const SaamdagenAppbar: React.FC<any> = (props: any) => {
+const SaamdagenAppbar = (props: NativeStackHeaderProps) => {
   const colorScheme = useColorScheme();
   const title = getHeaderTitle(props.options, props.route.name);
 
@@ -20,7 +21,8 @@ const SaamdagenAppbar: React.FC<any> = (props: any) => {
         ]}
         title={title}
       />
-      {props.options.headerRight ? props.options.headerRight() : null}
+      {/* //@ts-expect-error Ignore this */}
+      {props.options.headerRight ? props.options.headerRight({}) : null}
     </Appbar.Header>
   );
 };

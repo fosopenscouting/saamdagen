@@ -17,9 +17,9 @@ const MoreScreen: React.FC = () => {
       icon: 'heart-outline',
     },
     {
-      title: 'Over',
-      destination: '/more/about',
-      icon: 'information-outline',
+      title: 'Recente meldingen',
+      destination: '/more/notifications',
+      icon: 'message-badge-outline',
     },
     {
       title: 'Licenties',
@@ -27,14 +27,14 @@ const MoreScreen: React.FC = () => {
       icon: 'scale-balance',
     },
     {
+      title: 'Over',
+      destination: '/more/about',
+      icon: 'information-outline',
+    },
+    {
       title: 'Instellingen',
       destination: '/more/settings',
       icon: 'cogs',
-    },
-    {
-      title: 'Recente meldingen',
-      destination: '/more/notifications',
-      icon: 'message-badge-outline',
     },
   ]);
   const [ticketData, setTicketData] = useState<Ticket | null>();

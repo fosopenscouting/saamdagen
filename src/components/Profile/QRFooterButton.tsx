@@ -1,5 +1,5 @@
 // Based on the Expo Go source code
-import Ionicons from '@expo/vector-icons/build/Ionicons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 import { BlurView } from 'expo-blur';
 import * as Haptics from 'expo-haptics';
 import React from 'react';
@@ -19,7 +19,7 @@ const hitSlop = { top: slop, bottom: slop, right: slop, left: slop };
 interface QRFooterButtonProps {
   onPress: () => void;
   isActive?: boolean;
-  iconName: React.ComponentProps<typeof Ionicons>['name'];
+  iconName: React.ComponentProps<typeof MaterialDesignIcons>['name'];
   iconSize?: number;
 }
 
@@ -52,7 +52,11 @@ const QRFooterButton: React.FC<QRFooterButtonProps> = ({
       onPress={onPressButton}
     >
       <BlurView intensity={100} style={styles.container} tint={tint}>
-        <Ionicons name={iconName} size={iconSize} color={iconColor} />
+        <MaterialDesignIcons
+          name={iconName}
+          size={iconSize}
+          color={iconColor}
+        />
       </BlurView>
     </TouchableBounce>
   );

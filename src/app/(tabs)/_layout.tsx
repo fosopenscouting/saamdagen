@@ -38,7 +38,11 @@ export default function TabsLayout() {
           options={{
             tabBarLabel: 'Programma',
             tabBarIcon: ({ color }) => (
-              <MaterialDesignIcons name="timeline-text" color={color} size={26} />
+              <MaterialDesignIcons
+                name="timeline-text"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />

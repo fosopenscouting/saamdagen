@@ -110,7 +110,7 @@ const SettingsScreen: React.FC = () => {
             right={() => {
               if (__DEV__)
                 return (
-                  <Host style={{flex: 1}}>
+                  <Host style={{ flex: 1 }}>
                     <Picker
                       selectedValue={channel}
                       onValueChange={(value) => updateChannel(value)}

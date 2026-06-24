@@ -54,7 +54,7 @@ export default [
     settings: {
       react: {
         pragma: 'React',
-        version: 'detect',
+        version: '19.2.3',
       },
     },
 

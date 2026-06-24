@@ -1,4 +1,4 @@
-import { useChannel } from "@/utils/useChannel";
+import { useChannel } from '@/utils/useChannel';
 
 const API_URL =
   process.env.EXPO_PUBLIC_API_URL! ??

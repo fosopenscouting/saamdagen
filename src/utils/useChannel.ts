@@ -17,9 +17,10 @@ export const useChannel = async (): Promise<Channel> => {
 };
 
 export const changeChannel = async (channel: Channel) => {
-    try {
-        await AsyncStorage.setItem('channel', channel)
-    } catch (e) {
-        console.error('Error writing chanel')
-    }
+  try {
+    await AsyncStorage.setItem('channel', channel);
+  } catch (e) {
+    console.error('Error writing chanel');
+    throw e;
+  }
 };

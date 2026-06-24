@@ -31,7 +31,9 @@ const ShowCounter = (props: CounterProps) => {
 type CountdownTimerProps = {
   targetDate: Date;
 };
-const CountdownTimer: React.FC<CountdownTimerProps> = (props: CountdownTimerProps) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = (
+  props: CountdownTimerProps,
+) => {
   const [days, hours, minutes, seconds] = useCountdown(props.targetDate);
 
   if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0)

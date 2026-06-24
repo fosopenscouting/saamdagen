@@ -68,7 +68,7 @@ export const getRecentNotifications = async (): Promise<
   const url = new URL(
     `${process.env.EXPO_PUBLIC_SAAMDAGEN_SERVER}/api/notifications/recent`,
   );
-  const channel = await useChannel()
+  const channel = await useChannel();
 
   url.searchParams.set('limit', '15');
   url.searchParams.set('channel', channel);

@@ -134,10 +134,7 @@ const HomeScreen: React.FC = () => {
             activeOpacity={0.7}
           >
             <BasicCard
-              containerStyle={[
-                styles.basicCard,
-                styles.lastCard
-              ]}
+              containerStyle={[styles.basicCard, styles.lastCard]}
               title={`Welkom ${ticket.firstName}`}
               mode="elevated"
               palette="seaGreen"

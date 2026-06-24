@@ -22,7 +22,7 @@ export const storeTicket = async (
     return ticket;
   } catch (e: any) {
     console.error(e);
-    throw new Error(e);
+    throw e;
   }
 };
 

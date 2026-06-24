@@ -71,7 +71,8 @@ export const isNow = (timeString: TimeRange | string, day: Day) => {
   const todayIsDay = checkDay(day);
   const now = new Date();
 
-  let hasEndTime = false;
+  // eslint-disable-next-line no-useless-assignment
+  let hasEndTime: boolean = false;
   let startTime, endTime;
 
   if (!todayIsDay) return false;

@@ -8,10 +8,9 @@ De applicatie voor de editie van 2021 is geschreven in React Native met Expo.
 
 ### Installatie algemene tools
 
-- Node.js 14+ (dit installeert ook meteen npm)
-- Yarn ( `npm install -g yarn`)
-- eas (enkel als je store builds wil maken) (`npm install -g eas`)
-- Expo Go (iOS of Android app)
+- Node.js 22+ (dit installeert ook meteen npm)
+- Pnpm ( `npm install -g pnpm@latest-11`)
+- eas (enkel als je store builds wil maken) (`pnpm add -g eas`)
 
 ### Tooling
 
@@ -31,13 +30,28 @@ Je hebt een account nodig op <https://expo.dev/>. Vervolgens dien je aan iemand 
 
 Voer deze commando's uit in de 'root' map. Dit is de map waarin het bestand 'package.json' zich bevindt.
 
-- `$ yarn install` (enkel bij de eerste keer starten)
-- `$ npx expo start`
-- Scan de QR code die verschijnt met de Expo app
+```bash
+$ pnpm i
+$ pnpm dev
+```
+
+De QR-code die verschijnt scan je met een dev-build van de saamdagen app.
+
+Scan de QR code die verschijnt met de Expo app
 
 > De eerste keer dat je de applicatie start zal Expo je vragen om in te loggen met je Expo account dat je eerder aanmaakte.
 
 Zie de Expo documentatie voor meer info: <https://docs.expo.io/get-started/create-a-new-app/>
+
+#### Dev-build genereren
+
+Om de applicatie te testen, heb je een dev-build nodig. Deze kan je maken via eas.
+Hier zijn een aantal opties voor:
+
+```bash
+$ eas build --platform=android|ios --profile=development # Bouwen op de infrastructuur van eas, kan lang duren
+$ eas build --platform=android|ios --profile=development --local # Lokaal bouwen. Hier zijn enkele voorwaarden aan verbonden: https://docs.expo.dev/build-reference/local-builds/
+```
 
 #### Uitvoeren in een emulator
 
@@ -59,13 +73,13 @@ Push nooit direct naar de master branch, maar gebruik Pull Requests.
 
 Elke push naar master triggert een Expo Publish. Nieuwe versies worden standaard naar een staging release channel gereleased. Om te releasen naar productie is een approval nodig.
 
-- codeql-analysis.yml: statische code analyse check van GitHub
 - expo-publish.yml: update de app in Expo. Publiceert de app ook naar een staging kanaal
 - pr-validation.yml: basis validatie om te kijken of de app build en of de linter slaagt. Draait enkel op Pull Requests
 - store-submit.yml: triggert een EAS build
 
 ## Expo upgraden
-Expo brengt regelmatig een nieuwe versie van de SDK uit, het kan gebeuren dat de Expo Go app de Saamdagen app niet meer wil openen.
+
+Expo brengt regelmatig een nieuwe versie van de SDK uit. Bij elke upgrade van expo dien je een nieuwe dev-build te maken.
 
 Release notes en upgrade instructions: <https://docs.expo.dev/workflow/upgrading-expo-sdk-walkthrough/>
 
@@ -103,11 +117,11 @@ Content in de app komt uit een andere repository: <https://github.com/fosopensco
 
 Gebruikers kunnen hun ticket in de app zetten d.m.v. een link. We hanteren hier een 'hack' omdat links met specifieke prefix (saamdagen://) niet altijd werken.
 
-URL voor deep-linking: https://ticketing.fos.be/external/app/{ticketHash}
+URL voor deep-linking: https://ticketing.fos.be/external/app/{ticketSecret}
 
-Deze link verwijst door naar saamdagen://more/profile?hash=${ticketHash}. Op mobiele devices wordt zo de app geopend.
+Deze link verwijst door naar saamdagen://more/profile?hash=${ticketSecret}. Op mobiele devices wordt zo de app geopend.
 
-Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketHash} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/more/profile?hash=${myParam}).
+Voor *DEV* testing kan je https://app.saamdagen.be/ticket-dev.html?hash={ticketSecret} gebruiken. Let er wel op dat je de pagina aanpast zodat je doorverwezen wordt naar je lokale expo instantie. (bijv. exp://10.10.8.243:19000/--/more/profile?hash=${myParam}).
 
 ## OTA updates
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, View, TouchableOpacity } from 'react-native';
-import { Image, ImageBackground } from 'expo-image';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import CountdownTimer from '@/components/CountDownTimer';
 import BasicCard from '@/components/BasicCard';
 import { HomeScreenSection } from '@/models/HomeScreenSection';
@@ -20,6 +19,7 @@ import { HeaderText } from '@/components/Themed/Themed';
 import { getSettings } from '@/services/settingsService';
 import { Ticket } from '@/models/Ticket';
 import { getTicketFromStorage } from '@/services/ticketService';
+import ParralaxHeader from '@/components/Parralax/Header';
 
 const HomeScreen: React.FC = () => {
   const { data, refreshContext, refreshing } = useDataContext();
@@ -94,35 +94,11 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <ScrollView
-        style={{ height: '100%' }}
+      <ParralaxHeader
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
         }
       >
-        <ImageBackground
-          imageStyle={{ opacity: 0.7 }}
-          source={require('@/assets/images/home-banner-2.png')}
-          style={styles.foregroundImage}
-        >
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Image
-              style={{
-                marginTop: 26,
-                height: '70%',
-                width: '100%',
-              }}
-              contentFit="contain"
-              source={require('@/assets/images/logo.png')}
-            />
-          </View>
-        </ImageBackground>
         {ticket !== null ? (
           <TouchableOpacity
             key={'ticket'}
@@ -181,7 +157,95 @@ const HomeScreen: React.FC = () => {
             </TouchableOpacity>
           ),
         )}
-      </ScrollView>
+      </ParralaxHeader>
+      {/* <ScrollView
+        style={{ height: '100%' }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }
+      >
+        <ImageBackground
+          imageStyle={{ opacity: 0.7 }}
+          source={require('@/assets/images/home-banner-2.png')}
+          style={styles.foregroundImage}
+        >
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Image
+              style={{
+                marginTop: 26,
+                height: '70%',
+                width: '100%',
+              }}
+              contentFit="contain"
+              source={require('@/assets/images/logo.png')}
+            />
+          </View>
+        </ImageBackground>
+        {ticket !== null ? (
+          <TouchableOpacity
+            key={'ticket'}
+            onPress={() => {
+              router.push('/more/profile', {
+                withAnchor: true,
+              });
+            }}
+            activeOpacity={0.7}
+          >
+            <BasicCard
+              containerStyle={[styles.basicCard, styles.lastCard]}
+              title={`Welkom ${ticket.firstName}`}
+              mode="elevated"
+              palette="seaGreen"
+              content="Klik hier om je ticket te tonen!"
+              hasLink
+            />
+          </TouchableOpacity>
+        ) : null}
+        <CountdownTimer targetDate={new Date('2026-09-25T20:00:00+02:00')} />
+        <ContentCard
+          containerStyle={styles.saamregels}
+          palette="fosBlue"
+          backgroundImage={require('@/assets/images/saamregels.png')}
+        >
+          {/* @ts-expect-error Text expects children, none are needed */}
+      {/* <Text style={styles.countdownTitle}></Text>
+        </ContentCard>
+        {filteredData?.content?.map(
+          (item: HomeScreenSection, index: number) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                if (item.link) {
+                  router.push(item.link, {
+                    withAnchor: true,
+                  });
+                }
+              }}
+              activeOpacity={item.link ? 0.7 : 1}
+            >
+              <BasicCard
+                containerStyle={[
+                  styles.basicCard,
+                  index === filteredData?.content.length - 1
+                    ? styles.lastCard
+                    : null,
+                ]}
+                content={item.content}
+                title={item.title}
+                mode="elevated"
+                palette="fosBlue"
+                hasLink={item.link ? true : false}
+              />
+            </TouchableOpacity>
+          ),
+        )}
+      </ScrollView> */}
       <Banner
         visible={snackbarVisible}
         actions={[

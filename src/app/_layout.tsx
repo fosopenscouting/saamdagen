@@ -54,7 +54,6 @@ SplashScreen.preventAutoHideAsync();
 const RootLayout = () => {
   useNotificationObserver();
 
-  // const isLoadingComplete = useCachedResources();
   const [fontsLoaded] = useFonts({
     Quicksand_300Light,
     Quicksand_400Regular,
@@ -114,9 +113,6 @@ const RootLayout = () => {
     }
   }, [fontsLoaded]);
 
-  // if (!isLoadingComplete || !fontsLoaded) {
-  //   return null;
-  // }
   if (!fontsLoaded) {
     return null;
   }

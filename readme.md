@@ -155,7 +155,7 @@ Het licentiescherm wordt gemaakt op basis van `assets/licenses.json`. Om deze te
 
 Gebruik steeds functionele componenten tegenover class componenten. Voor functionele componenten gebruiken we volgende syntax:
 
-```JSX
+```tsx
 const Component = (props: PropType) => {
     const [counter, setCounter] = useState(0);
 

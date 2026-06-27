@@ -237,9 +237,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                 color: Colors[colorScheme].text,
               }}
               titleStyle={{
-                color: Colors[colorScheme].text,
-                fontFamily: 'Quicksand_600SemiBold',
+                color: Colors[colorScheme].headerColor,
+                fontFamily: 'Quicksand_700Bold',
                 fontWeight: 'normal',
+                fontSize: 18,
               }}
               eventDetailStyle={{
                 paddingTop: 0,

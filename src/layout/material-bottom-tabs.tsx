@@ -68,10 +68,10 @@ export const MaterialBottomTabsNavigator = ({
 
         return label;
       }}
-      activeColor={Colors.FOSCOLORS.FOS_GREEN}
+      activeColor={Colors.bottomBar.active}
       inactiveColor={'#ccc'}
       activeIndicatorStyle={{
-        backgroundColor: Colors.FOSCOLORS.FOS_BLUE_DARKENED,
+        backgroundColor: Colors.bottomBar.activeBackground,
       }}
       theme={{
         fonts: configureFonts({
@@ -80,7 +80,7 @@ export const MaterialBottomTabsNavigator = ({
       }}
       // Fix bug in react-native-paper
       style={{
-        backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
+        backgroundColor: Colors.bottomBar.background,
       }}
     />
   );

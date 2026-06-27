@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   title: {
-    fontWeight: 'bold',
     textTransform: 'uppercase',
     maxWidth: '90%',
   },

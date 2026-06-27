@@ -26,9 +26,6 @@ export default function SheduleLayout() {
             fontFamily: 'Quicksand_600SemiBold',
             fontWeight: 600,
           },
-          sceneStyle: {
-            backgroundColor: Colors.FOSCOLORS.FOS_BLUE,
-          },
         }}
       >
         <MaterialTopTabs.Screen

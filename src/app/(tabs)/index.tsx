@@ -110,11 +110,11 @@ const HomeScreen: React.FC = () => {
             activeOpacity={0.7}
           >
             <BasicCard
-              containerStyle={[styles.basicCard, styles.lastCard]}
+              containerStyle={[styles.basicCard]}
               title={`Welkom ${ticket.firstName}`}
               mode="elevated"
               palette="seaGreen"
-              content="Klik hier om je ticket te tonen!"
+              content={`Klik hier om je ticket te tonen!`}
               hasLink
             />
           </TouchableOpacity>
@@ -158,94 +158,6 @@ const HomeScreen: React.FC = () => {
           ),
         )}
       </ParralaxHeader>
-      {/* <ScrollView
-        style={{ height: '100%' }}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-        }
-      >
-        <ImageBackground
-          imageStyle={{ opacity: 0.7 }}
-          source={require('@/assets/images/home-banner-2.png')}
-          style={styles.foregroundImage}
-        >
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Image
-              style={{
-                marginTop: 26,
-                height: '70%',
-                width: '100%',
-              }}
-              contentFit="contain"
-              source={require('@/assets/images/logo.png')}
-            />
-          </View>
-        </ImageBackground>
-        {ticket !== null ? (
-          <TouchableOpacity
-            key={'ticket'}
-            onPress={() => {
-              router.push('/more/profile', {
-                withAnchor: true,
-              });
-            }}
-            activeOpacity={0.7}
-          >
-            <BasicCard
-              containerStyle={[styles.basicCard, styles.lastCard]}
-              title={`Welkom ${ticket.firstName}`}
-              mode="elevated"
-              palette="seaGreen"
-              content="Klik hier om je ticket te tonen!"
-              hasLink
-            />
-          </TouchableOpacity>
-        ) : null}
-        <CountdownTimer targetDate={new Date('2026-09-25T20:00:00+02:00')} />
-        <ContentCard
-          containerStyle={styles.saamregels}
-          palette="fosBlue"
-          backgroundImage={require('@/assets/images/saamregels.png')}
-        >
-          {/* @ts-expect-error Text expects children, none are needed */}
-      {/* <Text style={styles.countdownTitle}></Text>
-        </ContentCard>
-        {filteredData?.content?.map(
-          (item: HomeScreenSection, index: number) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => {
-                if (item.link) {
-                  router.push(item.link, {
-                    withAnchor: true,
-                  });
-                }
-              }}
-              activeOpacity={item.link ? 0.7 : 1}
-            >
-              <BasicCard
-                containerStyle={[
-                  styles.basicCard,
-                  index === filteredData?.content.length - 1
-                    ? styles.lastCard
-                    : null,
-                ]}
-                content={item.content}
-                title={item.title}
-                mode="elevated"
-                palette="fosBlue"
-                hasLink={item.link ? true : false}
-              />
-            </TouchableOpacity>
-          ),
-        )}
-      </ScrollView> */}
       <Banner
         visible={snackbarVisible}
         actions={[

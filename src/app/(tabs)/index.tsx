@@ -102,7 +102,7 @@ const HomeScreen: React.FC = () => {
       >
         <ImageBackground
           imageStyle={{ opacity: 0.7 }}
-          source={require('@/assets/images/home-banner-2026.png')}
+          source={require('@/assets/images/home-banner-2.png')}
           style={styles.foregroundImage}
         >
           <View

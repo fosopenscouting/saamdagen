@@ -17,3 +17,6 @@ web-build/
 
 google-service-account-key.json
 google-services*.json
+
+.env.local
+*.apk

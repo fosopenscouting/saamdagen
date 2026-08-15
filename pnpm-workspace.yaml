@@ -1,0 +1,8 @@
+allowBuilds:
+  '@sentry/cli': true
+  msgpackr-extract: true
+onlyBuiltDependencies:
+  - '@sentry/cli'
+
+overrides:
+  '@expo/dom-webview': '56.0.5'

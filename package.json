@@ -13,7 +13,7 @@
     "test": "jest --watchAll",
     "lint": "eslint .",
     "prettier-format": "pnpm prettier --config .prettierrc \"**/*.{json,js,jsx,ts,tsx,css,scss,md}\" --write",
-    "generate-licenses": "pnpx --yes npm-license-crawler -onlyDirectDependencies -json assets/licenses.json"
+    "generate-licenses": "pnpx --yes license-report --only=prod --output=json --config license-report-config.json > assets/licenses.json"
   },
   "jest": {
     "preset": "jest-expo"

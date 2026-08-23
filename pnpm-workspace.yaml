@@ -5,4 +5,4 @@ onlyBuiltDependencies:
   - '@sentry/cli'
 
 overrides:
-  '@expo/dom-webview': '56.0.5'
+  '@expo/metro-runtime': '^57.0.12'

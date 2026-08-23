@@ -38,11 +38,6 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         titleStyle={{
           fontFamily: 'Quicksand_500Medium',
         }}
-        theme={{
-          colors: {
-            primary: Colors.FOSCOLORS.FOS_GREEN,
-          },
-        }}
       >
         <View style={{ marginLeft: -20, marginRight: 10, paddingBottom: 10 }}>
           <Markdown>{props.text}</Markdown>

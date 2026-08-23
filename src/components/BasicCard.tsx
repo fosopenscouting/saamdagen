@@ -11,6 +11,8 @@ const getTextColor = (
   palette: ThemeIdentifier,
   mode: 'outlined' | 'elevated' | undefined,
 ) => {
+  return '#fff';
+
   // Item is filled
   if (mode === 'elevated') {
     return themes[palette].textColor;

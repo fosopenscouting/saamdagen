@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from '@/components/Themed/Themed';
-import { Pressable, StyleSheet } from 'react-native';
-import { List } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
 import {
   getSettings,
   setSetting,
@@ -11,28 +10,7 @@ import {
 import { router } from 'expo-router';
 import { updateNotificationSettings } from '@/services/notificationService';
 import { changeChannel, Channel, useChannel } from '@/utils/useChannel';
-import { Host, Switch, Picker } from '@expo/ui';
-
-const SettingItem: React.FC<{
-  title: string;
-  description: string;
-  value: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onChange: any;
-}> = ({ title, description, value, onChange }) => {
-  return (
-    <List.Item
-      title={title}
-      description={description}
-      onPress={onChange}
-      right={() => (
-        <Host matchContents>
-          <Switch value={value} onValueChange={onChange} />
-        </Host>
-      )}
-    />
-  );
-};
+import { Host, Switch, Picker, FieldGroup, Text, Row } from '@expo/ui';
 
 const SettingsScreen: React.FC = () => {
   const [settings, setSettings] = useState<Settings>({});
@@ -76,61 +54,55 @@ const SettingsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-        <List.Section>
-          <Pressable onPress={onPressVersion}>
-            <List.Subheader>Toestemmingen</List.Subheader>
-          </Pressable>
+        <Host style={{ flex: 1 }}>
+          <FieldGroup
+            style={{
+              backgroundColor: 'transparent',
+            }}
+          >
+            <FieldGroup.Section title="Meldingen">
+              <Switch
+                label="Mogen we je meldingen sturen?"
 
-          {/* <SettingItem
-            title="Analytics"
-            description="Mogen we anonieme statistieken versturen om de app te verbeteren?"
-            value={settings[SettingKeys.FIREBASE_ANALYTICS]}
-            onChange={async () => {
-              await changeSetting(
-                SettingKeys.FIREBASE_ANALYTICS,
-                !settings[SettingKeys.FIREBASE_ANALYTICS],
-              );
-            }}
-          /> */}
-          <SettingItem
-            title="Meldingen"
-            description="Mogen we jou meldingen sturen?"
-            value={settings[SettingKeys.MESSAGING]!}
-            onChange={async () => {
-              await changeSetting(
-                SettingKeys.MESSAGING,
-                !settings[SettingKeys.MESSAGING],
-              );
-              await updateNotificationSettings();
-            }}
-          />
-          <List.Item
-            title="Kanaal"
-            description={channel}
-            right={() => {
-              if (__DEV__)
-                return (
-                  <Host style={{ flex: 1 }}>
-                    <Picker
-                      selectedValue={channel}
-                      onValueChange={(value) => updateChannel(value)}
-                    >
-                      <Picker.Item
-                        key={'Production'}
-                        label="Production"
-                        value={'Production'}
-                      />
-                      <Picker.Item
-                        key={'Staging'}
-                        label="Staging"
-                        value={'Staging'}
-                      />
-                    </Picker>
-                  </Host>
-                );
-            }}
-          />
-        </List.Section>
+                value={settings[SettingKeys.MESSAGING]!}
+                onValueChange={async () => {
+                  await changeSetting(
+                    SettingKeys.MESSAGING,
+                    !settings[SettingKeys.MESSAGING],
+                  );
+                  await updateNotificationSettings();
+                }}
+              />
+
+              {__DEV__ ? (
+                <Row alignment="center" spacing={12}>
+                  <Text>Kanaal</Text>
+                  <Picker
+                    selectedValue={channel}
+                    onValueChange={(value) => updateChannel(value)}
+                  >
+                    <Picker.Item
+                      key={'Production'}
+                      label="Production"
+                      value={'Production'}
+                    />
+                    <Picker.Item
+                      key={'Staging'}
+                      label="Staging"
+                      value={'Staging'}
+                    />
+                  </Picker>
+                </Row>
+              ) : null}
+            </FieldGroup.Section>
+
+            <FieldGroup.Section>
+              <Text onPress={onPressVersion}>
+                &copy;&ensp;FOS Open Scouting
+              </Text>
+            </FieldGroup.Section>
+          </FieldGroup>
+        </Host>
       </View>
     </View>
   );

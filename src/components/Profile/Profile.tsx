@@ -16,7 +16,10 @@ interface ProfileProps {
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={styles.scrollview}
+      contentContainerStyle={styles.scrollview}
+    >
       <View style={styles.introContainer}>
         <HeaderText lightColor="#fff" darkColor="#fff" variant="headlineLarge">
           Hey {props.firstName}
@@ -105,6 +108,9 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 };
 
 const styles = StyleSheet.create({
+  scrollview: {
+    flex: 1,
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -143,6 +149,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 25,
     backgroundColor: Colors.FOSCOLORS.WARMRED,
+    flexGrow: 1,
   },
 });
 

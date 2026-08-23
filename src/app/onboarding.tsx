@@ -27,6 +27,9 @@ const OnboardingScreen = () => {
       flatlistProps={{
         scrollEnabled: false,
       }}
+      containerStyles={{
+        paddingHorizontal: 16,
+      }}
       pages={[
         {
           title: 'Hey!',

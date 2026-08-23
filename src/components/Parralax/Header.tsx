@@ -1,5 +1,3 @@
-import Colors from '@/constants/Colors';
-import useColorScheme from '@/hooks/useColorScheme';
 import React from 'react';
 import {
   ImageSourcePropType,
@@ -23,7 +21,7 @@ const ParralaxImage: React.FC<{
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [
       {
-        translateY: interpolate(scroll.value, [0, 512], [0, 1 + offset * 50]),
+        translateY: interpolate(scroll.value, [0, 512], [0, 1 + offset * 75]),
       },
       {
         scale: interpolate(scroll.value, [0, 512], [1, 1.2]),
@@ -70,13 +68,11 @@ const ParralaxHeader: React.FC<
   const scrollHandler = useAnimatedScrollHandler((event) => {
     imagePos.value = event.contentOffset.y;
   });
-  const colorScheme = useColorScheme();
 
   return (
     <Animated.ScrollView
       style={{
         height: '100%',
-        backgroundColor: Colors[colorScheme].background,
       }}
       refreshControl={refreshControl}
       onScroll={scrollHandler}

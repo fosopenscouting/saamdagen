@@ -41,7 +41,6 @@ const FaqCard: React.FC<Props> = (props: Props) => {
         theme={{
           colors: {
             primary: Colors.FOSCOLORS.FOS_GREEN,
-            background: Colors[colorScheme].background,
           },
         }}
       >

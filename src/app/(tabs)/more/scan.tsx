@@ -12,8 +12,8 @@ import NetInfo from '@react-native-community/netinfo';
 import * as Haptics from 'expo-haptics';
 import { ActivityIndicator } from 'react-native-paper';
 import Colors from '@/constants/Colors';
-import { useToast } from 'react-native-paper-toast';
 import * as Sentry from '@sentry/react-native';
+import { toast } from 'sonner-native';
 
 const ScanScreen: React.FC = () => {
   const router = useRouter();
@@ -21,25 +21,17 @@ const ScanScreen: React.FC = () => {
   const [ticketHash, setTicketHash] = useState<string | null>(null);
   const [isLit, setLit] = useState(false);
 
-  const toaster = useToast();
-
   useEffect(() => {
     if (ticketHash) {
       getTicketFromApi(ticketHash).then(async (res) => {
         try {
           await storeTicket(res, ticketHash);
 
-          toaster.show({
-            position: 'top',
-            type: 'success',
-            message: 'Ticket toegevoegd',
-          });
+          toast.success('Ticket toegevoegd');
           router.navigate('/more/profile');
         } catch (error) {
-          toaster.show({
-            position: 'top',
-            type: 'error',
-            message:
+          toast.error('Er ging iets mis', {
+            description:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
 
@@ -75,15 +67,15 @@ const ScanScreen: React.FC = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Rigid);
 
     if (!info.isConnected) {
-      toaster.show({
-        type: 'warning',
-        message:
+      toast.warning('Opgelet!', {
+        description:
           'Je kan je ticket enkel toevoegen als je verbonden bent met het internet.',
-        actionLabel: 'Opnieuw',
-        position: 'top',
-        duration: undefined,
-        action: () => {
-          setScanned(false);
+        duration: Infinity,
+        action: {
+          label: 'Opnieuw',
+          onClick: () => {
+            setScanned(false);
+          },
         },
       });
       return;

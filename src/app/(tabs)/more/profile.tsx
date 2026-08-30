@@ -25,12 +25,11 @@ import Loading from '@/components/Loading';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useAlerts } from 'react-native-paper-alerts';
-import { useToast } from 'react-native-paper-toast';
 import * as Sentry from '@sentry/react-native';
+import { toast } from 'sonner-native';
 
 const ProfileScreen: React.FC = () => {
   const alerts = useAlerts();
-  const toaster = useToast();
 
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
@@ -54,10 +53,8 @@ const ProfileScreen: React.FC = () => {
           if (ticket) setTicketData(ticket);
           setTicketLoading(false);
         } catch (error) {
-          toaster.show({
-            position: 'top',
-            type: 'error',
-            message:
+          toast.error('Er ging iets mis!', {
+            description:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
 

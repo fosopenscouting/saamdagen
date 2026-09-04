@@ -143,8 +143,6 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
       }
     });
 
-    console.log(grouped);
-
     setDayEventsGrouped(grouped);
 
     if (openingHours) {

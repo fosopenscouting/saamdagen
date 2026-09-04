@@ -5,9 +5,9 @@ type Day = 'Vrijdag' | 'Zaterdag' | 'Zondag';
 //TODO: Maybe a better way to store the dates?
 //WARNING: months are 0-indexed, so september = 8!
 const DAYS: { [key: string]: number } = {
-  Vrijdag: new Date(2025, 8, 26).setHours(0, 0, 0, 0),
-  Zaterdag: new Date(2025, 8, 27).setHours(0, 0, 0, 0),
-  Zondag: new Date(2025, 8, 28).setHours(0, 0, 0, 0),
+  Vrijdag: new Date(2026, 8, 25).setHours(0, 0, 0, 0),
+  Zaterdag: new Date(2026, 8, 26).setHours(0, 0, 0, 0),
+  Zondag: new Date(2026, 8, 27).setHours(0, 0, 0, 0),
 };
 const DAYS_ENG: { [key: string]: string } = {
   Vrijdag: 'friday',

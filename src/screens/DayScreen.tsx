@@ -124,7 +124,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           grouped[time.start] = {
             time: time.start,
             globalTimes: {
-              start: time.start,
+              start: time.start.startsWith('00')
+                ? `24:${time.start.split(':')[1]}`
+                : time.start,
               end: time.eind ?? '00:00',
             },
             events: [evt],
@@ -141,12 +143,18 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
       }
     });
 
+    console.log(grouped);
+
     setDayEventsGrouped(grouped);
 
     if (openingHours) {
       setDayGeneralHours(openingHours[0]);
     }
   }, [data]);
+
+  const sortTimeline = (a: GroupedEvents, b: GroupedEvents) => {
+    return parseInt(a.globalTimes.start) - parseInt(b.globalTimes.start);
+  };
 
   return (
     <View style={styles.container}>
@@ -165,12 +173,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             <Timeline
               key="test"
               data={Object.values(dayEventsGrouped)
-                .sort((a, b) => {
-                  return (
-                    parseInt(a.time.split(':')[0]) -
-                    parseInt(b.time.split(':')[0])
-                  );
-                })
+                .sort(sortTimeline)
                 .map((evts, index) => {
                   const active = isNow(
                     {

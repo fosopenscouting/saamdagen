@@ -20,3 +20,4 @@ google-services*.json
 
 .env.local
 *.apk
+.env.local

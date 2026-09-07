@@ -1,0 +1,9 @@
+{
+    "fields": [
+        "name",
+        "author",
+        "installedVersion",
+        "licenseType",
+        "repository.url"
+    ]
+}

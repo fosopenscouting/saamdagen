@@ -21,7 +21,7 @@ const DenyOrAcceptButton = ({
     colors.textColor = Colors.FOSCOLORS.WARMRED;
     colors.buttonColor = Colors.FOSCOLORS.FOS_BLUE_DARKENED;
   }
-  if (type == 'accept') colors.buttonColor = Colors.FOSCOLORS.FOS_GREEN;
+  if (type == 'accept') colors.buttonColor = Colors.FOSCOLORS.BRIGHTYELLOW;
 
   return (
     <Button
@@ -103,7 +103,7 @@ export const RedirectButton = ({
 }) => (
   <Button
     mode="elevated"
-    buttonColor={Colors.FOSCOLORS.FOS_GREEN}
+    buttonColor={Colors.FOSCOLORS.BRIGHTYELLOW}
     icon={icon}
     onPress={async () => {
       await setSetting(SettingKeys.SHOWN_ONBOARDING, true);

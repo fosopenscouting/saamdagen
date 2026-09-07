@@ -28,11 +28,11 @@ const NavigationListItem: React.FC<NavigationListItemProps> = (
       onPress={navigate}
       title={props.title}
       description={props.description}
-      titleStyle={[styles.text, { color: Colors[colorScheme].text }]}
+      titleStyle={[styles.text, { color: Colors[colorScheme].headerColor }]}
       contentStyle={styles.item}
       left={() => (
         <List.Icon
-          color={props.iconColor ?? Colors[colorScheme].text}
+          color={props.iconColor ?? Colors[colorScheme].headerColor}
           icon={props.icon}
         />
       )}

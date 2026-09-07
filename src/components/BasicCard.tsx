@@ -11,6 +11,8 @@ const getTextColor = (
   palette: ThemeIdentifier,
   mode: 'outlined' | 'elevated' | undefined,
 ) => {
+  return 'white';
+
   // Item is filled
   if (mode === 'elevated') {
     return themes[palette].textColor;
@@ -68,7 +70,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   title: {
-    fontWeight: 'bold',
     textTransform: 'uppercase',
     maxWidth: '90%',
   },

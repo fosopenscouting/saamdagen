@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from '@/components/Themed/Themed';
 import {
   StyleSheet,
@@ -23,14 +23,13 @@ import {
 } from '@/services/ticketService';
 import Loading from '@/components/Loading';
 import { useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { setStatusBarHidden } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import { useAlerts } from 'react-native-paper-alerts';
-import { useToast } from 'react-native-paper-toast';
 import * as Sentry from '@sentry/react-native';
+import { toast } from 'sonner-native';
 
 const ProfileScreen: React.FC = () => {
   const alerts = useAlerts();
-  const toaster = useToast();
 
   const [ticketData, setTicketData] = useState<Ticket | null>();
   const [modalVisible, setModalVisible] = useState(false);
@@ -40,7 +39,7 @@ const ProfileScreen: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const brightness = await Brightness.getSystemBrightnessAsync();
+      const brightness = await Brightness.getBrightnessAsync();
       setInitialBrightness(brightness);
     })();
   }, []);
@@ -54,10 +53,8 @@ const ProfileScreen: React.FC = () => {
           if (ticket) setTicketData(ticket);
           setTicketLoading(false);
         } catch (error) {
-          toaster.show({
-            position: 'top',
-            type: 'error',
-            message:
+          toast.error('Er ging iets mis!', {
+            description:
               'Er ging iets fout toen we je ticket probeerden te laden. Probeer het opnieuw.',
           });
 
@@ -73,31 +70,36 @@ const ProfileScreen: React.FC = () => {
     }
   }, []);
 
-  useFocusEffect(() => {
-    setTicketLoading(true);
-    getTicketFromStorage().then((res) => {
-      setTicketData(res);
-    });
-    setTicketLoading(false);
-  });
+  useFocusEffect(
+    useCallback(() => {
+      setTicketLoading(true);
+      getTicketFromStorage().then((res) => {
+        setTicketData(res);
+      });
+      setTicketLoading(false);
+    }, []),
+  );
 
   useEffect(() => {
-    (async () => {
-      if (modalVisible) {
-        const brightness = await Brightness.getBrightnessAsync();
-        setInitialBrightness(brightness);
-        Brightness.setBrightnessAsync(1);
-      }
-    })();
+    const setBrightness = async () => {
+      const brightness = await Brightness.getBrightnessAsync();
+      setInitialBrightness(brightness);
+      await Brightness.setBrightnessAsync(1);
+    };
+
+    if (modalVisible) setBrightness();
   }, [modalVisible]);
 
   const resetModal = () => {
     setModalVisible(false);
-    setStatusBarHidden(false, 'slide');
+    StatusBar.setHidden(false, 'slide');
+
     (async () => {
-      Brightness.restoreSystemBrightnessAsync();
-      if (Platform.OS == 'ios')
-        Brightness.setBrightnessAsync(initialBrightness);
+      await Brightness.setBrightnessAsync(initialBrightness);
+
+      if (Platform.OS === 'android') {
+        await Brightness.restoreSystemBrightnessAsync();
+      }
     })();
   };
 
@@ -128,7 +130,7 @@ const ProfileScreen: React.FC = () => {
   const handleQrPress = () => {
     setModalVisible(!modalVisible);
 
-    setStatusBarHidden(true, 'slide');
+    StatusBar.setHidden(true, 'slide');
   };
 
   return (

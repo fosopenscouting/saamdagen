@@ -1,9 +1,4 @@
-/**
- * Learn more about Light and Dark modes:
- * https://docs.expo.io/guides/color-schemes/
- */
-
-import * as React from 'react';
+import React, { JSX } from 'react';
 import { View as DefaultView } from 'react-native';
 import { Text as DefaultText } from 'react-native-paper';
 import DefaultMarkdown from '../Markdown/markdown';
@@ -24,7 +19,7 @@ export const HeaderText: React.FC<TextProps> = (props: TextProps) => {
     { light: lightColor, dark: darkColor },
     'headerColor',
   ).toString();
-  const fontFamily = 'Quicksand_600SemiBold';
+  const fontFamily = 'Quicksand_700Bold';
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 };

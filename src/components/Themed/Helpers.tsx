@@ -13,6 +13,7 @@ export const useThemeColor = (
   if (colorFromProps) {
     return colorFromProps;
   } else {
+    return '';
     return Colors[theme][colorName];
   }
 };

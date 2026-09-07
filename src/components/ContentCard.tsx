@@ -14,12 +14,7 @@ type Props = {
 };
 
 export type ThemeIdentifier =
-  | 'warmRed'
-  | 'seaGreen'
-  | 'coral'
-  | 'brightPink'
-  | 'brightYellow'
-  | 'fosBlue';
+  'warmRed' | 'seaGreen' | 'coral' | 'brightPink' | 'brightYellow' | 'fosBlue';
 
 type CardTheme = {
   backgroundColor: string;

@@ -16,9 +16,9 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
 
   const getColors = (layer: MapLayer) => {
     return {
-      icon: Colors.FOSCOLORS.CORAL,
+      icon: layer === props.currentLayer ? 'white' : Colors.FOSCOLORS.CORAL,
       bg:
-        layer == props.currentLayer
+        layer === props.currentLayer
           ? Colors.FOSCOLORS.FOS_GREEN
           : Colors.FOSCOLORS.SEA_GREEN,
     };
@@ -31,7 +31,6 @@ const MapFab: React.FC<MapFabProps> = (props: MapFabProps) => {
         visible
         fabStyle={Colors[colorScheme].tabBarStyle}
         color="white"
-        // backdropColor='rgba(0, 0, 0, 0.95)'
         icon="layers"
         actions={[
           {

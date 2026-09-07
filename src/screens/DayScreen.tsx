@@ -124,7 +124,9 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
           grouped[time.start] = {
             time: time.start,
             globalTimes: {
-              start: time.start,
+              start: time.start.startsWith('00')
+                ? `24:${time.start.split(':')[1]}`
+                : time.start,
               end: time.eind ?? '00:00',
             },
             events: [evt],
@@ -148,6 +150,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
     }
   }, [data]);
 
+  const sortTimeline = (a: GroupedEvents, b: GroupedEvents) => {
+    return parseInt(a.globalTimes.start) - parseInt(b.globalTimes.start);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -165,12 +171,7 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
             <Timeline
               key="test"
               data={Object.values(dayEventsGrouped)
-                .sort((a, b) => {
-                  return (
-                    parseInt(a.time.split(':')[0]) -
-                    parseInt(b.time.split(':')[0])
-                  );
-                })
+                .sort(sortTimeline)
                 .map((evts, index) => {
                   const active = isNow(
                     {
@@ -237,9 +238,10 @@ const DayScreen: React.FC<DayInfo> = (dayInfo: DayInfo) => {
                 color: Colors[colorScheme].text,
               }}
               titleStyle={{
-                color: Colors[colorScheme].text,
-                fontFamily: 'Quicksand_600SemiBold',
+                color: Colors[colorScheme].headerColor,
+                fontFamily: 'Quicksand_700Bold',
                 fontWeight: 'normal',
+                fontSize: 18,
               }}
               eventDetailStyle={{
                 paddingTop: 0,

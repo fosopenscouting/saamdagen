@@ -16,15 +16,18 @@ interface ProfileProps {
 
 const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
   return (
-    <ScrollView>
+    <ScrollView
+      style={styles.scrollview}
+      contentContainerStyle={styles.scrollview}
+    >
       <View style={styles.introContainer}>
-        <HeaderText lightColor="#fff" variant="headlineLarge">
+        <HeaderText lightColor="#fff" darkColor="#fff" variant="headlineLarge">
           Hey {props.firstName}
         </HeaderText>
-        <Text lightColor="#fff" variant="titleLarge">
+        <Text lightColor="#fff" darkColor="#fff" variant="titleLarge">
           Ben jij klaar voor Saamdagen? Wij alvast wel!
         </Text>
-        <Text lightColor="#fff" variant="titleMedium">
+        <Text lightColor="#fff" darkColor="#fff" variant="titleMedium">
           Hieronder vind je je ticket terug en ook welke workshop je gekozen
           hebt.
         </Text>
@@ -37,12 +40,13 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           <HeaderText
             style={styles.profileInfoName}
             lightColor="#fff"
+            darkColor="#fff"
             variant="headlineMedium"
           >
             <Icon color="#fff" source="ticket-confirmation" size={32} />
             &ensp;{props.firstName} {props.lastName}
           </HeaderText>
-          <Text lightColor="#fff" variant="titleMedium">
+          <Text lightColor="#fff" darkColor="#fff" variant="titleMedium">
             {props.participantType}
           </Text>
           <Text lightColor="#fff" variant="bodySmall">
@@ -57,7 +61,11 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
           <Separator lightColor="#fff" marginVertical={0} />
 
           <View style={styles.workshopContainer}>
-            <HeaderText lightColor="#fff" variant="headlineLarge">
+            <HeaderText
+              lightColor="#fff"
+              darkColor="#fff"
+              variant="headlineLarge"
+            >
               Workshopkeuze
             </HeaderText>
             <Text lightColor="#fff" variant="titleMedium">
@@ -76,6 +84,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         <HeaderText
           style={styles.profileInfoName}
           lightColor="#fff"
+          darkColor="#fff"
           variant="headlineMedium"
         >
           <Icon color="#fff" source="alert-circle" size={32} />
@@ -83,7 +92,7 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
         </HeaderText>
         <Button
           mode="outlined"
-          buttonColor={Colors.FOSCOLORS.WARMRED}
+          buttonColor={'red'}
           textColor="white"
           icon="delete"
           style={{
@@ -99,6 +108,9 @@ const Profile: React.FC<ProfileProps> = (props: ProfileProps) => {
 };
 
 const styles = StyleSheet.create({
+  scrollview: {
+    flex: 1,
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -137,6 +149,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingVertical: 25,
     backgroundColor: Colors.FOSCOLORS.WARMRED,
+    flexGrow: 1,
   },
 });
 

@@ -70,8 +70,9 @@ const AboutScreen: React.FC = () => {
               name="github"
               size={16}
               style={{ textDecorationLine: 'none' }}
+              color={Colors[colorScheme].text}
             />
-            @fosopenscouting/saamdagen
+            &ensp;@fosopenscouting/saamdagen
           </Link>
         </Text>
         <Text>&copy; FOS Open Scouting - {new Date().getFullYear()}</Text>

@@ -4,20 +4,15 @@ import { ScheduleData } from '@/models/ScheduleData';
 import CollapsibleChevron from '../CollapsibleChevron/CollapsibleChevron';
 import { Markdown } from '../Themed/Themed';
 import { List } from 'react-native-paper';
-import Colors from '@/constants/Colors';
-import useColorScheme from '@/hooks/useColorScheme';
 
 type Props = {
   openingHours: ScheduleData | undefined;
 };
 
 export const OpeningHours: React.FC<Props> = (props: Props) => {
-  const colorScheme = useColorScheme();
-
   return (
     <List.Accordion
       style={{
-        backgroundColor: Colors[colorScheme].background,
         paddingVertical: 0,
         paddingLeft: 0,
         paddingRight: 0,

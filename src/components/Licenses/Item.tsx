@@ -1,44 +1,17 @@
 import React from 'react';
 import { HeaderText, View } from '@/components/Themed/Themed';
-import {
-  Linking,
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  TouchableOpacity,
-} from 'react-native';
+import { Linking, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from '@/components/Themed/Text';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
 
 export interface LicenseItem {
-  userUrl: string;
   username: string;
   name: string;
   version: string;
   licenses: string;
   repository: string;
-  licenseUrl: string;
   key?: string;
 }
-
-const Link = ({
-  url,
-  style,
-  children,
-}: {
-  url: string;
-  style?: StyleProp<TextStyle>;
-  children: React.ReactNode;
-}) => (
-  <Text
-    style={style}
-    numberOfLines={1}
-    onPress={() => url && Linking.openURL(url)}
-    variant="bodyLarge"
-  >
-    {children}
-  </Text>
-);
 
 export default function LicensesItem({
   username,
@@ -46,7 +19,6 @@ export default function LicensesItem({
   version,
   licenses,
   repository,
-  licenseUrl,
 }: LicenseItem) {
   const title = name;
   let by;
@@ -67,7 +39,7 @@ export default function LicensesItem({
             <HeaderText variant="titleMedium">
               {title}@{version}
             </HeaderText>
-            <Link url={licenseUrl}>{licenses}</Link>
+            <Text>{licenses}</Text>
             <Text>{by}</Text>
           </View>
           <MaterialDesignIcons

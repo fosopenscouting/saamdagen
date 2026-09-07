@@ -21,12 +21,12 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import useColorScheme from '@/hooks/useColorScheme';
 import { isRunningInExpoGo } from 'expo';
 import { AlertsProvider } from 'react-native-paper-alerts';
-import { ToastProvider } from 'react-native-paper-toast';
 import {
   registerForPushNotificationsAsync,
   useNotificationObserver,
 } from '@/utils/notifications';
 import { CustomDarkTheme, CustomDefaultTheme } from '@/utils/theme';
+import { Toaster } from 'sonner-native';
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
@@ -129,18 +129,18 @@ const RootLayout = () => {
             value={colorScheme == 'dark' ? CustomDarkTheme : CustomDefaultTheme}
           >
             <AlertsProvider>
-              <ToastProvider>
-                <DataContextProvider>
-                  <Stack
-                    screenOptions={{
-                      headerShown: false,
-                    }}
-                  />
-                </DataContextProvider>
-              </ToastProvider>
+              <DataContextProvider>
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                />
+              </DataContextProvider>
             </AlertsProvider>
           </ThemeProvider>
         </PaperProvider>
+
+        <Toaster position="bottom-center" />
       </GestureHandlerRootView>
       <StatusBar animated={true} style="light" />
     </>

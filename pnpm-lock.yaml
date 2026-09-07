@@ -171,6 +171,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.60.0
         version: 8.67.0(eslint@10.9.0)(typescript@6.0.3)
+      babel-preset-expo:
+        specifier: ^57.0.10
+        version: 57.0.10(@babel/core@7.29.7)(@babel/runtime@7.29.7)(expo@57.0.20)(react-refresh@0.14.2)
       cross-env:
         specifier: ^10.0.0
         version: 10.1.0

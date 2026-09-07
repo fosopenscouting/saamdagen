@@ -83,5 +83,5 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
       - run: pnpm install --frozen-lockfile
       - name: Generate licenses.json
-        run: pnpm generate-licenses
-      - run: eas update --branch production --message ${{env.SEMVER}} --non-interactive && npx sentry-expo-upload-sourcemaps dist
+        run: yarn generate-licenses
+      - run: eas update --branch production --message ${{env.SEMVER}} && npx sentry-expo-upload-sourcemaps dist

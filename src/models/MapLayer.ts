@@ -1,7 +1,7 @@
-import Grondplan from '@/assets/grondplan/2025_basis.png';
-import GrondPlanGrootSpel from '@/assets/grondplan/2025_spel.png';
-import GrondPlanVrijdag from '@/assets/grondplan/2025_vrijdag.png';
-import GrondPlanVormingen from '@/assets/grondplan/2025_vormingen.png';
+import Grondplan from '@/assets/grondplan/2026_basis.png';
+import GrondPlanGrootSpel from '@/assets/grondplan/2026_spel.png';
+import GrondPlanVrijdag from '@/assets/grondplan/2026_vrijdag.png';
+import GrondPlanVormingen from '@/assets/grondplan/2026_vormingen.png';
 
 export type MapLayer = 'normal' | 'activities' | 'big_game' | 'friday'; //TODO: make layers more dynamic
 

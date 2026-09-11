@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,
+    backgroundColor: '#a4c2c4',
   },
 });

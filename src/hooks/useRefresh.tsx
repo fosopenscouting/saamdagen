@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react';
 import { getContentIndex } from '@/api/api';
 import { saveContent } from '@/services/contentService';
 import { toast } from 'sonner-native';
+import * as Sentry from '@sentry/react-native';
 
 const useRefresh = (): {
   refreshing: boolean;
@@ -30,6 +31,8 @@ const useRefresh = (): {
         duration: 1000,
       });
       console.error(e);
+
+      Sentry.captureException(e);
     } finally {
       setRefreshing(false);
     }
